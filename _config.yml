@@ -8,7 +8,8 @@ logo: # filename of a logo image that has been placed into your images directory
 owner:
   name: Jihye Park
   avatar: bio-photo.jpg
-  bio: PhD student, Dept of Political Science, University of Rochester
+  bio: PhD student
+       Dept of Political Science, University of Rochester
   email: jihye.park@rochester.edu
   # Do not include the @ symbol in your Twitter username
   twitter: #username
