@@ -3,12 +3,7 @@ layout: page
 excerpt: "About Me..."
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Welcome!
 
-## Current Interests and Projects:
 
-- Lorem ipsum dolor sit amet
-- Lorem ipsum dolor sit amet
-- DLorem ipsum dolor sit amet
-- Lorem ipsum dolor sit amet
-- Lorem ipsum dolor sit amet
+I am a political science PhD student in University of Rochester. I got my Bachelor’s degree in Business Administration from Yonsei University. My research interests mostly center around international political economy, domestic politics & IR, trade policy, political lobbying, formal theory and political methodology. What I currently focus on is formalization and empirical verification of the effect of informational transparency between government, firms and median voters in shaping a domestic government’s decisions on free trade.
