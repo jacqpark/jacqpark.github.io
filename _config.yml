@@ -1,14 +1,14 @@
 # Site wide configuration
 
-title: JIHYE PARK
+title: JIHYE (JACQUELINE) PARK
 locale: en_US
 logo: # filename of a logo image that has been placed into your images directory
 
 # Enter the following platform usernames if you would like for them to appear on your site.
 owner:
-  name: Jihye (Jacqueline) Park
+  name: Jihye Park
   avatar: bio-photo.jpg
-  bio: I am a political science PhD student in University of Rochester. I got my Bachelor’s degree in Business Administration from Yonsei University. My research interests mostly center around international political economy, domestic politics & IR, trade policy, political lobbying, formal theory and political methodology. What I currently focus on is formalization and empirical verification of the effect of informational transparency between government, firms and median voters in shaping a domestic government’s decisions on free trade.
+  bio: PhD student, Dept of Political Science, University of Rochester
   email: jihye.park@rochester.edu
   # Do not include the @ symbol in your Twitter username
   twitter: #username
