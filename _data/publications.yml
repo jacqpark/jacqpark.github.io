@@ -58,7 +58,7 @@
   status: Under review
   sort_order: 2
 - title: Firms Lobbying for Preferential Trade
-  authors: Jihye Park
+  authors: Jihye Park, Randall Stone
   category: working-papers
   github_pdf: papers/working-papers/03__firms-lobbying-for-preferential-trade.pdf
   year: 2025
@@ -67,7 +67,7 @@
   abstract: |-
     Lobbying disclosures often hide what firms lobby about, but we introduce new data and exploit timing to show that multinational firms lobby intensively about preferential trade agreements (PTAs). We argue that some firms lobby for ratification, which lowers tariffs on imported intermediate inputs, while others lobby to shape PTA terms to influence behindthe-border regulations. Our empirical analysis untangles these incentives by identifying groups of firms with different motivations and investigating which branches of government they lobby and when. We use PanelMatch (Imai, Kim and Wang 2023) to conduct staggered diff-in-diff analyses at the firm level, using Fortune Global 5 firms and a comprehensive set of US PTA negotiations. Pharmaceutical firms lobby for intellectual property rights protection; firms represented on the US Trade Representative’s general policy making committee lobby to shape PTA provisions; other firms lobby for ratification of PTAs with countries where they have investments. 1 1
 - title: Lobbying for Conditionality
-  authors: Jihye Park
+  authors: Jihye Park, Randall Stone
   category: working-papers
   github_pdf: papers/working-papers/04__lobbying-for-conditionality.pdf
   year: 2025
