@@ -1,29 +1,16 @@
 - title: Text Analysis
   authors: Jihye Park
   venue: Encyclopedia of Measurement in Social Sciences (2nd ed.), 2026
-  abstract: This chapter provides a comprehensive overview of text-as-data methods in the social sciences, with a focus on
-    political science applications. Beginning with foundational approaches such as lexicon-based analyses and statistical
-    scaling methods and advancing to topic modeling frameworks, it then examines the emergence of word embeddings and transformer
-    revolution. Applications include measuring ideological positions, sentiment analysis, and framing detection. The discussion
-    highlights methodological innovations in zero-shot and few-shot classification, cross-lingual analysis, and causal inference,
-    alongside considerations of validity, ethics, and interpretability. Finally, the chapter explores future directions including
-    multimodal integration and responsible artificial intelligence (AI) practices.
+  abstract: |-
+    This chapter provides a comprehensive overview of text-as-data methods in the social sciences, with a focus on political science applications. Beginning with foundational approaches such as lexicon-based analyses and statistical scaling methods and advancing to topic modeling frameworks, it then examines the emergence of word embeddings and transformer revolution. Applications include measuring ideological positions, sentiment analysis, and framing detection. The discussion highlights methodological innovations in zero-shot and few-shot classification, cross-lingual analysis, and causal inference, alongside considerations of validity, ethics, and interpretability. Finally, the chapter explores future directions including multimodal integration and responsible artificial intelligence (AI) practices.
   category: book-chapters
   year: 2026
   doi: https://doi.org/10.1016/B978-0-443-26629-4.00222-7
 - title: Panel Data Analysis
   authors: Jihye Park
   venue: Encyclopedia of Measurement in Social Sciences (2nd ed.), 2026
-  abstract: Panel data, also called time-series cross-sectional (TSCS) data, enable researchers to harness both cross-unit
-    variation and within-unit dynamics to answer key questions in social sciences, from policy diffusion to regime change.
-    This article surveys major panel data estimation techniques useful for social science researchers, highlighting their
-    assumptions, strengths, and contexts of use. I begin by defining TSCS structures and illustrating common pitfalls of naïve
-    pooling, before introducing two-way fixed-effects models for controlling unit- and time-invariant confounders. Next, I
-    review conventional difference-in-differences designs and their extension to staggered adoption settings, emphasizing
-    recent developments to correct bias when treatments roll out at different times. Building on these foundations, I delve
-    into dynamic panel estimators, including the Arellano–Bond and system GMM frameworks, and the PanelMatch method, which
-    matches on longitudinal histories to bolster causal identification. Throughout, research applications exemplify each method's
-    potential and limitations.
+  abstract: |-
+    Panel data, also called time-series cross-sectional (TSCS) data, enable researchers to harness both cross-unit variation and within-unit dynamics to answer key questions in social sciences, from policy diffusion to regime change. This article surveys major panel data estimation techniques useful for social science researchers, highlighting their assumptions, strengths, and contexts of use. I begin by defining TSCS structures and illustrating common pitfalls of naïve pooling, before introducing two-way fixed-effects models for controlling unit- and time-invariant confounders. Next, I review conventional difference-in-differences designs and their extension to staggered adoption settings, emphasizing recent developments to correct bias when treatments roll out at different times. Building on these foundations, I delve into dynamic panel estimators, including the Arellano–Bond and system GMM frameworks, and the PanelMatch method, which matches on longitudinal histories to bolster causal identification. Throughout, research applications exemplify each method's potential and limitations.
   category: book-chapters
   year: 2026
   doi: https://doi.org/10.1016/B978-0-443-26629-4.00214-8
@@ -32,43 +19,24 @@
   venue: 'Taming Democracy with Liberalism: The Politics In and Out of Liberal Democracy, 2020'
   category: book-chapters
   year: 2020
-
 - title: The Political Economy of Defense in WTO Anti-Dumping Disputes
   authors: Jihye Park
   status: Working paper
-  abstract: Domestic political structures play a decisive role in shaping how governments translate formal commitments to
-    international institutions into actual policy behavior. In the context of the WTO dispute settlement system, firms that
-    benefit from anti-dumping duties depend on stable political channels to maintain these protections once a dispute is initiated.
-    When the stability of these channels is disrupted, the durability of firm influence weakens and the continuation of protective
-    measures becomes uncertain. Incumbent turnover provides an exogenous shock that exposes this vulnerability by threatening
-    established access points and raising the possibility that accumulated influence will erode. Firms respond by expanding
-    defensive lobbying intended to preserve existing policy, and a difference-in-differences design shows that respondent-side
-    firms increase lobbying expenditures following incumbent turnover. Survival analysis further clarifies the mechanism.
-    Defensive lobbying prolongs the duration of disputes, yet this effect is substantially stronger when political leadership
-    remains constant. When comparing among the top spending firms in lobbying, the delaying effect of lobbying is pronounced
-    only in the absence of incumbent turnover. Under political transition, the same level of lobbying produces a much weaker
-    delay, indicating that established channels are less effective and that maintaining anti-dumping duties becomes more challenging
-    for respondent firms. These empirical patterns show how domestic political shocks and firm-level incentives constrain
-    timely compliance and weaken core enforcement functions of the WTO, revealing a structural limitation in which entrenched
-    domestic political actors can reduce the system’s capacity to achieve the outcomes envisioned by its legal commitments.
+  abstract: |-
+    Domestic political structures play a decisive role in shaping how governments translate formal commitments to international institutions into actual policy behavior. In the context of the WTO dispute settlement system, firms that benefit from anti-dumping duties depend on stable political channels to maintain these protections once a dispute is initiated. When the stability of these channels is disrupted, the durability of firm influence weakens and the continuation of protective measures becomes uncertain. Incumbent turnover provides an exogenous shock that exposes this vulnerability by threatening established access points and raising the possibility that accumulated influence will erode. Firms respond by expanding defensive lobbying intended to preserve existing policy, and a difference-in-differences design shows that respondent-side firms increase lobbying expenditures following incumbent turnover. Survival analysis further clarifies the mechanism. Defensive lobbying prolongs the duration of disputes, yet this effect is substantially stronger when political leadership remains constant. When comparing among the top spending firms in lobbying, the delaying effect of lobbying is pronounced only in the absence of incumbent turnover. Under political transition, the same level of lobbying produces a much weaker delay, indicating that established channels are less effective and that maintaining anti-dumping duties becomes more challenging for respondent firms. These empirical patterns show how domestic political shocks and firm-level incentives constrain timely compliance and weaken core enforcement functions of the WTO, revealing a structural limitation in which entrenched domestic political actors can reduce the system’s capacity to achieve the outcomes envisioned by its legal commitments.
   category: working-papers
   year: 2026
 - title: 'Lobbying for Development: How Firms Shape Investment Decisions in US Development Finance Corporation'
   authors: Jihye Park, Nicolas Bau, Simone Dietrich
   category: in-progress
-  description: 'Research on development finance institutions (DFIs) has concentrated on state motives, governance, and project
-    outcomes, with limited attention to how private firms use these instruments to pursue strategic objectives. This paper
-    reframes projects of the US International Development Finance Corporation (DFC) as geoeconomic tools through which firms,
-    especially in geopolitically sensitive sectors, integrate corporate political activity with development finance. By linking
-    congressional and executive lobbying disclosures to DFC project records, the study analyzes how corporate sponsors recalibrate
-    lobbying across venues, policy domains, and project phases, focusing on energy projects where development finance intersects
-    with strategic competition, supply security, and geopolitical risk. PanelMatch estimates indicate a systematic temporal
-    shift in lobbying venues: energy sector sponsors increase congressional lobbying during the first two years after project
-    implementation, while lobbying directed at the Executive Office of the President and the Department of Energy peaks two
-    to three years later, as congressional activity declines. Disaggregated evidence also reveals risk-contingent behavior:
-    sponsors of projects in financially risky recipient countries sharply increase budget-related congressional lobbying immediately
-    after implementation, but this surge fades within a few years, consistent with short-term political insurance rather than
-    sustained influence investment.'
+  description: 'Research on development finance institutions (DFIs) has concentrated on state motives, governance, and project outcomes, with limited attention to how private firms use these instruments
+    to pursue strategic objectives. This paper reframes projects of the US International Development Finance Corporation (DFC) as geoeconomic tools through which firms, especially in geopolitically sensitive
+    sectors, integrate corporate political activity with development finance. By linking congressional and executive lobbying disclosures to DFC project records, the study analyzes how corporate sponsors
+    recalibrate lobbying across venues, policy domains, and project phases, focusing on energy projects where development finance intersects with strategic competition, supply security, and geopolitical
+    risk. PanelMatch estimates indicate a systematic temporal shift in lobbying venues: energy sector sponsors increase congressional lobbying during the first two years after project implementation, while
+    lobbying directed at the Executive Office of the President and the Department of Energy peaks two to three years later, as congressional activity declines. Disaggregated evidence also reveals risk-contingent
+    behavior: sponsors of projects in financially risky recipient countries sharply increase budget-related congressional lobbying immediately after implementation, but this surge fades within a few years,
+    consistent with short-term political insurance rather than sustained influence investment.'
 - title: 'When Do National Development Finance Institutions Mobilize Private Capital?: Evidence from Infrastructure Projects'
   authors: Jim Qian, Nicolas Bau, Simone Dietrich, Jihye Park
   category: in-progress
@@ -78,36 +46,61 @@
   github_pdf: papers/working-papers/aid-lending-trips__UR.pdf
   year: 2025
   status: Under review
-  abstract: The rise of superstar firms has accompanied the expansion of an international intellectual property (IP) regime
-    that extends beyond the standards established in the WTO Agreement on Trade-Related Aspects of Intellectual Property Rights
-    (TRIPS). Despite sustained resis- tance from developing countries, the United States has successfully promoted TRIPS-plus
-    provisions through preferential trade agreements, with other advanced economies follow- ing. This study attributes US
-    success in diffusing TRI
+  abstract: |-
+    The rise of superstar firms has accompanied the expansion of an international intellectual property (IP) regime that extends beyond the standards established in the WTO Agreement on Trade-Related Aspects of Intellectual Property Rights (TRIPS). Despite sustained resis- tance from developing countries, the United States has successfully promoted TRIPS-plus provisions through preferential trade agreements, with other advanced economies follow- ing. This study attributes US success in diffusing TRI
 - title: Firms Lobbying for Preferential Trade
   authors: Jihye Park
   category: working-papers
   github_pdf: papers/working-papers/firms-lobbying-for-preferential-trade.pdf
   year: 2025
   status: Working paper
-  abstract: Lobbying disclosures often hide what firms lobby about, but we introduce new data and exploit timing to show that
-    multinational firms lobby intensively about preferential trade agreements (PTAs). We argue that some firms lobby for ratification,
-    which lowers tariffs on imported intermediate inputs, while others lobby to shape PTA terms to influence behind- the-border
-    regulations. Our empirical analysis untangles these incentives by identifying groups of firms with different motivations
-    and invest
+  abstract: |-
+    Lobbying disclosures often hide what firms lobby about, but we introduce new data and exploit timing to show that multinational firms lobby intensively about preferential trade agreements (PTAs). We argue that some firms lobby for ratification, which lowers tariffs on imported intermediate inputs, while others lobby to shape PTA terms to influence behind- the-border regulations. Our empirical analysis untangles these incentives by identifying groups of firms with different motivations and invest
 - title: Lobbying for Conditionality
   authors: Jihye Park
   category: working-papers
   github_pdf: papers/working-papers/lobbying-for-conditionality.pdf
   year: 2025
   status: Working paper
-  abstract: 'US financial firms are widely believed to influence the politics of the International Monetary Fund, but the
-    effects pose a puzzle: bank influence is believed to increase condi- tionality that favors banks, but to decrease conditionality
-    for their biggest borrowers. We use LDA data on lobbying in the United States and IMF Monitor data on conditionality to
-    test the hypothesis that lobbying influences conditionality. We find that lobbying by non- bank financial firms is associated
-    with increased n'
+  abstract: |-
+    US financial firms are widely believed to influence the politics of the International Monetary Fund, but the effects pose a puzzle: bank influence is believed to increase condi- tionality that favors banks, but to decrease conditionality for their biggest borrowers. We use LDA data on lobbying in the United States and IMF Monitor data on conditionality to test the hypothesis that lobbying influences conditionality. We find that lobbying by non- bank financial firms is associated with increased n
 - title: 'Who’s More Willing to Bend: Intellectual Property'
   authors: Jihye Park
   category: working-papers
   github_pdf: papers/working-papers/whos-more-willing-to-bend__UR.pdf
   year: 2025
   status: Under review
+- title: Aid, Lending, and TRIPS∗
+  authors: Jihye Park
+  category: working-papers
+  github_pdf: papers/working-papers/01__aid-lending-trips__UR.pdf
+  year: 2025
+  status: Under review
+  sort_order: 1
+  abstract: |-
+    The rise of superstar firms has accompanied the expansion of an international intellectual property (IP) regime that extends beyond the standards established in the WTO Agreement on Trade-Related Aspects of Intellectual Property Rights (TRIPS). Despite sustained resis- tance from developing countries, the United States has successfully promoted TRIPS-plus provisions through preferential trade agreements, with other advanced economies follow- ing. This study attributes US success in diffusing TRIPS-plus standards to the interaction between corporate lobbying and development finance allocation. Using National Trade Es- timate (NTE) reports from 1995 to 2022, published by the US Trade Representative, I construct a semantic proxy for US assessments of IP protection in partner countries us- ing the DeBERTa-v3 language model. The analysis shows that lobbying by US corporate elites systematically shapes USTR evaluations of foreign IP regimes and that countries facing greater IP-related criticism are more likely to receive compensation for adopting TRIPS-plus commitments. Compensation varies by regime type: democracies receive increased foreign aid, while autocracies benefit more from International Finance Corporation lending to the private sector.
+- title: 'Who’s More Willing to Bend: Intellectual Property'
+  authors: Jihye Park
+  category: working-papers
+  github_pdf: papers/working-papers/02__whos-more-willing-to-bend__UR.pdf
+  year: 2025
+  status: Under review
+  sort_order: 2
+- title: Firms Lobbying for Preferential Trade
+  authors: Jihye Park
+  category: working-papers
+  github_pdf: papers/working-papers/03__firms-lobbying-for-preferential-trade.pdf
+  year: 2025
+  status: Working paper
+  sort_order: 3
+  abstract: |-
+    Lobbying disclosures often hide what firms lobby about, but we introduce new data and exploit timing to show that multinational firms lobby intensively about preferential trade agreements (PTAs). We argue that some firms lobby for ratification, which lowers tariffs on imported intermediate inputs, while others lobby to shape PTA terms to influence behind- the-border regulations. Our empirical analysis untangles these incentives by identifying groups of firms with different motivations and investigating which branches of government they lobby and when. We use PanelMatch (Imai, Kim and Wang 2023) to conduct staggered diff-in-diff analyses at the firm level, using Fortune Global 500 firms and a comprehensive set of US PTA negotiations. Pharmaceutical firms lobby for intellectual property rights protec- tion; firms represented on the US Trade Representative’s general policy making committee lobby to shape PTA provisions; other firms lobby for ratification of PTAs with countries where they have investments. 1 1
+- title: Lobbying for Conditionality
+  authors: Jihye Park
+  category: working-papers
+  github_pdf: papers/working-papers/04__lobbying-for-conditionality.pdf
+  year: 2025
+  status: Working paper
+  sort_order: 4
+  abstract: |-
+    US financial firms are widely believed to influence the politics of the International Monetary Fund, but the effects pose a puzzle: bank influence is believed to increase condi- tionality that favors banks, but to decrease conditionality for their biggest borrowers. We use LDA data on lobbying in the United States and IMF Monitor data on conditionality to test the hypothesis that lobbying influences conditionality. We find that lobbying by non- bank financial firms is associated with increased numbers of financial conditions, quantitative performance criteria (QPCs), and labor-market conditions. Bank lobbying, in contrast, has both effects. When banks lobby about finance, borrowing countries receive more condition- ality; but when banks lobby about banking, borrowers accept less financial conditionality and fewer QPCs. When banks are worried, they lobby about banking, and this undermines the IMF’s leverage to obtain the policy reforms that the banks most prefer. We go on to investigate firm-level responses to the initiation of IMF program negotiations and find that US financial firms shift their lobbying efforts when the Fund negotiates with countries where they have investments. Money-center banks and non-banking financial firms shift in oppo- site directions, which makes their lobbying portfolios converge: banks reduce their lobbying about banking and increase lobbying about finance, while non-bank financial firms decrease lobbying about finance and increase lobbying about banking.
