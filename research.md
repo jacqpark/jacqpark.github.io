@@ -73,7 +73,7 @@ permalink: /research/
 {% for pub in sorted_wp %}
 <div class="publication-entry">
   <div class="pub-title">
-    {% if pub.github_pdf %}<a href="https://github.com/{{ site.github_username }}/{{ site.github_username }}.github.io/raw/main/{{ pub.github_pdf }}">{{ pub.title }}</a>{% else %}{{ pub.title }}{% endif %}
+    {% if pub.github_pdf %}<a href="https://github.com/{{ site.github_username }}/{{ site.github_username }}.github.io/blob/main/{{ pub.github_pdf }}">{{ pub.title }}</a>{% else %}{{ pub.title }}{% endif %}
   </div>
   {% if pub.authors %}<div class="pub-authors">{{ pub.authors }}</div>{% endif %}
   {% if pub.status %}<div class="pub-venue">{{ pub.status }}</div>{% endif %}
@@ -84,7 +84,7 @@ permalink: /research/
   </details>
   {% endif %}
   <div class="pub-links">
-    {% if pub.github_pdf %}<a href="https://github.com/{{ site.github_username }}/{{ site.github_username }}.github.io/raw/main/{{ pub.github_pdf }}" class="pub-link" target="_blank">Latest Draft</a>{% endif %}
+    {% if pub.github_pdf %}<a href="https://github.com/{{ site.github_username }}/{{ site.github_username }}.github.io/blob/main/{{ pub.github_pdf }}" class="pub-link" target="_blank">Latest Draft</a>{% endif %}
     {% if pub.pdf_url %}<a href="{{ pub.pdf_url }}" class="pub-link" target="_blank">PDF</a>{% endif %}
   </div>
 </div>
