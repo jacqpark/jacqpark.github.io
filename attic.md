@@ -19,12 +19,12 @@ permalink: /attic/
   -->
 
   <div class="gallery-item">
-  <img src="attic/technicolor.jpeg" alt="A Technicolor Sorrow" loading="lazy">
+  <img src="{{ '/attic/technicolor.jpeg' | relative_url }}" alt="A Technicolor Sorrow" loading="lazy">
   <div class="gallery-caption">Just some doodling</div>
 </div>
 
 <div class="gallery-item">
-  <img src="attic/distorted.jpg" alt="Distorted headshot" loading="lazy">
+  <img src="{{ '/attic/distorted.jpg' | relative_url }}" alt="Distorted headshot" loading="lazy">
   <div class="gallery-caption">Another doodling</div>
 </div>
 
