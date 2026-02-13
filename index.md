@@ -26,9 +26,9 @@ permalink: /
 
 <div class="home-bio">
   <!-- UPDATE: Replace this placeholder with your actual bio -->
-  <p> I am a Postdoctoral Researcher at the Department of Political Science and International Relations at the University of Geneva, Switzerland. My research spans various topics in international political economy, including politics of trade, development finance, firm lobbying, and quantitative methods (with particular interest in large language models and causal inference). <\p>
-  <p> For those who are curious about how to pronounce my first name, it's [JEE-hey] in phonetic spelling. It means "wisdom" in Korean, just for your extra piece of information :) <\p>
-  <p> If you'd like to know more about me when I'm off-duty, visit my Attic and get a sneak peek of my life as a painter and a LEGO aficionado! And one last thing - Go <a href="https://example.com" target="_blank">BILLS<\a>!🏈 <\p>
+  <p> I am a Postdoctoral Researcher at the Department of Political Science and International Relations at the University of Geneva, Switzerland. My research spans various topics in international political economy, including politics of trade, development finance, firm lobbying, and quantitative methods (with particular interest in large language models and causal inference). </p>
+  <p> For those who are curious about how to pronounce my first name, it's [JEE-hey] in phonetic spelling. It means "wisdom" in Korean, just for your extra piece of information :) </p>
+  <p> If you'd like to know more about me when I'm off-duty, visit my Attic and get a sneak peek of my life as a painter and a LEGO aficionado! And one last thing - Go <a href="https://example.com" target="_blank">BILLS</a>!🏈 </p>
 </div>
 
 <h4 class="text-center">Education</h4>
