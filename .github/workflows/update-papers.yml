@@ -27,7 +27,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install PyPDF2 pyyaml
+        run: pip install pdfplumber pyyaml
 
       - name: Extract PDF metadata
         run: python scripts/extract_pdf_metadata.py

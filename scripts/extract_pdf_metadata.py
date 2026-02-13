@@ -34,9 +34,9 @@ from pathlib import Path
 import yaml
 
 try:
-    from PyPDF2 import PdfReader
+    import pdfplumber
 except ImportError:
-    print("PyPDF2 not installed. Run: pip install PyPDF2")
+    print("pdfplumber not installed. Run: pip install pdfplumber")
     sys.exit(1)
 
 
@@ -78,18 +78,24 @@ JOURNAL_ABBREVS = {
 }
 
 
+def clean_text(text: str) -> str:
+    """Clean extracted text: remove footnote markers, fix hyphenation, normalize whitespace."""
+    # Remove footnote markers (asterisks, daggers, superscript numbers at word boundaries)
+    text = re.sub(r'[∗\*†‡§¶]+', '', text)
+    # Remove superscript-style footnote numbers (standalone digits that look like footnotes)
+    text = re.sub(r'(?<=\w)\s*\d{1,2}(?=\s)', ' ', text)
+    # Fix hyphenation across lines (re-\njoin → rejoin)
+    text = re.sub(r'(\w)-\s+(\w)', r'\1\2', text)
+    # Normalize whitespace
+    text = re.sub(r'\s+', ' ', text)
+    return text.strip()
+
+
 def parse_filename(filename: str) -> dict:
     """
     Parse order, name, and status from filename convention.
 
     Returns dict with keys: clean_name, status, sort_order.
-
-    Examples:
-      "01__my-paper__UR.pdf"       → order=1,  name="my-paper", status="Under review"
-      "02__my-paper__RR-APSR.pdf"  → order=2,  name="my-paper", status="R&R, APSR"
-      "03__my-paper.pdf"           → order=3,  name="my-paper", status="Working paper"
-      "my-paper__UR.pdf"           → order=999, name="my-paper", status="Under review"
-      "my-paper.pdf"               → order=999, name="my-paper", status="Working paper"
     """
     stem = Path(filename).stem
     default_status = "Working paper"
@@ -107,9 +113,8 @@ def parse_filename(filename: str) -> dict:
         return {"clean_name": parts[0], "status": default_status, "sort_order": sort_order}
 
     if len(parts) >= 2:
-        name_part = "__".join(parts[:-1])  # Everything except last is the name
+        name_part = "__".join(parts[:-1])
         status_code = parts[-1].strip()
-
         status = _parse_status_code(status_code)
         return {"clean_name": name_part, "status": status, "sort_order": sort_order}
 
@@ -136,44 +141,136 @@ def _parse_status_code(status_code: str) -> str:
     return status_code
 
 
+def extract_title_from_pdf(pdf_path: Path) -> str:
+    """
+    Extract the title from a PDF using font size analysis.
+    The title is typically the largest text on the first page.
+    """
+    try:
+        with pdfplumber.open(str(pdf_path)) as pdf:
+            if not pdf.pages:
+                return ""
+
+            first_page = pdf.pages[0]
+            words = first_page.extract_words(extra_attrs=["fontname", "size"])
+
+            if not words:
+                return ""
+
+            # Find the largest font size used (likely the title)
+            max_size = max(w.get("size", 0) for w in words)
+
+            # Collect all words in the largest font size (with some tolerance)
+            # Title font is usually significantly larger than body text
+            body_sizes = sorted(set(w.get("size", 0) for w in words))
+            if len(body_sizes) >= 2:
+                # Title should be noticeably larger than the second-most-common size
+                title_threshold = max_size * 0.9  # Within 10% of max size
+            else:
+                title_threshold = max_size
+
+            title_words = []
+            for w in words:
+                if w.get("size", 0) >= title_threshold:
+                    title_words.append(w["text"])
+
+            if title_words:
+                title = " ".join(title_words)
+                title = clean_text(title)
+                # Remove common non-title artifacts
+                title = re.sub(r'^\s*\d+\s*$', '', title)  # Just a number
+                if len(title) > 5:
+                    return title
+
+    except Exception as e:
+        print(f"  Warning: Font-based title extraction failed for {pdf_path.name}: {e}")
+
+    return ""
+
+
+def extract_abstract_from_pdf(pdf_path: Path) -> str:
+    """
+    Extract the abstract from a PDF using text extraction.
+    Reads the first 3 pages and looks for the abstract section.
+    """
+    try:
+        with pdfplumber.open(str(pdf_path)) as pdf:
+            text = ""
+            for page in pdf.pages[:3]:
+                page_text = page.extract_text()
+                if page_text:
+                    text += page_text + "\n\n"
+
+            if not text:
+                return ""
+
+            return extract_abstract_from_text(text)
+
+    except Exception as e:
+        print(f"  Warning: Abstract extraction failed for {pdf_path.name}: {e}")
+        return ""
+
+
+def extract_abstract_from_text(text: str) -> str:
+    """
+    Extract abstract from raw text.
+    Uses multiple strategies to find and cleanly extract the full abstract.
+    """
+    # Strategy 1: Find "Abstract" header and extract until next section
+    # Common section headers that end an abstract
+    end_markers = (
+        r'\b(?:Introduction|Keywords?|JEL\s*[Cc]lass|JEL\s*[Cc]ode|'
+        r'1\s*\.?\s+[A-Z][a-z]|'
+        r'Word\s*count|Forthcoming|Published|Draft|'
+        r'(?:I|II|III|IV|V)\.\s+[A-Z])\b'
+    )
+
+    # Try to match abstract block
+    patterns = [
+        # "Abstract" on its own line, content follows until end marker
+        rf'(?i)(?:^|\n)\s*Abstract\s*\n(.*?)(?={end_markers}|\n\s*\n\s*\n)',
+        # "Abstract:" or "Abstract." inline
+        rf'(?i)\bAbstract\s*[:\.\-—]\s*(.*?)(?={end_markers}|\n\s*\n\s*\n)',
+        # "Abstract" followed by content (most permissive)
+        rf'(?i)\bAbstract\b\s*(.*?)(?={end_markers})',
+    ]
+
+    for pattern in patterns:
+        match = re.search(pattern, text, re.DOTALL)
+        if match:
+            abstract = match.group(1).strip()
+            # Clean up the abstract
+            abstract = clean_text(abstract)
+            # Remove any leading/trailing quotes
+            abstract = abstract.strip('"').strip('"').strip('"')
+            # Only accept if it's substantial
+            if len(abstract) > 80:
+                return abstract
+
+    # Strategy 2: If no "Abstract" header found, try to get the first
+    # paragraph-length block after author names (fallback)
+    return ""
+
+
 def extract_metadata(pdf_path: Path) -> dict:
     """Extract title and abstract from a PDF file."""
     parsed = parse_filename(pdf_path.name)
-    title = parsed["clean_name"].replace("-", " ").replace("_", " ").title()
-    abstract = ""
 
-    try:
-        reader = PdfReader(str(pdf_path))
+    # Fallback title from filename
+    fallback_title = parsed["clean_name"].replace("-", " ").replace("_", " ").title()
 
-        # Try PDF metadata first
-        info = reader.metadata
-        if info and info.title and len(info.title.strip()) > 5:
-            title = info.title.strip()
+    # Try font-based title extraction
+    title = extract_title_from_pdf(pdf_path)
+    if not title or len(title) < 5:
+        title = fallback_title
 
-        # Extract text from first 3 pages (more pages = better abstract capture)
-        text = ""
-        for page in reader.pages[:3]:
-            page_text = page.extract_text()
-            if page_text:
-                text += page_text + "\n"
+    # Clean the title
+    title = clean_text(title)
+    # Remove trailing punctuation artifacts
+    title = title.rstrip('.,;: ')
 
-        if text:
-            lines = [l.strip() for l in text.split("\n") if l.strip()]
-
-            # Heuristic: title is often the first substantial line
-            if not (info and info.title and len(info.title.strip()) > 5):
-                for line in lines[:10]:
-                    if len(line) > 15 and not line.startswith("http"):
-                        title = line[:200]
-                        break
-
-            # Find abstract — no truncation
-            abstract_text = extract_abstract(text)
-            if abstract_text:
-                abstract = abstract_text
-
-    except Exception as e:
-        print(f"  Warning: Could not fully parse {pdf_path.name}: {e}")
+    # Extract abstract
+    abstract = extract_abstract_from_pdf(pdf_path)
 
     return {
         "title": title,
@@ -181,49 +278,6 @@ def extract_metadata(pdf_path: Path) -> dict:
         "status": parsed["status"],
         "sort_order": parsed["sort_order"],
     }
-
-
-def extract_abstract(text: str) -> str:
-    """
-    Extract the full abstract from PDF text.
-    Looks for text between 'Abstract' and common section markers.
-    No length truncation — returns the full abstract.
-    """
-    # Normalize whitespace while preserving paragraph breaks
-    # Replace single newlines (within paragraphs) with spaces
-    # but keep double newlines (paragraph breaks)
-    normalized = re.sub(r'(?<!\n)\n(?!\n)', ' ', text)
-
-    patterns = [
-        # Abstract followed by Introduction, Keywords, JEL, 1., or double newline
-        r"(?i)\bAbstract\b[\s:\.\-]*(.*?)(?=\b(?:Introduction|Keywords?|JEL|1\.\s+[A-Z])\b|\n\s*\n\s*\n)",
-        # Abstract to next double newline
-        r"(?i)\bAbstract\b[\s:\.\-]*(.*?)(?:\n\s*\n)",
-    ]
-
-    for pattern in patterns:
-        match = re.search(pattern, normalized, re.DOTALL)
-        if match:
-            abstract = match.group(1).strip()
-            # Clean up extra whitespace
-            abstract = re.sub(r"\s+", " ", abstract)
-            # Only accept if it looks like a real abstract (not just a word or two)
-            if len(abstract) > 50:
-                return abstract
-
-    # Fallback: try to get text between "Abstract" and the next clear section break
-    fallback = re.search(
-        r"(?i)\bAbstract\b[\s:\.\-]*((?:(?!\b(?:Introduction|Keywords?|JEL|References?|Contents?)\b).)*)",
-        normalized,
-        re.DOTALL,
-    )
-    if fallback:
-        abstract = fallback.group(1).strip()
-        abstract = re.sub(r"\s+", " ", abstract)
-        if len(abstract) > 50:
-            return abstract
-
-    return ""
 
 
 def get_category(pdf_path: Path) -> str:

@@ -16,7 +16,7 @@ permalink: /research/
 ## Book Chapters
 
 <div class="research-section">
-{% for pub in book_chapters_ %}
+{% for pub in book_chapters %}
 <div class="publication-entry">
   <div class="pub-title">{{ pub.title }}</div>
   {% if pub.authors %}<div class="pub-authors">{{ pub.authors }}</div>{% endif %}
