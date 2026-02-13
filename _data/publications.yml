@@ -1,0 +1,65 @@
+# Publications — auto-updated by GitHub Actions when PDFs are pushed to papers/
+# You can also edit this file manually.
+#
+# Fields:
+#   title: "Paper Title"
+#   authors: "Author 1, Author 2"
+#   venue: "Journal Name, Vol(Issue), Year"  (for published work)
+#   status: "Under review at ..." or "R&R at ..." (for working papers)
+#   abstract: "Abstract text..."
+#   category: "book-chapters" | "peer-reviewed" | "working-papers" | "in-progress"
+#   year: 2024
+#   doi: "https://doi.org/..."
+#   pdf_url: "https://..."
+#   github_pdf: "papers/working-papers/filename.pdf"  (relative path in repo)
+#   description: "Brief description" (for works in progress)
+
+# --- EXAMPLE ENTRIES (replace with your actual publications) ---
+
+- title: "Text Analysis"
+  authors: "Jihye Park"
+  venue: "Encyclopedia of Measurement in Social Sciences (2nd ed.), 2026"
+  abstract: "This chapter provides a comprehensive overview of text-as-data methods in the social sciences, with a focus on political science applications. Beginning with foundational approaches such as lexicon-based analyses and statistical scaling methods and advancing to topic modeling frameworks, it then examines the emergence of word embeddings and transformer revolution. Applications include measuring ideological positions, sentiment analysis, and framing detection. The discussion highlights methodological innovations in zero-shot and few-shot classification, cross-lingual analysis, and causal inference, alongside considerations of validity, ethics, and interpretability. Finally, the chapter explores future directions including multimodal integration and responsible artificial intelligence (AI) practices."
+  category: "book-chapters"
+  year: 2026
+  doi: "https://doi.org/10.1016/B978-0-443-26629-4.00222-7"
+  
+- title: "Panel Data Analysis"
+  authors: "Jihye Park"
+  venue: "Encyclopedia of Measurement in Social Sciences (2nd ed.), 2026"
+  abstract: "Panel data, also called time-series cross-sectional (TSCS) data, enable researchers to harness both cross-unit variation and within-unit dynamics to answer key questions in social sciences, from policy diffusion to regime change. This article surveys major panel data estimation techniques useful for social science researchers, highlighting their assumptions, strengths, and contexts of use. I begin by defining TSCS structures and illustrating common pitfalls of naïve pooling, before introducing two-way fixed-effects models for controlling unit- and time-invariant confounders. Next, I review conventional difference-in-differences designs and their extension to staggered adoption settings, emphasizing recent developments to correct bias when treatments roll out at different times. Building on these foundations, I delve into dynamic panel estimators, including the Arellano–Bond and system GMM frameworks, and the PanelMatch method, which matches on longitudinal histories to bolster causal identification. Throughout, research applications exemplify each method's potential and limitations."
+  category: "book-chapters"
+  year: 2026
+  doi: "https://doi.org/10.1016/B978-0-443-26629-4.00214-8" 
+  
+- title: "Informational Symmetry and Free Trade: Focus on Lobbying Disclosure"
+  authors: "Jihye Park"
+  venue: "Taming Democracy with Liberalism: The Politics In and Out of Liberal Democracy, 2020"
+  category: "book-chapters"
+  year: 2020
+  
+
+- title: "Example Working Paper Title"
+  authors: "Jihye Park"
+  status: "Under review"
+  abstract: "This is a placeholder abstract for a working paper. When you push PDFs to papers/working-papers/, the GitHub Action will auto-extract metadata and add entries here."
+  category: "working-papers"
+  year: 2025
+  github_pdf: "papers/working-papers/example-paper.pdf"
+  
+- title: "The Political Economy of Defense in WTO Anti-Dumping Disputes"
+  authors: "Jihye Park"
+  status: "Working paper"
+  abstract: "Domestic political structures play a decisive role in shaping how governments translate formal commitments to international institutions into actual policy behavior. In the context of the WTO dispute settlement system, firms that benefit from anti-dumping duties depend on stable political channels to maintain these protections once a dispute is initiated. When the stability of these channels is disrupted, the durability of firm influence weakens and the continuation of protective measures becomes uncertain. Incumbent turnover provides an exogenous shock that exposes this vulnerability by threatening established access points and raising the possibility that accumulated influence will erode. Firms respond by expanding defensive lobbying intended to preserve existing policy, and a difference-in-differences design shows that respondent-side firms increase lobbying expenditures following incumbent turnover. Survival analysis further clarifies the mechanism. Defensive lobbying prolongs the duration of disputes, yet this effect is substantially stronger when political leadership remains constant. When comparing among the top spending firms in lobbying, the delaying effect of lobbying is pronounced only in the absence of incumbent turnover. Under political transition, the same level of lobbying produces a much weaker delay, indicating that established channels are less effective and that maintaining anti-dumping duties becomes more challenging for respondent firms. These empirical patterns show how domestic political shocks and firm-level incentives constrain timely compliance and weaken core enforcement functions of the WTO, revealing a structural limitation in which entrenched domestic political actors can reduce the system’s capacity to achieve the outcomes envisioned by its legal commitments."
+  category: "working-papers"
+  year: 2026
+
+- title: "Lobbying for Development: How Firms Shape Investment Decisions in US Development Finance Corporation"
+  authors: "Jihye Park, Nicolas Bau, Simone Dietrich"
+  category: "in-progress"
+  description: "Research on development finance institutions (DFIs) has concentrated on state motives, governance, and project outcomes, with limited attention to how private firms use these instruments to pursue strategic objectives. This paper reframes projects of the US International Development Finance Corporation (DFC) as geoeconomic tools through which firms, especially in geopolitically sensitive sectors, integrate corporate political activity with development finance. By linking congressional and executive lobbying disclosures to DFC project records, the study analyzes how corporate sponsors recalibrate lobbying across venues, policy domains, and project phases, focusing on energy projects where development finance intersects with strategic competition, supply security, and geopolitical risk. PanelMatch estimates indicate a systematic temporal shift in lobbying venues: energy sector sponsors increase congressional lobbying during the first two years after project implementation, while lobbying directed at the Executive Office of the President and the Department of Energy peaks two to three years later, as congressional activity declines. Disaggregated evidence also reveals risk-contingent behavior: sponsors of projects in financially risky recipient countries sharply increase budget-related congressional lobbying immediately after implementation, but this surge fades within a few years, consistent with short-term political insurance rather than sustained influence investment."
+
+- title: "When Do National Development Finance Institutions Mobilize Private Capital?: Evidence from Infrastructure Projects"
+  authors: "Jim Qian, Nicolas Bau, Simone Dietrich, Jihye Park"
+  category: "in-progress"
+

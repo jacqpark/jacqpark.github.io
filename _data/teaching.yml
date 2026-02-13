@@ -1,0 +1,51 @@
+# Teaching record and course proposals
+# type: "record" for past teaching, "proposal" for course proposals
+
+# --- TEACHING RECORD (replace with your actual courses) ---
+
+- title: "Introduction to International Political Economy (Prof. Randall Stone)"
+  role: "Teaching Assistant"
+  institution: "University of Rochester"
+  term: "Spring 2024"
+  type: "record"
+  description: ""
+
+- title: "Politics and Markets (Prof. David Primo)"
+  role: "Teaching Assistant"
+  institution: "University of Rochester"
+  term: "Spring 2023"
+  type: "record"
+  description: ""
+
+- title: "War in Our Time (Prof. Hein Goemans)"
+  role: "Teaching Assistant"
+  institution: "University of Rochester"
+  term: "Fall 2022"
+  type: "record"
+  description: ""
+  
+  - title: "Positive Political Theory (Prof. Stuart Jordan)"
+  role: "Teaching Assistant"
+  institution: "University of Rochester"
+  term: "Fall 2021"
+  type: "record"
+  description: ""
+
+
+# --- COURSE PROPOSALS ---
+
+- title: "Applied LLMs for Text and Data Analysis"
+  level: "Graduate"
+  type: "proposal"
+  description: "This course trains students to use large language models (LLMs) for real-world data workflows. Students learn to clean, link, and structure complex textual data using both discriminative and generative models. The course emphasizes selecting and applying appropriate open-source models, such as LayoutLM, SentenceTransformers, DeBERTa, and GPT, for specific analytical tasks including data cleansing, record linkage, stance detection, fine-tuning, and structured data extraction from unstructured sources. Students also gain practical experience leveraging GPU computing resources through Google Colab for efficient model training and inference."
+
+- title: "Introduction to Computational Social Science"
+  level: "Graduate / Undergraduate"
+  type: "proposal"
+  description: "This course is designed to familiarize students with the empirical tools widely used in political science in particular and in social science more broadly. Throughout this course, students will learn data analysis and statistical inference techniques using R and RStudio, including descriptive statistics, hypothesis testing, quasi-experimental methods, and regression analysis."
+  
+- title: "Political Economy of Climate Change"
+  level: "Graduate / Undergraduate"
+  type: "proposal"
+  description: "This course aims to introduce the literature of climate politics to students, taking a political economy approach. Students can expect to learn various topics related to
+climate politics, including but not limited to microfoundational factors embedded in climate politics, as well as redistributive implications. The course culminates with the final term paper assignment, where students are expected to craft their own empirical research ideas to explore a particular topic of their interest they have learned in the course."

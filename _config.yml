@@ -1,0 +1,48 @@
+# Site settings
+title: Jihye Park
+description: "Political Science Researcher | University of Geneva"
+author: Jihye Park
+email: jihye.park.psci@gmail.com
+url: "https://jacqpark.github.io"
+baseurl: ""
+repository: jacqpark/jacqpark.github.io
+
+# Social
+github_username: jacqpark
+# Update these with your actual handles:
+bluesky_handle: "jihye.bsky.social"
+linkedin_username: "jihyepark"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Collections
+collections:
+  papers:
+    output: true
+    permalink: /papers/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+
+# Exclude from build
+exclude:
+  - scripts/
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - .github/
+  - node_modules/
+  - vendor/
