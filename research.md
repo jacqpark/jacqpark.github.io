@@ -16,8 +16,7 @@ permalink: /research/
 ## Book Chapters
 
 <div class="research-section">
-{% assign sorted_bc = book_chapters_ | sort: "sort_order" %}
-{% for pub in sorted_bc %}
+{% for pub in book_chapters_ %}
 <div class="publication-entry">
   <div class="pub-title">{{ pub.title }}</div>
   {% if pub.authors %}<div class="pub-authors">{{ pub.authors }}</div>{% endif %}
@@ -43,8 +42,7 @@ permalink: /research/
 ## Peer-Reviewed Articles
 
 <div class="research-section">
-{% assign sorted_pr = peer_reviewed_ | sort: "sort_order" %}
-{% for pub in sorted_pr %}
+{% for pub in peer_reviewed %}
 <div class="publication-entry">
   <div class="pub-title">
     {% if pub.doi %}<a href="{{ pub.doi }}">{{ pub.title }}</a>{% else %}{{ pub.title }}{% endif %}
