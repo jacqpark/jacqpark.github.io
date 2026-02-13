@@ -3,15 +3,15 @@ title: Jihye Park
 description: "Political Science Researcher | University of Geneva"
 author: Jihye Park
 email: jihye.park.psci@gmail.com
-url: "https://jacqpark.github.io"
+url: "https://jihyepark.me"
 baseurl: ""
 repository: jacqpark/jacqpark.github.io
 
 # Social
 github_username: jacqpark
 # Update these with your actual handles:
-bluesky_handle: "jihye.bsky.social"
-linkedin_username: "jihyepark"
+bluesky_handle: "drinkicebutwinter.bsky.social"
+linkedin_username: "jihyepark-psci"
 
 # Build settings
 markdown: kramdown
