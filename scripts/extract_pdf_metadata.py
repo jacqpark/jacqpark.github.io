@@ -5,17 +5,25 @@ Updates _data/publications.yml with new entries.
 
 Triggered by GitHub Actions when PDFs are pushed to papers/.
 
-STATUS CONVENTION (via filename):
-  Append a double-underscore status tag to the filename:
-    my-paper__UR.pdf          → "Under review"
-    my-paper__RR-JOP.pdf      → "Revise & Resubmit, Journal of Politics"
-    my-paper__RR-APSR.pdf     → "Revise & Resubmit, American Political Science Review"
-    my-paper__WP.pdf          → "Working paper"
-    my-paper.pdf              → "Working paper"  (default)
+FILENAME CONVENTION:
+  [order]__[name]__[status].pdf
 
-  The part before __ becomes the paper title fallback.
-  UR = Under review (journal name intentionally hidden)
+  Examples:
+    01__my-paper__UR.pdf          → Order 1, "Under review"
+    02__another-paper__RR-JOP.pdf → Order 2, "Revise & Resubmit, Journal of Politics"
+    03__third-paper__RR-APSR.pdf  → Order 3, "Revise & Resubmit, American Political Science Review"
+    04__fourth-paper__WP.pdf      → Order 4, "Working paper"
+    05__fifth-paper.pdf           → Order 5, "Working paper" (default)
+    my-paper.pdf                  → Order 999 (no number = sorted last), "Working paper"
+
+  UR = Under review (journal name hidden)
   RR-XYZ = Revise & Resubmit, with journal abbreviation shown
+  WP = Working paper (or omit status entirely)
+
+ABSTRACT HANDLING:
+  The script attempts to extract abstracts from PDFs automatically.
+  If extraction is poor, manually edit _data/publications.yml afterward —
+  the script will NOT overwrite manually edited abstracts for existing entries.
 """
 
 import os
@@ -49,12 +57,10 @@ JOURNAL_ABBREVS = {
     "AJPS": "American Journal of Political Science",
     "JOP": "Journal of Politics",
     "IO": "International Organization",
-    "RIO": "Review of International Organization",
+    "IS": "International Studies Quarterly",
     "ISQ": "International Studies Quarterly",
-    "II": "International Interactions",
     "CPS": "Comparative Political Studies",
     "WP": "World Politics",
-    "WTR": "World Trade Review",
     "BJPS": "British Journal of Political Science",
     "PA": "Political Analysis",
     "PSQ": "Political Science Quarterly",
@@ -66,55 +72,74 @@ JOURNAL_ABBREVS = {
     "GOV": "Governance",
     "LSQ": "Legislative Studies Quarterly",
     "POQ": "Public Opinion Quarterly",
+    "RIO": "Review of International Organizations",
+    "RIPE": "Review of International Political Economy",
+    "REP": "Review of Economics and Politics",
 }
 
 
-def parse_filename_status(filename: str) -> tuple[str, str]:
+def parse_filename(filename: str) -> dict:
     """
-    Parse status from filename convention.
+    Parse order, name, and status from filename convention.
 
-    Returns (clean_name, status_string).
+    Returns dict with keys: clean_name, status, sort_order.
+
     Examples:
-      "my-paper__UR.pdf"       → ("my-paper", "Under review")
-      "my-paper__RR-APSR.pdf"  → ("my-paper", "Revise & Resubmit, American Political Science Review")
-      "my-paper__WP.pdf"       → ("my-paper", "Working paper")
-      "my-paper.pdf"           → ("my-paper", "Working paper")
+      "01__my-paper__UR.pdf"       → order=1,  name="my-paper", status="Under review"
+      "02__my-paper__RR-APSR.pdf"  → order=2,  name="my-paper", status="R&R, APSR"
+      "03__my-paper.pdf"           → order=3,  name="my-paper", status="Working paper"
+      "my-paper__UR.pdf"           → order=999, name="my-paper", status="Under review"
+      "my-paper.pdf"               → order=999, name="my-paper", status="Working paper"
     """
     stem = Path(filename).stem
     default_status = "Working paper"
+    sort_order = 999
 
-    if "__" not in stem:
-        return stem, default_status
+    parts = stem.split("__")
 
-    name_part, status_code = stem.rsplit("__", 1)
-    status_code = status_code.strip()
+    # Check if first part is a number (sort order)
+    if len(parts) >= 2 and parts[0].isdigit():
+        sort_order = int(parts[0])
+        parts = parts[1:]  # Remove the order prefix
 
-    if status_code.upper() == "UR":
-        return name_part, "Under review"
+    # Now parts is either [name] or [name, status]
+    if len(parts) == 1:
+        return {"clean_name": parts[0], "status": default_status, "sort_order": sort_order}
 
-    if status_code.upper() == "WP":
-        return name_part, default_status
+    if len(parts) >= 2:
+        name_part = "__".join(parts[:-1])  # Everything except last is the name
+        status_code = parts[-1].strip()
 
-    if status_code.upper().startswith("RR"):
-        # Parse journal abbreviation after RR-
+        status = _parse_status_code(status_code)
+        return {"clean_name": name_part, "status": status, "sort_order": sort_order}
+
+    return {"clean_name": stem, "status": default_status, "sort_order": sort_order}
+
+
+def _parse_status_code(status_code: str) -> str:
+    """Convert a status code to display string."""
+    code = status_code.upper()
+
+    if code == "UR":
+        return "Under review"
+    if code == "WP":
+        return "Working paper"
+    if code.startswith("RR"):
         parts = status_code.split("-", 1)
         if len(parts) == 2:
             journal_abbrev = parts[1].upper()
-            journal_name = JOURNAL_ABBREVS.get(
-                journal_abbrev, journal_abbrev  # Use raw abbreviation if not found
-            )
-            return name_part, f"Revise & Resubmit, {journal_name}"
-        else:
-            return name_part, "Revise & Resubmit"
+            journal_name = JOURNAL_ABBREVS.get(journal_abbrev, journal_abbrev)
+            return f"Revise & Resubmit, {journal_name}"
+        return "Revise & Resubmit"
 
-    # Unknown status code — use it as-is
-    return name_part, status_code
+    # Unknown — use as-is
+    return status_code
 
 
 def extract_metadata(pdf_path: Path) -> dict:
     """Extract title and abstract from a PDF file."""
-    clean_name, status = parse_filename_status(pdf_path.name)
-    title = clean_name.replace("-", " ").replace("_", " ").title()
+    parsed = parse_filename(pdf_path.name)
+    title = parsed["clean_name"].replace("-", " ").replace("_", " ").title()
     abstract = ""
 
     try:
@@ -125,9 +150,9 @@ def extract_metadata(pdf_path: Path) -> dict:
         if info and info.title and len(info.title.strip()) > 5:
             title = info.title.strip()
 
-        # Extract text from first 2 pages
+        # Extract text from first 3 pages (more pages = better abstract capture)
         text = ""
-        for i, page in enumerate(reader.pages[:2]):
+        for page in reader.pages[:3]:
             page_text = page.extract_text()
             if page_text:
                 text += page_text + "\n"
@@ -139,13 +164,13 @@ def extract_metadata(pdf_path: Path) -> dict:
             if not (info and info.title and len(info.title.strip()) > 5):
                 for line in lines[:10]:
                     if len(line) > 15 and not line.startswith("http"):
-                        title = line[:150]
+                        title = line[:200]
                         break
 
-            # Find abstract
+            # Find abstract — no truncation
             abstract_text = extract_abstract(text)
             if abstract_text:
-                abstract = abstract_text[:500]
+                abstract = abstract_text
 
     except Exception as e:
         print(f"  Warning: Could not fully parse {pdf_path.name}: {e}")
@@ -153,24 +178,50 @@ def extract_metadata(pdf_path: Path) -> dict:
     return {
         "title": title,
         "abstract": abstract,
-        "status": status,
+        "status": parsed["status"],
+        "sort_order": parsed["sort_order"],
     }
 
 
 def extract_abstract(text: str) -> str:
-    """Try to find and extract the abstract from PDF text."""
+    """
+    Extract the full abstract from PDF text.
+    Looks for text between 'Abstract' and common section markers.
+    No length truncation — returns the full abstract.
+    """
+    # Normalize whitespace while preserving paragraph breaks
+    # Replace single newlines (within paragraphs) with spaces
+    # but keep double newlines (paragraph breaks)
+    normalized = re.sub(r'(?<!\n)\n(?!\n)', ' ', text)
+
     patterns = [
-        r"(?i)\babstract\b[\s:\.\-]*\n?(.*?)(?:\n\s*\n|\bintroduction\b|\bkeywords?\b|\b1[\.\s])",
-        r"(?i)\babstract\b[\s:\.\-]*(.*?)(?:\n\s*\n)",
+        # Abstract followed by Introduction, Keywords, JEL, 1., or double newline
+        r"(?i)\bAbstract\b[\s:\.\-]*(.*?)(?=\b(?:Introduction|Keywords?|JEL|1\.\s+[A-Z])\b|\n\s*\n\s*\n)",
+        # Abstract to next double newline
+        r"(?i)\bAbstract\b[\s:\.\-]*(.*?)(?:\n\s*\n)",
     ]
 
     for pattern in patterns:
-        match = re.search(pattern, text, re.DOTALL)
+        match = re.search(pattern, normalized, re.DOTALL)
         if match:
             abstract = match.group(1).strip()
+            # Clean up extra whitespace
             abstract = re.sub(r"\s+", " ", abstract)
-            if len(abstract) > 30:
+            # Only accept if it looks like a real abstract (not just a word or two)
+            if len(abstract) > 50:
                 return abstract
+
+    # Fallback: try to get text between "Abstract" and the next clear section break
+    fallback = re.search(
+        r"(?i)\bAbstract\b[\s:\.\-]*((?:(?!\b(?:Introduction|Keywords?|JEL|References?|Contents?)\b).)*)",
+        normalized,
+        re.DOTALL,
+    )
+    if fallback:
+        abstract = fallback.group(1).strip()
+        abstract = re.sub(r"\s+", " ", abstract)
+        if len(abstract) > 50:
+            return abstract
 
     return ""
 
@@ -193,6 +244,23 @@ def load_existing_publications() -> list:
 def save_publications(publications: list):
     """Save publications to YAML file."""
     PUBLICATIONS_FILE.parent.mkdir(parents=True, exist_ok=True)
+
+    # Use a custom representer for long strings to use block style
+    class LiteralStr(str):
+        pass
+
+    def literal_str_representer(dumper, data):
+        if "\n" in data or len(data) > 120:
+            return dumper.represent_scalar("tag:yaml.org,2002:str", data, style="|")
+        return dumper.represent_scalar("tag:yaml.org,2002:str", data)
+
+    yaml.add_representer(LiteralStr, literal_str_representer)
+
+    # Convert long abstracts to LiteralStr for readable YAML output
+    for pub in publications:
+        if pub.get("abstract") and len(pub["abstract"]) > 120:
+            pub["abstract"] = LiteralStr(pub["abstract"])
+
     with open(PUBLICATIONS_FILE, "w") as f:
         yaml.dump(
             publications,
@@ -200,7 +268,7 @@ def save_publications(publications: list):
             default_flow_style=False,
             allow_unicode=True,
             sort_keys=False,
-            width=120,
+            width=200,
         )
     print(f"Saved {len(publications)} publications to {PUBLICATIONS_FILE}")
 
@@ -221,20 +289,26 @@ def main():
     for pdf_path in sorted(PAPERS_DIR.rglob("*.pdf")):
         relative = str(pdf_path)
         category = get_category(pdf_path)
-        metadata = extract_metadata(pdf_path)
 
         if relative in existing_paths:
-            # Check if status changed (user renamed file)
+            # Update sort_order and status if filename changed
+            parsed = parse_filename(pdf_path.name)
             for pub in publications:
                 if pub.get("github_pdf") == relative:
-                    _, new_status = parse_filename_status(pdf_path.name)
-                    if pub.get("status") != new_status:
-                        pub["status"] = new_status
+                    changed = False
+                    if pub.get("status") != parsed["status"]:
+                        pub["status"] = parsed["status"]
+                        changed = True
+                    if pub.get("sort_order") != parsed["sort_order"]:
+                        pub["sort_order"] = parsed["sort_order"]
+                        changed = True
+                    if changed:
                         updated_count += 1
-                        print(f"  Updated status: {pdf_path.name} → {new_status}")
+                        print(f"  Updated: {pdf_path.name}")
             continue
 
         print(f"  Processing: {pdf_path.name}")
+        metadata = extract_metadata(pdf_path)
 
         entry = {
             "title": metadata["title"],
@@ -243,6 +317,7 @@ def main():
             "github_pdf": relative,
             "year": 2025,
             "status": metadata["status"],
+            "sort_order": metadata["sort_order"],
         }
 
         if metadata["abstract"]:

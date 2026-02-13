@@ -32,14 +32,7 @@
   venue: 'Taming Democracy with Liberalism: The Politics In and Out of Liberal Democracy, 2020'
   category: book-chapters
   year: 2020
-- title: Example Working Paper Title
-  authors: Jihye Park
-  status: Under review
-  abstract: This is a placeholder abstract for a working paper. When you push PDFs to papers/working-papers/, the GitHub Action
-    will auto-extract metadata and add entries here.
-  category: working-papers
-  year: 2025
-  github_pdf: papers/working-papers/example-paper.pdf
+
 - title: The Political Economy of Defense in WTO Anti-Dumping Disputes
   authors: Jihye Park
   status: Working paper
