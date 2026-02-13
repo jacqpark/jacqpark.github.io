@@ -38,3 +38,9 @@ permalink: /
   <li>M.A. in Political Science, University of Rochester, 2023 </li>
   <li>B.B.A. in Business Administration, Yonsei University, 2019 </li>
 </ul>
+
+<h4 class="text-center">Contact</h4>
+<ul class="home-credentials">
+  <li>Jihye.Park@unige.ch</li>
+  <li>Uni Mail M2105, Bd du Pont d'Arve 40, 1205 Geneva, Switzerland</li>
+</ul>
