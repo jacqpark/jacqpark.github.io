@@ -4,7 +4,7 @@
 # --- YOUR DATASETS ---
 
 - name: "prettyPanelMatch"
-  description: "ggplot2-based plotting for PanelMatch results. Replaces manual data wrangling with a simple 2-function workflow."
+  description: "ggplot2-based plotting for PanelMatch (Imai et al. 2023) results. Replaces manual data wrangling with a simple 2-function workflow."
   url: "https://github.com/jacqpark/prettyPanelMatch"
   source: "github"
 

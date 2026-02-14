@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Data/SW
+title: Data & SW
 permalink: /data/
 ---
 
