@@ -1,10 +1,10 @@
 ---
 layout: page
-title: Data
+title: Data/SW
 permalink: /data/
 ---
 
-## My Datasets
+## My Datasets & R Packages
 
 <ul class="dataset-list">
 {% for dataset in site.data.datasets %}
@@ -23,7 +23,7 @@ permalink: /data/
 
 ---
 
-## External Datasets
+## Useful Resources
 
 <ul class="dataset-list">
 {% for dataset in site.data.datasets %}
