@@ -308,6 +308,40 @@ def save_publications(pubs: list):
 
 # ---------- Main ----------
 
+def _extract_name_slug(filepath: str) -> str:
+    """
+    Extract the name slug from a filename path for matching renamed files.
+    E.g., 'papers/working-papers/02__whos-more-willing__UR.pdf' → 'whos-more-willing'
+    """
+    stem = Path(filepath).stem
+    parts = stem.split("__")
+
+    # Strip leading number
+    if len(parts) >= 2 and parts[0].isdigit():
+        parts = parts[1:]
+
+    # Strip trailing status code
+    if len(parts) >= 2:
+        last = parts[-1].upper()
+        if last in ("UR", "WP") or last.startswith("RR"):
+            parts = parts[:-1]
+
+    return "__".join(parts).lower()
+
+
+def _find_existing_by_slug(publications: list, name_slug: str, category: str):
+    """Find an existing entry whose github_pdf has the same name slug and category."""
+    for pub in publications:
+        pdf_path = pub.get("github_pdf", "")
+        if not pdf_path:
+            continue
+        existing_slug = _extract_name_slug(pdf_path)
+        existing_cat = Path(pdf_path).parent.name
+        if existing_slug == name_slug and existing_cat == category:
+            return pub
+    return None
+
+
 def main():
     if not PAPERS_DIR.exists():
         print(f"Papers directory {PAPERS_DIR} not found.")
@@ -325,6 +359,7 @@ def main():
         relative = str(pdf_path)
         parsed = parse_filename(pdf_path.name)
 
+        # Exact path match — check for status/sort changes
         if relative in existing_paths:
             for pub in publications:
                 if pub.get("github_pdf") == relative:
@@ -338,6 +373,25 @@ def main():
                     if changed:
                         updated_count += 1
                         print(f"  Updated: {pdf_path.name}")
+            continue
+
+        # No exact match — check if this is a renamed file (same name slug)
+        name_slug = _extract_name_slug(relative)
+        category = pdf_path.parent.name
+        existing = _find_existing_by_slug(publications, name_slug, category)
+
+        if existing:
+            old_path = existing.get("github_pdf", "")
+            print(f"  Rename detected: {Path(old_path).name} → {pdf_path.name}")
+            existing["github_pdf"] = relative
+            changed = False
+            if existing.get("status") != parsed["status"]:
+                existing["status"] = parsed["status"]
+                changed = True
+            if existing.get("sort_order") != parsed["sort_order"]:
+                existing["sort_order"] = parsed["sort_order"]
+                changed = True
+            updated_count += 1
             continue
 
         print(f"  New: {pdf_path.name}")
