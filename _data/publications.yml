@@ -78,7 +78,7 @@
     analysis untangles these incentives by identifying groups of firms with different motivations and investigating which branches of government they lobby and when. We use PanelMatch (Imai, Kim and Wang
     2023) to conduct staggered diff-in-diff analyses at the firm level, using Fortune Global 5 firms and a comprehensive set of US PTA negotiations. Pharmaceutical firms lobby for intellectual property
     rights protection; firms represented on the US Trade Representative’s general policy making committee lobby to shape PTA provisions; other firms lobby for ratification of PTAs with countries where they
-    have investments. 1 1
+    have investments. 
 - title: Lobbying for Conditionality
   authors: Jihye Park, Randall Stone
   category: working-papers
@@ -94,11 +94,3 @@
     to the initiation of IMF program negotiations and find that US financial firms shift their lobbying efforts when the Fund negotiates with countries where they have investments. Money-center banks and
     non-banking financial firms shift in opposite directions, which makes their lobbying portfolios converge: banks reduce their lobbying about banking and increase lobbying about finance, while non-bank
     financial firms decrease lobbying about finance and increase lobbying about banking.'
-- title: Who’sMoreWillingtoBend:IntellectualProperty RightsProtectioninNorth-SouthTradeAgreements
-  authors: Jihye Park
-  status: Revise & Resubmit, Political Science Research and Methods
-  category: working-papers
-  github_pdf: papers/working-papers/02__whos-more-willing-to-bend__RR-PSRM.pdf
-  year: 2025
-  sort_order: 2
-  abstract: ''
