@@ -65,7 +65,7 @@
   abstract: The rise of superstar firms has accompanied the expansion of an international intellectual property (IP) regime that extends beyond the standards established in the WTO Agreement on Trade-Related
     Aspects of Intellectual Property Rights (TRIPS). Despite sustained resistance from developing countries, the United States has successfully promoted TRIPS-plus provisions through preferential trade
     agreements, with other advanced economies following. This study attributes US success in diffusing TRIPS-plus standards to the interaction between corporate lobbying and development finance allocation.
-    Using National Trade Estimate (NTE) reports from 19 to 2022,
+    Using National Trade Estimate (NTE) reports from 1995 to 2022,
 - title: Firms Lobbying for Preferential Trade
   authors: Jihye Park, Randall Stone
   category: working-papers
@@ -76,7 +76,7 @@
   abstract: Lobbying disclosures often hide what firms lobby about, but we introduce new data and exploit timing to show that multinational firms lobby intensively about preferential trade agreements (PTAs).
     We argue that some firms lobby for ratification, which lowers tariffs on imported intermediate inputs, while others lobby to shape PTA terms to influence behindthe-border regulations. Our empirical
     analysis untangles these incentives by identifying groups of firms with different motivations and investigating which branches of government they lobby and when. We use PanelMatch (Imai, Kim and Wang
-    2023) to conduct staggered diff-in-diff analyses at the firm level, using Fortune Global 5 firms and a comprehensive set of US PTA negotiations. Pharmaceutical firms lobby for intellectual property
+    2023) to conduct staggered diff-in-diff analyses at the firm level, using Fortune Global 500 firms and a comprehensive set of US PTA negotiations. Pharmaceutical firms lobby for intellectual property
     rights protection; firms represented on the US Trade Representative’s general policy making committee lobby to shape PTA provisions; other firms lobby for ratification of PTAs with countries where they
     have investments.
 - title: Lobbying for Conditionality
@@ -94,18 +94,18 @@
     to the initiation of IMF program negotiations and find that US financial firms shift their lobbying efforts when the Fund negotiates with countries where they have investments. Money-center banks and
     non-banking financial firms shift in opposite directions, which makes their lobbying portfolios converge: banks reduce their lobbying about banking and increase lobbying about finance, while non-bank
     financial firms decrease lobbying about finance and increase lobbying about banking.'
-- title: Who’s More Willing to Bend: Intellectual Property Rights Protection in North-South Trade Agreements
+- title: "Who’s More Willing to Bend: Intellectual Property Rights Protection in North-South Trade Agreements"
   authors: Jihye Park
   status: Revise & Resubmit, Political Science Research and Methods
   category: working-papers
   github_pdf: papers/working-papers/02__whos-more-willing-to-bend__RR-PSRM.pdf
   year: 2025
   sort_order: 2
-  abstract: Introduction of the Agreement on Trade-Related Aspects of Intellectual Property Rights (TRIPS) marked the new era of intellectual property (IP) rights protection through preferential trade agreements
+  abstract: "Introduction of the Agreement on Trade-Related Aspects of Intellectual Property Rights (TRIPS) marked the new era of intellectual property (IP) rights protection through preferential trade agreements
     (PTAs). TRIPS-plus IP rules impose substantial domestic costs on developing countries, yet many governments adopt them through preferential trade agreements with the United States and the European Union.
     This study explains TRIPS-plus adoption as a function of internal structural vulnerability and external political support. Developing countries whose labor-intensive exports rely heavily on discretionary
     preference schemes such as the Generalized System of Preferences face credible threats of suspension and therefore stronger incentives to formalize access through PTAs that include TRIPS-plus rules.
     A refined measure of political trade dependence that isolates these sensitive sectors captures this vulnerability more accurately than aggregate indicators, first introduced by Manger and Shadlen (2014).
     Foreign aid functions as a complementary mechanism that helps governments manage the domestic adjustment costs of strengthened IP protections, although compensation emerges only when obligations are
     substantively deep and donors can mobilize aid coherently. Empirically, TWFE OLS estimates show that higher PTD significantly increases the likelihood of adopting TRIPS-plus provisions. PanelMatch
-    results confirm a short-lived rise in US aid after signature, while EU aid remains unresponsive due to weaker IP obligations and donor fragmentation.
+    results confirm a short-lived rise in US aid after signature, while EU aid remains unresponsive due to weaker IP obligations and donor fragmentation."
