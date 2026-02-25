@@ -120,7 +120,8 @@ def clean_text(text: str) -> str:
 def extract_title(pdf_path: Path) -> str:
     """
     Extract title from the first page using font size analysis.
-    The title is the largest-font text on page 1.
+    Uses line-level text from 'dict' mode to preserve spacing,
+    then identifies the largest-font lines as the title.
     """
     try:
         doc = fitz.open(str(pdf_path))
@@ -130,42 +131,49 @@ def extract_title(pdf_path: Path) -> str:
         page = doc[0]
         text_dict = page.get_text("dict", flags=11)
 
-        spans = []
+        # Build line-level data: join spans within each line with spaces
+        lines = []
         for block in text_dict.get("blocks", []):
             if block.get("type") != 0:
                 continue
             for line in block.get("lines", []):
-                for span in line.get("spans", []):
-                    t = span.get("text", "").strip()
-                    if t:
-                        spans.append({
-                            "text": t,
-                            "size": span.get("size", 0),
-                            "y": span.get("origin", [0, 0])[1],
-                        })
+                line_spans = line.get("spans", [])
+                if not line_spans:
+                    continue
+                line_text = " ".join(s.get("text", "").strip() for s in line_spans if s.get("text", "").strip())
+                if not line_text:
+                    continue
+                # Use the max font size in this line
+                max_span_size = max(s.get("size", 0) for s in line_spans)
+                y_pos = line_spans[0].get("origin", [0, 0])[1]
+                lines.append({
+                    "text": line_text,
+                    "size": max_span_size,
+                    "y": y_pos,
+                })
 
         doc.close()
 
-        if not spans:
+        if not lines:
             return ""
 
-        max_size = max(s["size"] for s in spans)
+        max_size = max(ln["size"] for ln in lines)
         threshold = max_size * 0.9
 
-        # Gather title spans (largest font, near the top)
-        title_spans = [s for s in spans if s["size"] >= threshold]
+        # Gather title lines (largest font, near the top)
+        title_lines = [ln for ln in lines if ln["size"] >= threshold]
 
-        if not title_spans:
+        if not title_lines:
             return ""
 
         # Sort by vertical position to get reading order
-        title_spans.sort(key=lambda s: s["y"])
+        title_lines.sort(key=lambda ln: ln["y"])
 
-        # Only take spans within a reasonable vertical range of each other
-        first_y = title_spans[0]["y"]
+        # Only take lines within a reasonable vertical range of each other
+        first_y = title_lines[0]["y"]
         title_parts = [
-            s["text"] for s in title_spans
-            if s["y"] - first_y < 60  # allow ~2 lines
+            ln["text"] for ln in title_lines
+            if ln["y"] - first_y < 60  # allow ~2 lines
         ]
 
         title = " ".join(title_parts)
@@ -201,15 +209,21 @@ def extract_abstract(pdf_path: Path) -> str:
         after_abstract = full_text[match.end():]
 
         # Find where the abstract ends (next section header)
+        # These patterns require the line to ONLY contain the header (possibly with a number),
+        # not a header word embedded in a regular sentence.
         end_pattern = (
             r'(?m)(?:'
-            r'^(?:Keywords?|JEL\s*[Cc]|Word\s*[Cc]ount|Forthcoming|Published|Draft)'
+            # Keyword/JEL lines (standalone)
+            r'^(?:Keywords?\s*:|JEL\s*[Cc]lass|JEL\s*[Cc]ode|Word\s*[Cc]ount)'
             r'|'
-            r'^\d+[\.\)]\s+[A-Z]'
+            # Numbered sections: "1. Introduction" or "1 Introduction"
+            r'^\d+[\.\)]\s+[A-Z][a-z]'
             r'|'
-            r'^(?:I|II|III|IV|V)[\.\)]\s+[A-Z]'
+            # Roman numeral sections: "I. Introduction" (but not "I argue" — require period/paren)
+            r'^(?:I{1,3}|IV|VI{0,3})[\.\)]\s+[A-Z][a-z]'
             r'|'
-            r'^(?:' + '|'.join(re.escape(h) for h in SECTION_HEADERS) + r')\b'
+            # Standalone section headers on their own line (preceded by blank line)
+            r'(?<=\n\n)(?:' + '|'.join(re.escape(h) for h in SECTION_HEADERS) + r')\s*$'
             r')'
         )
 
@@ -222,7 +236,7 @@ def extract_abstract(pdf_path: Path) -> str:
             if double_break:
                 abstract_raw = after_abstract[:double_break.start()]
             else:
-                abstract_raw = after_abstract[:2000]
+                abstract_raw = after_abstract[:3000]
 
         abstract = clean_text(abstract_raw)
 
