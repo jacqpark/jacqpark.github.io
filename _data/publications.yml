@@ -55,17 +55,9 @@
 - title: 'When Do National Development Finance Institutions Mobilize Private Capital?: Evidence from Infrastructure Projects'
   authors: Jim Qian, Nicolas Bau, Simone Dietrich, Jihye Park
   category: in-progress
-- title: Aid, Lending, and TRIPS
-  authors: Jihye Park
-  category: working-papers
-  github_pdf: papers/working-papers/01__aid-lending-trips__UR.pdf
-  year: 2025
-  status: Under review
-  sort_order: 1
-  abstract: The rise of superstar firms has accompanied the expansion of an international intellectual property (IP) regime that extends beyond the standards established in the WTO Agreement on Trade-Related
-    Aspects of Intellectual Property Rights (TRIPS). Despite sustained resistance from developing countries, the United States has successfully promoted TRIPS-plus provisions through preferential trade
-    agreements, with other advanced economies following. This study attributes US success in diffusing TRIPS-plus standards to the interaction between corporate lobbying and development finance allocation.
-    Using National Trade Estimate (NTE) reports from 1995 to 2022,
+  description: "Development finance institutions (DFIs) are central actors in closing infrastructure financing gaps in developing economies, yet we know little about when and how they mobilize private capital for infrastructure investment. This paper examines the conditions under which DFIs structure investments to attract private participation, using an original project-level dataset of infrastructure investments by twelve OECD-country DFIs. We combine large language model classification with human coding to identify DFI infrastructure investments, and link these to the World Bank's Private Participation in Infrastructure (PPI) database to analyze the composition of project consortia and financing structures.
+Our core argument is that private capital mobilization reflects a strategic tradeoff: it is more likely where projects are commercially viable and risks can be credibly priced, but less likely in low-return sectors and weaker institutional environments. We derive three expectations: mobilization is more likely in revenue-generating sectors (e.g., energy, transport) than in water and sanitation; in higher-income, institutionally stronger countries; and among DFIs with commercially oriented mandates. More public-service-oriented DFIs, by contrast, rely on non-conventional instruments such as guarantees and equity, and are more responsive to geostrategic priorities.
+We test these expectations using project-level models of both the likelihood and scale of private participation, exploiting within-DFI variation with sector and year fixed effects. The findings illuminate the organizational and political constraints shaping mobilization strategies, and advance understanding of how public development finance institutions structure the boundary between public and market-facing infrastructure provision."
 - title: Firms Lobbying for Preferential Trade
   authors: Jihye Park, Randall Stone
   category: working-papers
@@ -73,12 +65,12 @@
   year: 2025
   status: Working paper
   sort_order: 3
-  abstract: Lobbying disclosures often hide what firms lobby about, but we introduce new data and exploit timing to show that multinational firms lobby intensively about preferential trade agreements (PTAs).
+  abstract: 'Lobbying disclosures often hide what firms lobby about, but we introduce new data and exploit timing to show that multinational firms lobby intensively about preferential trade agreements (PTAs).
     We argue that some firms lobby for ratification, which lowers tariffs on imported intermediate inputs, while others lobby to shape PTA terms to influence behindthe-border regulations. Our empirical
     analysis untangles these incentives by identifying groups of firms with different motivations and investigating which branches of government they lobby and when. We use PanelMatch (Imai, Kim and Wang
     2023) to conduct staggered diff-in-diff analyses at the firm level, using Fortune Global 500 firms and a comprehensive set of US PTA negotiations. Pharmaceutical firms lobby for intellectual property
-    rights protection; firms represented on the US Trade Representative’s general policy making committee lobby to shape PTA provisions; other firms lobby for ratification of PTAs with countries where they
-    have investments.
+    rights protection; firms represented on the US Trade Representative’s general policy-making committee lobby to shape PTA provisions; other firms lobby for ratification of PTAs with countries where they
+    have investments.'
 - title: Lobbying for Conditionality
   authors: Jihye Park, Randall Stone
   category: working-papers
@@ -99,7 +91,7 @@
   status: Revise & Resubmit, Political Science Research and Methods
   category: working-papers
   github_pdf: papers/working-papers/02__whos-more-willing-to-bend__RR-PSRM.pdf
-  year: 2025
+  year: 2026
   sort_order: 2
   abstract: "Introduction of the Agreement on Trade-Related Aspects of Intellectual Property Rights (TRIPS) marked the new era of intellectual property (IP) rights protection through preferential trade agreements
     (PTAs). TRIPS-plus IP rules impose substantial domestic costs on developing countries, yet many governments adopt them through preferential trade agreements with the United States and the European Union.
