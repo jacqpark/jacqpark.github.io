@@ -121,3 +121,18 @@
     the DeBERTa-v3 language model. The analysis shows that lobbying by US corporate elites systematically shapes USTR evaluations of foreign IP regimes and that countries facing greater IP-related criticism
     are more likely to receive compensation for adopting TRIPS-plus commitments. Compensation varies by regime type: democracies receive increased foreign aid, while autocracies benefit more from International
     Finance Corporation lending to the private sector.'
+- title: ThePoliticalEconomyofDefenseinWTO Anti-DumpingDisputes
+  authors: Jihye Park
+  status: Working paper
+  category: working-papers
+  github_pdf: papers/working-papers/00__political-econ-defense-antidumping.pdf
+  year: 2025
+  sort_order: 0
+  abstract: The WTO dispute settlement mechanism adjudicates trade conflicts through rule-based pro- cedures ostensibly insulated from domestic politics, yet the pace at which disputes reach resolution
+    varies widely. This study argues that the WTO enforcement space is constricted through the reactive mobilization of defendant-side firms whose anti-dumping protections are at risk. Using US lobbying
+    disclosure data matched to firm-level dispute participation, the analysis exploits presidential party turnover as an exogenous shock to the political en- vironment of defendant firms. A PanelMatch estimator
+    with covariate balancing propensity scores reveals a sharp asymmetry. Defendant firms in non-prioritized industries significantly increase lobbying expenditure following partisan transitions, whereas
+    firms in nationally pri- oritized sectors shielded by executive action under Section 232 or bipartisan legislation such as the CHIPS and Science Act show no response. A stratified Cox proportional hazards
+    model demonstrates that this mobilization delays dispute resolution. Under partisan transition, increased lobbying reduces the hazard of reaching a panel report, prolonging the period during which contested
+    duties remain in force. Without turnover, lobbying carries no meaningful effect on dispute duration. These findings reveal how domestic politics penetrates the procedural machinery of WTO dispute settlement,
+    exposing a vulnerability in which political uncertainty activates defensive firm mobilization.
