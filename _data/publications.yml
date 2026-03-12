@@ -26,21 +26,6 @@
   venue: 'Taming Democracy with Liberalism: The Politics In and Out of Liberal Democracy, 2020'
   category: book-chapters
   year: 2020
-- title: The Political Economy of Defense in WTO Anti-Dumping Disputes
-  authors: Jihye Park
-  status: Working paper
-  abstract: Domestic political structures play a decisive role in shaping how governments translate formal commitments to international institutions into actual policy behavior. In the context of the WTO
-    dispute settlement system, firms that benefit from anti-dumping duties depend on stable political channels to maintain these protections once a dispute is initiated. When the stability of these channels
-    is disrupted, the durability of firm influence weakens and the continuation of protective measures becomes uncertain. Incumbent turnover provides an exogenous shock that exposes this vulnerability by
-    threatening established access points and raising the possibility that accumulated influence will erode. Firms respond by expanding defensive lobbying intended to preserve existing policy, and a difference-in-differences
-    design shows that respondent-side firms increase lobbying expenditures following incumbent turnover. Survival analysis further clarifies the mechanism. Defensive lobbying prolongs the duration of disputes,
-    yet this effect is substantially stronger when political leadership remains constant. When comparing among the top spending firms in lobbying, the delaying effect of lobbying is pronounced only in the
-    absence of incumbent turnover. Under political transition, the same level of lobbying produces a much weaker delay, indicating that established channels are less effective and that maintaining anti-dumping
-    duties becomes more challenging for respondent firms. These empirical patterns show how domestic political shocks and firm-level incentives constrain timely compliance and weaken core enforcement functions
-    of the WTO, revealing a structural limitation in which entrenched domestic political actors can reduce the system's capacity to achieve the outcomes envisioned by its legal commitments.
-  category: working-papers
-  year: 2026
-  sort_order: 0
 - title: 'Lobbying for Development: How Firms Shape Investment Decisions in US Development Finance Corporation'
   authors: Jihye Park, Nicolas Bau, Simone Dietrich
   category: in-progress
@@ -107,7 +92,7 @@
     Foreign aid functions as a complementary mechanism that helps governments manage the domestic adjustment costs of strengthened IP protections, although compensation emerges only when obligations are
     substantively deep and donors can mobilize aid coherently. Empirically, TWFE OLS estimates show that higher PTD significantly increases the likelihood of adopting TRIPS-plus provisions. PanelMatch results
     confirm a short-lived rise in US aid after signature, while EU aid remains unresponsive due to weaker IP obligations and donor fragmentation.
-- title: Aid,Lending,andTRIPS
+- title: Aid, Lending, and TRIPS
   authors: Jihye Park
   status: Revise & Resubmit, Review of International Organizations
   category: working-papers
@@ -117,22 +102,22 @@
   abstract: 'The rise of superstar firms has accompanied the expansion of an international intellectual property (IP) regime that extends beyond the standards established in the WTO Agreement on Trade-Related
     Aspects of Intellectual Property Rights (TRIPS). Despite sustained resistance from developing countries, the United States has successfully promoted TRIPS-plus provisions through preferential trade
     agreements, with other advanced economies following. This study attributes US success in diffusing TRIPS-plus standards to the interaction between corporate lobbying and development finance allocation.
-    Using National Trade Es- timate (NTE) reports from 1995 to 2022, published by the US Trade Representative, I construct a semantic proxy for US assessments of IP protection in partner countries us- ing
+    Using National Trade Estimate (NTE) reports from 1995 to 2022, published by the US Trade Representative, I construct a semantic proxy for US assessments of IP protection in partner countries using
     the DeBERTa-v3 language model. The analysis shows that lobbying by US corporate elites systematically shapes USTR evaluations of foreign IP regimes and that countries facing greater IP-related criticism
     are more likely to receive compensation for adopting TRIPS-plus commitments. Compensation varies by regime type: democracies receive increased foreign aid, while autocracies benefit more from International
     Finance Corporation lending to the private sector.'
-- title: ThePoliticalEconomyofDefenseinWTO Anti-DumpingDisputes
+- title: The Political Economy of Defense in WTO Anti-Dumping Disputes
   authors: Jihye Park
   status: Working paper
   category: working-papers
   github_pdf: papers/working-papers/00__political-econ-defense-antidumping.pdf
-  year: 2025
+  year: 2026
   sort_order: 0
-  abstract: The WTO dispute settlement mechanism adjudicates trade conflicts through rule-based pro- cedures ostensibly insulated from domestic politics, yet the pace at which disputes reach resolution
+  abstract: 'The WTO dispute settlement mechanism adjudicates trade conflicts through rule-based procedures ostensibly insulated from domestic politics, yet the pace at which disputes reach resolution
     varies widely. This study argues that the WTO enforcement space is constricted through the reactive mobilization of defendant-side firms whose anti-dumping protections are at risk. Using US lobbying
-    disclosure data matched to firm-level dispute participation, the analysis exploits presidential party turnover as an exogenous shock to the political en- vironment of defendant firms. A PanelMatch estimator
+    disclosure data matched to firm-level dispute participation, the analysis exploits presidential party turnover as an exogenous shock to the political environment of defendant firms. A PanelMatch estimator
     with covariate balancing propensity scores reveals a sharp asymmetry. Defendant firms in non-prioritized industries significantly increase lobbying expenditure following partisan transitions, whereas
-    firms in nationally pri- oritized sectors shielded by executive action under Section 232 or bipartisan legislation such as the CHIPS and Science Act show no response. A stratified Cox proportional hazards
+    firms in nationally prioritized sectors shielded by executive action under Section 232 or bipartisan legislation such as the CHIPS and Science Act show no response. A stratified Cox proportional hazards
     model demonstrates that this mobilization delays dispute resolution. Under partisan transition, increased lobbying reduces the hazard of reaching a panel report, prolonging the period during which contested
     duties remain in force. Without turnover, lobbying carries no meaningful effect on dispute duration. These findings reveal how domestic politics penetrates the procedural machinery of WTO dispute settlement,
-    exposing a vulnerability in which political uncertainty activates defensive firm mobilization.
+    exposing a vulnerability in which political uncertainty activates defensive firm mobilization.'
