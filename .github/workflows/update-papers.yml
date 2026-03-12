@@ -7,10 +7,14 @@ on:
       - 'cv/**'
     branches:
       - main
+
+  # Allow manual trigger
   workflow_dispatch:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 jobs:
   extract-metadata:
@@ -45,3 +49,32 @@ jobs:
           git add _data/publications.yml
           git commit -m "docs: auto-update publications metadata from PDFs"
           git push
+
+  # Deploy after metadata update
+  deploy:
+    needs: extract-metadata
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Pull latest (including bot commit)
+        run: git pull origin main
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+
+      - name: Build Jekyll site
+        run: bundle exec jekyll build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
