@@ -3,6 +3,7 @@ layout: page
 title: Attic
 subtitle: A collection of things I make when I'm not doing political science.
 permalink: /attic/
+theme: pink
 ---
 
 <p class="gallery-intro">

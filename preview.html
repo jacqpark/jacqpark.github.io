@@ -6,15 +6,16 @@
   <title>Jihye Park — Site Preview</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Tektur:wght@400;500;600;700;800&family=Chakra+Petch:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <style>
-    /* Page-switching logic — each section is a "page" */
     .page-section { display: none; }
     .page-section.active { display: block; }
   </style>
 </head>
-<body>
+<body class="theme-navy">
+
+<div class="star-field" aria-hidden="true"></div>
 
 <header class="site-header">
   <nav class="site-nav">
@@ -34,11 +35,11 @@
 
 <main class="container">
 
-  <!-- ===================== HOME ===================== -->
-  <div class="page-section active" id="page-home">
+  <!-- ===================== HOME (navy) ===================== -->
+  <div class="page-section active" id="page-home" data-theme="navy">
     <article class="home-content">
       <div class="home-hero">
-        <div style="width:180px;height:180px;border-radius:50%;background:linear-gradient(135deg,#D9C8B3,#B8956A);margin:0 auto 1.5rem;display:flex;align-items:center;justify-content:center;font-family:var(--font-serif);color:#fff;font-size:2.5rem;border:3px solid #D4C5B9;">JP</div>
+        <div style="width:180px;height:180px;background:linear-gradient(135deg,#5EDCF4,#F0A6CA);margin:0 auto 1.5rem;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);color:#0A0E27;font-size:3rem;font-weight:700;border:3px solid #5EDCF4;box-shadow:6px 6px 0 #F0A6CA;">JP</div>
 
         <h1 class="home-name">Jihye Park</h1>
         <p class="home-position">Postdoctoral Researcher &middot; University of Geneva</p>
@@ -57,20 +58,28 @@
       </div>
 
       <div class="home-bio">
-        I am a postdoctoral researcher at the University of Geneva, Department of Political Science. My research focuses on comparative politics and political behavior. I employ quantitative methods and experimental designs to study democratic institutions and citizen engagement.
+        <p>I am a Postdoctoral Researcher at the Department of Political Science and International Relations at the University of Geneva, Switzerland. My research spans various topics in international political economy, including politics of trade, development finance, firm lobbying, and quantitative methods (with particular interest in large language models and causal inference).</p>
+        <p>For those who are curious about how to pronounce my first name, it's [JEE-hey] in phonetic spelling. It means "wisdom" in Korean, just for your extra piece of information :)</p>
+        <p>If you'd like to know more about me when I'm off-duty, visit my Attic and get a sneak peek of my life as a painter and a LEGO aficionado! And one last thing - Go BILLS!</p>
       </div>
 
       <h4 class="text-center">Education</h4>
       <ul class="home-credentials">
-        <li>Ph.D. in Political Science, University Name, 2024</li>
-        <li>M.A. in Political Science, University Name, 2020</li>
-        <li>B.A. in Political Science, University Name, 2018</li>
+        <li>Ph.D. in Political Science, University of Rochester, 2025</li>
+        <li>M.A. in Political Science, University of Rochester, 2023</li>
+        <li>B.B.A. in Business Administration, Yonsei University, 2019</li>
+      </ul>
+
+      <h4 class="text-center">Contact</h4>
+      <ul class="home-credentials">
+        <li>Jihye.Park@unige.ch</li>
+        <li>Uni Mail M2105, Bd du Pont d'Arve 40, 1205 Geneva, Switzerland</li>
       </ul>
     </article>
   </div>
 
-  <!-- ===================== CV ===================== -->
-  <div class="page-section" id="page-cv">
+  <!-- ===================== CV (lavender) ===================== -->
+  <div class="page-section" id="page-cv" data-theme="lavender">
     <article class="page-content">
       <header class="page-header">
         <h1>Curriculum Vitae</h1>
@@ -81,17 +90,17 @@
           Download PDF
         </a>
         <div class="pdf-viewer-container">
-          <div style="height:80vh;display:flex;align-items:center;justify-content:center;color:var(--color-text-muted);font-family:var(--font-serif);font-size:1.2rem;font-style:italic;">
+          <div style="height:80vh;display:flex;align-items:center;justify-content:center;color:var(--fg-muted);font-family:var(--font-mono);font-size:1rem;text-align:center;padding:2rem;">
             PDF viewer will embed your CV here<br>
-            <span style="font-size:0.85rem;font-family:var(--font-sans);margin-top:0.5rem;display:block;">Place your CV at <code>cv/jihye-park-cv.pdf</code></span>
+            <span style="font-size:0.78rem;margin-top:0.6rem;display:block;letter-spacing:0.14em;text-transform:uppercase;">Place your CV at cv/jihye-park-cv.pdf</span>
           </div>
         </div>
       </div>
     </article>
   </div>
 
-  <!-- ===================== RESEARCH ===================== -->
-  <div class="page-section" id="page-research">
+  <!-- ===================== RESEARCH (lavender) ===================== -->
+  <div class="page-section" id="page-research" data-theme="lavender">
     <article class="page-content">
       <header class="page-header">
         <h1>Research</h1>
@@ -131,7 +140,7 @@
         <div class="publication-entry">
           <div class="pub-title"><a href="#">The Political Economy of Climate Policy Adoption</a></div>
           <div class="pub-authors">Jihye Park</div>
-          <div class="pub-venue" style="font-style:italic;">Under review</div>
+          <div class="pub-venue">Under review</div>
           <details class="pub-abstract">
             <summary>Abstract</summary>
             <p>Why do some democracies adopt ambitious climate policies while others lag behind? This paper develops a theoretical framework linking electoral incentives to climate policy outcomes and tests it with original data from 30 OECD countries.</p>
@@ -140,7 +149,6 @@
             <a href="#" class="pub-link">Latest Draft</a>
           </div>
         </div>
-        <p style="font-size:0.85rem;color:var(--color-text-muted);font-style:italic;margin-top:1rem;">Working papers auto-update when new PDFs are pushed to <code>papers/working-papers/</code> in the GitHub repo.</p>
       </div>
 
       <h2>Works in Progress</h2>
@@ -154,11 +162,11 @@
     </article>
   </div>
 
-  <!-- ===================== DATA ===================== -->
-  <div class="page-section" id="page-data">
+  <!-- ===================== DATA (lavender) ===================== -->
+  <div class="page-section" id="page-data" data-theme="lavender">
     <article class="page-content">
       <header class="page-header">
-        <h1>Data</h1>
+        <h1>Data &amp; SW</h1>
       </header>
 
       <h2>My Datasets</h2>
@@ -175,7 +183,7 @@
       <ul class="dataset-list">
         <li class="dataset-item">
           <div class="dataset-name"><a href="#">V-Dem Dataset</a></div>
-          <div class="dataset-desc">Varieties of Democracy &mdash; comprehensive democracy indicators for all countries.</div>
+          <div class="dataset-desc">Varieties of Democracy. Comprehensive democracy indicators for all countries.</div>
         </li>
         <li class="dataset-item">
           <div class="dataset-name"><a href="#">World Bank Open Data</a></div>
@@ -185,8 +193,8 @@
     </article>
   </div>
 
-  <!-- ===================== TEACHING ===================== -->
-  <div class="page-section" id="page-teaching">
+  <!-- ===================== TEACHING (lavender) ===================== -->
+  <div class="page-section" id="page-teaching" data-theme="lavender">
     <article class="page-content">
       <header class="page-header">
         <h1>Teaching</h1>
@@ -217,8 +225,8 @@
     </article>
   </div>
 
-  <!-- ===================== ATTIC ===================== -->
-  <div class="page-section" id="page-attic">
+  <!-- ===================== ATTIC (pink) ===================== -->
+  <div class="page-section" id="page-attic" data-theme="pink">
     <article class="page-content">
       <header class="page-header">
         <h1>Attic</h1>
@@ -231,15 +239,15 @@
 
       <div class="gallery-grid">
         <div class="gallery-item">
-          <div style="aspect-ratio:4/5;background:linear-gradient(135deg,#E8DCC8,#B8956A);display:flex;align-items:center;justify-content:center;font-family:var(--font-serif);color:#fff;font-size:1.1rem;font-style:italic;">Painting 1</div>
+          <div style="aspect-ratio:4/5;background:linear-gradient(135deg,#5EDCF4,#F0A6CA);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);color:#0A0E27;font-size:1.1rem;font-weight:700;">PAINTING 1</div>
           <div class="gallery-caption">Untitled, Oil on Canvas, 2024</div>
         </div>
         <div class="gallery-item">
-          <div style="aspect-ratio:4/5;background:linear-gradient(135deg,#D4C5B9,#6B5E56);display:flex;align-items:center;justify-content:center;font-family:var(--font-serif);color:#fff;font-size:1.1rem;font-style:italic;">Painting 2</div>
+          <div style="aspect-ratio:4/5;background:linear-gradient(135deg,#F4D03F,#F0A6CA);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);color:#0A0E27;font-size:1.1rem;font-weight:700;">PAINTING 2</div>
           <div class="gallery-caption">Landscape, Watercolor, 2023</div>
         </div>
         <div class="gallery-item">
-          <div style="aspect-ratio:4/5;background:linear-gradient(135deg,#F5F0EB,#B8956A);display:flex;align-items:center;justify-content:center;font-family:var(--font-serif);color:#6B5E56;font-size:1.1rem;font-style:italic;">Painting 3</div>
+          <div style="aspect-ratio:4/5;background:linear-gradient(135deg,#E2D5F2,#5EDCF4);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);color:#0A0E27;font-size:1.1rem;font-weight:700;">PAINTING 3</div>
           <div class="gallery-caption">Study in Light, Acrylic, 2023</div>
         </div>
       </div>
@@ -256,20 +264,23 @@
 
 <script>
 function showPage(pageName) {
-  // Hide all pages
   document.querySelectorAll('.page-section').forEach(function(el) {
     el.classList.remove('active');
   });
-  // Show selected page
-  document.getElementById('page-' + pageName).classList.add('active');
-  // Update nav active state
+  var target = document.getElementById('page-' + pageName);
+  target.classList.add('active');
+
+  // Swap body theme class to match this page
+  var theme = target.getAttribute('data-theme') || 'navy';
+  document.body.classList.remove('theme-navy', 'theme-lavender', 'theme-pink');
+  document.body.classList.add('theme-' + theme);
+
   document.querySelectorAll('.nav-links a').forEach(function(el) {
     el.classList.remove('active');
     if (el.getAttribute('data-page') === pageName) {
       el.classList.add('active');
     }
   });
-  // Scroll to top
   window.scrollTo(0, 0);
 }
 </script>

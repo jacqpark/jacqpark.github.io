@@ -3,6 +3,7 @@ layout: home
 title: Home
 show_title: false
 permalink: /
+theme: navy
 ---
 
 <div class="home-hero">

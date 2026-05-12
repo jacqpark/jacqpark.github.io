@@ -2,6 +2,7 @@
 layout: page
 title: Curriculum Vitae
 permalink: /cv/
+theme: lavender
 ---
 
 <div class="cv-section">

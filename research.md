@@ -2,6 +2,7 @@
 layout: page
 title: Research
 permalink: /research/
+theme: lavender
 ---
 
 <!-- Publications are auto-populated from _data/publications.yml -->

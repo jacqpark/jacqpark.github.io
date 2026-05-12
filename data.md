@@ -2,6 +2,7 @@
 layout: page
 title: Data & SW
 permalink: /data/
+theme: lavender
 ---
 
 ## My Datasets & R Packages
