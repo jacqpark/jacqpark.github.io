@@ -1,7 +1,34 @@
-# Teaching record and course proposals
-# type: "record" for past teaching, "proposal" for course proposals
+# Teaching record, webinars, and course proposals
+# type: "record"   — TA / instructor entries (use role: "Teaching Assistant" or "Instructor")
+# type: "webinar"  — externally hosted webinars / seminars (include url)
+# type: "proposal" — course proposals
 
-# --- TEACHING RECORD (replace with your actual courses) ---
+# --- INSTATS WEBINARS ---
+
+- title: "LLMs for Social Scientists"
+  url: "https://instats.org/seminar/llms-for-social-scientists"
+  type: "webinar"
+  description: "A 3-day intensive webinar that trains social scientists with no machine learning background to use large language models for measurement and data work. Day 1 introduces stance-detection encoders and generative decoders, and when to choose each. Day 2 builds a defensible quantitative proxy via hypothesis ensembles, gold-set coding, and validation. Day 3 applies generative models to crawling and data wrangling. All sessions run live in Google Colab with demos on real social science text."
+
+# --- TEACHING RECORD (INSTRUCTOR) ---
+
+- title: "Comparative Politics"
+  role: "Instructor"
+  institution: "University of Geneva"
+  term: "Fall 2026"
+  level: "Graduate"
+  type: "record"
+  description: ""
+
+- title: "Recherche appliquée"
+  role: "Instructor"
+  institution: "University of Geneva"
+  term: "Spring 2026"
+  level: "Graduate"
+  type: "record"
+  description: ""
+
+# --- TEACHING RECORD (TEACHING ASSISTANT) ---
 
 - title: "Introduction to International Political Economy (Prof. Randall Stone)"
   role: "Teaching Assistant"
