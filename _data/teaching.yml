@@ -7,6 +7,7 @@
 
 - title: "LLMs for Social Scientists"
   url: "https://instats.org/seminar/llms-for-social-scientists"
+  course_module: "https://github.com/jacqpark/instats-llm-workshop"
   type: "webinar"
   description: "A 3-day intensive webinar that trains social scientists with no machine learning background to use large language models for measurement and data work. Day 1 introduces stance-detection encoders and generative decoders, and when to choose each. Day 2 builds a defensible quantitative proxy via hypothesis ensembles, gold-set coding, and validation. Day 3 applies generative models to crawling and data wrangling. All sessions run live in Google Colab with demos on real social science text."
 
