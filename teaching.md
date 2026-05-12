@@ -33,7 +33,7 @@ theme: lavender
 {% if course.type == "record" and course.role == "Instructor" %}
 <div class="teaching-entry">
   <div class="course-title">{{ course.title }}</div>
-  <div class="course-meta">{{ course.role }}{% if course.level %} ({{ course.level | downcase }}){% endif %} &middot; {{ course.institution }} &middot; {{ course.term }}</div>
+  <div class="course-meta">{{ course.level }} &middot; {{ course.institution }} &middot; {{ course.term }}</div>
   {% if course.description %}
   <p class="course-description">{{ course.description }}</p>
   {% endif %}
@@ -49,7 +49,7 @@ theme: lavender
 {% if course.type == "record" and course.role == "Teaching Assistant" %}
 <div class="teaching-entry">
   <div class="course-title">{{ course.title }}</div>
-  <div class="course-meta">{{ course.role }} &middot; {{ course.institution }} &middot; {{ course.term }}</div>
+  <div class="course-meta">{{ course.level }} &middot; {{ course.institution }} &middot; {{ course.term }}</div>
   {% if course.description %}
   <p class="course-description">{{ course.description }}</p>
   {% endif %}
