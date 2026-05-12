@@ -237,18 +237,32 @@
         Paintings, sketches, and other creative work that lives up here in the attic.
       </p>
 
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <div style="aspect-ratio:4/5;background:linear-gradient(135deg,#5EDCF4,#F0A6CA);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);color:#0A0E27;font-size:1.1rem;font-weight:700;">PAINTING 1</div>
-          <div class="gallery-caption">Untitled, Oil on Canvas, 2024</div>
+      <div class="roadmap">
+        <div class="roadmap-item roadmap-item-left">
+          <div class="roadmap-card">
+            <span class="roadmap-tag">// 001</span>
+            <h3 class="roadmap-title">A Technicolor Sorrow</h3>
+            <div class="roadmap-img" style="aspect-ratio:4/5;background:linear-gradient(135deg,#5EDCF4,#F0A6CA);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);color:#0A0E27;font-size:1rem;font-weight:700;">PAINTING 1</div>
+            <p class="roadmap-desc">Just some doodling.</p>
+          </div>
         </div>
-        <div class="gallery-item">
-          <div style="aspect-ratio:4/5;background:linear-gradient(135deg,#F4D03F,#F0A6CA);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);color:#0A0E27;font-size:1.1rem;font-weight:700;">PAINTING 2</div>
-          <div class="gallery-caption">Landscape, Watercolor, 2023</div>
+
+        <div class="roadmap-item roadmap-item-right">
+          <div class="roadmap-card">
+            <span class="roadmap-tag">// 002</span>
+            <h3 class="roadmap-title">Distorted Headshot</h3>
+            <div class="roadmap-img" style="aspect-ratio:4/5;background:linear-gradient(135deg,#F4D03F,#F0A6CA);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);color:#0A0E27;font-size:1rem;font-weight:700;">PAINTING 2</div>
+            <p class="roadmap-desc">Another doodling.</p>
+          </div>
         </div>
-        <div class="gallery-item">
-          <div style="aspect-ratio:4/5;background:linear-gradient(135deg,#E2D5F2,#5EDCF4);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);color:#0A0E27;font-size:1.1rem;font-weight:700;">PAINTING 3</div>
-          <div class="gallery-caption">Study in Light, Acrylic, 2023</div>
+
+        <div class="roadmap-item roadmap-item-left">
+          <div class="roadmap-card">
+            <span class="roadmap-tag">// 003</span>
+            <h3 class="roadmap-title">Study in Light</h3>
+            <div class="roadmap-img" style="aspect-ratio:4/5;background:linear-gradient(135deg,#E2D5F2,#5EDCF4);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);color:#0A0E27;font-size:1rem;font-weight:700;">PAINTING 3</div>
+            <p class="roadmap-desc">Acrylic study, 2023.</p>
+          </div>
         </div>
       </div>
     </article>
@@ -282,6 +296,11 @@ function showPage(pageName) {
     }
   });
   window.scrollTo(0, 0);
+
+  // Re-align roadmap items now that the attic section is visible
+  if (typeof window.alignRoadmap === 'function') {
+    requestAnimationFrame(window.alignRoadmap);
+  }
 }
 </script>
 <script src="assets/js/main.js"></script>

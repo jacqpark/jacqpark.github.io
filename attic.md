@@ -10,29 +10,28 @@ theme: pink
   I use the iPad app "Procreate" for painting. It can do pretty much of all the trick.
 </p>
 
-<div class="gallery-grid">
-  <!-- Add your paintings here. For each painting, use this template: -->
+<div class="roadmap">
   <!--
-  <div class="gallery-item">
-    <img src="{{ '/attic/painting-name.jpg' | relative_url }}" alt="Painting title" loading="lazy">
-    <div class="gallery-caption">Title, Medium, Year</div>
-  </div>
+    HOW TO ADD A PAINTING:
+    Copy a .roadmap-item block below. Alternate "roadmap-item-left" and
+    "roadmap-item-right" so milestones zig-zag down the spine.
   -->
 
-  <div class="gallery-item">
-  <img src="{{ '/attic/technicolor.jpeg' | relative_url }}" alt="A Technicolor Sorrow" loading="lazy">
-  <div class="gallery-caption">Just some doodling</div>
-</div>
+  <div class="roadmap-item roadmap-item-left">
+    <div class="roadmap-card">
+      <span class="roadmap-tag">// 001</span>
+      <h3 class="roadmap-title">A Technicolor Sorrow</h3>
+      <img class="roadmap-img" src="{{ '/attic/technicolor.jpeg' | relative_url }}" alt="A Technicolor Sorrow" loading="lazy">
+      <p class="roadmap-desc">Just some doodling.</p>
+    </div>
+  </div>
 
-<div class="gallery-item">
-  <img src="{{ '/attic/distorted.jpg' | relative_url }}" alt="Distorted headshot" loading="lazy">
-  <div class="gallery-caption">Another doodling</div>
+  <div class="roadmap-item roadmap-item-right">
+    <div class="roadmap-card">
+      <span class="roadmap-tag">// 002</span>
+      <h3 class="roadmap-title">Distorted Headshot</h3>
+      <img class="roadmap-img" src="{{ '/attic/distorted.jpg' | relative_url }}" alt="Distorted headshot" loading="lazy">
+      <p class="roadmap-desc">Another doodling.</p>
+    </div>
+  </div>
 </div>
-
-<!--
-  HOW TO ADD PAINTINGS:
-  1. Add image files (jpg, png) to the /attic/ folder in your repo
-  2. Copy a gallery-item block above for each painting
-  3. Update the src, alt, and caption
-  4. Push to GitHub — the site will rebuild automatically
--->
