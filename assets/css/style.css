@@ -928,13 +928,13 @@ pre {
 }
 
 .course-meta a {
-  color: var(--accent);
-  border-bottom: 1px solid var(--accent);
+  color: var(--c-cyan);
+  border-bottom: 1px solid var(--c-cyan);
 }
 
 .course-meta a:hover {
-  color: var(--fg-strong);
-  border-bottom-color: var(--fg-strong);
+  color: var(--c-pink-hot);
+  border-bottom-color: var(--c-pink-hot);
 }
 
 .course-description {
