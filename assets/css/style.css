@@ -927,6 +927,16 @@ pre {
   letter-spacing: 0.05em;
 }
 
+.course-meta a {
+  color: var(--accent);
+  border-bottom: 1px solid var(--accent);
+}
+
+.course-meta a:hover {
+  color: var(--fg-strong);
+  border-bottom-color: var(--fg-strong);
+}
+
 .course-description {
   font-family: var(--font-sans);
   font-size: 0.92rem;
