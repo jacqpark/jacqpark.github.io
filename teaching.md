@@ -15,7 +15,7 @@ theme: lavender
     {% if course.url %}<a href="{{ course.url }}" target="_blank" rel="noopener">{{ course.title }}</a>{% else %}{{ course.title }}{% endif %}
   </div>
   {% if course.course_module %}
-  <div class="course-meta"><a href="{{ course.course_module }}" target="_blank" rel="noopener">Click for Course Module</a></div>
+  <div class="course-meta"><span class="course-meta-caret">&#9656;</span><a href="{{ course.course_module }}" target="_blank" rel="noopener">Click for Course Module</a></div>
   {% endif %}
   {% if course.description %}
   <p class="course-description">{{ course.description }}</p>

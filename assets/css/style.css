@@ -928,13 +928,19 @@ pre {
 }
 
 .course-meta a {
-  color: var(--c-cyan);
-  border-bottom: 1px solid var(--c-cyan);
+  color: var(--fg-strong);
+  border-bottom: 1px solid var(--fg-strong);
 }
 
 .course-meta a:hover {
   color: var(--c-pink-hot);
   border-bottom-color: var(--c-pink-hot);
+}
+
+.course-meta-caret {
+  color: var(--c-pink-hot);
+  margin-right: 0.4em;
+  font-weight: 700;
 }
 
 .course-description {
