@@ -77,7 +77,7 @@ theme: lavender
     {% if pub.github_pdf %}<a href="https://docs.google.com/gview?url=https://github.com/{{ site.github_username }}/{{ site.github_username }}.github.io/raw/main/{{ pub.github_pdf }}&embedded=false">{{ pub.title }}</a>{% else %}{{ pub.title }}{% endif %}
   </div>
   {% if pub.authors %}<div class="pub-authors">{{ pub.authors }}</div>{% endif %}
-  {% if pub.status %}<div class="pub-venue">{% if pub.status contains "Revise & Resubmit," %}{% assign rr_journal = pub.status | remove_first: "Revise & Resubmit, " %}Revise & Resubmit, <strong>{{ rr_journal }}</strong>{% else %}{{ pub.status }}{% endif %}</div>{% endif %}
+  {% if pub.status %}<div class="pub-venue">{% if pub.status contains "Revise & Resubmit," %}{% assign rr_journal = pub.status | remove_first: "Revise & Resubmit, " %}Revise & Resubmit, <span style="font-weight: 700;">{{ rr_journal }}</span>{% else %}{{ pub.status }}{% endif %}</div>{% endif %}
   {% if pub.abstract %}
   <details class="pub-abstract">
     <summary>Abstract</summary>
