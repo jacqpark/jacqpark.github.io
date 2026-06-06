@@ -36,8 +36,8 @@
   abstract: 'The rise of superstar firms has accompanied the expansion of an international intellectual property (IP) regime that extends beyond the standards established in the WTO Agreement on Trade-Related
     Aspects of Intellectual Property Rights (TRIPS). Despite sustained resistance from developing countries, the United States has successfully promoted TRIPS-plus provisions through preferential trade
     agreements, with other advanced economies following. This study attributes US success in diffusing TRIPS-plus standards to the interaction between corporate lobbying and development finance allocation.
-    Using National Trade Estimate (NTE) reports from 1995 to 2022, published by the US Trade Representative, I construct a semantic proxy for US assessments of IP protection in partner countries using
-    the DeBERTa-v3 language model. The analysis shows that lobbying by US corporate elites systematically shapes USTR evaluations of foreign IP regimes and that countries facing greater IP-related criticism
+    Using National Trade Estimate (NTE) reports from 1995 to 2022, published by the US Trade Representative, I construct a semantic proxy for US assessments of IP protection in partner countries using the
+    DeBERTa-v3 language model. The analysis shows that lobbying by US corporate elites systematically shapes USTR evaluations of foreign IP regimes and that countries facing greater IP-related criticism
     are more likely to receive compensation for adopting TRIPS-plus commitments. Compensation varies by regime type: democracies receive increased foreign aid, while autocracies benefit more from International
     Finance Corporation lending to the private sector.'
 - title: 'Lobbying for Development: How Firms Shape Investment Decisions in US Development Finance Corporation'
@@ -113,11 +113,26 @@
   github_pdf: papers/working-papers/00__political-econ-defense-antidumping.pdf
   year: 2026
   sort_order: 0
-  abstract: 'The WTO dispute settlement mechanism adjudicates trade conflicts through rule-based procedures ostensibly insulated from domestic politics, yet the pace at which disputes reach resolution
-    varies widely. This study argues that the WTO enforcement space is constricted through the reactive mobilization of defendant-side firms whose anti-dumping protections are at risk. Using US lobbying
-    disclosure data matched to firm-level dispute participation, the analysis exploits presidential party turnover as an exogenous shock to the political environment of defendant firms. A PanelMatch estimator
-    with covariate balancing propensity scores reveals a sharp asymmetry. Defendant firms in non-prioritized industries significantly increase lobbying expenditure following partisan transitions, whereas
-    firms in nationally prioritized sectors shielded by executive action under Section 232 or bipartisan legislation such as the CHIPS and Science Act show no response. A stratified Cox proportional hazards
-    model demonstrates that this mobilization delays dispute resolution. Under partisan transition, increased lobbying reduces the hazard of reaching a panel report, prolonging the period during which contested
+  abstract: The WTO dispute settlement mechanism adjudicates trade conflicts through rule-based procedures ostensibly insulated from domestic politics, yet the pace at which disputes reach resolution varies
+    widely. This study argues that the WTO enforcement space is constricted through the reactive mobilization of defendant-side firms whose anti-dumping protections are at risk. Using US lobbying disclosure
+    data matched to firm-level dispute participation, the analysis exploits presidential party turnover as an exogenous shock to the political environment of defendant firms. A PanelMatch estimator with
+    covariate balancing propensity scores reveals a sharp asymmetry. Defendant firms in non-prioritized industries significantly increase lobbying expenditure following partisan transitions, whereas firms
+    in nationally prioritized sectors shielded by executive action under Section 232 or bipartisan legislation such as the CHIPS and Science Act show no response. A stratified Cox proportional hazards model
+    demonstrates that this mobilization delays dispute resolution. Under partisan transition, increased lobbying reduces the hazard of reaching a panel report, prolonging the period during which contested
     duties remain in force. Without turnover, lobbying carries no meaningful effect on dispute duration. These findings reveal how domestic politics penetrates the procedural machinery of WTO dispute settlement,
-    exposing a vulnerability in which political uncertainty activates defensive firm mobilization.'
+    exposing a vulnerability in which political uncertainty activates defensive firm mobilization.
+- title: Aid,Lending,andTRIPS
+  authors: Jihye Park
+  status: RIO
+  category: peer-reviewed
+  github_pdf: papers/peer-reviewed/00__aid-lending-trips__RIO.pdf
+  year: 2025
+  sort_order: 0
+  abstract: The rise of superstar firms has accompanied the expansion of an international intellectual property (IP) regime that extends beyond the standards established in the WTO Agreement on Trade-Related
+    Aspects of Intellectual Property Rights (TRIPS). Despite sustained resistance from developing countries, the United States has successfully promoted TRIPS-plus provisions through preferential trade
+    agreements, with other advanced economies following. This study attributes US success in diffusing TRIPS-plus standards to the strategic deployment of development finance, conditioned on the domestic
+    political feasibility of aid and the regime type of the recipient country. Using National Trade Estimate (NTE) reports from 1995 to 2022 published by the US Trade Representative, I construct a semantic
+    proxy for US assessments of IP protection in partner countries harnessing a state-of-the-art stance de- tection large language model. Countries facing greater IP-related criticism incorporate more TRIPS-plus
+    commitments into their preferential trade agreements with the United States in exchange for development finance. Compensation varies by regime type. Democracies receive increased foreign aid, while
+    autocracies benefit more from International Finance Corporation lending to the private sector. Placebo tests reveal that among TRIPS-plus commitments, test data exclusivity, US pharmaceutical elites’
+    top priority that blocks generic drugs past patent expiration, uniquely mobilizes both instruments.
