@@ -49,7 +49,7 @@ theme: lavender
     {% if pub.doi %}<a href="{{ pub.doi }}">{{ pub.title }}</a>{% else %}{{ pub.title }}{% endif %}
   </div>
   {% if pub.authors %}<div class="pub-authors">{{ pub.authors }}</div>{% endif %}
-  {% if pub.venue %}<div class="pub-venue">{{ pub.venue }}</div>{% endif %}
+  {% if pub.venue %}<div class="pub-venue">{{ pub.venue }}{% if pub.year %}, {{ pub.year }}{% endif %}</div>{% endif %}
   {% if pub.abstract %}
   <details class="pub-abstract">
     <summary>Abstract</summary>
@@ -61,6 +61,12 @@ theme: lavender
     {% if pub.pdf_url %}<a href="{{ pub.pdf_url }}" class="pub-link" target="_blank">PDF</a>{% endif %}
     {% if pub.doi %}<a href="{{ pub.doi }}" class="pub-link" target="_blank">DOI</a>{% endif %}
   </div>
+  {% endif %}
+  {% if pub.replication %}
+  <details class="pub-abstract">
+    <summary>Online Appendix and Replication</summary>
+    <p><a href="{{ pub.replication }}" target="_blank">{{ pub.replication | remove: "https://" }}</a></p>
+  </details>
   {% endif %}
 </div>
 {% endfor %}

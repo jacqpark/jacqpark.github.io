@@ -26,6 +26,20 @@
   venue: 'Taming Democracy with Liberalism: The Politics In and Out of Liberal Democracy, 2020'
   category: book-chapters
   year: 2020
+- title: Aid, Lending, and TRIPS
+  authors: Jihye Park
+  venue: Review of International Organizations
+  category: peer-reviewed
+  year: forthcoming
+  pdf_url: https://docs.google.com/gview?url=https://github.com/jacqpark/jacqpark.github.io/raw/main/papers/peer-reviewed/00__aid-lending-trips__RIO.pdf&embedded=false
+  replication: https://doi.org/10.5281/zenodo.20534622
+  abstract: 'The rise of superstar firms has accompanied the expansion of an international intellectual property (IP) regime that extends beyond the standards established in the WTO Agreement on Trade-Related
+    Aspects of Intellectual Property Rights (TRIPS). Despite sustained resistance from developing countries, the United States has successfully promoted TRIPS-plus provisions through preferential trade
+    agreements, with other advanced economies following. This study attributes US success in diffusing TRIPS-plus standards to the interaction between corporate lobbying and development finance allocation.
+    Using National Trade Estimate (NTE) reports from 1995 to 2022, published by the US Trade Representative, I construct a semantic proxy for US assessments of IP protection in partner countries using
+    the DeBERTa-v3 language model. The analysis shows that lobbying by US corporate elites systematically shapes USTR evaluations of foreign IP regimes and that countries facing greater IP-related criticism
+    are more likely to receive compensation for adopting TRIPS-plus commitments. Compensation varies by regime type: democracies receive increased foreign aid, while autocracies benefit more from International
+    Finance Corporation lending to the private sector.'
 - title: 'Lobbying for Development: How Firms Shape Investment Decisions in US Development Finance Corporation'
   authors: Jihye Park, Nicolas Bau, Simone Dietrich
   category: in-progress
@@ -92,20 +106,6 @@
     Foreign aid functions as a complementary mechanism that helps governments manage the domestic adjustment costs of strengthened IP protections, although compensation emerges only when obligations are
     substantively deep and donors can mobilize aid coherently. Empirically, TWFE OLS estimates show that higher PTD significantly increases the likelihood of adopting TRIPS-plus provisions. PanelMatch results
     confirm a short-lived rise in US aid after signature, while EU aid remains unresponsive due to weaker IP obligations and donor fragmentation.
-- title: Aid, Lending, and TRIPS
-  authors: Jihye Park
-  status: Revise & Resubmit, Review of International Organizations
-  category: working-papers
-  github_pdf: papers/working-papers/01__aid-lending-trips__RR-RIO.pdf
-  year: 2025
-  sort_order: 1
-  abstract: 'The rise of superstar firms has accompanied the expansion of an international intellectual property (IP) regime that extends beyond the standards established in the WTO Agreement on Trade-Related
-    Aspects of Intellectual Property Rights (TRIPS). Despite sustained resistance from developing countries, the United States has successfully promoted TRIPS-plus provisions through preferential trade
-    agreements, with other advanced economies following. This study attributes US success in diffusing TRIPS-plus standards to the interaction between corporate lobbying and development finance allocation.
-    Using National Trade Estimate (NTE) reports from 1995 to 2022, published by the US Trade Representative, I construct a semantic proxy for US assessments of IP protection in partner countries using
-    the DeBERTa-v3 language model. The analysis shows that lobbying by US corporate elites systematically shapes USTR evaluations of foreign IP regimes and that countries facing greater IP-related criticism
-    are more likely to receive compensation for adopting TRIPS-plus commitments. Compensation varies by regime type: democracies receive increased foreign aid, while autocracies benefit more from International
-    Finance Corporation lending to the private sector.'
 - title: The Political Economy of Defense in WTO Anti-Dumping Disputes
   authors: Jihye Park
   status: Working paper
