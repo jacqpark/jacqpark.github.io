@@ -31,6 +31,7 @@
   venue: Review of International Organizations
   category: peer-reviewed
   year: forthcoming
+  github_pdf: papers/peer-reviewed/00__aid-lending-trips__RIO.pdf
   pdf_url: https://docs.google.com/gview?url=https://github.com/jacqpark/jacqpark.github.io/raw/main/papers/peer-reviewed/00__aid-lending-trips__RIO.pdf&embedded=false
   replication: https://doi.org/10.5281/zenodo.20534622
   abstract: 'The rise of superstar firms has accompanied the expansion of an international intellectual property (IP) regime that extends beyond the standards established in the WTO Agreement on Trade-Related
@@ -40,6 +41,8 @@
     DeBERTa-v3 language model. The analysis shows that lobbying by US corporate elites systematically shapes USTR evaluations of foreign IP regimes and that countries facing greater IP-related criticism
     are more likely to receive compensation for adopting TRIPS-plus commitments. Compensation varies by regime type: democracies receive increased foreign aid, while autocracies benefit more from International
     Finance Corporation lending to the private sector.'
+  status: RIO
+  sort_order: 0
 - title: 'Lobbying for Development: How Firms Shape Investment Decisions in US Development Finance Corporation'
   authors: Jihye Park, Nicolas Bau, Simone Dietrich
   category: in-progress
@@ -66,9 +69,9 @@
 - title: Firms Lobbying for Preferential Trade
   authors: Jihye Park, Randall Stone
   category: working-papers
-  github_pdf: papers/working-papers/03__firms-lobbying-for-preferential-trade.pdf
+  github_pdf: papers/working-papers/03__firms-lobbying-for-preferential-trade__UR.pdf
   year: 2025
-  status: Working paper
+  status: Under review
   sort_order: 3
   abstract: Lobbying disclosures often hide what firms lobby about, but we introduce new data and exploit timing to show that multinational firms lobby intensively about preferential trade agreements (PTAs).
     We argue that some firms lobby for ratification, which lowers tariffs on imported intermediate inputs, while others lobby to shape PTA terms to influence behindthe-border regulations. Our empirical
@@ -93,9 +96,9 @@
     financial firms decrease lobbying about finance and increase lobbying about banking.'
 - title: 'Who’s More Willing to Bend: Intellectual Property Rights Protection in North-South Trade Agreements'
   authors: Jihye Park
-  status: Working paper
+  status: Under review
   category: working-papers
-  github_pdf: papers/working-papers/02__whos-more-willing-to-bend.pdf
+  github_pdf: papers/working-papers/02__whos-more-willing-to-bend__UR.pdf
   year: 2026
   sort_order: 2
   abstract: Introduction of the Agreement on Trade-Related Aspects of Intellectual Property Rights (TRIPS) marked the new era of intellectual property (IP) rights protection through preferential trade agreements
@@ -108,9 +111,9 @@
     confirm a short-lived rise in US aid after signature, while EU aid remains unresponsive due to weaker IP obligations and donor fragmentation.
 - title: The Political Economy of Defense in WTO Anti-Dumping Disputes
   authors: Jihye Park
-  status: Working paper
+  status: Under review
   category: working-papers
-  github_pdf: papers/working-papers/00__political-econ-defense-antidumping.pdf
+  github_pdf: papers/working-papers/00__political-econ-defense-antidumping__UR.pdf
   year: 2026
   sort_order: 0
   abstract: The WTO dispute settlement mechanism adjudicates trade conflicts through rule-based procedures ostensibly insulated from domestic politics, yet the pace at which disputes reach resolution varies
@@ -121,18 +124,3 @@
     demonstrates that this mobilization delays dispute resolution. Under partisan transition, increased lobbying reduces the hazard of reaching a panel report, prolonging the period during which contested
     duties remain in force. Without turnover, lobbying carries no meaningful effect on dispute duration. These findings reveal how domestic politics penetrates the procedural machinery of WTO dispute settlement,
     exposing a vulnerability in which political uncertainty activates defensive firm mobilization.
-- title: Aid,Lending,andTRIPS
-  authors: Jihye Park
-  status: RIO
-  category: peer-reviewed
-  github_pdf: papers/peer-reviewed/00__aid-lending-trips__RIO.pdf
-  year: 2025
-  sort_order: 0
-  abstract: The rise of superstar firms has accompanied the expansion of an international intellectual property (IP) regime that extends beyond the standards established in the WTO Agreement on Trade-Related
-    Aspects of Intellectual Property Rights (TRIPS). Despite sustained resistance from developing countries, the United States has successfully promoted TRIPS-plus provisions through preferential trade
-    agreements, with other advanced economies following. This study attributes US success in diffusing TRIPS-plus standards to the strategic deployment of development finance, conditioned on the domestic
-    political feasibility of aid and the regime type of the recipient country. Using National Trade Estimate (NTE) reports from 1995 to 2022 published by the US Trade Representative, I construct a semantic
-    proxy for US assessments of IP protection in partner countries harnessing a state-of-the-art stance de- tection large language model. Countries facing greater IP-related criticism incorporate more TRIPS-plus
-    commitments into their preferential trade agreements with the United States in exchange for development finance. Compensation varies by regime type. Democracies receive increased foreign aid, while
-    autocracies benefit more from International Finance Corporation lending to the private sector. Placebo tests reveal that among TRIPS-plus commitments, test data exclusivity, US pharmaceutical elites’
-    top priority that blocks generic drugs past patent expiration, uniquely mobilizes both instruments.
