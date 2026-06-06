@@ -34,13 +34,14 @@
   github_pdf: papers/peer-reviewed/00__aid-lending-trips__RIO.pdf
   pdf_url: https://docs.google.com/gview?url=https://github.com/jacqpark/jacqpark.github.io/raw/main/papers/peer-reviewed/00__aid-lending-trips__RIO.pdf&embedded=false
   replication: https://doi.org/10.5281/zenodo.20534622
-  abstract: 'The rise of superstar firms has accompanied the expansion of an international intellectual property (IP) regime that extends beyond the standards established in the WTO Agreement on Trade-Related
+  abstract: The rise of superstar firms has accompanied the expansion of an international intellectual property (IP) regime that extends beyond the standards established in the WTO Agreement on Trade-Related
     Aspects of Intellectual Property Rights (TRIPS). Despite sustained resistance from developing countries, the United States has successfully promoted TRIPS-plus provisions through preferential trade
-    agreements, with other advanced economies following. This study attributes US success in diffusing TRIPS-plus standards to the interaction between corporate lobbying and development finance allocation.
-    Using National Trade Estimate (NTE) reports from 1995 to 2022, published by the US Trade Representative, I construct a semantic proxy for US assessments of IP protection in partner countries using the
-    DeBERTa-v3 language model. The analysis shows that lobbying by US corporate elites systematically shapes USTR evaluations of foreign IP regimes and that countries facing greater IP-related criticism
-    are more likely to receive compensation for adopting TRIPS-plus commitments. Compensation varies by regime type: democracies receive increased foreign aid, while autocracies benefit more from International
-    Finance Corporation lending to the private sector.'
+    agreements, with other advanced economies following. This study attributes US success in diffusing TRIPS-plus standards to the strategic deployment of development finance, conditioned on the domestic
+    political feasibility of aid and the regime type of the recipient country. Using National Trade Estimate (NTE) reports from 1995 to 2022 published by the US Trade Representative, I construct a semantic
+    proxy for US assessments of IP protection in partner countries harnessing a state-of-the-art stance detection large language model. Countries facing greater IP-related criticism incorporate more TRIPS-plus
+    commitments into their preferential trade agreements with the United States in exchange for development finance. Compensation varies by regime type. Democracies receive increased foreign aid, while
+    autocracies benefit more from International Finance Corporation lending to the private sector. Placebo tests reveal that among TRIPS-plus commitments, test data exclusivity, US pharmaceutical elites’
+    top priority that blocks generic drugs past patent expiration, uniquely mobilizes both instruments.
   status: RIO
   sort_order: 0
 - title: 'Lobbying for Development: How Firms Shape Investment Decisions in US Development Finance Corporation'
