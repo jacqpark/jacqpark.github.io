@@ -43,5 +43,5 @@ theme: navy
 <h4 class="text-center">Contact</h4>
 <ul class="home-credentials">
   <li>Jihye.Park@unige.ch</li>
-  <li>Uni Mail M2105, Bd du Pont d'Arve 40, 1205 Geneva, Switzerland</li>
+  <li>Uni Mail M4328, Bd du Pont d'Arve 40, 1205 Geneva, Switzerland</li>
 </ul>
