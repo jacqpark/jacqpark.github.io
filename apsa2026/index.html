@@ -314,6 +314,13 @@
   .compact td{padding:8px 14px 8px 0}
   .compact .est .se{font-size:11px}
   .compact .fignote{margin-top:10px;font-size:12px}
+  .dense h2{font-size:36px}
+  .dense td{padding:4px 14px 4px 0}
+  .dense tr.spec td{padding-top:5px;padding-bottom:2px}
+  .read{margin-top:8px}
+  .read p{font-size:14px;line-height:1.5;max-width:none;color:var(--ink)}
+  .read p+p{margin-top:7px}
+  .read .big{color:var(--primary);font-weight:600;font-family:var(--display);font-size:16px}
   tr.topspec td{border-top:1px solid var(--hair);padding-top:12px}
 
   /* ---- figure ---- */
@@ -695,10 +702,10 @@
 </section>
 
 <!-- 12 -->
-<section class="slide compact">
+<section class="slide compact dense">
   <div class="eyebrow">Table 2 &middot; Main estimates</div>
   <h2 class="wide">Maintenance and entry</h2>
-  <div class="rule" style="margin:18px 0 18px"></div>
+  <div class="rule" style="margin:12px 0 12px"></div>
   <div class="body top">
     <table>
       <thead>
@@ -741,32 +748,16 @@
         <tr class="spec"><td>Observations</td><td class="num">560</td><td class="num">215</td><td class="num">3,176</td><td class="num">3,176</td></tr>
       </tbody>
     </table>
-    <div class="fignote">SEs clustered by firm. <span class="mono">* p&lt;0.10, ** p&lt;0.05, *** p&lt;0.01</span>. Cols 3&ndash;4 on a risk set of 4,001 infrastructure and energy lobbying firms, 6,552 firm&#8209;country&#8209;years, all 35 onsets retained.</div>
+    <div class="fignote">SEs clustered by firm. <span class="mono">* p&lt;0.10, ** p&lt;0.05, *** p&lt;0.01</span>. Cols 3&ndash;4 on a 4,001&#8209;firm risk set, all 35 onsets retained.</div>
+    <div class="read">
+      <p><span class="big">4.46&times;</span> the reports on a project country against a non&#8209;project country. <span class="big">2.85&times;</span> under the triple difference, p&nbsp;=&nbsp;0.065. <span class="big">9.19&times;</span> the odds of a later award where the firm had already lobbied, each prior report adding 20 percent.</p>
+      <p>Access runs in both directions. Projects sit inside political relationships that precede the award and continue after public backing is in place, so the panel gap is not a randomly assigned award effect.</p>
+    </div>
   </div>
   <div class="chrome"><span>Park, Bau &amp; Dietrich &middot; Sponsor Firm Politics</span><span class="cnt"></span></div>
 </section>
 
 <!-- 13 -->
-<section class="slide">
-  <div class="eyebrow">Reading the columns</div>
-  <h2 class="wide">Access runs in both directions</h2>
-  <div class="rule"></div>
-  <div class="body">
-    <div class="stats">
-      <div class="stat"><div class="n">4.46<small>&times;</small></div><div class="lab">reports on a project country vs. a non&#8209;project country. Firm&#8209;year and country FE</div></div>
-      <div class="stat"><div class="n">2.85<small>&times;</small></div><div class="lab">under the triple difference. p&nbsp;=&nbsp;0.065, sample 560 to 215</div></div>
-      <div class="stat"><div class="n">9.19<small>&times;</small></div><div class="lab">odds of a later award where the firm had already lobbied. Each report over the prior 3 years adds 20 percent</div></div>
-    </div>
-    <div class="callout">
-      <div class="hlabel">What this rules in, and out</div>
-      <p>DFC&#8209;backed projects sit inside political relationships that precede the award and continue after public backing is in place. Selection runs partly on prior engagement, so the panel gap is not a randomly assigned award effect.</p>
-      <span class="cite">Access as a standing asset rather than a single purchase. Hall &amp; Deardorff 2006</span>
-    </div>
-  </div>
-  <div class="chrome"><span>Park, Bau &amp; Dietrich &middot; Sponsor Firm Politics</span><span class="cnt"></span></div>
-</section>
-
-<!-- 14 -->
 <section class="slide">
   <div class="eyebrow">Limits</div>
   <h2 class="wide">What the design can and cannot carry</h2>
@@ -778,7 +769,7 @@
         <ul>
           <li>Thin base. 15 sponsors, 37 treated cells, driven by AES, Apache, Noble Energy, GE</li>
           <li>Free&#8209;text country measure. Operations and US legislation are not separable</li>
-          <li>No event study. Year&#8209;by&#8209;year SEs exceed 2 on the log scale</li>
+          <li>No event study. Too few treated cells to separate one timing profile from another</li>
           <li>Disclosure misses informal and diplomatic channels. A lower bound</li>
         </ul>
       </div>
@@ -795,7 +786,7 @@
   <div class="chrome"><span>Park, Bau &amp; Dietrich &middot; Sponsor Firm Politics</span><span class="cnt"></span></div>
 </section>
 
-<!-- 15 -->
+<!-- 14 -->
 <section class="slide">
   <div class="eyebrow">Conclusion</div>
   <h2 class="wide">The country is an organizing dimension of firm lobbying</h2>
@@ -814,7 +805,7 @@
   <div class="chrome"><span>Park, Bau &amp; Dietrich &middot; Sponsor Firm Politics</span><span class="cnt"></span></div>
 </section>
 
-<!-- 16 -->
+<!-- 15 -->
 <section class="slide divider thanks">
   <div class="body">
     <h2 class="thankyou">Thank you</h2>
