@@ -625,8 +625,8 @@
 
 <!-- 9 -->
 <section class="slide">
-  <div class="eyebrow">Data</div>
-  <h2 class="wide">An original firm&#8209;by&#8209;country&#8209;by&#8209;year panel</h2>
+  <div class="eyebrow">Data and design</div>
+  <h2 class="wide">Panel, outcomes, estimators</h2>
   <div class="rule"></div>
   <div class="body">
     <div class="stats four">
@@ -635,18 +635,24 @@
       <div class="stat"><div class="n">25</div><div class="lab">DFC host countries</div></div>
       <div class="stat"><div class="n">37</div><div class="lab">firm&#8209;country cells with an award</div></div>
     </div>
-    <div class="rule" style="margin:30px 0 24px"></div>
+    <div class="rule" style="margin:22px 0 18px"></div>
     <div class="cols tight">
       <div>
-        <div class="col-head grey">Outcome</div>
-        <ul><li>Count of a firm&rsquo;s yearly reports whose issue text names the country</li><li>Free&#8209;text match, LobbyView
-          <span class="cite">Kim 2018</span></li></ul>
+        <div class="col-head grey">Maintenance &middot; cols 1&ndash;2</div>
+        <ul>
+          <li><strong>Outcome.</strong> Count of a firm&rsquo;s LDA reports in a year whose issue text names the country. Free&#8209;text match, LobbyView
+            <span class="cite">Kim 2018</span></li>
+          <li><strong>Treatment.</strong> 1 from the year of the firm&rsquo;s first OPIC or DFC project in that country onward</li>
+          <li><strong>Estimator.</strong> Fixed&#8209;effects Poisson. Count outcome with heavy zeros, treatment switches on and off, firm&#8209;year and country or country&#8209;year FE absorbed. Coefficients read as rate ratios</li>
+        </ul>
       </div>
       <div>
-        <div class="col-head grey">Why infrastructure</div>
-        <ul><li>Immobile, capital&#8209;intensive, long&#8209;lived
-          <span class="cite">Dafe &amp; Upadhyaya 2024; Kilby 2013</span></li><li>Revenue runs through licences, tariffs, convertibility
-          <span class="cite">Jensen 2003</span></li><li>Infrastructure identifies a corporate sponsor. Funds and intermediaries do not</li></ul>
+        <div class="col-head grey">Entry &middot; cols 3&ndash;4</div>
+        <ul>
+          <li><strong>Outcome.</strong> Onset of a first award in a firm&#8209;country&#8209;year. Cells leave the risk set once it happens</li>
+          <li><strong>Treatment.</strong> Any prior lobbying on that country, and the count of reports naming it over the preceding 3 years</li>
+          <li><strong>Estimator.</strong> Discrete&#8209;time logit hazard on a wider risk set of 4,001 infrastructure and energy filers. Tests whether access precedes the award</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -822,6 +828,103 @@
       <div class="cline">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19"/><path d="M12 2.5a15 15 0 0 1 0 19a15 15 0 0 1 0-19z"/></svg>
         <span>https://jihyepark.me</span>
+      </div>
+    </div>
+  </div>
+  <div class="chrome"><span>Park, Bau &amp; Dietrich &middot; Sponsor Firm Politics</span><span class="cnt"></span></div>
+</section>
+
+<!-- A1 -->
+<section class="slide divider">
+  <div class="eyebrow">Appendix</div>
+  <h2>Measurement choices, estimator choices, and what each one buys.</h2>
+  <div class="rule short"></div>
+  <p>Universe and outcome construction, fixed&#8209;effects Poisson, discrete&#8209;time logit.</p>
+  <div class="chrome"><span>Park, Bau &amp; Dietrich &middot; Sponsor Firm Politics</span><span class="cnt"></span></div>
+</section>
+
+<!-- A2 -->
+<section class="slide">
+  <div class="eyebrow">Appendix A &middot; Universe</div>
+  <h2 class="wide">Why infrastructure sponsors</h2>
+  <div class="rule"></div>
+  <div class="body">
+    <div class="cols tight">
+      <div>
+        <div class="col-head grey">The asset</div>
+        <ul>
+          <li>Immobile, capital&#8209;intensive, long&#8209;lived. The sponsor cannot walk the project across a border when conditions turn
+            <span class="cite">Dafe &amp; Upadhyaya 2024; Kilby 2013</span></li>
+          <li>Revenue runs through licences, tariffs, and convertibility, so its value depends on host&#8209;country policy long after financial close
+            <span class="cite">Jensen 2003</span></li>
+        </ul>
+      </div>
+      <div>
+        <div class="col-head grey">The measurement</div>
+        <ul>
+          <li>Infrastructure identifies a corporate sponsor by name. Funds, financial intermediaries, and on&#8209;lending facilities do not, so there is nobody to match to a lobbying client</li>
+          <li>A named sponsor is what makes the firm&#8209;country cell the unit of observation at all</li>
+          <li>The restriction is what produces a thin base of 15 sponsors and 37 treated cells</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="chrome"><span>Park, Bau &amp; Dietrich &middot; Sponsor Firm Politics</span><span class="cnt"></span></div>
+</section>
+
+<!-- A3 -->
+<section class="slide">
+  <div class="eyebrow">Appendix B &middot; Columns 1 and 2</div>
+  <h2 class="wide">Fixed&#8209;effects Poisson, and what the two columns compare</h2>
+  <div class="rule"></div>
+  <div class="body">
+    <div class="cols tight">
+      <div>
+        <div class="col-head grey">Why Poisson</div>
+        <ul>
+          <li>The outcome is a count of reports with a large mass of zeros. A log&#8209;linear model would have to invent a transformation for them</li>
+          <li>Consistent under any conditional mean, so no distributional claim about the count is needed. SEs clustered by firm</li>
+          <li>Treatment switches on within a firm&#8209;country cell and stays on, and the estimator absorbs high&#8209;dimensional FE without an incidental parameters problem</li>
+          <li>Coefficients exponentiate into rate ratios, which is the quantity we want</li>
+        </ul>
+      </div>
+      <div>
+        <div class="col-head grey">The two comparisons</div>
+        <ul>
+          <li><strong>Col 1.</strong> Firm&#8209;year and country FE. AES in El Salvador against AES in its other countries that same year, net of anything fixed about El Salvador</li>
+          <li><strong>Col 2.</strong> Country&#8209;year FE replace country FE. A triple difference, also netting out what every firm does on that country that year</li>
+          <li>No never&#8209;treated control firms. The 15 sponsors supply both treated and untreated cells, which is why a small treated set is workable</li>
+          <li>Col 2 costs sample. 560 to 215 cells survive the fixed effects</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="chrome"><span>Park, Bau &amp; Dietrich &middot; Sponsor Firm Politics</span><span class="cnt"></span></div>
+</section>
+
+<!-- A4 -->
+<section class="slide">
+  <div class="eyebrow">Appendix C &middot; Columns 3 and 4</div>
+  <h2 class="wide">Discrete&#8209;time logit and the risk set</h2>
+  <div class="rule"></div>
+  <div class="body">
+    <div class="cols tight">
+      <div>
+        <div class="col-head grey">Why a hazard model</div>
+        <ul>
+          <li>The quantity is the onset of an award in a firm&#8209;country&#8209;year among cells still at risk, and awards arrive in annual data, so discrete time is the natural form</li>
+          <li>Year FE carry the baseline hazard, country FE absorb which places DFC works in, firm FE in col 4 hold constant how much a firm lobbies overall</li>
+          <li>Conditional logit drops FE groups with no onset, so 3,176 of 6,552 cells estimate. All 35 onsets are retained</li>
+        </ul>
+      </div>
+      <div>
+        <div class="col-head grey">Building the risk set</div>
+        <ul>
+          <li>15 sponsors are not a risk set. It needs firms that plausibly could have received an award and did not</li>
+          <li>Every LobbyView client flagged by sector keyword or by NAICS 21, 22, 23, 48, 49, 51</li>
+          <li>Intermediaries dropped. Coalitions, associations, chambers, institutes, universities, government entities file on behalf of others</li>
+          <li>4,001 firms with at least 1 report, 2000 to 2021. Each enters in the year of its first filing</li>
+        </ul>
       </div>
     </div>
   </div>
