@@ -118,11 +118,8 @@ ul.pix li { position: relative; padding-left: 1.2em; margin-bottom: .35em; }
 ul.pix li::before { content: ""; position: absolute; left: 0; top: .55em; width: .45em; height: .45em; background: var(--shadow); }
 
 /* bio */
-.me { display: grid; grid-template-columns: 13em 1fr; gap: 3em; align-items: center; }
-.me img { width: 13em; height: 13em; object-fit: cover; object-position: top; border: .16em solid var(--navy);
-  box-shadow: .45em .45em 0 var(--pink-hot); display: block; }
-.me h2 { margin-bottom: .35em; }
-.role { font: 700 .8em var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin: 1.4em 0 .5em; }
+.bio { font-size: 1.5em; line-height: 1.6; margin: 1em 0 0; }
+.bio mark { background: linear-gradient(transparent 55%, var(--yellow) 0); color: var(--strong); font-weight: 700; padding: 0 .1em; }
 
 /* weeks overview */
 .weeks { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: .6em; }
@@ -240,9 +237,9 @@ table.tbl { width: 100%; border-collapse: collapse; margin-top: 2.2em; }
   html { scroll-snap-type: y proximity; }
   .slide { padding: 5em 1.1em 4em; }
   h1 { font-size: 2.9em; } h2 { font-size: 1.9em; }
-  .grid, .plist, .me, .matrix-wrap { grid-template-columns: 1fr; }
+  .grid, .plist, .matrix-wrap { grid-template-columns: 1fr; }
   .weeks { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .me img { margin: 0 auto; }
+  .bio { font-size: 1.2em; }
   .methods .card { grid-template-columns: 1fr auto; }
   .methods .card p { grid-column: 1 / -1; order: 3; }
   .hp-top { font-size: .5em; }
@@ -292,17 +289,9 @@ table.tbl { width: 100%; border-collapse: collapse; margin-top: 2.2em; }
 <!-- 02 · bio -->
 <section class="slide lav">
   <div class="inner" style="max-width:50em">
-    <div class="me">
-      <img src="../../assets/img/headshot.jpg" alt="Jihye Park">
-      <div>
-        <span class="tag">Player 01</span>
-        <h2>Hi, I'm Dr. Jihye Park</h2>
-        <p class="role">Postdoctoral Researcher</p>
-        <p style="font-size:1.25em;margin:0">Department of Political Science and International Relations, University of Geneva</p>
-        <p class="role" style="margin-top:1.6em">PhD in Political Science</p>
-        <p style="font-size:1.25em;margin:0">University of Rochester</p>
-      </div>
-    </div>
+    <span class="tag">Player 01</span>
+    <h2>Hi, I'm Dr. Jihye Park</h2>
+    <p class="bio">I'm a <mark>postdoctoral researcher</mark> in the Department of Political Science and International Relations at the <mark>University of Geneva</mark>. I earned my <mark>PhD in Political Science</mark> at the <mark>University of Rochester</mark>.</p>
   </div>
 </section>
 
