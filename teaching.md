@@ -35,8 +35,11 @@ theme: lavender
 {% for course in site.data.teaching %}
 {% if course.type == "record" and course.role == "Instructor" %}
 <div class="teaching-entry">
-  <div class="course-title">{{ course.title }}</div>
+  <div class="course-title">{% if course.course_module %}<a href="{{ course.course_module | relative_url }}">{{ course.title }}</a>{% else %}{{ course.title }}{% endif %}</div>
   <div class="course-meta">{{ course.level }} &middot; {{ course.institution }} &middot; {{ course.term }}</div>
+  {% if course.course_module %}
+  <div class="course-meta"><span class="course-meta-caret">&#9656;</span><a href="{{ course.course_module | relative_url }}">Click for Course Module</a></div>
+  {% endif %}
   {% if course.description %}
   <p class="course-description">{{ course.description }}</p>
   {% endif %}

@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Session 01 · Comparative Politics · Jihye Park</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tektur:wght@400;600;700;800&family=Chakra+Petch:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* 8-Bit Orbit deck. Same palette and fonts as assets/css/style.css. */
+:root {
+  --void: #0A0E27; --navy: #0F1B3D; --pink: #F0A6CA; --pink-hot: #E87CB2;
+  --cyan: #5EDCF4; --yellow: #F4D03F; --lav: #E2D5F2; --white: #F8F4FF;
+  --display: 'Tektur', 'Courier New', monospace;
+  --sans: 'Chakra Petch', 'Helvetica Neue', Arial, sans-serif;
+  --mono: 'Space Mono', 'Courier New', monospace;
+  /* 1% of the largest 16:9 box that fits the window. Everything scales from it. */
+  --u: min(1vw, 1.7778vh);
+  --base: max(15px, calc(var(--u) * 1.35));
+}
+* { box-sizing: border-box; }
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; background: var(--void); }
+body { margin: 0; font: 400 var(--base)/1.5 var(--sans); -webkit-font-smoothing: antialiased; }
+p { margin: 0 0 .6em; }
+a { color: inherit; }
+
+/* ---------- Slides and themes ---------- */
+.slide {
+  position: relative; min-height: 100vh; min-height: 100dvh;
+  display: grid; place-items: center; overflow: hidden;
+  padding: 4.2em 5em 3.6em; scroll-snap-align: start;
+  background-color: var(--bg); color: var(--fg);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: var(--cell) var(--cell);
+}
+.inner { position: relative; z-index: 1; width: 100%; max-width: 62em; }
+.navy { --bg: var(--void); --fg: var(--lav); --strong: var(--white); --muted: rgba(226,213,242,.66);
+  --h: var(--cyan); --hs: var(--yellow); --card: rgba(15,27,61,.78); --line: rgba(94,220,244,.5);
+  --shadow: var(--pink); --grid: rgba(94,220,244,.05); --cell: calc(var(--u) * 2); }
+.lav { --bg: var(--lav); --fg: var(--navy); --strong: var(--navy); --muted: rgba(15,27,61,.64);
+  --h: var(--navy); --hs: var(--pink-hot); --card: rgba(255,255,255,.55); --line: var(--navy);
+  --shadow: var(--pink-hot); --grid: rgba(15,27,61,.07); --cell: calc(var(--u) * 1.1); }
+.pink { --bg: var(--pink); --fg: var(--navy); --strong: var(--navy); --muted: rgba(15,27,61,.7);
+  --h: var(--navy); --hs: var(--cyan); --card: rgba(255,255,255,.45); --line: var(--navy);
+  --shadow: var(--cyan); --grid: rgba(15,27,61,.08); --cell: calc(var(--u) * 1.1); }
+
+/* pixel stars, scanlines and vignette on navy slides */
+.navy::before, .navy::after { content: ""; position: absolute; inset: 0; pointer-events: none; }
+.navy::before {
+  background:
+    linear-gradient(var(--cyan),var(--cyan)) 7% 12%/4px 4px,
+    linear-gradient(var(--yellow),var(--yellow)) 19% 30%/3px 3px,
+    linear-gradient(var(--pink),var(--pink)) 12% 78%/5px 5px,
+    linear-gradient(var(--cyan),var(--cyan)) 28% 88%/3px 3px,
+    linear-gradient(var(--yellow),var(--yellow)) 36% 9%/4px 4px,
+    linear-gradient(var(--pink),var(--pink)) 44% 64%/3px 3px,
+    linear-gradient(var(--cyan),var(--cyan)) 52% 94%/5px 5px,
+    linear-gradient(var(--yellow),var(--yellow)) 58% 17%/3px 3px,
+    linear-gradient(var(--pink),var(--pink)) 66% 41%/4px 4px,
+    linear-gradient(var(--cyan),var(--cyan)) 73% 7%/3px 3px,
+    linear-gradient(var(--yellow),var(--yellow)) 81% 71%/5px 5px,
+    linear-gradient(var(--pink),var(--pink)) 88% 24%/3px 3px,
+    linear-gradient(var(--cyan),var(--cyan)) 94% 56%/4px 4px,
+    linear-gradient(var(--yellow),var(--yellow)) 4% 50%/3px 3px,
+    linear-gradient(var(--cyan),var(--cyan)) 85% 92%/3px 3px,
+    linear-gradient(var(--pink),var(--pink)) 24% 55%/3px 3px;
+  background-repeat: no-repeat; opacity: .55;
+  animation: twinkle 3.2s steps(2) infinite;
+}
+.navy::after {
+  background:
+    repeating-linear-gradient(to bottom, transparent 0 2px, rgba(0,0,0,.14) 3px, transparent 4px),
+    radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.5) 100%);
+}
+@keyframes twinkle { 50% { opacity: .3; } }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ---------- Type ---------- */
+h1, h2, h3 { font-family: var(--display); margin: 0; line-height: 1.05; }
+h1 { font-size: 5.4em; font-weight: 800; text-transform: uppercase; letter-spacing: .02em;
+  color: var(--h); text-shadow: .045em .045em 0 var(--hs); }
+h2 { font-size: 2.6em; font-weight: 800; color: var(--h); text-shadow: .06em .06em 0 var(--hs); }
+h3 { font-size: 1.05em; font-weight: 700; color: var(--strong); margin-bottom: .45em; }
+.head { text-align: center; margin-bottom: 2em; }
+.center { text-align: center; }
+.tag { display: inline-block; font: 700 .68em var(--display); letter-spacing: .2em; text-transform: uppercase;
+  background: var(--navy); color: var(--yellow); padding: .5em 1.1em; margin-bottom: 1.3em; }
+.navy .tag { background: transparent; border: 2px solid var(--yellow); }
+.sub { font: .78em var(--mono); letter-spacing: .12em; color: var(--muted); margin-top: 1em; }
+.kicker { font: 700 .8em var(--mono); letter-spacing: .42em; text-transform: uppercase; color: var(--pink); margin-bottom: 1.6em; }
+.lead { font-size: 1.25em; color: var(--fg); margin: 1.4em auto 1.6em; }
+.mono { font-family: var(--mono); }
+.muted { color: var(--muted); }
+.small { font-size: .82em; }
+.chips { display: flex; flex-wrap: wrap; gap: .7em; justify-content: center; }
+.chips span { font: 700 .66em var(--mono); letter-spacing: .12em; text-transform: uppercase;
+  border: 2px solid var(--yellow); color: var(--yellow); padding: .7em 1.2em; }
+.light-chips span { border-color: var(--navy); color: var(--navy); background: rgba(255,255,255,.4); }
+.chip { display: inline-block; font: 700 .62em var(--mono); letter-spacing: .12em; text-transform: uppercase;
+  background: var(--navy); color: var(--cyan); padding: .25em .6em; margin-bottom: .7em; }
+.navy .chip { background: var(--cyan); color: var(--navy); }
+.flag { display: inline-block; font: 700 .58em var(--mono); letter-spacing: .1em; text-transform: uppercase;
+  background: var(--navy); color: var(--white); border: 2px solid var(--yellow); padding: .15em .55em; margin-left: .5em; vertical-align: middle; }
+.flag.room { border-color: var(--pink-hot); }
+
+/* ---------- Blocks ---------- */
+.grid { display: grid; gap: 1.3em; grid-template-columns: repeat(var(--cols, 2), minmax(0, 1fr)); }
+.card { background: var(--card); border: 2px solid var(--line); padding: 1.1em 1.25em;
+  box-shadow: .3em .3em 0 var(--shadow); font-size: .9em; }
+.card p:last-child { margin-bottom: 0; }
+.note { margin-top: 1.8em; font-size: .88em; text-align: center; color: var(--muted); }
+.note b { color: var(--strong); }
+ul.pix { list-style: none; padding: 0; margin: 0; }
+ul.pix li { position: relative; padding-left: 1.2em; margin-bottom: .35em; }
+ul.pix li::before { content: ""; position: absolute; left: 0; top: .55em; width: .45em; height: .45em; background: var(--shadow); }
+
+/* bio */
+.me { display: grid; grid-template-columns: 13em 1fr; gap: 3em; align-items: center; }
+.me img { width: 13em; height: 13em; object-fit: cover; object-position: top; border: .16em solid var(--navy);
+  box-shadow: .45em .45em 0 var(--pink-hot); display: block; }
+.me h2 { margin-bottom: .35em; }
+.role { font: 700 .8em var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin: 1.4em 0 .5em; }
+
+/* weeks overview */
+.weeks { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: .6em; }
+.weeks div { border: 2px solid var(--line); background: var(--card); padding: .55em .6em .7em; font-size: .72em; line-height: 1.25; min-height: 5.6em; }
+.weeks b { display: block; font: 700 .9em var(--mono); color: var(--yellow); margin-bottom: .35em; }
+.weeks .now { border-color: var(--yellow); box-shadow: .3em .3em 0 var(--pink); }
+.weeks .end { border-color: var(--pink); }
+.weeks i { display: block; margin-top: .4em; font: 700 .85em var(--mono); color: var(--pink); font-style: normal; }
+
+/* label/value rows */
+.rows { display: grid; grid-template-columns: max-content 1fr; border-top: 2px dashed rgba(15,27,61,.3); }
+.rows > * { padding: .7em 0; border-bottom: 2px dashed rgba(15,27,61,.3); margin: 0; }
+.rows dt { font: 700 .66em var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); padding-right: 2.5em; align-self: center; }
+
+/* evaluation hp bar */
+.hp-top, .hp { display: grid; grid-template-columns: repeat(20, minmax(0, 1fr)); gap: .2em; }
+.hp { padding: .3em; border: .16em solid var(--navy); background: rgba(255,255,255,.35); box-shadow: .35em .35em 0 var(--navy); }
+.hp i { display: block; height: 2.4em; }
+.hp-top { margin-bottom: .6em; font: 700 .7em var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+.hp-top span { text-align: center; }
+.s8 { grid-column: span 8; } .s5 { grid-column: span 5; } .s2 { grid-column: span 2; }
+.c1 { background: var(--navy); } .c2 { background: var(--cyan); } .c3 { background: var(--white); } .c4 { background: var(--yellow); }
+table.tbl { width: 100%; border-collapse: collapse; margin-top: 2.2em; }
+.tbl th { font: 700 .62em var(--mono); letter-spacing: .14em; text-transform: uppercase; text-align: left; padding: 0 1em .6em 0; color: var(--muted); }
+.tbl td { padding: .6em 1em .6em 0; border-top: 2px dashed rgba(15,27,61,.3); }
+.tbl td:first-child { font-weight: 700; white-space: nowrap; }
+.tbl td:nth-child(2) { font: 700 1.1em var(--mono); }
+.sw { display: inline-block; width: .8em; height: .8em; margin-right: .6em; border: 2px solid var(--navy); vertical-align: -.05em; }
+
+/* timeline */
+.tl { list-style: none; position: relative; margin: 0; padding: 0 0 0 2em; }
+.tl::before { content: ""; position: absolute; left: .5em; top: .6em; bottom: .6em; border-left: .14em dashed var(--navy); }
+.tl li { position: relative; display: flex; align-items: center; flex-wrap: wrap; gap: .1em .7em; margin-bottom: .9em; }
+.tl li::before { content: ""; position: absolute; left: -1.9em; width: .7em; height: .7em; background: var(--cyan); border: .14em solid var(--navy); }
+.tl li.q::before { background: var(--yellow); }
+.tl li.x::before { background: var(--pink-hot); }
+.tl time { font: 700 .7em var(--mono); background: var(--navy); color: var(--cyan); padding: .3em .6em; min-width: 8.5em; letter-spacing: .08em; }
+.tl .flag { margin-left: 0; }
+
+/* complement list */
+.plist { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8em 2.2em; }
+.plist li { display: flex; gap: .9em; align-items: baseline; padding-bottom: .7em; border-bottom: 2px dashed rgba(15,27,61,.3); }
+.plist time { flex: none; font: 700 .68em var(--mono); background: var(--navy); color: var(--pink); padding: .25em .55em; min-width: 5.2em; text-align: center; }
+
+/* method meters */
+.meter { display: inline-flex; gap: .2em; }
+.meter i { width: .75em; height: .75em; border: .12em solid var(--navy); }
+.meter i.on { background: var(--navy); }
+.methods .card { display: grid; grid-template-columns: 9em 1fr 5.5em; gap: 1.2em; align-items: center; box-shadow: none; padding: .8em 1.2em; }
+.methods .card + .card { margin-top: .7em; }
+.methods .card.hot { box-shadow: .3em .3em 0 var(--pink-hot); border-width: .16em; }
+.methods h3 { margin: 0; }
+.methods .n { font: .72em var(--mono); color: var(--muted); text-align: right; }
+
+/* variables x cases matrix */
+.matrix-wrap { display: grid; grid-template-columns: auto 1fr; gap: .6em 1em; align-items: center; }
+.matrix { box-sizing: content-box; width: 28em; max-width: 100%; height: 8em; padding: 0 .35em .35em 0; background-origin: content-box;
+  border: .14em solid var(--navy); background-color: rgba(255,255,255,.35);
+  background-image: conic-gradient(from 90deg at .35em .35em, var(--navy) 90deg, transparent 0);
+  background-size: 2em 2em; }
+.axis { font: 700 .62em var(--mono); letter-spacing: .14em; text-transform: uppercase; }
+.fix { counter-reset: fix; list-style: none; padding: 0; margin: 0; }
+.fix li { counter-increment: fix; position: relative; padding: 0 0 .75em 2.4em; }
+.fix li::before { content: counter(fix, decimal-leading-zero); position: absolute; left: 0; top: .1em; font: 700 .7em var(--mono);
+  background: var(--navy); color: var(--yellow); padding: .15em .35em; }
+
+/* case pills */
+.pills { display: flex; flex-wrap: wrap; gap: .8em; justify-content: center; margin: 1.6em 0; }
+.pills span { border: 2px solid var(--cyan); padding: .55em 1em; font: 700 .72em var(--mono); color: var(--white); background: rgba(15,27,61,.8); box-shadow: .25em .25em 0 var(--pink); }
+
+/* Mill tables */
+.mill table { width: 100%; border-collapse: collapse; margin: .8em 0 .9em; font-size: .9em; }
+.mill th { font: 700 .66em var(--mono); letter-spacing: .1em; text-transform: uppercase; padding: .4em; }
+.mill td { border: 2px solid var(--navy); padding: .4em .6em; text-align: center; font: 700 .78em var(--mono); }
+.mill td:first-child { text-align: left; font-family: var(--sans); font-weight: 600; font-size: .85em; }
+.mill .y { background: var(--navy); color: var(--cyan); }
+.mill .s { background: rgba(255,255,255,.6); }
+.mill .d { background: var(--yellow); }
+
+/* depth vs breadth */
+.axisbar { display: flex; justify-content: space-between; align-items: center; gap: 1em; font: 700 .68em var(--mono);
+  letter-spacing: .16em; text-transform: uppercase; margin-bottom: 1.2em; }
+.axisbar i { flex: 1; border-top: .2em dashed var(--navy); }
+.gr { display: grid; grid-template-columns: auto 1fr; gap: .25em .7em; margin-top: .7em; font-size: .92em; }
+.gr dt { font: 700 .64em var(--mono); letter-spacing: .1em; text-transform: uppercase; align-self: center; padding: .15em .45em; background: var(--navy); color: var(--cyan); }
+.gr dt.r { color: var(--pink); }
+.gr dd { margin: 0; }
+
+/* big question */
+.bigq { font: 700 2em/1.25 var(--display); color: var(--navy); background: var(--white); border: .1em solid var(--navy);
+  box-shadow: .22em .22em 0 var(--navy); padding: .9em 1.1em; margin: 0 auto 1.4em; max-width: 24em; text-align: center; }
+
+/* ---------- HUD ---------- */
+.hud { position: fixed; z-index: 10; top: 1.1em; left: 1.4em; right: 1.4em; display: flex; justify-content: space-between; align-items: center; gap: 1em; pointer-events: none; }
+.hud a { pointer-events: auto; font: 700 .62em var(--mono); letter-spacing: .14em; text-transform: uppercase; text-decoration: none;
+  background: rgba(15,27,61,.9); color: var(--white); border: 2px solid var(--cyan); padding: .7em 1.1em;
+  transition: transform .15s steps(3), box-shadow .15s steps(3), background .15s steps(3); }
+.hud a:hover { transform: translate(-2px,-2px); box-shadow: 4px 4px 0 var(--pink); }
+.hud .back::before { content: "◆ "; color: var(--yellow); animation: blink 1.6s steps(1) infinite; }
+.hud .pdf { border-color: var(--yellow); color: var(--yellow); box-shadow: 4px 4px 0 var(--pink); }
+.hud .pdf:hover { background: var(--yellow); color: var(--navy); box-shadow: 7px 7px 0 var(--pink); }
+.dots { position: fixed; z-index: 10; right: 1.3em; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: .45em; }
+.dots a { width: .75em; height: .75em; border: 2px solid var(--cyan); background: rgba(15,27,61,.85); }
+.dots a[aria-current="true"] { background: var(--yellow); border-color: var(--navy); }
+.counter { position: fixed; z-index: 10; bottom: 1em; left: 50%; transform: translateX(-50%); font: 700 .72em var(--mono);
+  letter-spacing: .2em; background: rgba(15,27,61,.9); color: var(--cyan); padding: .6em 1.2em; }
+.keys { position: fixed; z-index: 10; bottom: 1.3em; right: 1.4em; font: .58em var(--mono); letter-spacing: .16em; text-transform: uppercase;
+  color: var(--cyan); background: rgba(15,27,61,.7); padding: .3em .6em; }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before { animation: none !important; } }
+
+@media screen and (max-width: 760px) {
+  html { scroll-snap-type: y proximity; }
+  .slide { padding: 5em 1.1em 4em; }
+  h1 { font-size: 2.9em; } h2 { font-size: 1.9em; }
+  .grid, .plist, .me, .matrix-wrap { grid-template-columns: 1fr; }
+  .weeks { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .me img { margin: 0 auto; }
+  .methods .card { grid-template-columns: 1fr auto; }
+  .methods .card p { grid-column: 1 / -1; order: 3; }
+  .hp-top { font-size: .5em; }
+  .bigq { font-size: 1.4em; }
+  .dots, .keys { display: none; }
+  .hud a { font-size: .56em; padding: .6em .8em; }
+}
+
+/* ---------- PDF (scripts/deck-pdf.sh prints this page) ---------- */
+@page { size: 1280px 720px; margin: 0; }
+@media print {
+  :root { --u: 12.8px; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; animation: none !important; }
+  html { scroll-snap-type: none; }
+  .hud, .dots, .counter, .keys { display: none; }
+  .slide { width: 1280px; height: 720px; min-height: 0; break-after: page; }
+}
+</style>
+</head>
+<body>
+
+<header class="hud">
+  <a class="back" href="../">Course module</a>
+  <a class="pdf" href="slides.pdf" download="comparative-politics-091726.pdf">⬇ Download PDF</a>
+</header>
+<nav class="dots" aria-label="Slides"></nav>
+<div class="counter" aria-live="polite"><span id="cur">01</span> / <span id="tot">01</span></div>
+<div class="keys" aria-hidden="true">Use keys ↑ ↓</div>
+
+<main>
+
+<!-- 01 · title -->
+<section class="slide navy">
+  <div class="inner center">
+    <p class="kicker">T407016 // Autumn 2026 // Université de Genève</p>
+    <h1>Comparative<br>Politics</h1>
+    <p class="lead">Session 01. What comparison is for.</p>
+    <div class="chips"><span>Thu 17 Sep 2026</span><span>Uni Mail M2160</span><span>Dr. Jihye Park</span></div>
+  </div>
+</section>
+
+<!-- 02 · bio -->
+<section class="slide lav">
+  <div class="inner" style="max-width:50em">
+    <div class="me">
+      <img src="../../assets/img/headshot.jpg" alt="Jihye Park">
+      <div>
+        <span class="tag">Player 01</span>
+        <h2>Hi, I'm Dr. Jihye Park</h2>
+        <p class="role">Postdoctoral Researcher</p>
+        <p style="font-size:1.25em;margin:0">Department of Political Science and International Relations, University of Geneva</p>
+        <p class="role" style="margin-top:1.6em">PhD in Political Science</p>
+        <p style="font-size:1.25em;margin:0">University of Rochester</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 · research -->
+<section class="slide pink">
+  <div class="inner" style="max-width:50em">
+    <div class="head">
+      <span class="tag">What I work on</span>
+      <h2>Research</h2>
+    </div>
+    <div class="grid" style="font-size:1.12em">
+      <div class="card">
+        <h3>International political economy</h3>
+        <ul class="pix">
+          <li>Politics of trade and trade agreements</li>
+          <li>Intellectual property rights</li>
+          <li>Development finance and foreign aid</li>
+          <li>Firm lobbying</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Quantitative methods</h3>
+        <ul class="pix">
+          <li>Large language models and text as data</li>
+          <li>Causal inference</li>
+          <li>Panel data analysis</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 · course map -->
+<section class="slide navy">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">The course</span>
+      <h2>Fourteen weeks, one question</h2>
+      <p class="lead" style="max-width:34em;margin-bottom:0">Why is political life organized so differently across countries, and what follows from those differences? Each week pairs comparative research with a question a policy analyst actually faces.</p>
+    </div>
+    <div class="weeks">
+      <div class="now"><b>W01</b>What comparison is for</div>
+      <div><b>W02</b>States and state capacity</div>
+      <div><b>W03</b>Regimes and measurement</div>
+      <div><b>W04</b>Democratization and erosion<i>Tue 6 Oct</i></div>
+      <div><b>W05</b>Presidents and parliaments</div>
+      <div><b>W06</b>Electoral systems</div>
+      <div><b>W07</b>Parties and representation</div>
+      <div><b>W08</b>Voters, populism and backlash</div>
+      <div><b>W09</b>Interest groups</div>
+      <div><b>W10</b>Welfare states</div>
+      <div><b>W11</b>Institutions and development</div>
+      <div><b>W12</b>Conflict and contention</div>
+      <div><b>W13</b>Globalization and compensation</div>
+      <div class="end"><b>W14</b>Final exam</div>
+    </div>
+    <p class="note">The reading load is light on purpose. <b>One or two texts a week, read closely.</b> Come ready to say what the author claims and whether you believe it.</p>
+  </div>
+</section>
+
+<!-- 05 · logistics -->
+<section class="slide lav">
+  <div class="inner" style="max-width:50em">
+    <div class="head">
+      <span class="tag">Where and when</span>
+      <h2>Two slots a week</h2>
+    </div>
+    <dl class="rows">
+      <dt>Thursday class</dt><dd>16:15 to 18:00 in Uni Mail M2160. The main class, following the weekly schedule.</dd>
+      <dt>Tuesday complement</dt><dd>16:15 to 18:00 in Uni Mail M2170, on five dates. Practical skills the readings assume.</dd>
+      <dt>Room changes</dt><dd>1 October in Uni Mail M R030 and 29 October in Uni Dufour U300</dd>
+      <dt>Moved class</dt><dd>Week 4 moves from Thursday 8 October to Tuesday 6 October, in Uni Mail M2170</dd>
+      <dt>Office hours</dt><dd>Thursdays 14:30 to 16:00 in M4328. No appointment needed.</dd>
+      <dt>Email</dt><dd class="mono">Jihye.Park@unige.ch</dd>
+    </dl>
+    <p class="note">Complement attendance is <b>mandatory</b>, and what we cover there is <b>examinable</b>.</p>
+  </div>
+</section>
+
+<!-- 06 · evaluation -->
+<section class="slide pink">
+  <div class="inner" style="max-width:52em">
+    <div class="head">
+      <span class="tag">Evaluation</span>
+      <h2>How your grade adds up</h2>
+    </div>
+    <div class="hp-top" aria-hidden="true"><span class="s8">Exam 40</span><span class="s5">Quizzes 25</span><span class="s5">Groups 25</span><span class="s2">Part. 10</span></div>
+    <div class="hp" role="img" aria-label="Final exam 40 percent, reading quizzes 25, group work 25, participation 10">
+      <i class="c1"></i><i class="c1"></i><i class="c1"></i><i class="c1"></i><i class="c1"></i><i class="c1"></i><i class="c1"></i><i class="c1"></i>
+      <i class="c2"></i><i class="c2"></i><i class="c2"></i><i class="c2"></i><i class="c2"></i>
+      <i class="c3"></i><i class="c3"></i><i class="c3"></i><i class="c3"></i><i class="c3"></i>
+      <i class="c4"></i><i class="c4"></i>
+    </div>
+    <table class="tbl">
+      <tr><th>Component</th><th>Weight</th><th>When</th></tr>
+      <tr><td><span class="sw c1"></span>Written final exam</td><td>40%</td><td>Thursday 17 December, in class</td></tr>
+      <tr><td><span class="sw c2"></span>Reading quizzes</td><td>25%</td><td>Six quizzes, best four count</td></tr>
+      <tr><td><span class="sw c3"></span>In-class group work</td><td>25%</td><td>Thursday sessions</td></tr>
+      <tr><td><span class="sw c4"></span>Participation</td><td>10%</td><td>Across the semester</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 07 · evaluation rules -->
+<section class="slide navy">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Rules of the game</span>
+      <h2>The fine print</h2>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <span class="chip">25% · Reading quizzes</span>
+        <p>Six 20-minute quizzes open the class and cover the readings and lectures since the previous quiz. Your best four count, so the two weakest drop automatically.</p>
+        <p class="muted">That drop also absorbs absences. There are no make-ups and no paperwork. Miss more than two and come see me.</p>
+      </div>
+      <div class="card">
+        <span class="chip">25% · Group work</span>
+        <p>Groups form in week 2 and stay together. Most Thursdays you apply the week's framework to a case or policy problem you have never seen.</p>
+        <p class="muted">Each group hands in a short written output at the end of class, marked on a three-point scale. Your lowest mark drops.</p>
+      </div>
+      <div class="card">
+        <span class="chip">10% · Participation</span>
+        <p>I grade the quality of your engagement with the reading, on Thursdays and at the complements.</p>
+        <p class="muted">Disagreeing with the author counts. One sharp point about the text beats ten vague ones.</p>
+      </div>
+      <div class="card">
+        <span class="chip">40% · Final exam</span>
+        <p>Written, in person and cumulative, on Thursday 17 December. You write an essay that reasons with the material, often about a country or policy problem that is new to you.</p>
+        <p class="muted">Missing the exam without a documented justification means a failing grade.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 · dates -->
+<section class="slide lav">
+  <div class="inner" style="max-width:54em">
+    <div class="head">
+      <span class="tag">Save these</span>
+      <h2>Dates to know</h2>
+    </div>
+    <div class="grid">
+      <ol class="tl">
+        <li><time>Thu 24 Sep</time><b>Groups form</b></li>
+        <li class="q"><time>Thu 01 Oct</time><b>Quiz 1</b><span class="flag room">Uni Mail M R030</span></li>
+        <li><time>Tue 06 Oct</time><b>Week 4 class and first complement</b></li>
+        <li class="x"><time>Thu 08 Oct</time><b>No class</b></li>
+        <li class="q"><time>Thu 15 Oct</time><b>Quiz 2</b></li>
+        <li class="q"><time>Thu 29 Oct</time><b>Quiz 3</b><span class="flag room">Uni Dufour U300</span></li>
+      </ol>
+      <ol class="tl">
+        <li class="q"><time>Thu 12 Nov</time><b>Quiz 4</b></li>
+        <li class="q"><time>Thu 26 Nov</time><b>Quiz 5</b></li>
+        <li class="q"><time>Thu 10 Dec</time><b>Quiz 6</b></li>
+        <li><time>Tue 15 Dec</time><b>Exam review</b></li>
+        <li class="x"><time>Thu 17 Dec</time><b>Final exam, in class</b></li>
+      </ol>
+    </div>
+    <p class="note">Quizzes open the class, so <b>be on time</b> on quiz days.</p>
+  </div>
+</section>
+
+<!-- 09 · complements -->
+<section class="slide pink">
+  <div class="inner" style="max-width:40em">
+    <div class="head">
+      <span class="tag">Tuesdays 16:15 to 18:00 · M2170</span>
+      <h2>Complement sessions</h2>
+      <p class="sub">Five sessions. Practical skills, no assigned reading unless noted.</p>
+    </div>
+    <ul class="plist" style="grid-template-columns:1fr">
+      <li><time>06 Oct</time>Reading a political science article, shared with the week 4 class</li>
+      <li><time>27 Oct</time>Concepts, measurement and validity</li>
+      <li><time>17 Nov</time>Hypotheses and how they are evaluated</li>
+      <li><time>01 Dec</time>Reading regression tables</li>
+      <li><time>15 Dec</time>Exam review</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 10 · AI and email -->
+<section class="slide navy">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">House rules</span>
+      <h2>AI tools and email</h2>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <span class="chip">Generative AI</span>
+        <p>Use it to understand a reading, check your own summary of an argument, or quiz yourself before the exam. I encourage all of that.</p>
+        <p>Every assessment is handwritten in a supervised room. The real risk is ending up with a fluent summary and no ability to argue with the author.</p>
+        <p class="muted">Trust me, I can spot that gap.</p>
+      </div>
+      <div class="card">
+        <span class="chip">Writing to me</span>
+        <ul class="pix">
+          <li>Put <b>T407016</b> in the subject line</li>
+          <li>Open with a greeting, address me as Dr. Park, sign with your name</li>
+          <li>Check the syllabus first. Rooms, dates and weights are all there.</li>
+          <li>Allow two working days for a reply</li>
+          <li>Anything longer than a paragraph belongs in office hours</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 · section divider -->
+<section class="slide lav">
+  <div class="inner center">
+    <span class="tag">Level 01</span>
+    <h1 style="font-size:4.4em">What comparison<br>is for</h1>
+    <p class="lead muted mono small" style="letter-spacing:.08em">Lijphart, Arend. 1971. "Comparative Politics and the Comparative Method." <i>American Political Science Review</i> 65(3), 682-693.</p>
+  </div>
+</section>
+
+<!-- 12 · warm-up -->
+<section class="slide pink">
+  <div class="inner center">
+    <span class="tag">Warm-up · 3 minutes with your neighbor</span>
+    <p class="sub" style="margin:0 0 1em">A federal office sends you one question</p>
+    <p class="bigq">Would compulsory voting raise turnout in Switzerland?</p>
+    <div class="grid" style="--cols:3;text-align:left">
+      <div class="card"><span class="chip">01</span><p>Which places would you look at?</p></div>
+      <div class="card"><span class="chip">02</span><p>What else differs between those places and Switzerland?</p></div>
+      <div class="card"><span class="chip">03</span><p>Would the experience of one country be enough to convince you?</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 13 · why compare -->
+<section class="slide navy">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Why compare</span>
+      <h2>Compared with what?</h2>
+    </div>
+    <div class="grid" style="--cols:3">
+      <div class="card"><span class="chip">Describe</span><p>Is Swiss turnout low? A single number means little until it sits next to other countries.</p></div>
+      <div class="card"><span class="chip">Explain</span><p>Check whether a factor travels with an outcome across cases, while holding other things roughly constant.</p></div>
+      <div class="card"><span class="chip">Advise</span><p>Before recommending a reform, look at what it did in places that already tried it.</p></div>
+    </div>
+    <p class="note">For Lijphart, comparison is <b>a method of control</b>. We compare to rule out rival explanations for the relationship we care about.</p>
+  </div>
+</section>
+
+<!-- 14 · four methods -->
+<section class="slide lav">
+  <div class="inner" style="max-width:52em">
+    <div class="head">
+      <span class="tag">Lijphart 1971</span>
+      <h2>Four ways to test a claim</h2>
+    </div>
+    <div class="methods">
+      <div class="card"><h3>Experimental</h3><p>You assign the treatment yourself. The strongest control, and rarely possible with whole countries.</p><span class="meter" aria-label="Control 4 of 4"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+      <div class="card"><h3>Statistical</h3><p>Many cases. You control for rival factors mathematically, through partial correlations.</p><span class="meter" aria-label="Control 3 of 4"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+      <div class="card hot"><h3>Comparative</h3><p>The same logic with too few cases for statistics. Control comes from choosing cases carefully.</p><span class="meter" aria-label="Control 2 of 4"><i class="on"></i><i class="on"></i><i></i><i></i></span></div>
+      <div class="card"><h3>Case study</h3><p>One case, studied in depth. It can generate hypotheses, probe them, or show where a theory fails.</p><span class="meter" aria-label="Control 1 of 4"><i class="on"></i><i></i><i></i><i></i></span></div>
+    </div>
+    <p class="note">The squares show how much control each method gives over rival explanations.</p>
+  </div>
+</section>
+
+<!-- 15 · many variables small N -->
+<section class="slide pink">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">The core problem</span>
+      <h2>Many variables, small N</h2>
+    </div>
+    <div class="grid" style="align-items:center;gap:3em">
+      <div class="matrix-wrap" role="img" aria-label="A grid with four rows of cases and many columns of variables">
+        <span></span><span class="axis">Variables that might matter ▶</span>
+        <span class="axis" style="writing-mode:vertical-rl;transform:rotate(180deg)">Cases ▶</span>
+        <div class="matrix"></div>
+      </div>
+      <div>
+        <p><b>Four countries and fourteen candidate explanations.</b> Almost any story fits the data. Lijphart suggests four ways out.</p>
+        <ol class="fix">
+          <li>Add cases where you can, across more countries or a longer period</li>
+          <li>Combine related variables into fewer categories</li>
+          <li>Pick comparable cases that are alike in many respects and differ in the variables you study</li>
+          <li>Let theory narrow the list to the few variables that matter most</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 16 · what is a case -->
+<section class="slide navy">
+  <div class="inner center" style="max-width:48em">
+    <span class="tag">Unit of analysis</span>
+    <h2>A case of what?</h2>
+    <p class="lead">A case is one instance of the thing you want to explain, bounded in space and time.</p>
+    <div class="pills">
+      <span>Switzerland</span><span>Canton of Schaffhausen</span><span>The 2023 federal election</span><span>A single popular vote</span>
+    </div>
+    <p>One country can supply one case or hundreds. Your question decides whether the unit is a country, a canton, an election, a vote, or a voter.</p>
+  </div>
+</section>
+
+<!-- 17 · most similar / most different -->
+<section class="slide lav">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Choosing cases</span>
+      <h2>Most similar or most different</h2>
+    </div>
+    <div class="grid mill">
+      <div class="card">
+        <span class="chip">Mill's method of difference</span>
+        <h3>Most similar systems</h3>
+        <table>
+          <tr><th></th><th>Case A</th><th>Case B</th></tr>
+          <tr><td>Background factors</td><td class="s">same</td><td class="s">same</td></tr>
+          <tr><td>Explanatory factor</td><td class="y">yes</td><td class="d">no</td></tr>
+          <tr><td>Outcome</td><td class="y">yes</td><td class="d">no</td></tr>
+        </table>
+        <p>Hold the background fixed. See whether the one factor that differs moves with the outcome.</p>
+      </div>
+      <div class="card">
+        <span class="chip">Mill's method of agreement</span>
+        <h3>Most different systems</h3>
+        <table>
+          <tr><th></th><th>Case A</th><th>Case B</th></tr>
+          <tr><td>Background factors</td><td class="d">differ</td><td class="d">differ</td></tr>
+          <tr><td>Explanatory factor</td><td class="y">yes</td><td class="y">yes</td></tr>
+          <tr><td>Outcome</td><td class="y">yes</td><td class="y">yes</td></tr>
+        </table>
+        <p>Let the background vary. See whether the one shared factor comes with a shared outcome.</p>
+      </div>
+    </div>
+    <p class="note">John Stuart Mill set out both logics in <i>A System of Logic</i> (1843). Lijphart's comparable cases follow the most similar design.</p>
+  </div>
+</section>
+
+<!-- 18 · depth vs breadth -->
+<section class="slide pink">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">The trade-off</span>
+      <h2>Depth or breadth</h2>
+    </div>
+    <div class="axisbar"><span>◀ Depth</span><i></i><span>Breadth ▶</span></div>
+    <div class="grid" style="--cols:3">
+      <div class="card">
+        <span class="chip">1 case</span><h3>Case study</h3>
+        <dl class="gr"><dt>Gain</dt><dd>Context, sequence and precise concepts</dd><dt class="r">Risk</dt><dd>Hard to generalize</dd></dl>
+      </div>
+      <div class="card">
+        <span class="chip">A few cases</span><h3>Small-N comparison</h3>
+        <dl class="gr"><dt>Gain</dt><dd>Control through case choice, detail intact</dd><dt class="r">Risk</dt><dd>Too many variables for the cases</dd></dl>
+      </div>
+      <div class="card">
+        <span class="chip">Many cases</span><h3>Large-N statistics</h3>
+        <dl class="gr"><dt>Gain</dt><dd>General patterns and estimates of uncertainty</dd><dt class="r">Risk</dt><dd>Thin measures that stretch concepts</dd></dl>
+      </div>
+    </div>
+    <p class="note">Many of this semester's readings sit on the right, and the Tuesday complements teach you to read them.</p>
+  </div>
+</section>
+
+<!-- 19 · traps -->
+<section class="slide navy">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Watch out</span>
+      <h2>Three traps</h2>
+    </div>
+    <div class="grid" style="--cols:3">
+      <div class="card">
+        <span class="chip">Selecting on the outcome</span>
+        <p>Study only the countries that democratized and every factor they share looks like a cause. You also need the cases where it did not happen.</p>
+        <p class="muted small mono">Geddes 1990</p>
+      </div>
+      <div class="card">
+        <span class="chip">Cases that copy each other</span>
+        <p>Neighbors learn from and imitate one another, so countries are rarely independent observations. This is known as Galton's problem.</p>
+      </div>
+      <div class="card">
+        <span class="chip">Stretched concepts</span>
+        <p>Carry a concept to too many places and it ends up meaning very little. Sartori calls this conceptual stretching.</p>
+        <p class="muted small mono">Sartori 1970</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 20 · back to the ministry -->
+<section class="slide lav">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Your turn · 5 minutes in pairs</span>
+      <h2>Back to the federal office</h2>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <span class="chip">Across cantons</span>
+        <h3>Schaffhausen</h3>
+        <p>The only canton that still requires citizens to vote, and its turnout is regularly among the highest in the country. Same federal ballots, different rule.</p>
+      </div>
+      <div class="card">
+        <span class="chip">Over time</span>
+        <h3>The Netherlands</h3>
+        <p>Dropped compulsory voting in 1970. Turnout at the next national election fell sharply.</p>
+      </div>
+    </div>
+    <p class="bigq" style="font-size:1.35em;margin-top:1.6em;max-width:30em">Which design is each comparison? What does it settle, and what could still fool you?</p>
+  </div>
+</section>
+
+<!-- 21 · next week -->
+<section class="slide pink">
+  <div class="inner" style="max-width:52em">
+    <div class="head">
+      <span class="tag">Next up</span>
+      <h2>Before Thursday 24 September</h2>
+      <p class="sub">Week 02. States and state capacity.</p>
+    </div>
+    <div class="grid">
+      <div class="card"><span class="chip">Read</span><p>Tilly, Charles. 1985. "War Making and State Making as Organized Crime." In <i>Bringing the State Back In</i>, edited by Evans, Rueschemeyer and Skocpol. Cambridge University Press, 169-191.</p></div>
+      <div class="card"><span class="chip">Read</span><p>Hanson, Jonathan K., and Rachel Sigman. 2021. "Leviathan's Latent Dimensions. Measuring State Capacity for Comparative Political Research." <i>Journal of Politics</i> 83(4), 1495-1510.</p></div>
+    </div>
+    <ol class="tl" style="margin-top:2em">
+      <li><time>Thu 24 Sep</time><b>Groups form in class</b></li>
+      <li class="q"><time>Thu 01 Oct</time><b>Quiz 1</b><span class="flag room">Uni Mail M R030</span></li>
+      <li><time>Tue 06 Oct</time><b>Week 4 class and reading a political science article</b><span class="flag room">M2170</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 22 · end -->
+<section class="slide navy">
+  <div class="inner center">
+    <p class="kicker">Progress saved</p>
+    <h1>Questions?</h1>
+    <p class="lead">Office hours Thursdays 14:30 to 16:00 in M4328</p>
+    <div class="chips"><span>Jihye.Park@unige.ch</span><span>jihyepark.me/comparative-politics-maspo-fall2026</span></div>
+  </div>
+</section>
+
+</main>
+
+<script>
+const slides = [...document.querySelectorAll('.slide')];
+const dots = document.querySelector('.dots');
+const cur = document.getElementById('cur');
+const pad = n => String(n).padStart(2, '0');
+document.getElementById('tot').textContent = pad(slides.length);
+
+slides.forEach((s, i) => {
+  s.id = 's' + (i + 1);
+  dots.insertAdjacentHTML('beforeend', `<a href="#s${i + 1}" aria-label="Slide ${i + 1}"></a>`);
+});
+
+let now = 0;
+const io = new IntersectionObserver(entries => entries.forEach(e => {
+  if (!e.isIntersecting) return;
+  now = slides.indexOf(e.target);
+  cur.textContent = pad(now + 1);
+  dots.querySelectorAll('a').forEach((d, i) => d.setAttribute('aria-current', i === now));
+}), { rootMargin: '-50% 0px -50% 0px' }); // the slide crossing the middle line is current
+slides.forEach(s => io.observe(s));
+
+const go = i => slides[Math.max(0, Math.min(slides.length - 1, i))].scrollIntoView({ behavior: 'smooth' });
+addEventListener('keydown', e => {
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  const step = { ArrowDown: 1, ArrowRight: 1, PageDown: 1, ' ': e.shiftKey ? -1 : 1, ArrowUp: -1, ArrowLeft: -1, PageUp: -1 }[e.key];
+  if (step) { e.preventDefault(); go(now + step); }
+  else if (e.key === 'Home') { e.preventDefault(); go(0); }
+  else if (e.key === 'End') { e.preventDefault(); go(slides.length - 1); }
+});
+</script>
+</body>
+</html>

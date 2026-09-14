@@ -1,0 +1,64 @@
+---
+layout: page
+title: Comparative Politics
+subtitle: T407016 // Autumn 2026 // Université de Genève
+permalink: /comparative-politics-maspo-fall2026/
+theme: lavender
+# Slides live in ./MMDDYY/index.html. Set slides: true once a deck is uploaded.
+sessions:
+  - { date: 2026-09-17, kind: class, week: "01", title: "Introduction. What comparison is for.", slides: true }
+  - { date: 2026-09-24, kind: class, week: "02", title: "States and state capacity." }
+  - { date: 2026-10-01, kind: class, week: "03", title: "Regimes and how we measure them.", quiz: 1, room: "Uni Mail M R030" }
+  - { date: 2026-10-06, kind: class, week: "04 + complement", title: "Democratization and democratic erosion. Reading a political science article.", room: "Uni Mail M2170" }
+  - { date: 2026-10-08, kind: class, week: "04", title: "Democratization and democratic erosion.", canceled: "Moved to Tue 6 Oct" }
+  - { date: 2026-10-15, kind: class, week: "05", title: "Executive design. Presidents and parliaments.", quiz: 2 }
+  - { date: 2026-10-22, kind: class, week: "06", title: "Electoral systems." }
+  - { date: 2026-10-27, kind: complement, title: "Concepts, measurement and validity." }
+  - { date: 2026-10-29, kind: class, week: "07", title: "Parties and representation.", quiz: 3, room: "Uni Dufour U300" }
+  - { date: 2026-11-05, kind: class, week: "08", title: "Voters, populism and backlash." }
+  - { date: 2026-11-12, kind: class, week: "09", title: "Interest groups and who gets the policy they want.", quiz: 4 }
+  - { date: 2026-11-17, kind: complement, title: "Hypotheses and how they are evaluated." }
+  - { date: 2026-11-19, kind: class, week: "10", title: "Welfare states and redistribution." }
+  - { date: 2026-11-26, kind: class, week: "11", title: "Institutions and development.", quiz: 5 }
+  - { date: 2026-12-01, kind: complement, title: "Reading regression tables." }
+  - { date: 2026-12-03, kind: class, week: "12", title: "Conflict and contention." }
+  - { date: 2026-12-10, kind: class, week: "13", title: "Globalization, compensation and domestic politics.", quiz: 6 }
+  - { date: 2026-12-15, kind: complement, title: "Exam review." }
+  - { date: 2026-12-17, kind: class, week: "14", title: "Final exam. Written, in class, cumulative." }
+---
+
+<div class="course-info">
+  <dl>
+    <dt>Instructor</dt><dd>Dr. Jihye Park</dd>
+    <dt>Class</dt><dd>Thursdays 16:15 to 18:00, Uni Mail M2160</dd>
+    <dt>Complement</dt><dd>Tuesdays 16:15 to 18:00, Uni Mail M2170</dd>
+    <dt>Office hours</dt><dd>Thursdays 14:30 to 16:00, M4328</dd>
+    <dt>Email</dt><dd><a href="mailto:Jihye.Park@unige.ch">Jihye.Park@unige.ch</a></dd>
+  </dl>
+  <a href="CP_Syllabus_Autumn2026.pdf" class="cv-download" target="_blank" rel="noopener">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+    Syllabus PDF
+  </a>
+</div>
+
+<h2>Sessions</h2>
+<p class="session-hint">Click a highlighted date to open its slides.</p>
+
+<ol class="session-list">
+{% for s in page.sessions %}
+{% assign code = s.date | date: "%m%d%y" %}
+<li class="session session-{{ s.kind }}{% if s.canceled %} session-canceled{% endif %}">
+{% if s.slides %}<a href="{{ code }}/">{% else %}<div>{% endif %}
+  <span class="session-date"><b>{{ s.date | date: "%d" }}</b>{{ s.date | date: "%b" }} &middot; {{ s.date | date: "%a" }}</span>
+  <span class="session-body">
+    <span class="session-kind">{% if s.kind == "class" %}Week {{ s.week }}{% else %}Complement{% endif %}</span>
+    <span class="session-title">{{ s.title }}</span>
+    {% if s.quiz %}<span class="session-flag">Quiz {{ s.quiz }}</span>{% endif %}
+    {% if s.room %}<span class="session-flag room">Room {{ s.room }}</span>{% endif %}
+    {% if s.canceled %}<span class="session-flag off">{{ s.canceled }}</span>{% endif %}
+  </span>
+  {% if s.slides %}<span class="session-go">Slides &#9656;</span>{% endif %}
+{% if s.slides %}</a>{% else %}</div>{% endif %}
+</li>
+{% endfor %}
+</ol>
