@@ -27,7 +27,11 @@ theme: navy
 
 <div class="home-bio">
   <!-- UPDATE: Replace this placeholder with your actual bio -->
-  <p> I am a Postdoctoral Researcher at the Department of Political Science and International Relations at the University of Geneva, Switzerland. My research spans various topics in international political economy, including politics of trade, development finance, firm lobbying, and quantitative methods (with particular interest in large language models and causal inference). </p>
+  <p> I am a Postdoctoral Researcher at the Department of Political Science and International Relations at the University of Geneva, Switzerland. My research spans various topics in international political economy, including politics of trade, development finance, firm lobbying, and quantitative methods (with particular interest in large language models and causal inference). My job market paper, "Aid, Lending, and TRIPS," was recently published in the <em>Review of International Organizations</em>. It shows that the United States buys stricter intellectual property standards from developing countries by paying for them, and that the channel of payment depends on who is receiving. Democracies get bilateral aid, which Congress appropriates, while autocracies get International Finance Corporation lending routed to their private sectors, which never comes before Congress. </p>
+
+  <p> I am now extending this agenda to the politics of computing capacity. Every advanced economy has declared AI hardware a matter of national security while depending on a very short list of firms for the processors, the fabrication tools, and the cloud capacity that the declaration concerns. I study how corporate coalitions shape the scope of export controls and who gets designated strategic, building language models that turn regulatory dockets, consultation archives, and lobbying disclosures into data. </p>
+
+  <p> I am on the 2026-27 academic job market. </p>
   <p> For those who are curious about how to pronounce my first name, it's [JEE-hey] in phonetic spelling. It means "wisdom" in Korean, just for your extra piece of information :) </p>
   <p> If you'd like to know more about me when I'm off-duty, visit my Attic and get a sneak peek of my life as a painter and a LEGO aficionado! And one last thing - Go <a href="https://www.buffalobills.com" target="_blank">BILLS</a>!🏈 </p>
 </div>

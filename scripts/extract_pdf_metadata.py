@@ -65,6 +65,7 @@ JOURNAL_ABBREVS = {
     "POQ": "Public Opinion Quarterly",
     "RIO": "Review of International Organizations",
     "RIPE": "Review of International Political Economy",
+    "WTR": "World Trade Review",
     "REP": "Review of Economics and Politics",
 }
 

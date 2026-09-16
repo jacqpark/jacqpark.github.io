@@ -95,26 +95,27 @@
     to the initiation of IMF program negotiations and find that US financial firms shift their lobbying efforts when the Fund negotiates with countries where they have investments. Money-center banks and
     non-banking financial firms shift in opposite directions, which makes their lobbying portfolios converge: banks reduce their lobbying about banking and increase lobbying about finance, while non-bank
     financial firms decrease lobbying about finance and increase lobbying about banking.'
-- title: 'Who’s More Willing to Bend: Intellectual Property Rights Protection in North-South Trade Agreements'
+- title: 'Who Can Pay for Compliance: Donor Aid Governance and TRIPS-plus Commitments in North-South Trade Agreements'
   authors: Jihye Park
   status: Revise & Resubmit, International Studies Quarterly
   category: working-papers
-  github_pdf: papers/working-papers/02__whos-more-willing-to-bend__RR-ISQ.pdf
+  github_pdf: papers/working-papers/02__who-can-pay-for-compliance__RR-ISQ.pdf
   year: 2026
   sort_order: 2
-  abstract: Introduction of the Agreement on Trade-Related Aspects of Intellectual Property Rights (TRIPS) marked the new era of intellectual property (IP) rights protection through preferential trade agreements
-    (PTAs). TRIPS-plus IP rules impose substantial domestic costs on developing countries, yet many governments adopt them through preferential trade agreements with the United States and the European Union.
-    This study explains TRIPS-plus adoption as a function of internal structural vulnerability and external political support. Developing countries whose labor-intensive exports rely heavily on discretionary
-    preference schemes such as the Generalized System of Preferences face credible threats of suspension and therefore stronger incentives to formalize access through PTAs that include TRIPS-plus rules.
-    A refined measure of political trade dependence that isolates these sensitive sectors captures this vulnerability more accurately than aggregate indicators, first introduced by Manger and Shadlen (2014).
-    Foreign aid functions as a complementary mechanism that helps governments manage the domestic adjustment costs of strengthened IP protections, although compensation emerges only when obligations are
-    substantively deep and donors can mobilize aid coherently. Empirically, TWFE OLS estimates show that higher PTD significantly increases the likelihood of adopting TRIPS-plus provisions. PanelMatch results
-    confirm a short-lived rise in US aid after signature, while EU aid remains unresponsive due to weaker IP obligations and donor fragmentation.
+  abstract: Developing countries that accept TRIPS-plus provisions in North-South trade agreements take on concentrated domestic costs, yet the donor aid they receive around signature varies sharply.
+    When does aid operate as compensation for the concession? Prevailing accounts of TRIPS-plus diffusion emphasize market-access leverage, leaving donor side payments outside the bargain. This study
+    argues that aid operates as TRIPS-plus compensation only when three conditions hold jointly. Two sit on the donor side. The donor's IP demands must be intrusive enough to generate politically salient
+    adjustment costs, and its aid governance must be centralized enough to tie disbursements to discrete concessions rather than long-running developmental programming. The third sits on the recipient
+    side, where domestic institutions must make the policy commitment credible to the donor. The United States satisfies the two donor-side conditions and the European Union satisfies neither, while
+    recipient regime type governs the third. Using a panel of developing economies in the WTO from 1995 to 2024 and a PanelMatch design, I find that democratic countries signing TRIPS-plus agreements
+    with the United States experience an immediate increase in US aid in the signature year on the order of 36%, concentrated among recipients with prior major-donor trade experience, while the observed
+    autocratic signatories show no comparable increase. TRIPS-plus agreements with the European Union produce no sustained aid response from either regime type. Donor institutional coherence and the
+    intrusiveness of IP demands sit at the center of TRIPS-plus diffusion.
 - title: The Political Economy of Defense in WTO Anti-Dumping Disputes
   authors: Jihye Park
-  status: Under review
+  status: Revise & Resubmit, World Trade Review
   category: working-papers
-  github_pdf: papers/working-papers/00__political-econ-defense-antidumping__UR.pdf
+  github_pdf: papers/working-papers/00__political-econ-defense-antidumping__RR-WTR.pdf
   year: 2026
   sort_order: 0
   abstract: The WTO dispute settlement mechanism adjudicates trade conflicts through rule-based procedures ostensibly insulated from domestic politics, yet the pace at which disputes reach resolution varies
