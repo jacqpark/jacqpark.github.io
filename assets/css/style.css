@@ -340,6 +340,9 @@ strong {
   color: var(--fg-strong);
 }
 
+/* accent color without bold, matches link color */
+.hl { color: var(--link); }
+
 em {
   font-style: italic;
 }
