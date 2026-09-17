@@ -173,6 +173,19 @@ table.tbl { width: 100%; border-collapse: collapse; margin-top: 2.2em; }
 .methods .card.hot { box-shadow: .3em .3em 0 var(--pink-hot); border-width: .16em; }
 .methods h3 { margin: 0; }
 .methods .n { font: .72em var(--mono); color: var(--muted); text-align: right; }
+/* case study card opens to Lijphart's six types */
+.methods details.card { display: block; }
+.methods summary { display: grid; grid-template-columns: 9em 1fr 5.5em; gap: 1.2em; align-items: center; cursor: pointer; list-style: none; }
+.methods summary::-webkit-details-marker { display: none; }
+.methods summary .flag::after { content: " ▾"; }
+.methods details[open] .flag::after { content: " ▴"; }
+.methods .meter { grid-column: -2; }
+.methods:has(details[open]) > div p, .methods:has(details[open]) + .note { display: none; }
+.types { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto; grid-auto-flow: column; gap: .5em 1.4em; margin-top: .8em; padding-top: .9em; border-top: 2px dashed rgba(15,27,61,.3); line-height: 1.3; }
+.fix.types li { padding-bottom: 0; }
+.types b { display: block; }
+.types .hot b { display: table; background: linear-gradient(transparent 55%, var(--pink) 0); }
+.types-note { margin: .8em 0 0; font-size: .85em; color: var(--muted); }
 
 /* variables x cases matrix */
 .matrix-wrap { display: grid; grid-template-columns: auto 1fr; gap: .6em 1em; align-items: center; }
@@ -242,6 +255,8 @@ table.tbl { width: 100%; border-collapse: collapse; margin-top: 2.2em; }
   .bio { font-size: 1.2em; }
   .methods .card { grid-template-columns: 1fr auto; }
   .methods .card p { grid-column: 1 / -1; order: 3; }
+  .methods summary { grid-template-columns: 1fr auto; }
+  .types { grid-template-columns: 1fr; grid-auto-flow: row; }
   .hp-top { font-size: .5em; }
   .bigq { font-size: 1.4em; }
   .dots, .keys { display: none; }
@@ -514,7 +529,7 @@ table.tbl { width: 100%; border-collapse: collapse; margin-top: 2.2em; }
   <div class="inner center">
     <span class="tag">Warm-up · 3 minutes with your neighbor</span>
     <p class="sub" style="margin:0 0 1em">A federal office sends you one question</p>
-    <p class="bigq">Would compulsory voting raise turnout in Switzerland?</p>
+    <p class="bigq">Would joining the EU single market raise Swiss exports?</p>
     <div class="grid" style="--cols:3;text-align:left">
       <div class="card"><span class="chip">01</span><p>Which places would you look at?</p></div>
       <div class="card"><span class="chip">02</span><p>What else differs between those places and Switzerland?</p></div>
@@ -531,7 +546,7 @@ table.tbl { width: 100%; border-collapse: collapse; margin-top: 2.2em; }
       <h2>Compared with what?</h2>
     </div>
     <div class="grid" style="--cols:3">
-      <div class="card"><span class="chip">Describe</span><p>Is Swiss turnout low? A single number means little until it sits next to other countries.</p></div>
+      <div class="card"><span class="chip">Describe</span><p>Does Switzerland depend on the EU market? Its export share means little until it sits next to other countries.</p></div>
       <div class="card"><span class="chip">Explain</span><p>Check whether a factor travels with an outcome across cases, while holding other things roughly constant.</p></div>
       <div class="card"><span class="chip">Advise</span><p>Before recommending a reform, look at what it did in places that already tried it.</p></div>
     </div>
@@ -550,7 +565,18 @@ table.tbl { width: 100%; border-collapse: collapse; margin-top: 2.2em; }
       <div class="card"><h3>Experimental</h3><p>You assign the treatment yourself. The strongest control, and rarely possible with whole countries.</p><span class="meter" aria-label="Control 4 of 4"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
       <div class="card"><h3>Statistical</h3><p>Many cases. You control for rival factors mathematically, through partial correlations.</p><span class="meter" aria-label="Control 3 of 4"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
       <div class="card hot"><h3>Comparative</h3><p>The same logic with too few cases for statistics. Control comes from choosing cases carefully.</p><span class="meter" aria-label="Control 2 of 4"><i class="on"></i><i class="on"></i><i></i><i></i></span></div>
-      <div class="card"><h3>Case study</h3><p>One case, studied in depth. It can generate hypotheses, probe them, or show where a theory fails.</p><span class="meter" aria-label="Control 1 of 4"><i class="on"></i><i></i><i></i><i></i></span></div>
+      <details class="card">
+        <summary><h3>Case study</h3><p>One case, studied in depth. It can generate hypotheses, probe them, or show where a theory fails. <span class="flag">6 types</span></p><span class="meter" aria-label="Control 1 of 4"><i class="on"></i><i></i><i></i><i></i></span></summary>
+        <ol class="fix types">
+          <li><b>Atheoretical</b>Pure description of one case. Raw material for later theory.</li>
+          <li><b>Interpretative</b>Uses an established theory to shed light on the case itself.</li>
+          <li class="hot"><b>Hypothesis-generating</b>Turns a hunch into hypotheses to test elsewhere.</li>
+          <li><b>Theory-confirming</b>A fit that strengthens a proposition slightly.</li>
+          <li><b>Theory-infirming</b>A misfit that weakens a proposition slightly.</li>
+          <li class="hot"><b>Deviant</b>Studies an outlier to learn what the theory missed.</li>
+        </ol>
+        <p class="types-note">Types 1 and 2 serve an interest in the case. Types 3 to 6 build theory, and Lijphart values 3 and 6 most.</p>
+      </details>
     </div>
     <p class="note">The squares show how much control each method gives over rival explanations.</p>
   </div>
@@ -589,9 +615,9 @@ table.tbl { width: 100%; border-collapse: collapse; margin-top: 2.2em; }
     <h2>A case of what?</h2>
     <p class="lead">A case is one instance of the thing you want to explain, bounded in space and time.</p>
     <div class="pills">
-      <span>Switzerland</span><span>Canton of Schaffhausen</span><span>The 2023 federal election</span><span>A single popular vote</span>
+      <span>Switzerland</span><span>Swiss trade with Germany</span><span>The 1999 bilateral agreements</span><span>A watchmaker in the Jura</span>
     </div>
-    <p>One country can supply one case or hundreds. Your question decides whether the unit is a country, a canton, an election, a vote, or a voter.</p>
+    <p>One country can supply one case or hundreds. Your question decides whether the unit is a country, a trading pair, an agreement, or a firm.</p>
   </div>
 </section>
 
@@ -691,14 +717,14 @@ table.tbl { width: 100%; border-collapse: collapse; margin-top: 2.2em; }
     </div>
     <div class="grid">
       <div class="card">
-        <span class="chip">Across cantons</span>
-        <h3>Schaffhausen</h3>
-        <p>The only canton that still requires citizens to vote, and its turnout is regularly among the highest in the country. Same federal ballots, different rule.</p>
+        <span class="chip">Across countries</span>
+        <h3>Austria</h3>
+        <p>Joined the EU in 1995, two years after Swiss voters said no to the European Economic Area. Like Switzerland, it is small, wealthy, alpine and built on exports.</p>
       </div>
       <div class="card">
         <span class="chip">Over time</span>
-        <h3>The Netherlands</h3>
-        <p>Dropped compulsory voting in 1970. Turnout at the next national election fell sharply.</p>
+        <h3>The United Kingdom</h3>
+        <p>Left the EU single market and customs union at the start of 2021. Its goods trade with the EU dropped in the months that followed.</p>
       </div>
     </div>
     <p class="bigq" style="font-size:1.35em;margin-top:1.6em;max-width:30em">Which design is each comparison? What does it settle, and what could still fool you?</p>
