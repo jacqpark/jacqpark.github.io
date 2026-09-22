@@ -73,6 +73,11 @@
 
 # --- COURSE PROPOSALS ---
 
+- title: "Multinational Corporations Shaping Global Trade Governance"
+  level: "Graduate / Undergraduate"
+  type: "proposal"
+  description: "International political economy has spent the past two decades rebuilding its account of trade governance around firms. This course teaches that literature and applies it to the rules being written now. It starts with the bargaining literature on host states and foreign investors and the firm-level turn that supplied the evidence. It then covers the domains where corporate influence over public rules is most visible and most contested. These include intellectual property, labor and environmental standards in supply chains, corporate taxation, subsidies and development finance, economic security and investment screening, and the export controls and industrial policy now built around semiconductors and artificial intelligence. Students work with lobbying disclosures, trade and investment data, regulatory comment dockets, and corporate filings, and test claims about corporate influence against the public record."
+
 - title: "Applied LLMs for Text and Data Analysis"
   level: "Graduate"
   type: "proposal"
@@ -82,9 +87,3 @@
   level: "Graduate / Undergraduate"
   type: "proposal"
   description: "This course is designed to familiarize students with the empirical tools widely used in political science in particular and in social science more broadly. Throughout this course, students will learn data analysis and statistical inference techniques using R and RStudio, including descriptive statistics, hypothesis testing, quasi-experimental methods, and regression analysis."
-  
-- title: "Political Economy of Climate Change"
-  level: "Graduate / Undergraduate"
-  type: "proposal"
-  description: "This course aims to introduce the literature of climate politics to students, taking a political economy approach. Students can expect to learn various topics related to
-climate politics, including but not limited to microfoundational factors embedded in climate politics, as well as redistributive implications. The course culminates with the final term paper assignment, where students are expected to craft their own empirical research ideas to explore a particular topic of their interest they have learned in the course."

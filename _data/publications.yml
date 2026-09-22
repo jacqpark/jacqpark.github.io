@@ -44,17 +44,10 @@
     top priority that blocks generic drugs past patent expiration, uniquely mobilizes both instruments.
   status: RIO
   sort_order: 0
-- title: 'Lobbying for Development: How Firms Shape Investment Decisions in US Development Finance Corporation'
+- title: 'The US International Development Finance Corporation and Sponsor Firm Politics in Frontier Investment'
   authors: Jihye Park, Nicolas Bau, Simone Dietrich
   category: in-progress
-  description: 'Research on development finance institutions (DFIs) has concentrated on state motives, governance, and project outcomes, with limited attention to how private firms use these instruments
-    to pursue strategic objectives. This paper reframes projects of the US International Development Finance Corporation (DFC) as geoeconomic tools through which firms, especially in geopolitically sensitive
-    sectors, integrate corporate political activity with development finance. By linking congressional and executive lobbying disclosures to DFC project records, the study analyzes how corporate sponsors
-    recalibrate lobbying across venues, policy domains, and project phases, focusing on energy projects where development finance intersects with strategic competition, supply security, and geopolitical
-    risk. PanelMatch estimates indicate a systematic temporal shift in lobbying venues: energy sector sponsors increase congressional lobbying during the first two years after project implementation, while
-    lobbying directed at the Executive Office of the President and the Department of Energy peaks two to three years later, as congressional activity declines. Disaggregated evidence also reveals risk-contingent
-    behavior: sponsors of projects in financially risky recipient countries sharply increase budget-related congressional lobbying immediately after implementation, but this surge fades within a few years,
-    consistent with short-term political insurance rather than sustained influence investment.'
+  description: 'Development finance institutions back private firms in difficult markets with loans, guarantees, and political risk insurance. Research has concentrated on state motives and allocation, and much less on how the firms that hold public backing engage their home governments. We study the US International Development Finance Corporation (DFC) and its predecessor, the Overseas Private Investment Corporation (OPIC), and argue that the form of backing shapes when sponsor firms lobby their home government about the host country. Direct loans make the DFC a creditor with its own incentives to monitor the investment, giving sponsor firms little reason to increase political engagement after the award. Guarantees and insurance instead create contingent public commitment whose consequences depend on later events, thus increasing sponsor firms'' incentives to seek home government support when host country risks emerge. Linking OPIC and DFC project records to federal lobbying disclosures in a firm-country-year panel covering 54 sponsor firms from 2000 to 2021, we find that lobbying on the host country rises about tenfold after a guarantee or insurance award and shows no detectable change after a direct loan. Loan sponsors are often engaged on the host country before the award, and prior lobbying on a country raises the odds of a direct loan there about fivefold. The findings shift the study of development finance from the allocation of public backing to the political relationship it creates. They also show how the design of public commitments can shape corporate political activity and the politics around private investment in recipient countries.'
 - title: 'When Do National Development Finance Institutions Mobilize Private Capital?: Evidence from Infrastructure Projects'
   authors: Jim Qian, Nicolas Bau, Simone Dietrich, Jihye Park
   category: in-progress
