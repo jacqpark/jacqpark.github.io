@@ -6,6 +6,7 @@
 # --- INSTATS WEBINARS ---
 
 - title: "Python Literacy for Text-as-Data"
+  url: "https://instats.org/seminar/text-as-data-with-python"
   course_module: "https://github.com/jacqpark/instats-python-workshop"
   type: "webinar"
   description: "A 3-day hands-on webinar that takes social scientists with no programming background from their first line of Python to a language model they fine-tune themselves. Day 1 teaches Python fundamentals through record linkage, matching messy datasets by spelling and by meaning. Day 2 models the themes in a corpus of party manifestos with LDA and the Structural Topic Model, then opens up BERT-style encoders and builds the inputs they need. Day 3 fine-tunes a left-right classifier with SetFit, tests it against a bag-of-words baseline, and saves it for reuse. All sessions run live in Google Colab and build on the R and Stata habits participants already have."
