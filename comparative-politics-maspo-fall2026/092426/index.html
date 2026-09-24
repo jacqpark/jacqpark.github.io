@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Session 02 · Comparative Politics · Jihye Park</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tektur:wght@400;600;700;800&family=Chakra+Petch:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* 8-Bit Orbit deck. Same palette and fonts as assets/css/style.css. */
+:root {
+  --void: #0A0E27; --navy: #0F1B3D; --pink: #F0A6CA; --pink-hot: #E87CB2;
+  --cyan: #5EDCF4; --yellow: #F4D03F; --lav: #E2D5F2; --white: #F8F4FF;
+  --display: 'Tektur', 'Courier New', monospace;
+  --sans: 'Chakra Petch', 'Helvetica Neue', Arial, sans-serif;
+  --mono: 'Space Mono', 'Courier New', monospace;
+  /* 1% of the largest 16:9 box that fits the window. Everything scales from it. */
+  --u: min(1vw, 1.7778vh);
+  --base: max(15px, calc(var(--u) * 1.35));
+}
+* { box-sizing: border-box; }
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; background: var(--void); }
+body { margin: 0; font: 400 var(--base)/1.5 var(--sans); -webkit-font-smoothing: antialiased; }
+p { margin: 0 0 .6em; }
+a { color: inherit; }
+
+/* ---------- Slides and themes ---------- */
+.slide {
+  position: relative; min-height: 100vh; min-height: 100dvh;
+  display: grid; place-items: center; overflow: hidden;
+  padding: 4.2em 5em 3.6em; scroll-snap-align: start;
+  background-color: var(--bg); color: var(--fg);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: var(--cell) var(--cell);
+}
+.inner { position: relative; z-index: 1; width: 100%; max-width: 62em; }
+.navy { --bg: var(--void); --fg: var(--lav); --strong: var(--white); --muted: rgba(226,213,242,.66);
+  --h: var(--cyan); --hs: var(--yellow); --card: rgba(15,27,61,.78); --line: rgba(94,220,244,.5);
+  --shadow: var(--pink); --grid: rgba(94,220,244,.05); --cell: calc(var(--u) * 2); }
+.lav { --bg: var(--lav); --fg: var(--navy); --strong: var(--navy); --muted: rgba(15,27,61,.64);
+  --h: var(--navy); --hs: var(--pink-hot); --card: rgba(255,255,255,.55); --line: var(--navy);
+  --shadow: var(--pink-hot); --grid: rgba(15,27,61,.07); --cell: calc(var(--u) * 1.1); }
+.pink { --bg: var(--pink); --fg: var(--navy); --strong: var(--navy); --muted: rgba(15,27,61,.7);
+  --h: var(--navy); --hs: var(--cyan); --card: rgba(255,255,255,.45); --line: var(--navy);
+  --shadow: var(--cyan); --grid: rgba(15,27,61,.08); --cell: calc(var(--u) * 1.1); }
+
+/* pixel stars, scanlines and vignette on navy slides */
+.navy::before, .navy::after { content: ""; position: absolute; inset: 0; pointer-events: none; }
+.navy::before {
+  background:
+    linear-gradient(var(--cyan),var(--cyan)) 7% 12%/4px 4px,
+    linear-gradient(var(--yellow),var(--yellow)) 19% 30%/3px 3px,
+    linear-gradient(var(--pink),var(--pink)) 12% 78%/5px 5px,
+    linear-gradient(var(--cyan),var(--cyan)) 28% 88%/3px 3px,
+    linear-gradient(var(--yellow),var(--yellow)) 36% 9%/4px 4px,
+    linear-gradient(var(--pink),var(--pink)) 44% 64%/3px 3px,
+    linear-gradient(var(--cyan),var(--cyan)) 52% 94%/5px 5px,
+    linear-gradient(var(--yellow),var(--yellow)) 58% 17%/3px 3px,
+    linear-gradient(var(--pink),var(--pink)) 66% 41%/4px 4px,
+    linear-gradient(var(--cyan),var(--cyan)) 73% 7%/3px 3px,
+    linear-gradient(var(--yellow),var(--yellow)) 81% 71%/5px 5px,
+    linear-gradient(var(--pink),var(--pink)) 88% 24%/3px 3px,
+    linear-gradient(var(--cyan),var(--cyan)) 94% 56%/4px 4px,
+    linear-gradient(var(--yellow),var(--yellow)) 4% 50%/3px 3px,
+    linear-gradient(var(--cyan),var(--cyan)) 85% 92%/3px 3px,
+    linear-gradient(var(--pink),var(--pink)) 24% 55%/3px 3px;
+  background-repeat: no-repeat; opacity: .55;
+  animation: twinkle 3.2s steps(2) infinite;
+}
+.navy::after {
+  background:
+    repeating-linear-gradient(to bottom, transparent 0 2px, rgba(0,0,0,.14) 3px, transparent 4px),
+    radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.5) 100%);
+}
+@keyframes twinkle { 50% { opacity: .3; } }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ---------- Type ---------- */
+h1, h2, h3 { font-family: var(--display); margin: 0; line-height: 1.05; }
+h1 { font-size: 5.4em; font-weight: 800; text-transform: uppercase; letter-spacing: .02em;
+  color: var(--h); text-shadow: .045em .045em 0 var(--hs); }
+h2 { font-size: 2.6em; font-weight: 800; color: var(--h); text-shadow: .06em .06em 0 var(--hs); }
+h3 { font-size: 1.05em; font-weight: 700; color: var(--strong); margin-bottom: .45em; }
+.head { text-align: center; margin-bottom: 2em; }
+.center { text-align: center; }
+.tag { display: inline-block; font: 700 .68em var(--display); letter-spacing: .2em; text-transform: uppercase;
+  background: var(--navy); color: var(--yellow); padding: .5em 1.1em; margin-bottom: 1.3em; }
+.navy .tag { background: transparent; border: 2px solid var(--yellow); }
+.sub { font: .78em var(--mono); letter-spacing: .12em; color: var(--muted); margin-top: 1em; }
+.kicker { font: 700 .8em var(--mono); letter-spacing: .42em; text-transform: uppercase; color: var(--pink); margin-bottom: 1.6em; }
+.lead { font-size: 1.25em; color: var(--fg); margin: 1.4em auto 1.6em; }
+.mono { font-family: var(--mono); }
+.muted { color: var(--muted); }
+.small { font-size: .82em; }
+.chips { display: flex; flex-wrap: wrap; gap: .7em; justify-content: center; }
+.chips span { font: 700 .66em var(--mono); letter-spacing: .12em; text-transform: uppercase;
+  border: 2px solid var(--yellow); color: var(--yellow); padding: .7em 1.2em; }
+.light-chips span { border-color: var(--navy); color: var(--navy); background: rgba(255,255,255,.4); }
+.chip { display: inline-block; font: 700 .62em var(--mono); letter-spacing: .12em; text-transform: uppercase;
+  background: var(--navy); color: var(--cyan); padding: .25em .6em; margin-bottom: .7em; }
+.navy .chip { background: var(--cyan); color: var(--navy); }
+.flag { display: inline-block; font: 700 .58em var(--mono); letter-spacing: .1em; text-transform: uppercase;
+  background: var(--navy); color: var(--white); border: 2px solid var(--yellow); padding: .15em .55em; margin-left: .5em; vertical-align: middle; }
+.flag.room { border-color: var(--pink-hot); }
+
+/* ---------- Blocks ---------- */
+.grid { display: grid; gap: 1.3em; grid-template-columns: repeat(var(--cols, 2), minmax(0, 1fr)); }
+.card { background: var(--card); border: 2px solid var(--line); padding: 1.1em 1.25em;
+  box-shadow: .3em .3em 0 var(--shadow); font-size: .9em; }
+.card p:last-child { margin-bottom: 0; }
+.note { margin-top: 1.8em; font-size: .88em; text-align: center; color: var(--muted); }
+.note b { color: var(--strong); }
+ul.pix { list-style: none; padding: 0; margin: 0; }
+ul.pix li { position: relative; padding-left: 1.2em; margin-bottom: .35em; }
+ul.pix li::before { content: ""; position: absolute; left: 0; top: .55em; width: .45em; height: .45em; background: var(--shadow); }
+
+/* bio */
+.bio { font-size: 1.5em; line-height: 1.6; margin: 1em 0 0; }
+.bio mark { background: linear-gradient(transparent 55%, var(--yellow) 0); color: var(--strong); font-weight: 700; padding: 0 .1em; }
+
+/* weeks overview */
+.weeks { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: .6em; }
+.weeks div { border: 2px solid var(--line); background: var(--card); padding: .55em .6em .7em; font-size: .72em; line-height: 1.25; min-height: 5.6em; }
+.weeks b { display: block; font: 700 .9em var(--mono); color: var(--yellow); margin-bottom: .35em; }
+.weeks .now { border-color: var(--yellow); box-shadow: .3em .3em 0 var(--pink); }
+.weeks .end { border-color: var(--pink); }
+.weeks i { display: block; margin-top: .4em; font: 700 .85em var(--mono); color: var(--pink); font-style: normal; }
+
+/* label/value rows */
+.rows { display: grid; grid-template-columns: max-content 1fr; border-top: 2px dashed rgba(15,27,61,.3); }
+.rows > * { padding: .7em 0; border-bottom: 2px dashed rgba(15,27,61,.3); margin: 0; }
+.rows dt { font: 700 .66em var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); padding-right: 2.5em; align-self: center; }
+
+/* evaluation hp bar */
+.hp-top, .hp { display: grid; grid-template-columns: repeat(20, minmax(0, 1fr)); gap: .2em; }
+.hp { padding: .3em; border: .16em solid var(--navy); background: rgba(255,255,255,.35); box-shadow: .35em .35em 0 var(--navy); }
+.hp i { display: block; height: 2.4em; }
+.hp-top { margin-bottom: .6em; font: 700 .7em var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+.hp-top span { text-align: center; }
+.s8 { grid-column: span 8; } .s5 { grid-column: span 5; } .s2 { grid-column: span 2; }
+.c1 { background: var(--navy); } .c2 { background: var(--cyan); } .c3 { background: var(--white); } .c4 { background: var(--yellow); }
+table.tbl { width: 100%; border-collapse: collapse; margin-top: 2.2em; }
+.tbl th { font: 700 .62em var(--mono); letter-spacing: .14em; text-transform: uppercase; text-align: left; padding: 0 1em .6em 0; color: var(--muted); }
+.tbl td { padding: .6em 1em .6em 0; border-top: 2px dashed rgba(15,27,61,.3); }
+.tbl td:first-child { font-weight: 700; white-space: nowrap; }
+.tbl td:nth-child(2) { font: 700 1.1em var(--mono); }
+.sw { display: inline-block; width: .8em; height: .8em; margin-right: .6em; border: 2px solid var(--navy); vertical-align: -.05em; }
+
+/* timeline */
+.tl { list-style: none; position: relative; margin: 0; padding: 0 0 0 2em; }
+.tl::before { content: ""; position: absolute; left: .5em; top: .6em; bottom: .6em; border-left: .14em dashed var(--navy); }
+.tl li { position: relative; display: flex; align-items: center; flex-wrap: wrap; gap: .1em .7em; margin-bottom: .9em; }
+.tl li::before { content: ""; position: absolute; left: -1.9em; width: .7em; height: .7em; background: var(--cyan); border: .14em solid var(--navy); }
+.tl li.q::before { background: var(--yellow); }
+.tl li.x::before { background: var(--pink-hot); }
+.tl time { font: 700 .7em var(--mono); background: var(--navy); color: var(--cyan); padding: .3em .6em; min-width: 8.5em; letter-spacing: .08em; }
+.tl .flag { margin-left: 0; }
+
+/* complement list */
+.plist { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8em 2.2em; }
+.plist li { display: flex; gap: .9em; align-items: baseline; padding-bottom: .7em; border-bottom: 2px dashed rgba(15,27,61,.3); }
+.plist time { flex: none; font: 700 .68em var(--mono); background: var(--navy); color: var(--pink); padding: .25em .55em; min-width: 5.2em; text-align: center; }
+
+/* method meters */
+.meter { display: inline-flex; gap: .2em; }
+.meter i { width: .75em; height: .75em; border: .12em solid var(--navy); }
+.meter i.on { background: var(--navy); }
+.methods .card { display: grid; grid-template-columns: 9em 1fr 5.5em; gap: 1.2em; align-items: center; box-shadow: none; padding: .8em 1.2em; }
+.methods .card + .card { margin-top: .7em; }
+.methods .card.hot { box-shadow: .3em .3em 0 var(--pink-hot); border-width: .16em; }
+.methods h3 { margin: 0; }
+.methods .n { font: .72em var(--mono); color: var(--muted); text-align: right; }
+/* case study card opens to Lijphart's six types */
+.methods details.card { display: block; }
+.methods summary { display: grid; grid-template-columns: 9em 1fr 5.5em; gap: 1.2em; align-items: center; cursor: pointer; list-style: none; }
+.methods summary::-webkit-details-marker { display: none; }
+.methods summary .flag::after { content: " ▾"; }
+.methods details[open] .flag::after { content: " ▴"; }
+.methods .meter { grid-column: -2; }
+.methods:has(details[open]) > div p, .methods:has(details[open]) + .note { display: none; }
+.types { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto; grid-auto-flow: column; gap: .5em 1.4em; margin-top: .8em; padding-top: .9em; border-top: 2px dashed rgba(15,27,61,.3); line-height: 1.3; }
+.fix.types li { padding-bottom: 0; }
+.types b { display: block; }
+.types .hot b { display: table; background: linear-gradient(transparent 55%, var(--pink) 0); }
+.types-note { margin: .8em 0 0; font-size: .85em; color: var(--muted); }
+
+/* variables x cases matrix */
+.matrix-wrap { display: grid; grid-template-columns: auto 1fr; gap: .6em 1em; align-items: center; }
+.matrix { box-sizing: content-box; width: 28em; max-width: 100%; height: 8em; padding: 0 .35em .35em 0; background-origin: content-box;
+  border: .14em solid var(--navy); background-color: rgba(255,255,255,.35);
+  background-image: conic-gradient(from 90deg at .35em .35em, var(--navy) 90deg, transparent 0);
+  background-size: 2em 2em; }
+.axis { font: 700 .62em var(--mono); letter-spacing: .14em; text-transform: uppercase; }
+.fix { counter-reset: fix; list-style: none; padding: 0; margin: 0; }
+.fix li { counter-increment: fix; position: relative; padding: 0 0 .75em 2.4em; }
+.fix li::before { content: counter(fix, decimal-leading-zero); position: absolute; left: 0; top: .1em; font: 700 .7em var(--mono);
+  background: var(--navy); color: var(--yellow); padding: .15em .35em; }
+
+/* case pills */
+.pills { display: flex; flex-wrap: wrap; gap: .8em; justify-content: center; margin: 1.6em 0; }
+.pills span { border: 2px solid var(--cyan); padding: .55em 1em; font: 700 .72em var(--mono); color: var(--white); background: rgba(15,27,61,.8); box-shadow: .25em .25em 0 var(--pink); }
+
+/* Mill tables */
+.mill table { width: 100%; border-collapse: collapse; margin: .8em 0 .9em; font-size: .9em; }
+.mill th { font: 700 .66em var(--mono); letter-spacing: .1em; text-transform: uppercase; padding: .4em; }
+.mill td { border: 2px solid var(--navy); padding: .4em .6em; text-align: center; font: 700 .78em var(--mono); }
+.mill td:first-child { text-align: left; font-family: var(--sans); font-weight: 600; font-size: .85em; }
+.mill .y { background: var(--navy); color: var(--cyan); }
+.mill .s { background: rgba(255,255,255,.6); }
+.mill .d { background: var(--yellow); }
+
+/* depth vs breadth */
+.axisbar { display: flex; justify-content: space-between; align-items: center; gap: 1em; font: 700 .68em var(--mono);
+  letter-spacing: .16em; text-transform: uppercase; margin-bottom: 1.2em; }
+.axisbar i { flex: 1; border-top: .2em dashed var(--navy); }
+.gr { display: grid; grid-template-columns: auto 1fr; gap: .25em .7em; margin-top: .7em; font-size: .92em; }
+.gr dt { font: 700 .64em var(--mono); letter-spacing: .1em; text-transform: uppercase; align-self: center; padding: .15em .45em; background: var(--navy); color: var(--cyan); }
+.gr dt.r { color: var(--pink); }
+.gr dd { margin: 0; }
+
+/* big question */
+.bigq { font: 700 2em/1.25 var(--display); color: var(--navy); background: var(--white); border: .1em solid var(--navy);
+  box-shadow: .22em .22em 0 var(--navy); padding: .9em 1.1em; margin: 0 auto 1.4em; max-width: 24em; text-align: center; }
+
+/* ---------- Session 02 blocks ---------- */
+.quote { font: 700 1.45em/1.35 var(--display); color: var(--strong); border-left: .3em solid var(--hs); padding: .2em 0 .2em .9em; margin: 1.8em auto 0; max-width: 34em; }
+.steps { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: .6em; margin-bottom: 2em; }
+.steps span { font: 700 .72em var(--mono); background: var(--white); border: 2px solid var(--navy); padding: .55em .9em; box-shadow: .25em .25em 0 var(--pink-hot); }
+.steps i { font-style: normal; color: var(--pink-hot); font-size: .8em; }
+.flow { width: 100%; height: auto; font-family: var(--mono); }
+.calc { display: grid; grid-template-columns: 1fr auto; margin: .4em 0 .9em; }
+.calc dt, .calc dd { margin: 0; padding: .45em 0; border-bottom: 2px dashed rgba(15,27,61,.3); }
+.calc dd { font: 700 1.05em var(--mono); text-align: right; }
+.calc dt:nth-last-of-type(1), .calc dd:last-child { border-bottom: 0; }
+.calc.prof dd { font-size: .85em; padding-left: 1em; }
+.cmp { width: 100%; border-collapse: collapse; font-size: .9em; }
+.cmp th { font: 700 .66em var(--mono); letter-spacing: .12em; text-transform: uppercase; text-align: left; color: var(--muted); padding: 0 1em .6em 0; }
+.cmp td { padding: .6em 1em .6em 0; border-top: 2px dashed rgba(15,27,61,.3); vertical-align: top; }
+.cmp td:first-child { font-weight: 700; white-space: nowrap; }
+.stats { display: grid; gap: 1.1em; grid-template-columns: repeat(var(--cols, 4), minmax(0, 1fr)); }
+.stat b { display: block; font: 800 2.1em/1 var(--display); color: var(--strong); text-shadow: .06em .06em 0 var(--hs); margin-bottom: .4em; white-space: nowrap; }
+.stat p { margin: 0; font-size: .88em; }
+.quad { display: grid; grid-template-columns: 8.5em 1fr 1fr; gap: .9em; }
+.quad .ax { align-self: center; text-align: center; font: 700 .62em var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--yellow); }
+.quad .card p { margin: 0; }
+.latent { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .7em; text-align: center; }
+.latent span { font: 700 .7em var(--mono); background: var(--white); border: 2px solid var(--navy); padding: .8em .5em; }
+.latent i { font-style: normal; color: var(--navy); }
+.latent b { grid-column: 1 / -1; font: 800 1.8em var(--display); color: var(--yellow); background: var(--navy); padding: .45em; box-shadow: .2em .2em 0 var(--cyan); }
+.bars { display: grid; grid-template-columns: max-content 1fr 2.6em; gap: .5em .9em; align-items: center; font-size: .82em; }
+.bars .t { position: relative; height: 1.2em; background: linear-gradient(var(--navy), var(--navy)) 50% 0 / 2px 100% no-repeat; }
+/* bar spans from zero to the value on a -1 to +1 axis */
+.bars .t i { position: absolute; top: .15em; bottom: .15em; left: calc(50% + min(var(--v), 0) * 50%); width: calc(max(var(--v), -1 * var(--v)) * 50%); background: var(--navy); }
+.bars .t i.neg { background: var(--pink-hot); }
+.bars > b { font: 700 .95em var(--mono); text-align: right; }
+.bars .ticks { display: flex; justify-content: space-between; font: .8em var(--mono); color: var(--muted); }
+.cty { display: flex; flex-wrap: wrap; gap: .6em; }
+.cty span { font: 700 .85em var(--mono); background: var(--navy); color: var(--cyan); padding: .35em .7em; }
+
+@media screen and (max-width: 760px) {
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .quad { grid-template-columns: 1fr; }
+  .quad > span:first-child { display: none; }
+  .steps i { transform: rotate(90deg); }
+  .bars { font-size: .72em; }
+  .cmp td:first-child { white-space: normal; }
+}
+
+/* ---------- HUD ---------- */
+.hud { position: fixed; z-index: 10; top: 1.1em; left: 1.4em; right: 1.4em; display: flex; justify-content: space-between; align-items: center; gap: 1em; pointer-events: none; }
+.hud-right { display: flex; gap: .8em; }
+.hud svg { width: 1.1em; height: 1.1em; vertical-align: -.2em; margin-right: .55em; }
+.hud a, .hud button { pointer-events: auto; cursor: pointer; line-height: inherit; font: 700 .62em var(--mono); letter-spacing: .14em; text-transform: uppercase; text-decoration: none;
+  background: rgba(15,27,61,.9); color: var(--white); border: 2px solid var(--cyan); padding: .7em 1.1em;
+  transition: transform .15s steps(3), box-shadow .15s steps(3), background .15s steps(3); }
+.hud a:hover, .hud button:hover { transform: translate(-2px,-2px); box-shadow: 4px 4px 0 var(--pink); }
+.hud .back::before { content: "◆ "; color: var(--yellow); animation: blink 1.6s steps(1) infinite; }
+.hud .pdf { border-color: var(--yellow); color: var(--yellow); box-shadow: 4px 4px 0 var(--pink); }
+.hud .pdf:hover { background: var(--yellow); color: var(--navy); box-shadow: 7px 7px 0 var(--pink); }
+.dots { position: fixed; z-index: 10; right: 1.3em; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: .45em; }
+.dots a { width: .75em; height: .75em; border: 2px solid var(--cyan); background: rgba(15,27,61,.85); }
+.dots a[aria-current="true"] { background: var(--yellow); border-color: var(--navy); }
+.counter { position: fixed; z-index: 10; bottom: 1em; left: 50%; transform: translateX(-50%); font: 700 .72em var(--mono);
+  letter-spacing: .2em; background: rgba(15,27,61,.9); color: var(--cyan); padding: .6em 1.2em; }
+.keys { position: fixed; z-index: 10; bottom: 1.3em; right: 1.4em; font: .58em var(--mono); letter-spacing: .16em; text-transform: uppercase;
+  color: var(--cyan); background: rgba(15,27,61,.7); padding: .3em .6em; }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before { animation: none !important; } }
+
+@media screen and (max-width: 760px) {
+  html { scroll-snap-type: y proximity; }
+  .slide { padding: 5em 1.1em 4em; }
+  h1 { font-size: 2.9em; } h2 { font-size: 1.9em; }
+  .grid, .plist, .matrix-wrap { grid-template-columns: 1fr; }
+  .weeks { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bio { font-size: 1.2em; }
+  .methods .card { grid-template-columns: 1fr auto; }
+  .methods .card p { grid-column: 1 / -1; order: 3; }
+  .methods summary { grid-template-columns: 1fr auto; }
+  .types { grid-template-columns: 1fr; grid-auto-flow: row; }
+  .hp-top { font-size: .5em; }
+  .bigq { font-size: 1.4em; }
+  .dots, .keys { display: none; }
+  .hud a, .hud button { font-size: .56em; padding: .6em .8em; }
+  .hud .lbl { display: none; }
+  .hud .fs svg { margin: 0; }
+}
+
+/* ---------- PDF (scripts/deck-pdf.sh prints this page) ---------- */
+@page { size: 1280px 720px; margin: 0; }
+@media print {
+  :root { --u: 12.8px; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; animation: none !important; }
+  html { scroll-snap-type: none; }
+  .hud, .dots, .counter, .keys { display: none; }
+  .slide { width: 1280px; height: 720px; min-height: 0; break-after: page; }
+}
+</style>
+</head>
+<body>
+
+<header class="hud">
+  <a class="back" href="../">Course module</a>
+  <div class="hud-right">
+    <button class="fs" type="button" aria-label="Toggle fullscreen" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M3 9V3h6M21 9V3h-6M3 15v6h6M21 15v6h-6"/></svg><span class="lbl">Fullscreen</span></button>
+    <a class="pdf" href="slides.pdf" download="comparative-politics-092426.pdf">⬇ Download PDF</a>
+  </div>
+</header>
+<nav class="dots" aria-label="Slides"></nav>
+<div class="counter" aria-live="polite"><span id="cur">01</span> / <span id="tot">01</span></div>
+<div class="keys" aria-hidden="true">Use keys ↑ ↓ · F fullscreen</div>
+
+<main>
+
+<!-- 01 · title -->
+<section class="slide navy">
+  <div class="inner center">
+    <p class="kicker">T407016 // Autumn 2026 // Université de Genève</p>
+    <h1>Comparative<br>Politics</h1>
+    <p class="lead">Session 02. States and state capacity.</p>
+    <div class="chips"><span>Thu 24 Sep 2026</span><span>Uni Mail M2160</span><span>Dr. Jihye Park</span></div>
+  </div>
+</section>
+
+<!-- 01b · groups -->
+<section class="slide pink">
+  <div class="inner" style="max-width:66em">
+    <div class="head">
+      <span class="tag">Group formation</span>
+      <h2>Your groups</h2>
+    </div>
+    <div class="grid" style="--cols:5;gap:1em">
+      <div class="card"><span class="chip">Group 1</span><ul class="pix">
+        <li>Rahnia Sofia Kadri</li><li>Aymeric Mathis Louis Montaz-Rosset</li><li>Anouk Muriel Roth</li><li>Dmitri Sergueev</li><li>Xuan Tinh Catherine Trac</li></ul></div>
+      <div class="card"><span class="chip">Group 2</span><ul class="pix">
+        <li>Xué Mendez Cubillos</li><li>Léa Mosquera Vazquez</li><li>Younes Reda</li><li>Valentine Salihu</li></ul></div>
+      <div class="card"><span class="chip">Group 3</span><ul class="pix">
+        <li>Sarah Nina Steinmayr</li><li>Zoé Clara Dina Traversi</li><li>Simeon Tucovic</li><li>Fatine Zmama</li></ul></div>
+      <div class="card"><span class="chip">Group 4</span><ul class="pix">
+        <li>Hiba Naciri</li><li>Tarciana Oliveira</li><li>Darshan Lucien Rubischung</li><li>Leyla Sahin</li><li>Cherno Sarr</li></ul></div>
+      <div class="card"><span class="chip">Group 5</span><ul class="pix">
+        <li>Alexander Pottokaran</li><li>Emanuela Lorenza Righi</li><li>Mukund Saini</li><li>Tezer Kemal Tezer</li><li>Luana Wirz</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 · recap -->
+<section class="slide lav">
+  <div class="inner" style="max-width:52em">
+    <div class="head">
+      <span class="tag">Previously</span>
+      <h2>Last week, this week</h2>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <span class="chip">Session 01</span>
+        <ul class="pix">
+          <li>Comparison is a method of control</li>
+          <li>Lijphart's four methods and six types of case study</li>
+          <li>Most similar and most different designs</li>
+          <li>Three traps. Selecting on the outcome, cases that copy each other, stretched concepts</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="chip">Session 02</span>
+        <ul class="pix">
+          <li>Where states come from, with Tilly on war, taxes and protection</li>
+          <li>How to measure what states can do, with Hanson and Sigman</li>
+          <li>Two group exercises</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note">Keep last week's tools at hand. <b>We will use them to argue with both readings.</b></p>
+  </div>
+</section>
+
+<!-- 03 · opener -->
+<section class="slide pink">
+  <div class="inner center">
+    <span class="tag">Opener · any volunteers?</span>
+    <p class="sub" style="margin:0 0 1em">One question before the reading</p>
+    <p class="bigq">What separates a state that taxes you from a gang that sells you protection?</p>
+    <div class="grid" style="--cols:3;text-align:left">
+      <div class="card"><span class="chip">01</span><p>What does each one give you in return?</p></div>
+      <div class="card"><span class="chip">02</span><p>Who sets the price, and can you refuse to pay?</p></div>
+      <div class="card"><span class="chip">03</span><p>At what point would you start calling the gang a government?</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 · double-edged protection -->
+<section class="slide navy">
+  <div class="inner" style="max-width:52em">
+    <div class="head">
+      <span class="tag">Tilly 1985</span>
+      <h2>Protection, two ways</h2>
+    </div>
+    <div class="grid">
+      <div class="card"><span class="chip">Comforting</span><p>A shelter against danger, such as a powerful friend, a large insurance policy or a sturdy roof.</p></div>
+      <div class="card"><span class="chip">Ominous</span><p>A racket in which a local strongman makes merchants pay to avoid damage he himself threatens to deliver.</p></div>
+    </div>
+    <p class="quote">"Someone who produces both the danger and, at a price, the shield against it is a racketeer."</p>
+    <p class="note">When the threats a government guards against are imaginary or of its own making, <b>the government runs a protection racket</b>.</p>
+  </div>
+</section>
+
+<!-- 05 · bandits to kings -->
+<section class="slide lav">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Tilly 1985 · Violence and government</span>
+      <h2>From bandits to kings</h2>
+    </div>
+    <div class="steps" role="img" aria-label="A continuum from bandits and pirates to kings, via tax collectors, regional powerholders and professional soldiers">
+      <span>Bandits and pirates</span><i>▶</i><span>Tax collectors</span><i>▶</i><span>Regional powerholders</span><i>▶</i><span>Professional soldiers</span><i>▶</i><span>Kings</span>
+    </div>
+    <div class="grid" style="--cols:3">
+      <div class="card"><span class="chip">Blurred lines</span><p>Kings commissioned privateers and hired bandits to raid their enemies. Demobilized troops became bandits and demobilized ships became pirates.</p></div>
+      <div class="card"><span class="chip">Disarming the great</span><p>The Tudors broke up the lords' private armies and razed their fortresses. In France, Richelieu began the great disarmament in the 1620s.</p></div>
+      <div class="card"><span class="chip">Indirect rule</span><p>No monarch could govern a large population by armed force alone. Rulers leaned on local magnates, who were also their likeliest rivals.</p></div>
+    </div>
+    <p class="note">The line between legitimate and illegitimate violence <b>came clear only slowly</b>, as states made their armed forces unified and permanent.</p>
+  </div>
+</section>
+
+<!-- 06 · four activities -->
+<section class="slide pink">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Tilly 1985 · What do states do?</span>
+      <h2>Four uses of organized violence</h2>
+    </div>
+    <div class="grid" style="--cols:4">
+      <div class="card"><span class="chip">01</span><h3>Warmaking</h3>
+        <dl class="gr"><dt>Aim</dt><dd>Neutralize rivals outside the territory</dd><dt class="r">Leaves</dt><dd>Armies and navies</dd></dl></div>
+      <div class="card"><span class="chip">02</span><h3>Statemaking</h3>
+        <dl class="gr"><dt>Aim</dt><dd>Neutralize rivals inside the territory</dd><dt class="r">Leaves</dt><dd>Surveillance and control</dd></dl></div>
+      <div class="card"><span class="chip">03</span><h3>Protection</h3>
+        <dl class="gr"><dt>Aim</dt><dd>Neutralize the enemies of the rulers' clients</dd><dt class="r">Leaves</dt><dd>Courts and assemblies</dd></dl></div>
+      <div class="card"><span class="chip">04</span><h3>Extraction</h3>
+        <dl class="gr"><dt>Aim</dt><dd>Acquire the means for the other three</dd><dt class="r">Leaves</dt><dd>Fiscal and accounting offices</dd></dl></div>
+    </div>
+    <p class="note">Tilly's rule is that <b>the costlier the activity, the larger the organization it leaves behind</b>.</p>
+  </div>
+</section>
+
+<!-- 07 · causal pattern -->
+<section class="slide navy">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Tilly 1985</span>
+      <h2>How war builds a state</h2>
+    </div>
+    <div class="grid" style="align-items:center;gap:3em">
+      <svg class="flow" viewBox="0 0 460 250" role="img" aria-label="Tilly's causal pattern. Warmaking leads to extraction, protection and statemaking. Extraction leads to statemaking and protection. Statemaking leads to protection.">
+        <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5EDCF4"/></marker></defs>
+        <g stroke="#5EDCF4" stroke-width="2.5" fill="none" marker-end="url(#ah)">
+          <path d="M95 4 V31"/><path d="M365 4 V31"/><path d="M95 246 V219"/><path d="M365 246 V219"/>
+          <path d="M172 55 H286"/><path d="M95 79 V171"/><path d="M365 79 V171"/><path d="M288 195 H174"/>
+          <path d="M160 79 L300 169"/><path d="M300 79 L160 169"/>
+        </g>
+        <g font-size="15" font-weight="700" text-anchor="middle">
+          <rect x="18" y="35" width="154" height="40" fill="#0F1B3D" stroke="#F4D03F" stroke-width="2.5"/><text x="95" y="60" fill="#F8F4FF">WARMAKING</text>
+          <rect x="288" y="35" width="154" height="40" fill="#0F1B3D" stroke="#F4D03F" stroke-width="2.5"/><text x="365" y="60" fill="#F8F4FF">EXTRACTION</text>
+          <rect x="18" y="175" width="154" height="40" fill="#0F1B3D" stroke="#F4D03F" stroke-width="2.5"/><text x="95" y="200" fill="#F8F4FF">PROTECTION</text>
+          <rect x="288" y="175" width="154" height="40" fill="#0F1B3D" stroke="#F4D03F" stroke-width="2.5"/><text x="365" y="200" fill="#F8F4FF">STATEMAKING</text>
+        </g>
+      </svg>
+      <ol class="fix">
+        <li>A lord makes war well enough to dominate a substantial territory.</li>
+        <li>War needs men, arms, food and money, so he extracts them from the population.</li>
+        <li>Extraction means neutralizing local rivals and building tax offices, police and courts. That is statemaking.</li>
+        <li>Classes that lend money or help keep order receive protection in return.</li>
+      </ol>
+    </div>
+    <p class="note">National states grew as <b>a by-product of rulers' pursuit of war</b>, and none of those rulers foresaw it.</p>
+  </div>
+</section>
+
+<!-- 08 · protection as business -->
+<section class="slide lav">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Tilly 1985 · Lane's model</span>
+      <h2>Protection as a business</h2>
+    </div>
+    <div class="grid" style="grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:2.2em;align-items:start">
+      <div class="card">
+        <span class="chip">The arithmetic</span>
+        <dl class="calc"><dt>Taxes collected</dt><dd>75</dd><dt>Cost of protection</dt><dd>− 50</dd><dt>Tribute to the prince</dt><dd>25</dd></dl>
+        <p class="small">A merchant who pays his prince 10 for protection, while foreign rivals pay theirs 15, earns a <b>protection rent</b> of 5.</p>
+      </div>
+      <table class="cmp">
+        <tr><th>If the government is owned by</th><th>Its managers will</th><th>It resembles</th></tr>
+        <tr><td>Citizens</td><td>Keep costs and tribute low</td><td>A Jeffersonian democracy</td></tr>
+        <tr><td>A monarch</td><td>Maximize tribute</td><td>A petty despotism</td></tr>
+        <tr><td>The managers</td><td>Pay themselves well and maximize tribute</td><td>A military junta</td></tr>
+        <tr><td>A dominant class</td><td>Tune tribute and protection rents to that class</td><td>Tilly's addition</td></tr>
+      </table>
+    </div>
+    <p class="note">Swap princes for governments and the question stays current. <b>Who captures the surplus the state produces?</b></p>
+  </div>
+</section>
+
+<!-- 09 · war and debt -->
+<section class="slide pink">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Tilly 1985 · History talks</span>
+      <h2>War, debt and taxes</h2>
+    </div>
+    <div class="stats">
+      <div class="card stat"><b>12.5%</b><p>Interest Francis I paid the merchants of Paris on 200,000 francs, borrowed in 1522 for his war against Charles V</p></div>
+      <div class="card stat"><b>18 years</b><p>Of royal revenue. France's war debt reached about 3 billion francs by Louis XIV's death in 1715</p></div>
+      <div class="card stat"><b>1689</b><p>England's national debt begins with William and Mary and grows with each major war</p></div>
+      <div class="card stat"><b>15 → 24%</b><p>British taxes as a share of national income during the Napoleonic Wars, almost triple the French level</p></div>
+    </div>
+    <p class="note">Tilly borrows Peacock and Wiseman's ratchet effect. <b>Revenue raised for a war set a new floor once peace returned.</b></p>
+  </div>
+</section>
+
+<!-- 10 · beyond europe -->
+<section class="slide navy">
+  <div class="inner" style="max-width:54em">
+    <div class="head">
+      <span class="tag">Tilly 1985 · The contemporary world</span>
+      <h2>States that got their armies elsewhere</h2>
+    </div>
+    <div class="quad">
+      <span></span><span class="ax">Depends on exports for military resources</span><span class="ax">Independent of exports</span>
+      <span class="ax">Military supplied by other states</span>
+      <div class="card"><span class="chip">Client states · Honduras</span><p>Follow signals from their patrons</p></div>
+      <div class="card"><span class="chip">Clones · South Korea</span><p>Especially vulnerable to military coups</p></div>
+      <span class="ax">Military built at home</span>
+      <div class="card"><span class="chip">Merchants · Iraq</span><p>Wax and wane with world markets for their exports</p></div>
+      <div class="card"><span class="chip">Autonomous · China, South Africa</span><p>Resemble the old European states</p></div>
+    </div>
+    <p class="note">European rulers built armies by bargaining with their subjects, and the bargains constrained them. <b>States that import their militaries skip that bargain.</b> The examples date from 1982.</p>
+  </div>
+</section>
+
+<!-- 11 · argue with tilly -->
+<section class="slide lav">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Group exercise 01</span>
+      <h2>Argue with Tilly</h2>
+    </div>
+    <div class="grid" style="--cols:3">
+      <div class="card"><span class="chip">Survivors only</span><p>Tilly notes that fewer states came out of each large war than went in. An account built on the survivors may be selecting on the outcome.</p></div>
+      <div class="card"><span class="chip">Cases that copy</span><p>Rivals imitated the winners, as when Peter the Great rebuilt Russia on Dutch examples. How independent are these cases?</p></div>
+      <div class="card"><span class="chip">Which type of study?</span><p>Tilly calls his essay history as a source of hypotheses. Where does that put it among Lijphart's six types?</p></div>
+    </div>
+    <p class="quote" style="font-size:1.25em;max-width:40em">"If summarizing European warmaking and statemaking is like skating on thin ice, extrapolating that summary to the contemporary world resembles walking on water."</p>
+  </div>
+</section>
+
+<!-- 12 · capacity to do what -->
+<section class="slide pink">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Hanson and Sigman 2021</span>
+      <h2>The capacity to do what?</h2>
+    </div>
+    <div class="axisbar"><span>◀ Narrow</span><i></i><span>Broad ▶</span></div>
+    <div class="grid" style="--cols:3">
+      <div class="card"><span class="chip">Too narrow</span><h3>Stateness</h3><p>Only the monopoly on the legitimate use of force. It misses much of what modern states are expected to do.</p></div>
+      <div class="card" style="border-width:.16em;box-shadow:.3em .3em 0 var(--navy)"><span class="chip">Hanson and Sigman</span><h3>Core functions</h3><p>Defense against external threats, internal order, basic infrastructure for the economy, and revenue extraction.</p></div>
+      <div class="card"><span class="chip">Too broad</span><h3>Every function</h3><p>Justice, public services, economic management and more. It risks measuring political priorities instead of ability.</p></div>
+    </div>
+    <p class="note">Capacity is kept apart from regime type and from policy choices. <b>A highly capable state can still choose to do little.</b></p>
+  </div>
+</section>
+
+<!-- 13 · three dimensions -->
+<section class="slide navy">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Hanson and Sigman 2021</span>
+      <h2>Three dimensions</h2>
+    </div>
+    <div class="grid" style="--cols:3">
+      <div class="card"><span class="chip">Extractive</span><p>Raising revenue. It takes reach into the population, good records, trustworthy agents and enforcement.</p>
+        <dl class="gr"><dt>Measured by</dt><dd>Taxes as a share of GDP, income and trade taxes as shares of all taxes</dd></dl></div>
+      <div class="card"><span class="chip">Coercive</span><p>Holding enough force to defend borders, keep order and enforce the law across the territory.</p>
+        <dl class="gr"><dt>Measured by</dt><dd>Military spending and personnel, police, territory under state authority</dd></dl></div>
+      <div class="card"><span class="chip">Administrative</span><p>Making policy, delivering services and regulating commerce through capable agents and reliable information.</p>
+        <dl class="gr"><dt>Measured by</dt><dd>Bureaucratic quality, census frequency, statistical capacity</dd></dl></div>
+    </div>
+    <p class="note">Tilly's extraction and warmaking reappear here as <b>dimensions you can measure</b>.</p>
+  </div>
+</section>
+
+<!-- 14 · latent variable -->
+<section class="slide pink">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Hanson and Sigman 2021 · Measurement</span>
+      <h2>Many indicators, one latent variable</h2>
+    </div>
+    <div class="grid" style="align-items:center;gap:3em">
+      <div>
+        <p>Nobody can observe state capacity directly. A Bayesian latent variable model treats each indicator as a noisy reading of the same hidden quantity.</p>
+        <div class="stats" style="--cols:2;margin-top:1.2em">
+          <div class="stat"><b>21</b><p>Indicators from many sources</p></div>
+          <div class="stat"><b>163</b><p>Countries in a year, at most</p></div>
+          <div class="stat"><b>1960–2015</b><p>Annual estimates</p></div>
+          <div class="stat"><b>94,135</b><p>Data points in total</p></div>
+        </div>
+      </div>
+      <div class="latent" role="img" aria-label="Extractive, coercive and administrative indicators feed one latent variable called Capacity">
+        <span>Extractive indicators</span><span>Coercive indicators</span><span>Administrative indicators</span>
+        <i>▼</i><i>▼</i><i>▼</i>
+        <b>Capacity</b>
+      </div>
+    </div>
+    <p class="note">Models with two or three dimensions failed to converge. <b>Only one dimension held up</b>, which the authors read as the three being entwined in practice.</p>
+  </div>
+</section>
+
+<!-- 15 · correlations -->
+<section class="slide lav">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Hanson and Sigman 2021 · Table 2</span>
+      <h2>What moves with Capacity</h2>
+    </div>
+    <div class="grid" style="grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);gap:2.5em;align-items:center">
+      <div class="bars" role="img" aria-label="Correlation of each indicator with Capacity. Statistical capacity .83, bureaucratic quality .81, law and order .77, monopoly on use of force .74, total tax revenue .66, census frequency .59, income taxes .57, military personnel .26, police officers .03, trade taxes minus .67">
+        <span>Statistical capacity</span><span class="t"><i style="--v:.83"></i></span><b>.83</b>
+        <span>Bureaucratic quality</span><span class="t"><i style="--v:.81"></i></span><b>.81</b>
+        <span>Law and order</span><span class="t"><i style="--v:.77"></i></span><b>.77</b>
+        <span>Monopoly on use of force</span><span class="t"><i style="--v:.74"></i></span><b>.74</b>
+        <span>Tax revenue, % of GDP</span><span class="t"><i style="--v:.66"></i></span><b>.66</b>
+        <span>Census frequency</span><span class="t"><i style="--v:.59"></i></span><b>.59</b>
+        <span>Income taxes, share of taxes</span><span class="t"><i style="--v:.57"></i></span><b>.57</b>
+        <span>Military personnel per 1,000</span><span class="t"><i style="--v:.26"></i></span><b>.26</b>
+        <span>Police officers per 1,000</span><span class="t"><i style="--v:.03"></i></span><b>.03</b>
+        <span>Trade taxes, share of taxes</span><span class="t"><i class="neg" style="--v:-.67"></i></span><b>−.67</b>
+        <span></span><span class="ticks"><span>−1</span><span>0</span><span>+1</span></span><span></span>
+      </div>
+      <div>
+        <div class="card"><span class="chip">Trade taxes</span><p>Customs duties are easy to collect at the border and need little administration. States that lean on them tend to score low.</p></div>
+        <div class="card" style="margin-top:1.2em"><span class="chip">Head counts</span><p>Soldiers and police per person barely track Capacity. Weak states often expand their forces in response to weakness.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 16 · validity -->
+<section class="slide navy">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Hanson and Sigman 2021 · Validity</span>
+      <h2>Does the measure work?</h2>
+    </div>
+    <div class="grid">
+      <div class="card"><span class="chip">Face validity</span><p>In 2015 Singapore ranks in the top 25, so the measure picks up more than democracy. Somalia, Yemen and the Central African Republic sit near the bottom.</p></div>
+      <div class="card"><span class="chip">Convergent validity</span><p>Capacity correlates at .91 with the World Bank's government effectiveness index and at −.88 with the fragile states index.</p></div>
+      <div class="card"><span class="chip">Discriminant validity</span><p>Its correlation with log GDP per capita is .79. The two are close, and still distinct.</p></div>
+      <div class="card"><span class="chip">Construct validity</span><p>Researchers sent undeliverable letters to 159 countries. One point more Capacity means about 21 percentage points more letters returned, and 69 days faster.</p></div>
+    </div>
+    <p class="note">Capacity in 1960 also predicts 2010. <b>One point higher meant about 12 fewer infant deaths per 1,000 and 5.3 more years of life expectancy</b>, holding income, democracy and taxes constant.</p>
+  </div>
+</section>
+
+<!-- 17 · gainers and losers -->
+<section class="slide pink">
+  <div class="inner" style="max-width:52em">
+    <div class="head">
+      <span class="tag">Hanson and Sigman 2021 · 1975 to 2015</span>
+      <h2>Who gained and who lost</h2>
+    </div>
+    <div class="grid">
+      <div class="card"><span class="chip">Rose the most</span><div class="cty"><span>Uganda</span><span>Bolivia</span><span>Rwanda</span><span>Lesotho</span><span>Nicaragua</span></div></div>
+      <div class="card"><span class="chip">Fell the most</span><div class="cty"><span>Somalia</span><span>Libya</span><span>Venezuela</span><span>Syria</span><span>Kuwait</span><span>Iraq</span></div></div>
+    </div>
+    <p class="note" style="margin-top:1.2em">Most countries that scored high in 1975 still scored high in 2015, and Capacity rose in most countries.</p>
+    <p class="bigq" style="font-size:1.3em;margin-top:1.2em;max-width:32em">In 1982 Tilly picked Iraq as his example of an oil-exporting merchant state. Does its fall bear out his warning?</p>
+  </div>
+</section>
+
+<!-- 18 · argue with the measure -->
+<section class="slide navy">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Watch out</span>
+      <h2>Argue with the measure</h2>
+    </div>
+    <div class="grid" style="--cols:3">
+      <div class="card"><span class="chip">One dimension</span><p>Only the one-dimensional model converged. That fits dimensions that are entwined, and it also fits indicators too noisy to pull apart.</p></div>
+      <div class="card"><span class="chip">Expert ratings</span><p>Several indicators are expert scores. The authors concede that bureaucratic quality ratings may reflect analysts' views of economic outcomes.</p></div>
+      <div class="card"><span class="chip">National averages</span><p>One score per country and year hides variation inside a state, such as a capital that works and a periphery that does not.</p></div>
+    </div>
+    <p class="note">Measurement validity returns at the <b>27 October complement</b>.</p>
+  </div>
+</section>
+
+<!-- 19 · two ways -->
+<section class="slide lav">
+  <div class="inner" style="max-width:54em">
+    <div class="head">
+      <span class="tag">Compare the readings</span>
+      <h2>Two ways to study the state</h2>
+    </div>
+    <table class="cmp">
+      <tr><th></th><th>Tilly 1985</th><th>Hanson and Sigman 2021</th></tr>
+      <tr><td>Question</td><td>Where did national states come from?</td><td>How much capacity does each state have?</td></tr>
+      <tr><td>Cases</td><td>Early modern Europe, a handful of named states</td><td>Up to 163 countries a year, 1960 to 2015</td></tr>
+      <tr><td>Method</td><td>Comparative history that generates hypotheses</td><td>Statistical measurement with a latent variable</td></tr>
+      <tr><td>Evidence</td><td>"Few illustrations, and no evidence worthy of the name," in his own words</td><td>21 indicators and four kinds of validity test</td></tr>
+      <tr><td>Last week's axis</td><td>Depth</td><td>Breadth</td></tr>
+    </table>
+    <p class="note">Hanson and Sigman cite Tilly's 1990 book for the idea that <b>the dimensions of capacity grow together</b>. Their single dimension is one way to check it.</p>
+  </div>
+</section>
+
+<!-- 20 · group exercise 02 -->
+<section class="slide lav">
+  <div class="inner">
+    <div class="head" style="margin-bottom:1.2em">
+      <span class="tag">Group exercise 02</span>
+      <p class="sub" style="margin:0 0 1em">A finance ministry sends your group one question</p>
+      <p class="bigq" style="font-size:1.35em;max-width:32em;margin-bottom:0">Our new trade agreement phases out most tariffs over ten years. Can the state replace the lost customs revenue?</p>
+    </div>
+    <div class="grid" style="grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:2.2em;align-items:start">
+      <div class="card">
+        <span class="chip">Country X · stylized profile</span>
+        <dl class="calc prof"><dt>Tax revenue</dt><dd>11% of GDP</dd><dt>Trade taxes</dt><dd>38% of taxes</dd><dt>Income taxes</dt><dd>14% of taxes</dd><dt>Last census</dt><dd>17 years ago</dd><dt>Territory under state authority</dt><dd>80%</dd><dt>Military spending</dt><dd>Rising after a border dispute</dd></dl>
+      </div>
+      <ol class="fix">
+        <li>Rate the state's extractive, coercive and administrative capacity as low, medium or high, with one reason each.</li>
+        <li>Use Tilly. Where could new revenue come from, and whom would the state have to bargain with or coerce to get it?</li>
+        <li>Write a three-sentence memo that answers the ministry and names the one indicator you would watch over the ten years.</li>
+      </ol>
+    </div>
+    <p class="note" style="margin-top:1em">The profile is invented and describes no real country.</p>
+  </div>
+</section>
+
+<!-- 21 · next week -->
+<section class="slide pink">
+  <div class="inner" style="max-width:52em">
+    <div class="head">
+      <span class="tag">Next up</span>
+      <h2>Before Thursday 1 October</h2>
+      <p class="sub">Week 03. Regimes and how we measure them.</p>
+    </div>
+    <div class="grid">
+      <div class="card"><span class="chip">Read</span><p>Munck, Gerardo L., and Jay Verkuilen. 2002. "Conceptualizing and Measuring Democracy. Evaluating Alternative Indices." <i>Comparative Political Studies</i> 35(1), 5-34.</p></div>
+      <div class="card"><span class="chip">Read</span><p>Levitsky, Steven, and Lucan A. Way. 2002. "The Rise of Competitive Authoritarianism." <i>Journal of Democracy</i> 13(2), 51-65.</p></div>
+    </div>
+    <ol class="tl" style="margin-top:2em">
+      <li class="q"><time>Thu 01 Oct</time><b>Quiz 1 opens the class</b><span class="flag room">Uni Mail M R030</span></li>
+      <li><time>Tue 06 Oct</time><b>Week 4 class</b><span class="flag room">M2170</span></li>
+      <li class="x"><time>Thu 08 Oct</time><b>No class</b></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 22 · end -->
+<section class="slide navy">
+  <div class="inner center grid" style="grid-template-columns:minmax(0,1.4fr) minmax(0,.6fr);gap:3em;align-items:center">
+    <div>
+      <p class="kicker">Progress saved</p>
+      <h1 style="font-size:4.4em">Questions?</h1>
+      <p class="lead">Office hours Thursdays 14:30 to 16:00 in M4328</p>
+      <div class="chips"><span>Jihye.Park@unige.ch</span><span>jihyepark.me/comparative-politics-maspo-fall2026</span></div>
+    </div>
+    <div>
+      <span class="tag">Before you leave</span>
+      <img src="peer-review-qr-final.png" alt="QR code for the group peer review form" style="display:block;width:100%;border:.2em solid var(--yellow);box-shadow:.35em .35em 0 var(--pink)">
+      <p class="note" style="margin-top:1.2em">Rate each group member's participation in today's exercises. <b>Required before you leave the room.</b></p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+
+<script>
+const slides = [...document.querySelectorAll('.slide')];
+const dots = document.querySelector('.dots');
+const cur = document.getElementById('cur');
+const pad = n => String(n).padStart(2, '0');
+document.getElementById('tot').textContent = pad(slides.length);
+
+slides.forEach((s, i) => {
+  s.id = 's' + (i + 1);
+  dots.insertAdjacentHTML('beforeend', `<a href="#s${i + 1}" aria-label="Slide ${i + 1}"></a>`);
+});
+
+let now = 0;
+const io = new IntersectionObserver(entries => entries.forEach(e => {
+  if (!e.isIntersecting) return;
+  now = slides.indexOf(e.target);
+  cur.textContent = pad(now + 1);
+  dots.querySelectorAll('a').forEach((d, i) => d.setAttribute('aria-current', i === now));
+}), { rootMargin: '-50% 0px -50% 0px' }); // the slide crossing the middle line is current
+slides.forEach(s => io.observe(s));
+
+// Native Fullscreen API. Hidden where unsupported (iPhone Safari). Scroll snap re-snaps after the resize.
+const fs = document.querySelector('.fs');
+const toggleFs = () => document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+if (document.fullscreenEnabled) {
+  fs.hidden = false;
+  fs.addEventListener('click', toggleFs);
+  document.addEventListener('fullscreenchange', () => {
+    fs.querySelector('.lbl').textContent = document.fullscreenElement ? 'Exit fullscreen' : 'Fullscreen';
+  });
+}
+
+const go = i => slides[Math.max(0, Math.min(slides.length - 1, i))].scrollIntoView({ behavior: 'smooth' });
+addEventListener('keydown', e => {
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  if ((e.key === 'f' || e.key === 'F') && document.fullscreenEnabled) return toggleFs();
+  const step = { ArrowDown: 1, ArrowRight: 1, PageDown: 1, ' ': e.shiftKey ? -1 : 1, ArrowUp: -1, ArrowLeft: -1, PageUp: -1 }[e.key];
+  if (step) { e.preventDefault(); go(now + step); }
+  else if (e.key === 'Home') { e.preventDefault(); go(0); }
+  else if (e.key === 'End') { e.preventDefault(); go(slides.length - 1); }
+});
+</script>
+</body>
+</html>
