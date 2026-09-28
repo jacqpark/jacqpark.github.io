@@ -1402,6 +1402,7 @@ img.roadmap-img {
   filter: drop-shadow(0 0 6px rgba(94, 220, 244, 0.35));
   transition: transform 0.15s steps(3);
 }
+.astro-egg.drift { top: 0; left: 0; bottom: auto; }  /* JS moves it with transform */
 .astro-egg:hover canvas,
 .astro-egg:focus-visible canvas { transform: translateY(-6px); }
 
@@ -1432,7 +1433,7 @@ img.roadmap-img {
 }
 
 @media (max-width: 640px) {
-  .astro-egg { position: relative; left: auto; bottom: auto; display: block; margin: 0 0 8px 16px; }
+  .astro-egg { position: relative; left: auto; bottom: auto; display: block; margin: 0 auto 8px; }
   .astro-egg canvas { height: 58px; }
 }
 

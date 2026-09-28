@@ -1,7 +1,8 @@
 // Astro Run: easter-egg runner game on the landing page.
 // Sprites are pixel grids traced from frontend-samples/game-astro-run-running-seq.png
 // (standing pose, run strides from frames 1 and 7, knee-crossing pose drawn to match)
-// and game-astro-run-assets.png (jump, crash, rockets, comet).
+// and game-astro-run-assets.png (jump, crash, rockets, comet). The drifting poses (air*, fall, impact)
+// are auto-traced from bouncy-assets.png.
 // Palette keys: o outline, c/C monitor, s screen, y eyes, e smile, p/m suit, d/n far-side suit, h/r rocket.
 (function () {
   var PAL = {
@@ -302,6 +303,262 @@
       '................ooooooooooo.ooooooooooo.',
       '................ooooooooooo.............'
     ],
+    airUp: [
+      '........ooooooooooooooooooo......',
+      '.......ooooooooooooooooooooo.....',
+      '.....ooooCccccccccccccccccooo....',
+      '....oooooCCccccccccccccccccoo....',
+      '...oooCCCcccCssssssssssssscoo....',
+      '...ooCCCCcccCssssssssssssscoo....',
+      '...ooCCCCcccCssssssssssssscoo....',
+      '...ooCCCCcccCsssyysssyyssscoo....',
+      '...ooCCCCcccCsssyysssyyssscoo....',
+      '...ooCCCCcccCssssssssssssscoo....',
+      '...ooCCCCcccCssssssssssssscoo....',
+      '...ooCCCCcccCsssesssssessscoo....',
+      '...ooCCCCcccCsssseeeeesssscoo....',
+      '...ooCCCCcccCssssssssssssscoo....',
+      '...oomCCCcccCssssssssssssscoo....',
+      '..oooooCCCCccCCCCCCCCCCCCCcoooo..',
+      '..oooooCCCCcccccccccccCCCcooooo..',
+      'oooppoooooooooooooooooooooooopooo',
+      'oopppmoooppmmmmmmmmmmmmoooopppmoo',
+      'oopppppooppppppppppppppooopppppoo',
+      'oopppppooppppppppppppppooppppppoo',
+      'oopppppppppppppmmmmmmpppoppppppoo',
+      'oopppppmpppppppmmmmmmppmopppppmoo',
+      'oooppppopppppppmmmmmmppooppppcooo',
+      '.ooomppooppppppmmmmmmppoopppoooo.',
+      '..oooppooppppppmmmmmmppoocppooo..',
+      '...ooooooppppppppppppppoooooo....',
+      '....oooooppppppppppppppooooo.....',
+      '.......ooppppppppppppppoo........',
+      '.......ooppppppppppppppoo........',
+      '.......ooppppppppppppppoo........',
+      '.......oopppppppppppppooo........',
+      '.......oomppppppppppppooo........',
+      '.......ooppppppppppppppooo.......',
+      '......ooopppppppppppppppoo.......',
+      '......oopppppppoomppppppoo.......',
+      '......oopppppppoooppppppoo.......',
+      '......omppppppooooppppppoo.......',
+      '......ommpppppoooomppppmoo.......',
+      '......ommmmmmpoooommmmmmoo.......',
+      '......ommmmmmoo.oommmmmoo........',
+      '......ommmmmmo..oommmmmoo........',
+      '......ommmmmmo..oommmmmoo........',
+      '......ooommmmo..ooommmmoo........',
+      '.......ooooooo...oooooooo........',
+      '........ooooo.....oooooo.........'
+    ],
+    fall: [
+      '........oooooooooooooooooooo....',
+      '........oooooooooooooooooooo....',
+      '.....oooooCccccccccccccccccooo..',
+      '...oooooomCccccCcCCCCCcccCccoo..',
+      '...oomCCCCccccssssssssssssscoo..',
+      '...ooCCCCCcccCssssssssssssscoo..',
+      '...ooCCCCCcccCssssssssssssscoo..',
+      '...ooCCCCccccCsssyysssyyssscoo..',
+      '...ooCCCCccccCsssyysssyyssscoo..',
+      '...ooCCCCCcccCssseessssessscoo..',
+      '...ooCCCCccccCssssssssssssscoo..',
+      '...ooCCCCccccCssseeeeeeessscoo..',
+      '..oooCCCCCcccCsssseeeeesssscoo..',
+      '..oooCCCCCcccCssssssssssssscoo..',
+      '..ommoCCCCCcccssssssssssssscoo..',
+      '..ommomCCCCcccmmmmmoooooooccoo..',
+      '..oomoopCpCccccccccccccccccooo..',
+      '..ooooooomooooooooooooooooooooo.',
+      '...oooooopoooooooooooooooooomooo',
+      '.ooooppppppppppppppppppoooppppoo',
+      'oooppppppppppppppppppppoopppppoo',
+      'oopppppppppppppmmmmmmppoppppppoo',
+      'oopppppppppppppmmmmmmppoppppppoo',
+      'ooppppcooppppppmmmmmmppopppppmoo',
+      'ooppppoopppppppmmmmmmpmoppppooo.',
+      'ooppppoomppppppmmmmmppmocppooo..',
+      'ooppppoompppppppppppppmoooooo...',
+      '.oopppoompppppppppppppoooooo....',
+      '.ooooooompppppppppppppoo........',
+      '...ooooompppppppppppppoo........',
+      '.......omppppppppppppooo........',
+      '.......ooppppppppppppooo........',
+      '.......oopppppppppppppoo........',
+      '......oomppppppompppppmo........',
+      '......oopppppppooppppppo........',
+      '......ooppppppmooppppppo........',
+      '.....oomppppppoooppppppoo.......',
+      '.....oompppppoooomppppmoo.......',
+      '.....oommmmmpooommmmmmoo........',
+      '.....oommmmmoooommmmmoo.........',
+      '.....oommmmmoo.ommmmmoo.........',
+      '.....oommmmoo..ommmmmo..........',
+      '......oommmoo..ooommmo..........',
+      '.......oooooo...ooooo...........',
+      '.......ooooo.....oooo...........'
+    ],
+    impact: [
+      '.......oooooooooooooooooooo....',
+      '.......ooooooooooooooooooooo...',
+      '.....oooomCcccccccccccccccooo..',
+      '....ooooomCCcccccccccccccccoo..',
+      '...oooccCcccccssoooooooosocco..',
+      '...ooCCCCCcccssssssssssssscco..',
+      '...ooCCCCccccmsssssssssssscco..',
+      '...ooCCCCccccmsssssssssssscco..',
+      '...ooCCCCccccmssyyossyyysscco..',
+      '...ooCCCCccccmssyyssssyysscco..',
+      '...ooCCCCccccmsssssssssssscco..',
+      '...ooCCCCccccmsssessssessscco..',
+      '...ooCCCCccccmsseeeeeesssscco..',
+      '..oooCCCCCcccmsssssssssssscco..',
+      '..ommCCCCCcccmsssssssssssscco..',
+      '..ommomCCCCccCsssssssssssscco..',
+      '..ommooCCCCccccccccccccccccCo..',
+      '..oomoomCmmCCCCCCCCCCCCCCCooo..',
+      '..ooooooopoooooooooooooooooo...',
+      '...ooooooppmmmmmmmmmmmoooooo...',
+      '.oooopppppppppppppppppoooppooo.',
+      'oooppppppppppppmmmmmppooppppmoo',
+      'oopppppppppppppmmmmmppmopppppoo',
+      'ooppppppoppppppmmmmmppmopppppoo',
+      'ooppppoooppppppmmmmmppoomppppoo',
+      'oopppooopppppppmmmmmppoooppppoo',
+      'ooppppooppppppppppppppooopppooo',
+      'ooppppooppppppppppppppooommooo.',
+      'ooopppooppppppppppppppooooooo..',
+      '.ooooooopppppppppppppooooooo...',
+      '..oooooopppppppppppppoooo......',
+      '......ooopppppppppppppooo......',
+      '......oooppppppppppppppooo.....',
+      '.....ooopppppppoopppppppoo.....',
+      '....ooopppppppooomppppppmo.....',
+      '....oompppppppooooppppppmo.....',
+      '....oommppppppooooppppppoo.....',
+      '....oommmppppoooommmmmpcoo.....',
+      '....oommmmmmooooommmmmmoo......',
+      '....oommmmmoo..oopmmmmoo.......',
+      '....ooommmmmo...ooommmmoo......',
+      '......ooooooo....oooooooo......',
+      '......ooooooo....oooooooo......'
+    ],
+    airLeft: [
+      '.........oooooooooooooooooo......',
+      '.........ooooooooooooooooooo.....',
+      '......oooooCccccccccccccccmoo....',
+      '....oooooooCcCsssssssssssocCo....',
+      '....ooCCCCCccossssssssssssCCo....',
+      '....ooCCCCcccossssssssssssCCo....',
+      '....ooCCCCcccossyyssssyyssCCo....',
+      '....ooCCCCcccsssyyssssyyssmCo....',
+      '....ooCCCCcccossssssssssssmCo....',
+      '....ooCCCCcccosseessssssssmCo....',
+      '....ooCCCCcccosssseeeeesssmCo....',
+      '....ooCCCCcccosssseeeessssmCo....',
+      '....ooCCCCcccssssssooossssmCo....',
+      '...ommoCCpcCccsooooooooooocco....',
+      '..ooooocpppcccccccccccccccCooooo.',
+      '.oooomoooppmoooooooooooooooommooo',
+      '.ooppppppppppppppppppmmoooomppmoo',
+      'oopppppppppppppppppppppooopppppoo',
+      'ompppppppppppppmmmmmpppopppppppoo',
+      'oopppppooppppppmmmmmpppopppppppoo',
+      'oopppooomppppppmmmmmppomppppppoo.',
+      'ooppppoopppppppmmmmmpmomppppoooo.',
+      '.oommmoopppppppppppppooooooooo...',
+      '.ooooooopppppppppppppoooooooo....',
+      '...ooooopppppppppppppoo..........',
+      '......ooppppppppppppoo...........',
+      '......oopppppppppppmoo...........',
+      '......oopppppppppppoo............',
+      '.....oompppppppppppmo............',
+      '....oocppppppoopppppoo...........',
+      '...ooopppppppoopppppoo...........',
+      '...oopppppppooopppppoo...........',
+      '...ommmppppoooppppppoo...........',
+      '...ommmmmmoommmmmppoo............',
+      '...ommmmmooommmmmooo.............',
+      '...oommmmooommmmmoo..............',
+      '....oommmssooommmo...............',
+      '....ooooooo.ooommo...............',
+      '.....ooooo...oooo................'
+    ],
+    airUpLeft: [
+      '.......oooooooooooooooo......',
+      '.....ooooccccccCCCCCccoo.....',
+      '....oooomcCCCCCCCCCCcccoo....',
+      '...oocCCcCsssssssssssscco....',
+      '...ssCCCcCsssssssssssscco....',
+      '...ssCCCccsssyssssyssscco....',
+      '...ssCCCccsssyyssyyssscco....',
+      '...ssCCCcCsssssssssssscco....',
+      '...soCCCcCsssessssessscco....',
+      '...ooCCCcCsssseeeesssscco....',
+      '...ooCCCcCsssssssssssscco....',
+      '..oooCCCcCsssssssssssmccooo..',
+      '.oooooCCCcCCCCCCmmmmmcCCoooo.',
+      'oopppooCmCCmmmmmmmmmomoooppoo',
+      'ompppmoooommoooooooooooopppoo',
+      'omppppmompppppppppppoommpppoo',
+      'ompppppppppppmmmmmppoopppppoo',
+      'oomppppppppppmmmmmppopppppmoo',
+      '.ooopppopppppmmmmmpmoppppooo.',
+      '...oomooppppppmmmpppopppoo...',
+      '....oooopppppppppppoooooo....',
+      '......sspppppppppppoo........',
+      '......ssppppppppppmo.........',
+      '......oompppppppppoo.........',
+      '......ooopppppppppoo.........',
+      '.....oomppppppppppoo.........',
+      '.....oopppppmopppppo.........',
+      '....ooppppppoopppppo.........',
+      '....oCmpppppoopppppo.........',
+      '....oCmmmmmoommpppoo.........',
+      '....ommmmmooommmmoo..........',
+      '....oommmmooommmoo...........',
+      '.....oommmo.ommmoo...........',
+      '......ooooo..ooooo...........',
+      '......oooo....ooo............'
+    ],
+    airDownLeft: [
+      '...........ooooo.............',
+      '........oooooCmoooo..........',
+      '.......ooooocccCcoooo........',
+      '......ooCccccssscccoooo......',
+      '......oCCCCccsssssCcccoooo...',
+      '.....ooCCCccosssssssocCcooo..',
+      '.....oCCCCccsssysssssssccCoo.',
+      '.....oCCCCcosssyysssssssscoo.',
+      '....ooCCCccssssssssseessscoo.',
+      '....ooCCCcssssesssssessscoo..',
+      '....oCCCccsssssesssssssmcoo..',
+      '....CCCCccssssseeessssscco...',
+      '.oooooCCCccssssssessssocmo...',
+      'ooppoooomCcccCssssssssccoo...',
+      'oppppoooCoooccccsssssocoooo..',
+      'oppppmooppppmocccccooccooooo.',
+      'oppppppopppppppmmCccccoooppoo',
+      'oopppppmpppppmmmmmmooooppppoo',
+      '.opppppppppppmmmmpppoopppppoo',
+      '..oopppopppppmmmmpppmpppppmoo',
+      '..oooooopppppmmmmpppoopppooo.',
+      '....ooooppppppppppppooooooo..',
+      '.......oppppppppppppooooo....',
+      '.......ompppppppppppo........',
+      '.......ooppppppppppoo........',
+      '........oopppppppppooo.......',
+      '.......oopppppppppppoo.......',
+      '.......oppppppompppppoo......',
+      '.......oppppppoopppppmo......',
+      '.......oopppppoooppppmo......',
+      '........ompppmmoommmmoo......',
+      '........oommmmmoommmmoo......',
+      '.........oommmmoommmoo.......',
+      '..........oommmoommmo........',
+      '..........oomoo.ooooo........',
+      '...........ooo...oooo........'
+    ],
     rocketS: [
       '.....oooo.....',
       '.....ohho.....',
@@ -431,23 +688,79 @@
     });
   });
 
-  // --- Idle astronaut, bottom left of the landing page ---
+  // --- Idle astronaut. Drifts around a side margin on wide screens, stands at the bottom otherwise ---
   var egg = document.createElement('button');
   egg.type = 'button';
   egg.className = 'astro-egg';
   egg.setAttribute('aria-label', 'Play Astro Run');
   var eggCv = document.createElement('canvas'), eggCtx = eggCv.getContext('2d');
-  eggCv.width = SP.stand[0].width;
-  eggCv.height = SP.stand[0].height;
+  var POSES = ['stand', 'airUp', 'fall', 'impact', 'airLeft', 'airUpLeft', 'airDownLeft'];
+  // One canvas that fits every pose, so they all draw at the same scale.
+  eggCv.width = Math.max.apply(null, POSES.map(function (k) { return SP[k][0].width; }));
+  eggCv.height = Math.max.apply(null, POSES.map(function (k) { return SP[k][0].height; }));
   egg.appendChild(eggCv);
   document.body.insertBefore(egg, document.querySelector('.site-footer'));  // in flow on phones
 
-  var eyesOff = false;
+  var eyesOff = false, pose = 'stand', flip = false;
+  function drawEgg() {
+    var im = SP[pose][+eyesOff];
+    eggCtx.setTransform(flip ? -1 : 1, 0, 0, 1, flip ? eggCv.width : 0, 0);
+    eggCtx.clearRect(0, 0, eggCv.width, eggCv.height);
+    eggCtx.drawImage(im, (eggCv.width - im.width) >> 1, (eggCv.height - im.height) >> 1);
+  }
   (function flicker() {
     eyesOff = !eyesOff;
-    eggCtx.clearRect(0, 0, eggCv.width, eggCv.height);
-    eggCtx.drawImage(SP.stand[+eyesOff], 0, 0);
+    drawEgg();
     setTimeout(flicker, eyesOff ? 60 + Math.random() * 90 : 150 + Math.random() * 1600);
+  })();
+
+  // Pose for each 45 degree heading, counterclockwise from "moving right". [grid, mirrored]
+  var HEADING = [['airLeft', 1], ['airUpLeft', 1], ['airUp', 0], ['airUpLeft', 0],
+                 ['airLeft', 0], ['airDownLeft', 0], ['fall', 0], ['airDownLeft', 1]];
+  function heading(vx, vy) { return HEADING[Math.round(Math.atan2(-vy, vx) / (Math.PI / 4)) & 7]; }  // screen y points down
+  console.assert(heading(0, 1)[0] === 'fall' && heading(-1, -1)[0] === 'airUpLeft' && heading(1, 0)[1],
+    'Astro Run: drift poses point the wrong way');
+  var DRIFT = 40, PAD = 16;                       // css px/s, gap to the walls
+  var calm = matchMedia('(prefers-reduced-motion: reduce)'), page = document.querySelector('main');
+  var ex = PAD, ey = 1e9, vx = 0, vy = 0, hitT = 0, prevT, right = Math.random() < 0.5;  // side picked per load
+
+  // New heading within 69 degrees of the wall's inward normal, so the path never settles into a loop.
+  function bounce(nx, ny) {
+    var a = Math.atan2(ny, nx) + (Math.random() - 0.5) * 2.4;
+    vx = Math.cos(a) * DRIFT;
+    vy = Math.sin(a) * DRIFT;
+    hitT = 0.25;
+  }
+
+  (function drift(t) {
+    requestAnimationFrame(drift);
+    var dt = prevT == null ? 0 : Math.min(0.05, (t - prevT) / 1000);
+    prevT = t;
+    var r = page.getBoundingClientRect(), w = egg.offsetWidth;
+    var minX = right ? r.right + PAD : PAD;
+    var maxX = right ? document.documentElement.clientWidth - w - PAD : r.left - w - PAD;
+    var maxY = innerHeight - egg.offsetHeight - PAD;
+    if (maxX < minX || calm.matches) {             // no room beside the content: park (see CSS)
+      if (egg.classList.contains('drift')) {
+        egg.classList.remove('drift');
+        egg.style.transform = '';
+        pose = 'stand';
+        flip = false;
+        drawEgg();
+      }
+      return;
+    }
+    egg.classList.add('drift');
+    if (!vx && !vy) { ex = right ? maxX : minX; ey = maxY; bounce(0, -1); }  // first frame: push off from the bottom outer corner
+    ex += vx * dt;
+    ey += vy * dt;
+    if (ex < minX) { ex = minX; bounce(1, 0); } else if (ex > maxX) { ex = maxX; bounce(-1, 0); }
+    if (ey < PAD) { ey = PAD; bounce(0, 1); } else if (ey > maxY) { ey = maxY; bounce(0, -1); }
+    var h = heading(vx, vy);
+    pose = (hitT -= dt) > 0 ? 'impact' : h[0];
+    flip = hitT <= 0 && !!h[1];
+    egg.style.transform = 'translate(' + Math.round(ex) + 'px,' + Math.round(ey) + 'px)';
+    drawEgg();
   })();
 
   // --- Game ---
