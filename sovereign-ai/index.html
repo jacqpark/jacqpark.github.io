@@ -1,0 +1,41 @@
+---
+layout: page
+title: MNCs, States, and the Race for Sovereign AI
+subtitle: Research agenda // Working drafts
+permalink: /sovereign-ai/
+theme: lavender
+# Drafts live in this folder. Add pdf: <file> to a project once its draft is uploaded.
+projects:
+  - { num: "01", name: "The Perimeter", title: "Expand and Exempt: Compensation and the Politics of US Chip Export Controls", pdf: expand-and-exempt.pdf }
+  - { num: "02", name: "The Allies", title: "Whose National Interest?" }
+  - { num: "03", name: "The Global South", title: "Two National Offers or Two Corporate Coalitions?" }
+  - { num: "04", name: "The Microfoundations", title: "A Dual-Sample Conjoint on Alignment and Constraint" }
+---
+
+<div class="course-info agenda">
+  <dl>
+    <dt>The Perimeter</dt><dd>Chip designers, equipment makers, and cloud developers each prefer a different scope for US semiconductor export controls. Drawing on firm comments to the Bureau of Industry and Security, lobbying disclosures, and CHIPS Act awards, I test whether scope tracks military risk or the revenue exposure of the commenting firms, and whether a subsidy softens a firm's objections in the next round.</dd>
+    <dt>The Allies</dt><dd>The Netherlands and Japan put chipmaking tools under license within months of Washington's request, while Korea held out for years and won exemptions for its fabs in China. I trace the difference to the China revenue exposure and political weight of each country's leading producers, and ask whose interest each government's announced national position served.</dd>
+    <dt>The Global South</dt><dd>The United States and China both finance data centers and submarine cables to draw developing states into their technology stacks. By linking DFC, AidData, and EU Global Gateway records to lobbying data, this project asks whether recipients are choosing between two national offers or between two corporate coalitions that have each captured a public financing instrument.</dd>
+    <dt>The Microfoundations</dt><dd>A dual-sample conjoint takes the mechanism to the people who make these choices. Corporate supply chain and government affairs staff weigh investment scenarios under varying control rules, and foreign policy and trade officials report how much room they have when domestic firms are already locked into one ecosystem.</dd>
+  </dl>
+</div>
+
+<h2>Working Drafts</h2>
+<p class="session-hint">Click a highlighted card to open the draft.</p>
+
+<ol class="session-list">
+{% for p in page.projects %}
+<li class="session session-class">
+{% if p.pdf %}<a href="{{ p.pdf }}" target="_blank" rel="noopener">{% else %}<div>{% endif %}
+  <span class="session-date"><b>{{ p.num }}</b>Project</span>
+  <span class="session-body">
+    <span class="session-kind">{{ p.name }}</span>
+    <span class="session-title">{{ p.title }}</span>
+    {% unless p.pdf %}<span class="session-flag off">In preparation</span>{% endunless %}
+  </span>
+  {% if p.pdf %}<span class="session-go">Draft &#9656;</span>{% endif %}
+{% if p.pdf %}</a>{% else %}</div>{% endif %}
+</li>
+{% endfor %}
+</ol>

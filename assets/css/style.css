@@ -986,6 +986,10 @@ pre {
 .course-info dd { margin: 0; font-size: 0.95rem; }
 .course-info .cv-download { margin-bottom: 0; }
 
+/* Research agenda card (sovereign-ai): long dd text, stack on phones */
+.agenda dl { row-gap: 0.9rem; }
+@media (max-width: 640px) { .agenda dl { grid-template-columns: 1fr; row-gap: 0.2rem; } .agenda dd { margin-bottom: 0.7rem; } }
+
 .session-hint {
   font-family: var(--font-mono);
   font-size: 0.78rem;
