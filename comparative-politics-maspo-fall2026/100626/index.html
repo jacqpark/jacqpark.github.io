@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Session 04 · Comparative Politics · Jihye Park</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tektur:wght@400;600;700;800&family=Chakra+Petch:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* 8-Bit Orbit deck. Same palette and fonts as assets/css/style.css. */
+:root {
+  --void: #0A0E27; --navy: #0F1B3D; --pink: #F0A6CA; --pink-hot: #E87CB2;
+  --cyan: #5EDCF4; --yellow: #F4D03F; --lav: #E2D5F2; --white: #F8F4FF;
+  --display: 'Tektur', 'Courier New', monospace;
+  --sans: 'Chakra Petch', 'Helvetica Neue', Arial, sans-serif;
+  --mono: 'Space Mono', 'Courier New', monospace;
+  /* 1% of the largest 16:9 box that fits the window. Everything scales from it. */
+  --u: min(1vw, 1.7778vh);
+  --base: max(15px, calc(var(--u) * 1.35));
+}
+* { box-sizing: border-box; }
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; background: var(--void); }
+body { margin: 0; font: 400 var(--base)/1.5 var(--sans); -webkit-font-smoothing: antialiased; }
+p { margin: 0 0 .6em; }
+a { color: inherit; }
+
+/* ---------- Slides and themes ---------- */
+.slide {
+  position: relative; min-height: 100vh; min-height: 100dvh;
+  display: grid; place-items: center; overflow: hidden;
+  padding: 4.2em 5em 3.6em; scroll-snap-align: start;
+  background-color: var(--bg); color: var(--fg);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: var(--cell) var(--cell);
+}
+.inner { position: relative; z-index: 1; width: 100%; max-width: 62em; }
+.navy { --bg: var(--void); --fg: var(--lav); --strong: var(--white); --muted: rgba(226,213,242,.66);
+  --h: var(--cyan); --hs: var(--yellow); --card: rgba(15,27,61,.78); --line: rgba(94,220,244,.5);
+  --shadow: var(--pink); --grid: rgba(94,220,244,.05); --cell: calc(var(--u) * 2); }
+.lav { --bg: var(--lav); --fg: var(--navy); --strong: var(--navy); --muted: rgba(15,27,61,.64);
+  --h: var(--navy); --hs: var(--pink-hot); --card: rgba(255,255,255,.55); --line: var(--navy);
+  --shadow: var(--pink-hot); --grid: rgba(15,27,61,.07); --cell: calc(var(--u) * 1.1); }
+.pink { --bg: var(--pink); --fg: var(--navy); --strong: var(--navy); --muted: rgba(15,27,61,.7);
+  --h: var(--navy); --hs: var(--cyan); --card: rgba(255,255,255,.45); --line: var(--navy);
+  --shadow: var(--cyan); --grid: rgba(15,27,61,.08); --cell: calc(var(--u) * 1.1); }
+
+/* pixel stars, scanlines and vignette on navy slides */
+.navy::before, .navy::after { content: ""; position: absolute; inset: 0; pointer-events: none; }
+.navy::before {
+  background:
+    linear-gradient(var(--cyan),var(--cyan)) 7% 12%/4px 4px,
+    linear-gradient(var(--yellow),var(--yellow)) 19% 30%/3px 3px,
+    linear-gradient(var(--pink),var(--pink)) 12% 78%/5px 5px,
+    linear-gradient(var(--cyan),var(--cyan)) 28% 88%/3px 3px,
+    linear-gradient(var(--yellow),var(--yellow)) 36% 9%/4px 4px,
+    linear-gradient(var(--pink),var(--pink)) 44% 64%/3px 3px,
+    linear-gradient(var(--cyan),var(--cyan)) 52% 94%/5px 5px,
+    linear-gradient(var(--yellow),var(--yellow)) 58% 17%/3px 3px,
+    linear-gradient(var(--pink),var(--pink)) 66% 41%/4px 4px,
+    linear-gradient(var(--cyan),var(--cyan)) 73% 7%/3px 3px,
+    linear-gradient(var(--yellow),var(--yellow)) 81% 71%/5px 5px,
+    linear-gradient(var(--pink),var(--pink)) 88% 24%/3px 3px,
+    linear-gradient(var(--cyan),var(--cyan)) 94% 56%/4px 4px,
+    linear-gradient(var(--yellow),var(--yellow)) 4% 50%/3px 3px,
+    linear-gradient(var(--cyan),var(--cyan)) 85% 92%/3px 3px,
+    linear-gradient(var(--pink),var(--pink)) 24% 55%/3px 3px;
+  background-repeat: no-repeat; opacity: .55;
+  animation: twinkle 3.2s steps(2) infinite;
+}
+.navy::after {
+  background:
+    repeating-linear-gradient(to bottom, transparent 0 2px, rgba(0,0,0,.14) 3px, transparent 4px),
+    radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.5) 100%);
+}
+@keyframes twinkle { 50% { opacity: .3; } }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ---------- Type ---------- */
+h1, h2, h3 { font-family: var(--display); margin: 0; line-height: 1.05; }
+h1 { font-size: 5.4em; font-weight: 800; text-transform: uppercase; letter-spacing: .02em;
+  color: var(--h); text-shadow: .045em .045em 0 var(--hs); }
+h2 { font-size: 2.6em; font-weight: 800; color: var(--h); text-shadow: .06em .06em 0 var(--hs); }
+h3 { font-size: 1.05em; font-weight: 700; color: var(--strong); margin-bottom: .45em; }
+.head { text-align: center; margin-bottom: 2em; }
+.center { text-align: center; }
+.tag { display: inline-block; font: 700 .68em var(--display); letter-spacing: .2em; text-transform: uppercase;
+  background: var(--navy); color: var(--yellow); padding: .5em 1.1em; margin-bottom: 1.3em; }
+.navy .tag { background: transparent; border: 2px solid var(--yellow); }
+.sub { font: .78em var(--mono); letter-spacing: .12em; color: var(--muted); margin-top: 1em; }
+.kicker { font: 700 .8em var(--mono); letter-spacing: .42em; text-transform: uppercase; color: var(--pink); margin-bottom: 1.6em; }
+.lead { font-size: 1.25em; color: var(--fg); margin: 1.4em auto 1.6em; }
+.mono { font-family: var(--mono); }
+.muted { color: var(--muted); }
+.small { font-size: .82em; }
+.chips { display: flex; flex-wrap: wrap; gap: .7em; justify-content: center; }
+.chips span { font: 700 .66em var(--mono); letter-spacing: .12em; text-transform: uppercase;
+  border: 2px solid var(--yellow); color: var(--yellow); padding: .7em 1.2em; }
+.light-chips span { border-color: var(--navy); color: var(--navy); background: rgba(255,255,255,.4); }
+.chip { display: inline-block; font: 700 .62em var(--mono); letter-spacing: .12em; text-transform: uppercase;
+  background: var(--navy); color: var(--cyan); padding: .25em .6em; margin-bottom: .7em; }
+.navy .chip { background: var(--cyan); color: var(--navy); }
+.flag { display: inline-block; font: 700 .58em var(--mono); letter-spacing: .1em; text-transform: uppercase;
+  background: var(--navy); color: var(--white); border: 2px solid var(--yellow); padding: .15em .55em; margin-left: .5em; vertical-align: middle; }
+.flag.room { border-color: var(--pink-hot); }
+
+/* ---------- Blocks ---------- */
+.grid { display: grid; gap: 1.3em; grid-template-columns: repeat(var(--cols, 2), minmax(0, 1fr)); }
+.card { background: var(--card); border: 2px solid var(--line); padding: 1.1em 1.25em;
+  box-shadow: .3em .3em 0 var(--shadow); font-size: .9em; }
+.card p:last-child { margin-bottom: 0; }
+.note { margin-top: 1.8em; font-size: .88em; text-align: center; color: var(--muted); }
+.note b { color: var(--strong); }
+ul.pix { list-style: none; padding: 0; margin: 0; }
+ul.pix li { position: relative; padding-left: 1.2em; margin-bottom: .35em; }
+ul.pix li::before { content: ""; position: absolute; left: 0; top: .55em; width: .45em; height: .45em; background: var(--shadow); }
+
+/* bio */
+.bio { font-size: 1.5em; line-height: 1.6; margin: 1em 0 0; }
+.bio mark { background: linear-gradient(transparent 55%, var(--yellow) 0); color: var(--strong); font-weight: 700; padding: 0 .1em; }
+
+/* weeks overview */
+.weeks { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: .6em; }
+.weeks div { border: 2px solid var(--line); background: var(--card); padding: .55em .6em .7em; font-size: .72em; line-height: 1.25; min-height: 5.6em; }
+.weeks b { display: block; font: 700 .9em var(--mono); color: var(--yellow); margin-bottom: .35em; }
+.weeks .now { border-color: var(--yellow); box-shadow: .3em .3em 0 var(--pink); }
+.weeks .end { border-color: var(--pink); }
+.weeks i { display: block; margin-top: .4em; font: 700 .85em var(--mono); color: var(--pink); font-style: normal; }
+
+/* label/value rows */
+.rows { display: grid; grid-template-columns: max-content 1fr; border-top: 2px dashed rgba(15,27,61,.3); }
+.rows > * { padding: .7em 0; border-bottom: 2px dashed rgba(15,27,61,.3); margin: 0; }
+.rows dt { font: 700 .66em var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); padding-right: 2.5em; align-self: center; }
+
+/* evaluation hp bar */
+.hp-top, .hp { display: grid; grid-template-columns: repeat(20, minmax(0, 1fr)); gap: .2em; }
+.hp { padding: .3em; border: .16em solid var(--navy); background: rgba(255,255,255,.35); box-shadow: .35em .35em 0 var(--navy); }
+.hp i { display: block; height: 2.4em; }
+.hp-top { margin-bottom: .6em; font: 700 .7em var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+.hp-top span { text-align: center; }
+.s8 { grid-column: span 8; } .s5 { grid-column: span 5; } .s2 { grid-column: span 2; }
+.c1 { background: var(--navy); } .c2 { background: var(--cyan); } .c3 { background: var(--white); } .c4 { background: var(--yellow); }
+table.tbl { width: 100%; border-collapse: collapse; margin-top: 2.2em; }
+.tbl th { font: 700 .62em var(--mono); letter-spacing: .14em; text-transform: uppercase; text-align: left; padding: 0 1em .6em 0; color: var(--muted); }
+.tbl td { padding: .6em 1em .6em 0; border-top: 2px dashed rgba(15,27,61,.3); }
+.tbl td:first-child { font-weight: 700; white-space: nowrap; }
+.tbl td:nth-child(2) { font: 700 1.1em var(--mono); }
+.sw { display: inline-block; width: .8em; height: .8em; margin-right: .6em; border: 2px solid var(--navy); vertical-align: -.05em; }
+
+/* timeline */
+.tl { list-style: none; position: relative; margin: 0; padding: 0 0 0 2em; }
+.tl::before { content: ""; position: absolute; left: .5em; top: .6em; bottom: .6em; border-left: .14em dashed var(--navy); }
+.tl li { position: relative; display: flex; align-items: center; flex-wrap: wrap; gap: .1em .7em; margin-bottom: .9em; }
+.tl li::before { content: ""; position: absolute; left: -1.9em; width: .7em; height: .7em; background: var(--cyan); border: .14em solid var(--navy); }
+.tl li.q::before { background: var(--yellow); }
+.tl li.x::before { background: var(--pink-hot); }
+.tl time { font: 700 .7em var(--mono); background: var(--navy); color: var(--cyan); padding: .3em .6em; min-width: 8.5em; letter-spacing: .08em; }
+.tl .flag { margin-left: 0; }
+
+/* complement list */
+.plist { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8em 2.2em; }
+.plist li { display: flex; gap: .9em; align-items: baseline; padding-bottom: .7em; border-bottom: 2px dashed rgba(15,27,61,.3); }
+.plist time { flex: none; font: 700 .68em var(--mono); background: var(--navy); color: var(--pink); padding: .25em .55em; min-width: 5.2em; text-align: center; }
+
+/* method meters */
+.meter { display: inline-flex; gap: .2em; }
+.meter i { width: .75em; height: .75em; border: .12em solid var(--navy); }
+.meter i.on { background: var(--navy); }
+.methods .card { display: grid; grid-template-columns: 9em 1fr 5.5em; gap: 1.2em; align-items: center; box-shadow: none; padding: .8em 1.2em; }
+.methods .card + .card { margin-top: .7em; }
+.methods .card.hot { box-shadow: .3em .3em 0 var(--pink-hot); border-width: .16em; }
+.methods h3 { margin: 0; }
+.methods .n { font: .72em var(--mono); color: var(--muted); text-align: right; }
+/* case study card opens to Lijphart's six types */
+.methods details.card { display: block; }
+.methods summary { display: grid; grid-template-columns: 9em 1fr 5.5em; gap: 1.2em; align-items: center; cursor: pointer; list-style: none; }
+.methods summary::-webkit-details-marker { display: none; }
+.methods summary .flag::after { content: " ▾"; }
+.methods details[open] .flag::after { content: " ▴"; }
+.methods .meter { grid-column: -2; }
+.methods:has(details[open]) > div p, .methods:has(details[open]) + .note { display: none; }
+.types { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto; grid-auto-flow: column; gap: .5em 1.4em; margin-top: .8em; padding-top: .9em; border-top: 2px dashed rgba(15,27,61,.3); line-height: 1.3; }
+.fix.types li { padding-bottom: 0; }
+.types b { display: block; }
+.types .hot b { display: table; background: linear-gradient(transparent 55%, var(--pink) 0); }
+.types-note { margin: .8em 0 0; font-size: .85em; color: var(--muted); }
+
+/* variables x cases matrix */
+.matrix-wrap { display: grid; grid-template-columns: auto 1fr; gap: .6em 1em; align-items: center; }
+.matrix { box-sizing: content-box; width: 28em; max-width: 100%; height: 8em; padding: 0 .35em .35em 0; background-origin: content-box;
+  border: .14em solid var(--navy); background-color: rgba(255,255,255,.35);
+  background-image: conic-gradient(from 90deg at .35em .35em, var(--navy) 90deg, transparent 0);
+  background-size: 2em 2em; }
+.axis { font: 700 .62em var(--mono); letter-spacing: .14em; text-transform: uppercase; }
+.fix { counter-reset: fix; list-style: none; padding: 0; margin: 0; }
+.fix li { counter-increment: fix; position: relative; padding: 0 0 .75em 2.4em; }
+.fix li::before { content: counter(fix, decimal-leading-zero); position: absolute; left: 0; top: .1em; font: 700 .7em var(--mono);
+  background: var(--navy); color: var(--yellow); padding: .15em .35em; }
+
+/* case pills */
+.pills { display: flex; flex-wrap: wrap; gap: .8em; justify-content: center; margin: 1.6em 0; }
+.pills span { border: 2px solid var(--cyan); padding: .55em 1em; font: 700 .72em var(--mono); color: var(--white); background: rgba(15,27,61,.8); box-shadow: .25em .25em 0 var(--pink); }
+
+/* Mill tables */
+.mill table { width: 100%; border-collapse: collapse; margin: .8em 0 .9em; font-size: .9em; }
+.mill th { font: 700 .66em var(--mono); letter-spacing: .1em; text-transform: uppercase; padding: .4em; }
+.mill td { border: 2px solid var(--navy); padding: .4em .6em; text-align: center; font: 700 .78em var(--mono); }
+.mill td:first-child { text-align: left; font-family: var(--sans); font-weight: 600; font-size: .85em; }
+.mill .y { background: var(--navy); color: var(--cyan); }
+.mill .s { background: rgba(255,255,255,.6); }
+.mill .d { background: var(--yellow); }
+
+/* depth vs breadth */
+.axisbar { display: flex; justify-content: space-between; align-items: center; gap: 1em; font: 700 .68em var(--mono);
+  letter-spacing: .16em; text-transform: uppercase; margin-bottom: 1.2em; }
+.axisbar i { flex: 1; border-top: .2em dashed var(--navy); }
+.gr { display: grid; grid-template-columns: auto 1fr; gap: .25em .7em; margin-top: .7em; font-size: .92em; }
+.gr dt { font: 700 .64em var(--mono); letter-spacing: .1em; text-transform: uppercase; align-self: center; padding: .15em .45em; background: var(--navy); color: var(--cyan); }
+.gr dt.r { color: var(--pink); }
+.gr dd { margin: 0; }
+
+/* big question */
+.bigq { font: 700 2em/1.25 var(--display); color: var(--navy); background: var(--white); border: .1em solid var(--navy);
+  box-shadow: .22em .22em 0 var(--navy); padding: .9em 1.1em; margin: 0 auto 1.4em; max-width: 24em; text-align: center; }
+
+/* ---------- Session 02 blocks ---------- */
+.quote { font: 700 1.45em/1.35 var(--display); color: var(--strong); border-left: .3em solid var(--hs); padding: .2em 0 .2em .9em; margin: 1.8em auto 0; max-width: 34em; }
+.steps { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: .6em; margin-bottom: 2em; }
+.steps span { font: 700 .72em var(--mono); background: var(--white); border: 2px solid var(--navy); padding: .55em .9em; box-shadow: .25em .25em 0 var(--pink-hot); }
+.steps i { font-style: normal; color: var(--pink-hot); font-size: .8em; }
+.flow { width: 100%; height: auto; font-family: var(--mono); }
+.calc { display: grid; grid-template-columns: 1fr auto; margin: .4em 0 .9em; }
+.calc dt, .calc dd { margin: 0; padding: .45em 0; border-bottom: 2px dashed rgba(15,27,61,.3); }
+.calc dd { font: 700 1.05em var(--mono); text-align: right; }
+.calc dt:nth-last-of-type(1), .calc dd:last-child { border-bottom: 0; }
+.calc.prof dd { font-size: .85em; padding-left: 1em; }
+.cmp { width: 100%; border-collapse: collapse; font-size: .9em; }
+.cmp th { font: 700 .66em var(--mono); letter-spacing: .12em; text-transform: uppercase; text-align: left; color: var(--muted); padding: 0 1em .6em 0; }
+.cmp td { padding: .6em 1em .6em 0; border-top: 2px dashed rgba(15,27,61,.3); vertical-align: top; }
+.cmp td:first-child { font-weight: 700; white-space: nowrap; }
+.stats { display: grid; gap: 1.1em; grid-template-columns: repeat(var(--cols, 4), minmax(0, 1fr)); }
+.stat b { display: block; font: 800 2.1em/1 var(--display); color: var(--strong); text-shadow: .06em .06em 0 var(--hs); margin-bottom: .4em; white-space: nowrap; }
+.stat p { margin: 0; font-size: .88em; }
+.quad { display: grid; grid-template-columns: 8.5em 1fr 1fr; gap: .9em; }
+.quad .ax { align-self: center; text-align: center; font: 700 .62em var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--yellow); }
+.quad .card p { margin: 0; }
+.latent { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .7em; text-align: center; }
+.latent span { font: 700 .7em var(--mono); background: var(--white); border: 2px solid var(--navy); padding: .8em .5em; }
+.latent i { font-style: normal; color: var(--navy); }
+.latent b { grid-column: 1 / -1; font: 800 1.8em var(--display); color: var(--yellow); background: var(--navy); padding: .45em; box-shadow: .2em .2em 0 var(--cyan); }
+.bars { display: grid; grid-template-columns: max-content 1fr 2.6em; gap: .5em .9em; align-items: center; font-size: .82em; }
+.bars .t { position: relative; height: 1.2em; background: linear-gradient(var(--navy), var(--navy)) 50% 0 / 2px 100% no-repeat; }
+/* bar spans from zero to the value on a -1 to +1 axis */
+.bars .t i { position: absolute; top: .15em; bottom: .15em; left: calc(50% + min(var(--v), 0) * 50%); width: calc(max(var(--v), -1 * var(--v)) * 50%); background: var(--navy); }
+.bars .t i.neg { background: var(--pink-hot); }
+.bars > b { font: 700 .95em var(--mono); text-align: right; }
+.bars .ticks { display: flex; justify-content: space-between; font: .8em var(--mono); color: var(--muted); }
+.cty { display: flex; flex-wrap: wrap; gap: .6em; }
+.cty span { font: 700 .85em var(--mono); background: var(--navy); color: var(--cyan); padding: .35em .7em; }
+
+@media screen and (max-width: 760px) {
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .quad { grid-template-columns: 1fr; }
+  .quad > span:first-child { display: none; }
+  .steps i { transform: rotate(90deg); }
+  .bars { font-size: .72em; }
+  .cmp td:first-child { white-space: normal; }
+}
+
+/* ---------- HUD ---------- */
+.hud { position: fixed; z-index: 10; top: 1.1em; left: 1.4em; right: 1.4em; display: flex; justify-content: space-between; align-items: center; gap: 1em; pointer-events: none; }
+.hud-right { display: flex; gap: .8em; }
+.hud svg { width: 1.1em; height: 1.1em; vertical-align: -.2em; margin-right: .55em; }
+.hud a, .hud button { pointer-events: auto; cursor: pointer; line-height: inherit; font: 700 .62em var(--mono); letter-spacing: .14em; text-transform: uppercase; text-decoration: none;
+  background: rgba(15,27,61,.9); color: var(--white); border: 2px solid var(--cyan); padding: .7em 1.1em;
+  transition: transform .15s steps(3), box-shadow .15s steps(3), background .15s steps(3); }
+.hud a:hover, .hud button:hover { transform: translate(-2px,-2px); box-shadow: 4px 4px 0 var(--pink); }
+.hud .back::before { content: "◆ "; color: var(--yellow); animation: blink 1.6s steps(1) infinite; }
+.hud .pdf { border-color: var(--yellow); color: var(--yellow); box-shadow: 4px 4px 0 var(--pink); }
+.hud .pdf:hover { background: var(--yellow); color: var(--navy); box-shadow: 7px 7px 0 var(--pink); }
+.dots { position: fixed; z-index: 10; right: 1.3em; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: .45em; }
+.dots a { width: .75em; height: .75em; border: 2px solid var(--cyan); background: rgba(15,27,61,.85); }
+.dots a[aria-current="true"] { background: var(--yellow); border-color: var(--navy); }
+.counter { position: fixed; z-index: 10; bottom: 1em; left: 50%; transform: translateX(-50%); font: 700 .72em var(--mono);
+  letter-spacing: .2em; background: rgba(15,27,61,.9); color: var(--cyan); padding: .6em 1.2em; }
+.keys { position: fixed; z-index: 10; bottom: 1.3em; right: 1.4em; font: .58em var(--mono); letter-spacing: .16em; text-transform: uppercase;
+  color: var(--cyan); background: rgba(15,27,61,.7); padding: .3em .6em; }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before { animation: none !important; } }
+
+@media screen and (max-width: 760px) {
+  html { scroll-snap-type: y proximity; }
+  .slide { padding: 5em 1.1em 4em; }
+  h1 { font-size: 2.9em; } h2 { font-size: 1.9em; }
+  .grid, .plist, .matrix-wrap { grid-template-columns: 1fr; }
+  .weeks { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bio { font-size: 1.2em; }
+  .methods .card { grid-template-columns: 1fr auto; }
+  .methods .card p { grid-column: 1 / -1; order: 3; }
+  .methods summary { grid-template-columns: 1fr auto; }
+  .types { grid-template-columns: 1fr; grid-auto-flow: row; }
+  .hp-top { font-size: .5em; }
+  .bigq { font-size: 1.4em; }
+  .dots, .keys { display: none; }
+  .hud a, .hud button { font-size: .56em; padding: .6em .8em; }
+  .hud .lbl { display: none; }
+  .hud .fs svg { margin: 0; }
+}
+
+/* ---------- PDF (scripts/deck-pdf.sh prints this page) ---------- */
+@page { size: 1280px 720px; margin: 0; }
+@media print {
+  :root { --u: 12.8px; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; animation: none !important; }
+  html { scroll-snap-type: none; }
+  .hud, .dots, .counter, .keys { display: none; }
+  .slide { width: 1280px; height: 720px; min-height: 0; break-after: page; }
+}
+/* ---------- Session 03 blocks ---------- */
+.cmp .num { font-family: var(--mono); text-align: right; white-space: nowrap; }
+.cmp tr.hot td { background: rgba(255,255,255,.55); font-weight: 700; }
+/* group exercise. Profiles in one row, tasks listed beneath them. */
+.ex .card { font-size: .74em; padding: .85em 1em; }
+.ex .fix { margin-top: 2.6em; font-size: .88em; }
+.ex .fix li { padding-bottom: 1em; }
+/* ---------- Session 04 blocks ---------- */
+.steps span { color: var(--navy); }
+.navy .cmp th { color: var(--muted); }
+.navy .cmp td { border-top-color: rgba(94,220,244,.3); }
+.cmp td.c { text-align: center; }
+/* horizontal stacked bars, widths in percent */
+.stack { display: grid; grid-template-columns: 13em 1fr; gap: 1em 1.2em; align-items: center; }
+.stack > b { font: 700 .72em var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.stack .bar { display: flex; height: 3em; border: .14em solid var(--navy); box-shadow: .3em .3em 0 var(--navy); }
+.stack .bar i { flex: 0 0 var(--w); display: flex; align-items: center; justify-content: center; text-align: center;
+  font: 700 .62em/1.2 var(--mono); letter-spacing: .06em; text-transform: uppercase; font-style: normal; color: var(--navy); }
+.stack .bar i + i { border-left: .2em solid var(--navy); }
+.stack .ag { background: var(--white); } .stack .co { background: var(--navy); color: var(--cyan) !important; }
+.stack .in { background: var(--lav); } .stack .er { background: var(--yellow); }
+/* exercise data table */
+.ex .cmp { font-size: .7em; }
+.ex .cmp td { padding: .45em .7em .45em 0; }
+.ex .cmp .num { font-size: 1.05em; text-align: center; padding-right: .3em; }
+.ex .rules { font: .66em/1.5 var(--mono); color: var(--cyan); border: 2px dashed var(--line); padding: .55em .9em; margin-top: 1em; }
+.ex .fix { margin-top: 1.2em; font-size: .8em; }
+.ex .fix li { padding-bottom: .55em; }
+@media screen and (max-width: 760px) {
+  .stack { grid-template-columns: 1fr; }
+  .ex .cmp { display: block; overflow-x: auto; }
+}
+</style>
+</head>
+<body>
+
+<header class="hud">
+  <a class="back" href="../">Course module</a>
+  <div class="hud-right">
+    <button class="fs" type="button" aria-label="Toggle fullscreen" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M3 9V3h6M21 9V3h-6M3 15v6h6M21 15v6h-6"/></svg><span class="lbl">Fullscreen</span></button>
+    <a class="pdf" href="slides.pdf" download="comparative-politics-100626.pdf">⬇ Download PDF</a>
+  </div>
+</header>
+<nav class="dots" aria-label="Slides"></nav>
+<div class="counter" aria-live="polite"><span id="cur">01</span> / <span id="tot">01</span></div>
+<div class="keys" aria-hidden="true">Use keys ↑ ↓ · F fullscreen</div>
+
+<main>
+
+<!-- 01 · title -->
+<section class="slide navy">
+  <div class="inner center">
+    <p class="kicker">T407016 // Autumn 2026 // Université de Genève</p>
+    <h1>Comparative<br>Politics</h1>
+    <p class="lead">Session 04. Democratization and democratic erosion.</p>
+    <div class="chips"><span>Tue 06 Oct 2026</span><span>Uni Mail M2170</span><span>Dr. Jihye Park</span></div>
+  </div>
+</section>
+
+<!-- 02 · recap -->
+<section class="slide lav">
+  <div class="inner" style="max-width:52em">
+    <div class="head">
+      <span class="tag">Previously</span>
+      <h2>Last week, this week</h2>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <span class="chip">Session 03</span>
+        <ul class="pix">
+          <li>Levitsky and Way on regimes that hold real elections and still tilt the field</li>
+          <li>Munck and Verkuilen on how democracy indices are built and where they fall short</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="chip">Session 04</span>
+        <ul class="pix">
+          <li>Acemoglu and Robinson on why elites hand over power, and when they take it back</li>
+          <li>Lührmann and Lindberg on how democracies decline today</li>
+          <li>One group exercise</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note">Last week we sorted regimes into types. <b>This week we ask how countries move from one type to another.</b></p>
+  </div>
+</section>
+
+<!-- 03 · opener -->
+<section class="slide pink">
+  <div class="inner center">
+    <span class="tag">Opener · any volunteers?</span>
+    <p class="sub" style="margin:0 0 1em">One question before the readings</p>
+    <p class="bigq">Why would a ruling elite ever hand power to the people it rules?</p>
+    <div class="grid" style="--cols:3;text-align:left">
+      <div class="card"><span class="chip">01</span><p>What has to happen first?</p></div>
+      <div class="card"><span class="chip">02</span><p>Why not buy off the protesters with money instead?</p></div>
+      <div class="card"><span class="chip">03</span><p>Once power is handed over, what stops the elite from taking it back?</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 · four paths -->
+<section class="slide navy">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Acemoglu and Robinson 2006 · Chapter 2</span>
+      <h2>Four paths</h2>
+    </div>
+    <div class="grid" style="--cols:4">
+      <div class="card"><span class="chip">Britain</span><h3>Consolidated democracy</h3><p>Reform acts from 1832 widened the vote in steps, with no significant reversal.</p></div>
+      <div class="card"><span class="chip">Argentina</span><h3>Unconsolidated democracy</h3><p>Democracy became real with the 1912 electoral reforms. Coups returned the country to dictatorship more than once.</p></div>
+      <div class="card"><span class="chip">Singapore</span><h3>Nondemocracy, little force</h3><p>The regime lasts with minor concessions and without significant repression.</p></div>
+      <div class="card"><span class="chip">South Africa</span><h3>Nondemocracy by repression</h3><p>Apartheid survived on repression and violence until the regime was forced to democratize in 1994.</p></div>
+    </div>
+    <p class="quote" style="font-size:1.2em;max-width:40em">"Why are some countries democratic whereas others are ruled by dictatorships or other nondemocratic regimes?"</p>
+  </div>
+</section>
+
+<!-- 05 · building blocks -->
+<section class="slide lav">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Acemoglu and Robinson · The approach</span>
+      <h2>Three building blocks</h2>
+    </div>
+    <div class="grid" style="--cols:3">
+      <div class="card"><span class="chip">01</span><h3>Interests</h3><p>People rank regimes by what they deliver. In 1839 the Chartist J. R. Stephens called universal suffrage "a knife and fork question."</p></div>
+      <div class="card"><span class="chip">02</span><h3>Conflict</h3><p>Every policy creates winners and losers. The elite may be the rich, a racial or ethnic group, or the military. The citizens are more numerous.</p></div>
+      <div class="card"><span class="chip">03</span><h3>Institutions</h3><p>Political institutions allocate power today and tomorrow. Changing them is a way to commit to future policy.</p></div>
+    </div>
+    <p class="note">The models treat regimes as a dichotomy, with free and fair elections and free entry into politics at the core. <b>Compare that with the four attributes Munck and Verkuilen asked for last week.</b></p>
+  </div>
+</section>
+
+<!-- 06 · two kinds of power -->
+<section class="slide pink">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Acemoglu and Robinson · Political power</span>
+      <h2>Two kinds of power</h2>
+    </div>
+    <div class="grid" style="--cols:3">
+      <div class="card"><span class="chip">De jure</span><p>Power that political institutions allocate. In the authors' example, Labour decides policy in Britain because voters put it in office.</p></div>
+      <div class="card"><span class="chip">De facto</span><p>What a group can do by force. Excluded citizens are the majority, and they can riot, strike or threaten revolution.</p></div>
+      <div class="card"><span class="chip">Transitory</span><p>A real threat needs the masses to solve their collective-action problem and build momentum, and it needs a military that fails to stop them. Such moments pass.</p></div>
+    </div>
+    <p class="note">Actual power combines the two. <b>Institutions last, while the citizens' de facto power comes and goes.</b></p>
+  </div>
+</section>
+
+<!-- 07 · commitment -->
+<section class="slide navy">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Acemoglu and Robinson · Commitment</span>
+      <h2>Why not just promise?</h2>
+    </div>
+    <div class="steps" role="img" aria-label="Threat of revolution today, then the elite promises redistribution, then the threat fades, then the promise is dropped">
+      <span>Threat of revolution today</span><i>▶</i><span>Elite promises redistribution</span><i>▶</i><span>Threat fades</span><i>▶</i><span>Promise is dropped</span>
+    </div>
+    <div class="grid">
+      <div class="card"><span class="chip">The problem</span><p>Citizens know the elite would honor the promise only while it fears them. A promise nobody believes will not stop a revolution.</p></div>
+      <div class="card"><span class="chip">The fix</span><p>Put future decisions in the hands of the people who want the policy. Democratization moves de jure power to the majority and makes the commitment credible.</p></div>
+    </div>
+    <p class="quote" style="font-size:1.2em;max-width:40em">"The principle of my reform is, to prevent the necessity of revolution . . . reforming to preserve and not to overthrow."</p>
+    <p class="note" style="margin-top:1em">Earl Grey presenting his electoral reform to Parliament in 1831.</p>
+  </div>
+</section>
+
+<!-- 08 · options -->
+<section class="slide lav">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Acemoglu and Robinson · The elite's options</span>
+      <h2>Concede, democratize or repress</h2>
+    </div>
+    <div class="grid" style="--cols:3">
+      <div class="card"><span class="chip">Concede</span><p>Redistribute today and promise more tomorrow. Cheap for the elite, and useless once the promise loses credibility.</p></div>
+      <div class="card" style="border-width:.16em;box-shadow:.3em .3em 0 var(--navy)"><span class="chip">Democratize</span><p>Hand over de jure power. The new institutions persist because parties and unions invest in them, and the majority gains some say over the military.</p></div>
+      <div class="card"><span class="chip">Repress</span><p>Keep power with no concessions. Lives and assets are destroyed, sanctions may follow as they did for South Africa in the 1980s, and failed repression can bring revolution.</p></div>
+    </div>
+    <p class="note">Democracy arises <b>"when concessions are not credible and repression is not attractive because it is too costly."</b></p>
+  </div>
+</section>
+
+<!-- 09 · coups -->
+<section class="slide pink">
+  <div class="inner" style="max-width:56em">
+    <div class="head">
+      <span class="tag">Acemoglu and Robinson · Consolidation</span>
+      <h2>Coups run the same logic backward</h2>
+    </div>
+    <table class="cmp">
+      <tr><th></th><th>Democratization</th><th>Coup</th></tr>
+      <tr><td>Who holds power for now</td><td>Citizens, in a moment of unrest</td><td>The elite, allied with the military in a crisis</td></tr>
+      <tr><td>Whose promise is doubted</td><td>The elite's promise to redistribute</td><td>The citizens' promise to moderate</td></tr>
+      <tr><td>What locks it in</td><td>Democracy</td><td>Nondemocracy</td></tr>
+      <tr><td>Example</td><td>Argentina 1912, after unrest led by the Radical Party</td><td>Chile 1973, during an oil shock and a deep depression</td></tr>
+    </table>
+    <p class="note">A coup turns the elite's passing de facto power into lasting de jure power. <b>The more democracy redistributes, the more a coup is worth to the elite.</b></p>
+  </div>
+</section>
+
+<!-- 10 · picture -->
+<section class="slide navy">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Acemoglu and Robinson · Figures 2.1 and 2.3</span>
+      <h2>Democracy in a picture</h2>
+    </div>
+    <div class="grid" style="grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:2.4em;align-items:center">
+      <svg class="flow" viewBox="0 0 520 320" role="img" aria-label="Cost of repression on the vertical axis, inequality on the horizontal axis. A dashed vertical line at low inequality marks off Region A, Singapore. To its right an upward sloping line separates Region B above it, with Britain and Argentina, from Region C below it. South Africa moves from Region C in 1970 to Region B in 1990 as the boundary shifts down.">
+        <g stroke="#E2D5F2" stroke-width="2.5" fill="none"><path d="M50 15 V280 H505"/></g>
+        <path d="M130 15 V280" stroke="#5EDCF4" stroke-width="2" stroke-dasharray="6 5"/>
+        <path d="M130 270 L500 125" stroke="#5EDCF4" stroke-width="3"/>
+        <path d="M130 280 L500 185" stroke="#E87CB2" stroke-width="3" stroke-dasharray="8 6"/>
+        <g font-weight="700" font-size="30" fill="rgba(226,213,242,.35)" text-anchor="middle">
+          <text x="90" y="80">A</text><text x="250" y="80">B</text><text x="330" y="268">C</text>
+        </g>
+        <g fill="#F4D03F"><rect x="85" y="195" width="10" height="10"/><rect x="225" y="145" width="10" height="10"/><rect x="415" y="115" width="10" height="10"/><rect x="460" y="210" width="10" height="10"/><rect x="395" y="173" width="10" height="10"/></g>
+        <path d="M458 210 L412 184" stroke="#F4D03F" stroke-width="2"/><path d="M405 178 l12 1 l-6 10 z" fill="#F4D03F"/>
+        <g font-size="11" font-weight="700" fill="#F8F4FF">
+          <text x="90" y="222" text-anchor="middle">SINGAPORE</text>
+          <text x="242" y="155">BRITAIN</text>
+          <text x="420" y="108" text-anchor="middle">ARGENTINA</text>
+          <text x="410" y="170">1990</text>
+          <text x="476" y="220">1970</text>
+          <text x="440" y="255" text-anchor="middle">SOUTH AFRICA</text>
+        </g>
+        <g font-size="11" font-weight="700" fill="#5EDCF4">
+          <text x="278" y="306" text-anchor="middle">INEQUALITY ▶</text>
+          <text x="0" y="0" transform="translate(30 148) rotate(-90)" text-anchor="middle">COST OF REPRESSION ▶</text>
+        </g>
+      </svg>
+      <ol class="fix">
+        <li>Region A. Inequality is low, so the poor have no reason to revolt. Singapore stays a nondemocracy with little repression.</li>
+        <li>Region B. Revolution is a threat and repression costs too much, so the elite concedes. Britain and Argentina.</li>
+        <li>Region C. Democracy would cost the elite so much that repression is worth it. South Africa until 1994.</li>
+        <li>Inequality fell, while industry and globalization pushed the boundary down to the pink line. South Africa crossed into Region B between 1970 and 1994.</li>
+      </ol>
+    </div>
+    <p class="note">Transitions are likeliest at middle levels of inequality. <b>Figure 2.2 adds that higher inequality makes coups pay, which separates Britain from Argentina.</b></p>
+  </div>
+</section>
+
+<!-- 11 · comparative statics -->
+<section class="slide lav">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Acemoglu and Robinson · Comparative statics</span>
+      <h2>What shifts the odds</h2>
+    </div>
+    <div class="grid" style="--cols:3;gap:1em 1.3em">
+      <div class="card"><span class="chip">Civil society</span><p>An organized majority makes the revolutionary threat real and coups harder to pull off.</p></div>
+      <div class="card"><span class="chip">Crises</span><p>Depressions, debt crises and wars hand temporary power to both sides. Argentina democratized after the Falklands War, and Allende fell during the 1973 oil shock.</p></div>
+      <div class="card"><span class="chip">Land or capital</span><p>Land is easy to tax and its owners lose less from turmoil. Landed elites repress and back coups. Industrial elites concede.</p></div>
+      <div class="card"><span class="chip">Middle class</span><p>A large, affluent middle class keeps redistribution modest. Compare Costa Rica and Colombia with Guatemala, El Salvador and Nicaragua.</p></div>
+      <div class="card"><span class="chip">Globalization</span><p>Mobile capital is hard to tax, so democracy frightens elites less. Trade helps or hurts depending on what a country has in abundance.</p></div>
+      <div class="card"><span class="chip">Identities</span><p>Conflict can run along race or ethnicity, as in South Africa or Mauritius. Many cross-cutting cleavages keep redistribution low and help consolidation.</p></div>
+    </div>
+    <p class="note">Each factor changes what democracy would cost the elite, <b>or what repression and coups would cost it.</b></p>
+  </div>
+</section>
+
+<!-- 12 · guarantees -->
+<section class="slide pink">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Acemoglu and Robinson · Institutions</span>
+      <h2>Guarantees for the old elite</h2>
+    </div>
+    <div class="grid" style="grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:2.4em;align-items:center">
+      <ol class="fix">
+        <li>Pinochet's constitution under-represented urban areas and kept a military veto. On this account it eased Chile's transition and produced a less redistributive, more stable democracy.</li>
+        <li>South Africa's interim constitution gave any party with twenty or more seats cabinet posts in proportion to its seats. The ANC accepted limits on its own power to get the transition.</li>
+        <li>Colombia's two traditional parties used the design of proportional representation to keep the left out. Democracy consolidated, amid complaints that it ignores the majority.</li>
+      </ol>
+      <div class="card">
+        <span class="chip">Haggard and Kaufman 1995</span>
+        <p>"Ironically, the greater security for the armed forces during the initial years of the transition probably reduced the threat to civilian authority in Chile, Turkey, and Korea."</p>
+        <dl class="gr"><dt class="r">The limit</dt><dd>Give the elite too much power and democracy does little for the majority. Revolution or repression returns.</dd></dl>
+      </div>
+    </div>
+    <p class="note">A transition deal has to protect the old elite enough to prevent a coup <b>and leave the majority enough to prevent a revolt.</b></p>
+  </div>
+</section>
+
+<!-- 13 · autocratization -->
+<section class="slide navy">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Lührmann and Lindberg 2019</span>
+      <h2>Why "autocratization"?</h2>
+    </div>
+    <p class="sub center" style="margin:-.6em 0 1.4em">Three problems with "democratic backsliding"</p>
+    <div class="grid" style="--cols:3">
+      <div class="card"><span class="chip">Democratic</span><p>An autocracy cannot suffer democratic backsliding into a deeper dictatorship. Stretching the term that far is what Sartori warned against.</p></div>
+      <div class="card"><span class="chip">Back</span><p>The word implies a return to an earlier state. Regimes can also move in a new direction, toward a different form of authoritarianism.</p></div>
+      <div class="card"><span class="chip">Sliding</span><p>Sliding sounds involuntary and unconscious. Rulers who dismantle democracy act on purpose.</p></div>
+    </div>
+    <p class="quote" style="font-size:1.15em;max-width:42em">Autocratization is a "substantial de-facto decline of core institutional requirements for electoral democracy."</p>
+  </div>
+</section>
+
+<!-- 14 · umbrella -->
+<section class="slide lav">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Lührmann and Lindberg · Figure 1</span>
+      <h2>One umbrella, three kinds</h2>
+    </div>
+    <svg class="flow" viewBox="0 0 640 210" style="display:block;max-width:46em;margin:0 auto" role="img" aria-label="A bar split into autocracy on the left and democracy on the right. Autocratization runs across both. Democratic recession stays within democracy. Democratic breakdown crosses from democracy into autocracy. Autocratic consolidation stays within autocracy.">
+      <g stroke="#0F1B3D" stroke-width="2.5" fill="rgba(255,255,255,.55)"><rect x="10" y="8" width="310" height="40"/><rect x="320" y="8" width="310" height="40"/></g>
+      <g font-weight="700" font-size="15" fill="#0F1B3D" text-anchor="middle"><text x="165" y="34">AUTOCRACY</text><text x="475" y="34">DEMOCRACY</text></g>
+      <polygon points="630,62 26,62 10,75 26,88 630,88" fill="#0F1B3D"/>
+      <polygon points="630,100 351,100 335,113 351,126 630,126" fill="#E87CB2" stroke="#0F1B3D" stroke-width="2"/>
+      <polygon points="450,138 216,138 200,151 216,164 450,164" fill="#5EDCF4" stroke="#0F1B3D" stroke-width="2"/>
+      <polygon points="310,176 26,176 10,189 26,202 310,202" fill="#F4D03F" stroke="#0F1B3D" stroke-width="2"/>
+      <g font-weight="700" font-size="12" text-anchor="middle" fill="#0F1B3D">
+        <text x="330" y="80" fill="#F8F4FF">AUTOCRATIZATION</text>
+        <text x="488" y="118">DEMOCRATIC RECESSION</text>
+        <text x="330" y="156">DEMOCRATIC BREAKDOWN</text>
+        <text x="165" y="194">AUTOCRATIC CONSOLIDATION</text>
+      </g>
+    </svg>
+    <div class="grid" style="--cols:3;margin-top:1.4em">
+      <div class="card"><span class="chip">Recession</span><p>A democracy loses democratic traits and stays a democracy, so far. Hungary under Orbán.</p></div>
+      <div class="card"><span class="chip">Breakdown</span><p>A democracy becomes an autocracy. Fujimori suspended Peru's constitution and parliament in 1992.</p></div>
+      <div class="card"><span class="chip">Consolidation</span><p>An autocracy gets worse. Al-Bashir's 1989 coup turned Sudan's electoral autocracy into a closed dictatorship.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 15 · coding -->
+<section class="slide pink">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Lührmann and Lindberg · Measurement</span>
+      <h2>Coding an episode</h2>
+    </div>
+    <div class="grid" style="grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:2.4em;align-items:center">
+      <ol class="fix">
+        <li>A potential episode starts when the Electoral Democracy Index falls by 0.01 or more in one year.</li>
+        <li>It continues while the index keeps falling, through up to four years with no further fall.</li>
+        <li>It ends after four years with no fall, or as soon as the index rises by 0.02 or more in a year.</li>
+        <li>It counts as an episode if the total fall, measured from the year before it started, reaches 0.10.</li>
+      </ol>
+      <div class="card">
+        <span class="chip">The data</span>
+        <dl class="gr"><dt>Index</dt><dd>V-Dem's EDI, from 0 to 1, built on Dahl's polyarchy</dd><dt>Coverage</dt><dd>182 countries from 1900 to 2017, or 18,031 country-years</dd><dt>Example</dt><dd>Hungary 2006 to 2017, a fall of 0.11</dd></dl>
+      </div>
+    </div>
+    <p class="note">The authors call the 0.10 cut-off "naturally arbitrary." <b>What would Munck and Verkuilen ask about it?</b></p>
+  </div>
+</section>
+
+<!-- 16 · numbers -->
+<section class="slide navy">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Lührmann and Lindberg · 1900 to 2017</span>
+      <h2>A century of episodes</h2>
+    </div>
+    <div class="stats">
+      <div class="card stat"><b>217</b><p>Autocratization episodes, in 109 countries.</p></div>
+      <div class="card stat"><b>65%</b><p>Began in countries that were already autocracies, 142 episodes in all.</p></div>
+      <div class="card stat"><b>75</b><p>Began in democracies.</p></div>
+      <div class="card stat"><b>80%</b><p>Of those 75 ended with the country an autocracy.</p></div>
+    </div>
+    <p class="note">69 countries had no episode. 33 of them are autocracies with little left to lose, <b>and 36 are democracies such as Sweden, Switzerland, Bhutan and Namibia.</b></p>
+  </div>
+</section>
+
+<!-- 17 · waves -->
+<section class="slide lav">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Lührmann and Lindberg · Figure 2</span>
+      <h2>Three waves of autocratization</h2>
+    </div>
+    <svg class="flow" viewBox="0 0 640 175" style="display:block;max-width:46em;margin:0 auto" role="img" aria-label="Timeline from 1900 to 2017 with three bands. First wave 1926 to 1942 with 32 episodes. Second wave 1961 to 1977 with 62 episodes. Third wave from 1994 with 75 episodes by 2017.">
+      <g stroke="#0F1B3D" stroke-width="2.5"><rect x="157" y="40" width="79" height="100" fill="#0F1B3D"/><rect x="329" y="40" width="78" height="100" fill="#0F1B3D"/><rect x="491" y="40" width="112" height="100" fill="#E87CB2"/></g>
+      <path d="M30 140 H615" stroke="#0F1B3D" stroke-width="2.5"/>
+      <g stroke="#0F1B3D" stroke-width="2"><path d="M30 140v7M128 140v7M226 140v7M324 140v7M422 140v7M520 140v7M603 140v7"/></g>
+      <g font-size="11" font-weight="700" fill="#0F1B3D" text-anchor="middle">
+        <text x="30" y="163">1900</text><text x="128" y="163">1920</text><text x="226" y="163">1940</text><text x="324" y="163">1960</text><text x="422" y="163">1980</text><text x="520" y="163">2000</text><text x="603" y="163">2017</text>
+        <text x="196" y="30">1926-42</text><text x="368" y="30">1961-77</text><text x="547" y="30">1994-</text>
+      </g>
+      <g font-size="34" font-weight="700" text-anchor="middle"><text x="196" y="103" fill="#F4D03F">32</text><text x="368" y="103" fill="#F4D03F">62</text><text x="547" y="103" fill="#0F1B3D">75</text></g>
+    </svg>
+    <div class="grid" style="--cols:3;margin-top:1.2em">
+      <div class="card"><span class="chip">First wave</span><p>32 episodes, in democracies and autocracies alike.</p></div>
+      <div class="card"><span class="chip">Second wave</span><p>62 episodes, almost all in electoral autocracies.</p></div>
+      <div class="card"><span class="chip">Third wave</span><p>75 episodes by 2017, mostly in democracies.</p></div>
+    </div>
+    <p class="note">In 2017 more countries were autocratizing than democratizing, for the first time since 1940. <b>The share of democracies still stood near its peak, at 53 percent.</b></p>
+  </div>
+</section>
+
+<!-- 18 · legal facade -->
+<section class="slide pink">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Lührmann and Lindberg · Figure 3</span>
+      <h2>Behind a legal façade</h2>
+    </div>
+    <p class="sub center" style="margin:-.6em 0 1.6em">How episodes that began in democracies unfolded</p>
+    <div class="stack">
+      <b>Before 1994 · 28 episodes</b>
+      <div class="bar"><i class="ag" style="--w:32%">Autogolpe 32%</i><i class="co" style="--w:39%">Military coup 39%</i><i class="in" style="--w:29%">Invasion 29%</i></div>
+      <b>1994 to 2017 · 47 episodes</b>
+      <div class="bar"><i class="er" style="--w:70%">Democratic erosion 70%</i><i class="co" style="--w:30%">Coup 30%</i></div>
+    </div>
+    <div class="grid" style="margin-top:2.2em">
+      <div class="card"><span class="chip">Autogolpe</span><p>An executive who took office legally suddenly abolishes elections or parliament. Fujimori in 1992, and Hitler with the Enabling Act in 1933.</p></div>
+      <div class="card"><span class="chip">Democratic erosion</span><p>An executive who took office legally wears down democratic norms gradually and leaves the key institutions standing. Hungary and Poland.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 19 · pace and depth -->
+<section class="slide navy">
+  <div class="inner" style="max-width:54em">
+    <div class="head">
+      <span class="tag">Lührmann and Lindberg · Pace and depth</span>
+      <h2>Slower and shallower</h2>
+    </div>
+    <table class="cmp">
+      <tr><th>Episodes in democracies</th><th class="c">Before 1994</th><th class="c">1994 to 2017</th></tr>
+      <tr><td>Most common route</td><td class="c">Coups, invasions, self-coups</td><td class="c">Democratic erosion</td></tr>
+      <tr><td>Median fastest one-year fall</td><td class="c num">31%</td><td class="c num">8%</td></tr>
+      <tr><td>Median EDI at the end</td><td class="c num">0.13</td><td class="c num">0.45</td></tr>
+      <tr><td>Median total fall</td><td class="c num">0.50</td><td class="c num">0.19</td></tr>
+    </table>
+    <p class="note">Germany's 1930-35 episode included a one-year fall of 26 percent of the scale. <b>Turkey from 2008 and Russia from 1993 never lost more than 7 and 5 percent in a year.</b></p>
+  </div>
+</section>
+
+<!-- 20 · alarm or calm -->
+<section class="slide lav">
+  <div class="inner" style="max-width:56em">
+    <div class="head">
+      <span class="tag">Lührmann and Lindberg · Conclusion</span>
+      <h2>Alarm or calm?</h2>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <span class="chip">Reasons for calm</span>
+        <ul class="pix">
+          <li>More than half of all countries were democracies in 2017</li>
+          <li>Third-wave episodes end at a median EDI of 0.45, against 0.13 before</li>
+          <li>Open coups and stolen elections are costly at home and abroad, so would-be autocrats "play a game of deception"</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="chip">Reasons for alarm</span>
+        <ul class="pix">
+          <li>The wave mostly hits democracies</li>
+          <li>Of 33 erosion episodes, 18 ended in breakdown and 10 were still running in 2017. Only 5 stopped short.</li>
+          <li>Gradual decline gives citizens fewer clear moments to mobilize</li>
+        </ul>
+      </div>
+    </div>
+    <p class="quote" style="font-size:1.15em;max-width:42em">"As it was premature to announce the 'end of history' in 1992, it is premature to proclaim the 'end of democracy' now."</p>
+  </div>
+</section>
+
+<!-- 21 · compare -->
+<section class="slide pink">
+  <div class="inner" style="max-width:58em">
+    <div class="head">
+      <span class="tag">Compare the readings</span>
+      <h2>Two readings, one puzzle</h2>
+    </div>
+    <table class="cmp">
+      <tr><th></th><th>Acemoglu and Robinson 2006</th><th>Lührmann and Lindberg 2019</th></tr>
+      <tr><td>Question</td><td>Why do elites concede democracy, and when do they overturn it?</td><td>How does today's autocratization differ from earlier waves?</td></tr>
+      <tr><td>Actors</td><td>Social groups, elites against citizens</td><td>Incumbents, most of them elected</td></tr>
+      <tr><td>Evidence</td><td>A formal theory, illustrated with cases from Britain to South Africa</td><td>V-Dem data on 217 episodes since 1900</td></tr>
+      <tr><td>How regimes change</td><td>In jumps. Democracy under threat of revolution, coups in a crisis</td><td>Mostly by gradual erosion behind a legal façade</td></tr>
+      <tr><td>Last week</td><td>Two categories, democracy and nondemocracy</td><td>A continuous index, plus a 0.10 threshold to call an episode</td></tr>
+    </table>
+    <p class="note">In Acemoglu and Robinson, a coup turns passing power into lasting power. <b>Is an elected leader who packs the courts doing the same thing?</b></p>
+  </div>
+</section>
+
+<!-- 22 · group exercise -->
+<section class="slide navy">
+  <div class="inner ex" style="max-width:68em">
+    <div class="head" style="margin-bottom:1em">
+      <span class="tag" style="margin-bottom:1.6em">Group exercise · Read the early warnings</span>
+      <p class="sub" style="margin:0 0 .7em">A democracy-support fund sends your group four country files</p>
+      <p class="bigq" style="font-size:1em;max-width:none;margin-bottom:0">Our rules open a review once an autocratization episode is confirmed. Which of these countries qualify?</p>
+    </div>
+    <table class="cmp">
+      <tr><th>Country</th><th>File</th><th class="num">2017</th><th class="num">2018</th><th class="num">2019</th><th class="num">2020</th><th class="num">2021</th><th class="num">2022</th><th class="num">2023</th><th class="num">2024</th></tr>
+      <tr><td>A</td><td>A president elected in 2017 replaced four constitutional judges in 2018, put the media regulator under a minister in 2019 and won a 2021 referendum lifting term limits. The opposition holds a third of the seats.</td><td class="num">0.74</td><td class="num">0.71</td><td class="num">0.68</td><td class="num">0.68</td><td class="num">0.64</td><td class="num">0.63</td><td class="num">0.63</td><td class="num">0.62</td></tr>
+      <tr><td>B</td><td>An elected government passed land reform in 2018 amid a wave of strikes. In 2019 the army closed parliament. A few families tied to the officer corps own most export plantations.</td><td class="num">0.67</td><td class="num">0.67</td><td class="num">0.21</td><td class="num">0.20</td><td class="num">0.23</td><td class="num">0.24</td><td class="num">0.24</td><td class="num">0.25</td></tr>
+      <tr><td>C</td><td>The ruling party has won every election since independence. It jailed the main opposition leader in 2018, passed a foreign-agents law for NGOs in 2019 and closed the last independent daily in 2022.</td><td class="num">0.38</td><td class="num">0.34</td><td class="num">0.32</td><td class="num">0.32</td><td class="num">0.31</td><td class="num">0.27</td><td class="num">0.27</td><td class="num">0.27</td></tr>
+      <tr><td>D</td><td>A coalition in office since 2018 has cut the public broadcaster's budget twice and in 2020 arrested two investigative journalists under a new security law. Courts still rule against it, and elections are due in 2025.</td><td class="num">0.80</td><td class="num">0.78</td><td class="num">0.77</td><td class="num">0.75</td><td class="num">0.75</td><td class="num">0.73</td><td class="num">0.72</td><td class="num">0.71</td></tr>
+    </table>
+    <p class="rules">Electoral Democracy Index by year. Start on a fall of 0.01 or more. Continue through up to four flat years. End early on a rise of 0.02 or more. Confirm once the total fall reaches 0.10. Treat 0.50 and above as a democracy.</p>
+    <ol class="fix">
+      <li>Code each country with Lührmann and Lindberg's rules. When does the decline start, how far has the index fallen, and is the episode confirmed? Name the kind (recession, breakdown or autocratic consolidation) and the tactic.</li>
+      <li>Explain Country B's coup with Acemoglu and Robinson. Which details in its file raised the elite's gain from a coup or lowered its cost?</li>
+    </ol>
+    <p class="note" style="margin-top:0">The files and scores are invented and describe no real country.</p>
+  </div>
+</section>
+
+<!-- 23 · next week -->
+<section class="slide pink">
+  <div class="inner" style="max-width:52em">
+    <div class="head">
+      <span class="tag">Next up</span>
+      <h2>Before Thursday 15 October</h2>
+      <p class="sub">Week 05. Executive design. Presidents and parliaments.</p>
+    </div>
+    <div class="grid">
+      <div class="card"><span class="chip">Read</span><p>Linz, Juan J. 1990. "The Perils of Presidentialism." <i>Journal of Democracy</i> 1(1), 51-69.</p></div>
+      <div class="card"><span class="chip">Read</span><p>Cheibub, José Antonio, and Fernando Limongi. 2002. "Democratic Institutions and Regime Survival: Parliamentary and Presidential Democracies Reconsidered." <i>Annual Review of Political Science</i> 5, 151-179.</p></div>
+    </div>
+    <ol class="tl" style="margin-top:2em">
+      <li class="x"><time>Thu 08 Oct</time><b>No class</b></li>
+      <li class="q"><time>Thu 15 Oct</time><b>Quiz 2 opens the class. It covers Sessions 03 and 04.</b></li>
+      <li><time>Thu 22 Oct</time><b>Week 6 class on electoral systems</b></li>
+      <li><time>Tue 27 Oct</time><b>Complement on concepts, measurement and validity</b><span class="flag room">M2170</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 24 · end -->
+<section class="slide navy">
+  <div class="inner center grid" style="grid-template-columns:minmax(0,1.4fr) minmax(0,.6fr);gap:3em;align-items:center">
+    <div>
+      <p class="kicker">Progress saved</p>
+      <h1 style="font-size:4.4em">Questions?</h1>
+      <p class="lead">Office hours Thursdays 14:30 to 16:00 in M4328</p>
+      <div class="chips"><span>Jihye.Park@unige.ch</span><span>jihyepark.me/comparative-politics-maspo-fall2026</span></div>
+    </div>
+    <div>
+      <span class="tag">Before you leave</span>
+      <img src="peer-review-qr-final.png" alt="QR code for the group peer review form" style="display:block;width:100%;border:.2em solid var(--yellow);box-shadow:.35em .35em 0 var(--pink)">
+      <p class="note" style="margin-top:1.2em">Rate each group member's participation in today's exercise. <b>Required before you leave the room.</b></p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+
+
+<script>
+const slides = [...document.querySelectorAll('.slide')];
+const dots = document.querySelector('.dots');
+const cur = document.getElementById('cur');
+const pad = n => String(n).padStart(2, '0');
+document.getElementById('tot').textContent = pad(slides.length);
+
+slides.forEach((s, i) => {
+  s.id = 's' + (i + 1);
+  dots.insertAdjacentHTML('beforeend', `<a href="#s${i + 1}" aria-label="Slide ${i + 1}"></a>`);
+});
+
+let now = 0;
+const io = new IntersectionObserver(entries => entries.forEach(e => {
+  if (!e.isIntersecting) return;
+  now = slides.indexOf(e.target);
+  cur.textContent = pad(now + 1);
+  dots.querySelectorAll('a').forEach((d, i) => d.setAttribute('aria-current', i === now));
+}), { rootMargin: '-50% 0px -50% 0px' }); // the slide crossing the middle line is current
+slides.forEach(s => io.observe(s));
+
+// Native Fullscreen API. Hidden where unsupported (iPhone Safari). Scroll snap re-snaps after the resize.
+const fs = document.querySelector('.fs');
+const toggleFs = () => document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+if (document.fullscreenEnabled) {
+  fs.hidden = false;
+  fs.addEventListener('click', toggleFs);
+  document.addEventListener('fullscreenchange', () => {
+    fs.querySelector('.lbl').textContent = document.fullscreenElement ? 'Exit fullscreen' : 'Fullscreen';
+  });
+}
+
+const go = i => slides[Math.max(0, Math.min(slides.length - 1, i))].scrollIntoView({ behavior: 'smooth' });
+addEventListener('keydown', e => {
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  if ((e.key === 'f' || e.key === 'F') && document.fullscreenEnabled) return toggleFs();
+  const step = { ArrowDown: 1, ArrowRight: 1, PageDown: 1, ' ': e.shiftKey ? -1 : 1, ArrowUp: -1, ArrowLeft: -1, PageUp: -1 }[e.key];
+  if (step) { e.preventDefault(); go(now + step); }
+  else if (e.key === 'Home') { e.preventDefault(); go(0); }
+  else if (e.key === 'End') { e.preventDefault(); go(slides.length - 1); }
+});
+</script>
+</body>
+</html>
