@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Session 06 · Comparative Politics · Jihye Park</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tektur:wght@400;600;700;800&family=Chakra+Petch:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* 8-Bit Orbit deck. Same palette and fonts as assets/css/style.css. */
+:root {
+  --void: #0A0E27; --navy: #0F1B3D; --pink: #F0A6CA; --pink-hot: #E87CB2;
+  --cyan: #5EDCF4; --yellow: #F4D03F; --lav: #E2D5F2; --white: #F8F4FF;
+  --display: 'Tektur', 'Courier New', monospace;
+  --sans: 'Chakra Petch', 'Helvetica Neue', Arial, sans-serif;
+  --mono: 'Space Mono', 'Courier New', monospace;
+  /* 1% of the largest 16:9 box that fits the window. Everything scales from it. */
+  --u: min(1vw, 1.7778vh);
+  --base: max(15px, calc(var(--u) * 1.35));
+}
+* { box-sizing: border-box; }
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; background: var(--void); }
+body { margin: 0; font: 400 var(--base)/1.5 var(--sans); -webkit-font-smoothing: antialiased; }
+p { margin: 0 0 .6em; }
+a { color: inherit; }
+
+/* ---------- Slides and themes ---------- */
+.slide {
+  position: relative; min-height: 100vh; min-height: 100dvh;
+  display: grid; place-items: center; overflow: hidden;
+  padding: 4.2em 5em 3.6em; scroll-snap-align: start;
+  background-color: var(--bg); color: var(--fg);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: var(--cell) var(--cell);
+}
+.inner { position: relative; z-index: 1; width: 100%; max-width: 62em; }
+.navy { --bg: var(--void); --fg: var(--lav); --strong: var(--white); --muted: rgba(226,213,242,.66);
+  --h: var(--cyan); --hs: var(--yellow); --card: rgba(15,27,61,.78); --line: rgba(94,220,244,.5);
+  --shadow: var(--pink); --grid: rgba(94,220,244,.05); --cell: calc(var(--u) * 2); }
+.lav { --bg: var(--lav); --fg: var(--navy); --strong: var(--navy); --muted: rgba(15,27,61,.64);
+  --h: var(--navy); --hs: var(--pink-hot); --card: rgba(255,255,255,.55); --line: var(--navy);
+  --shadow: var(--pink-hot); --grid: rgba(15,27,61,.07); --cell: calc(var(--u) * 1.1); }
+.pink { --bg: var(--pink); --fg: var(--navy); --strong: var(--navy); --muted: rgba(15,27,61,.7);
+  --h: var(--navy); --hs: var(--cyan); --card: rgba(255,255,255,.45); --line: var(--navy);
+  --shadow: var(--cyan); --grid: rgba(15,27,61,.08); --cell: calc(var(--u) * 1.1); }
+
+/* pixel stars, scanlines and vignette on navy slides */
+.navy::before, .navy::after { content: ""; position: absolute; inset: 0; pointer-events: none; }
+.navy::before {
+  background:
+    linear-gradient(var(--cyan),var(--cyan)) 7% 12%/4px 4px,
+    linear-gradient(var(--yellow),var(--yellow)) 19% 30%/3px 3px,
+    linear-gradient(var(--pink),var(--pink)) 12% 78%/5px 5px,
+    linear-gradient(var(--cyan),var(--cyan)) 28% 88%/3px 3px,
+    linear-gradient(var(--yellow),var(--yellow)) 36% 9%/4px 4px,
+    linear-gradient(var(--pink),var(--pink)) 44% 64%/3px 3px,
+    linear-gradient(var(--cyan),var(--cyan)) 52% 94%/5px 5px,
+    linear-gradient(var(--yellow),var(--yellow)) 58% 17%/3px 3px,
+    linear-gradient(var(--pink),var(--pink)) 66% 41%/4px 4px,
+    linear-gradient(var(--cyan),var(--cyan)) 73% 7%/3px 3px,
+    linear-gradient(var(--yellow),var(--yellow)) 81% 71%/5px 5px,
+    linear-gradient(var(--pink),var(--pink)) 88% 24%/3px 3px,
+    linear-gradient(var(--cyan),var(--cyan)) 94% 56%/4px 4px,
+    linear-gradient(var(--yellow),var(--yellow)) 4% 50%/3px 3px,
+    linear-gradient(var(--cyan),var(--cyan)) 85% 92%/3px 3px,
+    linear-gradient(var(--pink),var(--pink)) 24% 55%/3px 3px;
+  background-repeat: no-repeat; opacity: .55;
+  animation: twinkle 3.2s steps(2) infinite;
+}
+.navy::after {
+  background:
+    repeating-linear-gradient(to bottom, transparent 0 2px, rgba(0,0,0,.14) 3px, transparent 4px),
+    radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.5) 100%);
+}
+@keyframes twinkle { 50% { opacity: .3; } }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ---------- Type ---------- */
+h1, h2, h3 { font-family: var(--display); margin: 0; line-height: 1.05; }
+h1 { font-size: 5.4em; font-weight: 800; text-transform: uppercase; letter-spacing: .02em;
+  color: var(--h); text-shadow: .045em .045em 0 var(--hs); }
+h2 { font-size: 2.6em; font-weight: 800; color: var(--h); text-shadow: .06em .06em 0 var(--hs); }
+h3 { font-size: 1.05em; font-weight: 700; color: var(--strong); margin-bottom: .45em; }
+.head { text-align: center; margin-bottom: 2em; }
+.center { text-align: center; }
+.tag { display: inline-block; font: 700 .68em var(--display); letter-spacing: .2em; text-transform: uppercase;
+  background: var(--navy); color: var(--yellow); padding: .5em 1.1em; margin-bottom: 1.3em; }
+.navy .tag { background: transparent; border: 2px solid var(--yellow); }
+.sub { font: .78em var(--mono); letter-spacing: .12em; color: var(--muted); margin-top: 1em; }
+.kicker { font: 700 .8em var(--mono); letter-spacing: .42em; text-transform: uppercase; color: var(--pink); margin-bottom: 1.6em; }
+.lead { font-size: 1.25em; color: var(--fg); margin: 1.4em auto 1.6em; }
+.mono { font-family: var(--mono); }
+.muted { color: var(--muted); }
+.small { font-size: .82em; }
+.chips { display: flex; flex-wrap: wrap; gap: .7em; justify-content: center; }
+.chips span { font: 700 .66em var(--mono); letter-spacing: .12em; text-transform: uppercase;
+  border: 2px solid var(--yellow); color: var(--yellow); padding: .7em 1.2em; }
+.light-chips span { border-color: var(--navy); color: var(--navy); background: rgba(255,255,255,.4); }
+.chip { display: inline-block; font: 700 .62em var(--mono); letter-spacing: .12em; text-transform: uppercase;
+  background: var(--navy); color: var(--cyan); padding: .25em .6em; margin-bottom: .7em; }
+.navy .chip { background: var(--cyan); color: var(--navy); }
+.flag { display: inline-block; font: 700 .58em var(--mono); letter-spacing: .1em; text-transform: uppercase;
+  background: var(--navy); color: var(--white); border: 2px solid var(--yellow); padding: .15em .55em; margin-left: .5em; vertical-align: middle; }
+.flag.room { border-color: var(--pink-hot); }
+
+/* ---------- Blocks ---------- */
+.grid { display: grid; gap: 1.3em; grid-template-columns: repeat(var(--cols, 2), minmax(0, 1fr)); }
+.card { background: var(--card); border: 2px solid var(--line); padding: 1.1em 1.25em;
+  box-shadow: .3em .3em 0 var(--shadow); font-size: .9em; }
+.card p:last-child { margin-bottom: 0; }
+.note { margin-top: 1.8em; font-size: .88em; text-align: center; color: var(--muted); }
+.note b { color: var(--strong); }
+ul.pix { list-style: none; padding: 0; margin: 0; }
+ul.pix li { position: relative; padding-left: 1.2em; margin-bottom: .35em; }
+ul.pix li::before { content: ""; position: absolute; left: 0; top: .55em; width: .45em; height: .45em; background: var(--shadow); }
+
+/* bio */
+.bio { font-size: 1.5em; line-height: 1.6; margin: 1em 0 0; }
+.bio mark { background: linear-gradient(transparent 55%, var(--yellow) 0); color: var(--strong); font-weight: 700; padding: 0 .1em; }
+
+/* weeks overview */
+.weeks { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: .6em; }
+.weeks div { border: 2px solid var(--line); background: var(--card); padding: .55em .6em .7em; font-size: .72em; line-height: 1.25; min-height: 5.6em; }
+.weeks b { display: block; font: 700 .9em var(--mono); color: var(--yellow); margin-bottom: .35em; }
+.weeks .now { border-color: var(--yellow); box-shadow: .3em .3em 0 var(--pink); }
+.weeks .end { border-color: var(--pink); }
+.weeks i { display: block; margin-top: .4em; font: 700 .85em var(--mono); color: var(--pink); font-style: normal; }
+
+/* label/value rows */
+.rows { display: grid; grid-template-columns: max-content 1fr; border-top: 2px dashed rgba(15,27,61,.3); }
+.rows > * { padding: .7em 0; border-bottom: 2px dashed rgba(15,27,61,.3); margin: 0; }
+.rows dt { font: 700 .66em var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); padding-right: 2.5em; align-self: center; }
+
+/* evaluation hp bar */
+.hp-top, .hp { display: grid; grid-template-columns: repeat(20, minmax(0, 1fr)); gap: .2em; }
+.hp { padding: .3em; border: .16em solid var(--navy); background: rgba(255,255,255,.35); box-shadow: .35em .35em 0 var(--navy); }
+.hp i { display: block; height: 2.4em; }
+.hp-top { margin-bottom: .6em; font: 700 .7em var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+.hp-top span { text-align: center; }
+.s8 { grid-column: span 8; } .s5 { grid-column: span 5; } .s2 { grid-column: span 2; }
+.c1 { background: var(--navy); } .c2 { background: var(--cyan); } .c3 { background: var(--white); } .c4 { background: var(--yellow); }
+table.tbl { width: 100%; border-collapse: collapse; margin-top: 2.2em; }
+.tbl th { font: 700 .62em var(--mono); letter-spacing: .14em; text-transform: uppercase; text-align: left; padding: 0 1em .6em 0; color: var(--muted); }
+.tbl td { padding: .6em 1em .6em 0; border-top: 2px dashed rgba(15,27,61,.3); }
+.tbl td:first-child { font-weight: 700; white-space: nowrap; }
+.tbl td:nth-child(2) { font: 700 1.1em var(--mono); }
+.sw { display: inline-block; width: .8em; height: .8em; margin-right: .6em; border: 2px solid var(--navy); vertical-align: -.05em; }
+
+/* timeline */
+.tl { list-style: none; position: relative; margin: 0; padding: 0 0 0 2em; }
+.tl::before { content: ""; position: absolute; left: .5em; top: .6em; bottom: .6em; border-left: .14em dashed var(--navy); }
+.tl li { position: relative; display: flex; align-items: center; flex-wrap: wrap; gap: .1em .7em; margin-bottom: .9em; }
+.tl li::before { content: ""; position: absolute; left: -1.9em; width: .7em; height: .7em; background: var(--cyan); border: .14em solid var(--navy); }
+.tl li.q::before { background: var(--yellow); }
+.tl li.x::before { background: var(--pink-hot); }
+.tl time { font: 700 .7em var(--mono); background: var(--navy); color: var(--cyan); padding: .3em .6em; min-width: 8.5em; letter-spacing: .08em; }
+.tl .flag { margin-left: 0; }
+
+/* complement list */
+.plist { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8em 2.2em; }
+.plist li { display: flex; gap: .9em; align-items: baseline; padding-bottom: .7em; border-bottom: 2px dashed rgba(15,27,61,.3); }
+.plist time { flex: none; font: 700 .68em var(--mono); background: var(--navy); color: var(--pink); padding: .25em .55em; min-width: 5.2em; text-align: center; }
+
+/* method meters */
+.meter { display: inline-flex; gap: .2em; }
+.meter i { width: .75em; height: .75em; border: .12em solid var(--navy); }
+.meter i.on { background: var(--navy); }
+.methods .card { display: grid; grid-template-columns: 9em 1fr 5.5em; gap: 1.2em; align-items: center; box-shadow: none; padding: .8em 1.2em; }
+.methods .card + .card { margin-top: .7em; }
+.methods .card.hot { box-shadow: .3em .3em 0 var(--pink-hot); border-width: .16em; }
+.methods h3 { margin: 0; }
+.methods .n { font: .72em var(--mono); color: var(--muted); text-align: right; }
+/* case study card opens to Lijphart's six types */
+.methods details.card { display: block; }
+.methods summary { display: grid; grid-template-columns: 9em 1fr 5.5em; gap: 1.2em; align-items: center; cursor: pointer; list-style: none; }
+.methods summary::-webkit-details-marker { display: none; }
+.methods summary .flag::after { content: " ▾"; }
+.methods details[open] .flag::after { content: " ▴"; }
+.methods .meter { grid-column: -2; }
+.methods:has(details[open]) > div p, .methods:has(details[open]) + .note { display: none; }
+.types { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto; grid-auto-flow: column; gap: .5em 1.4em; margin-top: .8em; padding-top: .9em; border-top: 2px dashed rgba(15,27,61,.3); line-height: 1.3; }
+.fix.types li { padding-bottom: 0; }
+.types b { display: block; }
+.types .hot b { display: table; background: linear-gradient(transparent 55%, var(--pink) 0); }
+.types-note { margin: .8em 0 0; font-size: .85em; color: var(--muted); }
+
+/* variables x cases matrix */
+.matrix-wrap { display: grid; grid-template-columns: auto 1fr; gap: .6em 1em; align-items: center; }
+.matrix { box-sizing: content-box; width: 28em; max-width: 100%; height: 8em; padding: 0 .35em .35em 0; background-origin: content-box;
+  border: .14em solid var(--navy); background-color: rgba(255,255,255,.35);
+  background-image: conic-gradient(from 90deg at .35em .35em, var(--navy) 90deg, transparent 0);
+  background-size: 2em 2em; }
+.axis { font: 700 .62em var(--mono); letter-spacing: .14em; text-transform: uppercase; }
+.fix { counter-reset: fix; list-style: none; padding: 0; margin: 0; }
+.fix li { counter-increment: fix; position: relative; padding: 0 0 .75em 2.4em; }
+.fix li::before { content: counter(fix, decimal-leading-zero); position: absolute; left: 0; top: .1em; font: 700 .7em var(--mono);
+  background: var(--navy); color: var(--yellow); padding: .15em .35em; }
+
+/* case pills */
+.pills { display: flex; flex-wrap: wrap; gap: .8em; justify-content: center; margin: 1.6em 0; }
+.pills span { border: 2px solid var(--cyan); padding: .55em 1em; font: 700 .72em var(--mono); color: var(--white); background: rgba(15,27,61,.8); box-shadow: .25em .25em 0 var(--pink); }
+
+/* Mill tables */
+.mill table { width: 100%; border-collapse: collapse; margin: .8em 0 .9em; font-size: .9em; }
+.mill th { font: 700 .66em var(--mono); letter-spacing: .1em; text-transform: uppercase; padding: .4em; }
+.mill td { border: 2px solid var(--navy); padding: .4em .6em; text-align: center; font: 700 .78em var(--mono); }
+.mill td:first-child { text-align: left; font-family: var(--sans); font-weight: 600; font-size: .85em; }
+.mill .y { background: var(--navy); color: var(--cyan); }
+.mill .s { background: rgba(255,255,255,.6); }
+.mill .d { background: var(--yellow); }
+
+/* depth vs breadth */
+.axisbar { display: flex; justify-content: space-between; align-items: center; gap: 1em; font: 700 .68em var(--mono);
+  letter-spacing: .16em; text-transform: uppercase; margin-bottom: 1.2em; }
+.axisbar i { flex: 1; border-top: .2em dashed var(--navy); }
+.gr { display: grid; grid-template-columns: auto 1fr; gap: .25em .7em; margin-top: .7em; font-size: .92em; }
+.gr dt { font: 700 .64em var(--mono); letter-spacing: .1em; text-transform: uppercase; align-self: center; padding: .15em .45em; background: var(--navy); color: var(--cyan); }
+.gr dt.r { color: var(--pink); }
+.gr dd { margin: 0; }
+
+/* big question */
+.bigq { font: 700 2em/1.25 var(--display); color: var(--navy); background: var(--white); border: .1em solid var(--navy);
+  box-shadow: .22em .22em 0 var(--navy); padding: .9em 1.1em; margin: 0 auto 1.4em; max-width: 24em; text-align: center; }
+
+/* ---------- Session 02 blocks ---------- */
+.quote { font: 700 1.45em/1.35 var(--display); color: var(--strong); border-left: .3em solid var(--hs); padding: .2em 0 .2em .9em; margin: 1.8em auto 0; max-width: 34em; }
+.steps { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: .6em; margin-bottom: 2em; }
+.steps span { font: 700 .72em var(--mono); background: var(--white); border: 2px solid var(--navy); padding: .55em .9em; box-shadow: .25em .25em 0 var(--pink-hot); }
+.steps i { font-style: normal; color: var(--pink-hot); font-size: .8em; }
+.flow { width: 100%; height: auto; font-family: var(--mono); }
+.calc { display: grid; grid-template-columns: 1fr auto; margin: .4em 0 .9em; }
+.calc dt, .calc dd { margin: 0; padding: .45em 0; border-bottom: 2px dashed rgba(15,27,61,.3); }
+.calc dd { font: 700 1.05em var(--mono); text-align: right; }
+.calc dt:nth-last-of-type(1), .calc dd:last-child { border-bottom: 0; }
+.calc.prof dd { font-size: .85em; padding-left: 1em; }
+.cmp { width: 100%; border-collapse: collapse; font-size: .9em; }
+.cmp th { font: 700 .66em var(--mono); letter-spacing: .12em; text-transform: uppercase; text-align: left; color: var(--muted); padding: 0 1em .6em 0; }
+.cmp td { padding: .6em 1em .6em 0; border-top: 2px dashed rgba(15,27,61,.3); vertical-align: top; }
+.cmp td:first-child { font-weight: 700; white-space: nowrap; }
+.stats { display: grid; gap: 1.1em; grid-template-columns: repeat(var(--cols, 4), minmax(0, 1fr)); }
+.stat b { display: block; font: 800 2.1em/1 var(--display); color: var(--strong); text-shadow: .06em .06em 0 var(--hs); margin-bottom: .4em; white-space: nowrap; }
+.stat p { margin: 0; font-size: .88em; }
+.quad { display: grid; grid-template-columns: 8.5em 1fr 1fr; gap: .9em; }
+.quad .ax { align-self: center; text-align: center; font: 700 .62em var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--yellow); }
+.quad .card p { margin: 0; }
+.latent { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .7em; text-align: center; }
+.latent span { font: 700 .7em var(--mono); background: var(--white); border: 2px solid var(--navy); padding: .8em .5em; }
+.latent i { font-style: normal; color: var(--navy); }
+.latent b { grid-column: 1 / -1; font: 800 1.8em var(--display); color: var(--yellow); background: var(--navy); padding: .45em; box-shadow: .2em .2em 0 var(--cyan); }
+.bars { display: grid; grid-template-columns: max-content 1fr 2.6em; gap: .5em .9em; align-items: center; font-size: .82em; }
+.bars .t { position: relative; height: 1.2em; background: linear-gradient(var(--navy), var(--navy)) 50% 0 / 2px 100% no-repeat; }
+/* bar spans from zero to the value on a -1 to +1 axis */
+.bars .t i { position: absolute; top: .15em; bottom: .15em; left: calc(50% + min(var(--v), 0) * 50%); width: calc(max(var(--v), -1 * var(--v)) * 50%); background: var(--navy); }
+.bars .t i.neg { background: var(--pink-hot); }
+.bars > b { font: 700 .95em var(--mono); text-align: right; }
+.bars .ticks { display: flex; justify-content: space-between; font: .8em var(--mono); color: var(--muted); }
+.cty { display: flex; flex-wrap: wrap; gap: .6em; }
+.cty span { font: 700 .85em var(--mono); background: var(--navy); color: var(--cyan); padding: .35em .7em; }
+
+@media screen and (max-width: 760px) {
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .quad { grid-template-columns: 1fr; }
+  .quad > span:first-child { display: none; }
+  .steps i { transform: rotate(90deg); }
+  .bars { font-size: .72em; }
+  .cmp td:first-child { white-space: normal; }
+}
+
+/* ---------- HUD ---------- */
+.hud { position: fixed; z-index: 10; top: 1.1em; left: 1.4em; right: 1.4em; display: flex; justify-content: space-between; align-items: center; gap: 1em; pointer-events: none; }
+.hud-right { display: flex; gap: .8em; }
+.hud svg { width: 1.1em; height: 1.1em; vertical-align: -.2em; margin-right: .55em; }
+.hud a, .hud button { pointer-events: auto; cursor: pointer; line-height: inherit; font: 700 .62em var(--mono); letter-spacing: .14em; text-transform: uppercase; text-decoration: none;
+  background: rgba(15,27,61,.9); color: var(--white); border: 2px solid var(--cyan); padding: .7em 1.1em;
+  transition: transform .15s steps(3), box-shadow .15s steps(3), background .15s steps(3); }
+.hud a:hover, .hud button:hover { transform: translate(-2px,-2px); box-shadow: 4px 4px 0 var(--pink); }
+.hud .back::before { content: "◆ "; color: var(--yellow); animation: blink 1.6s steps(1) infinite; }
+.hud .pdf { border-color: var(--yellow); color: var(--yellow); box-shadow: 4px 4px 0 var(--pink); }
+.hud .pdf:hover { background: var(--yellow); color: var(--navy); box-shadow: 7px 7px 0 var(--pink); }
+.dots { position: fixed; z-index: 10; right: 1.3em; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: .45em; }
+.dots a { width: .75em; height: .75em; border: 2px solid var(--cyan); background: rgba(15,27,61,.85); }
+.dots a[aria-current="true"] { background: var(--yellow); border-color: var(--navy); }
+.counter { position: fixed; z-index: 10; bottom: 1em; left: 50%; transform: translateX(-50%); font: 700 .72em var(--mono);
+  letter-spacing: .2em; background: rgba(15,27,61,.9); color: var(--cyan); padding: .6em 1.2em; }
+.keys { position: fixed; z-index: 10; bottom: 1.3em; right: 1.4em; font: .58em var(--mono); letter-spacing: .16em; text-transform: uppercase;
+  color: var(--cyan); background: rgba(15,27,61,.7); padding: .3em .6em; }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before { animation: none !important; } }
+
+@media screen and (max-width: 760px) {
+  html { scroll-snap-type: y proximity; }
+  .slide { padding: 5em 1.1em 4em; }
+  h1 { font-size: 2.9em; } h2 { font-size: 1.9em; }
+  .grid, .plist, .matrix-wrap { grid-template-columns: 1fr; }
+  .weeks { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bio { font-size: 1.2em; }
+  .methods .card { grid-template-columns: 1fr auto; }
+  .methods .card p { grid-column: 1 / -1; order: 3; }
+  .methods summary { grid-template-columns: 1fr auto; }
+  .types { grid-template-columns: 1fr; grid-auto-flow: row; }
+  .hp-top { font-size: .5em; }
+  .bigq { font-size: 1.4em; }
+  .dots, .keys { display: none; }
+  .hud a, .hud button { font-size: .56em; padding: .6em .8em; }
+  .hud .lbl { display: none; }
+  .hud .fs svg { margin: 0; }
+}
+
+/* ---------- PDF (scripts/deck-pdf.sh prints this page) ---------- */
+@page { size: 1280px 720px; margin: 0; }
+@media print {
+  :root { --u: 12.8px; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; animation: none !important; }
+  html { scroll-snap-type: none; }
+  .hud, .dots, .counter, .keys { display: none; }
+  .slide { width: 1280px; height: 720px; min-height: 0; break-after: page; }
+}
+/* ---------- Session 03 blocks ---------- */
+.cmp .num { font-family: var(--mono); text-align: right; white-space: nowrap; }
+.cmp tr.hot td { background: rgba(255,255,255,.55); font-weight: 700; }
+/* group exercise. Profiles in one row, tasks listed beneath them. */
+.ex .card { font-size: .74em; padding: .85em 1em; }
+.ex .fix { margin-top: 2.6em; font-size: .88em; }
+.ex .fix li { padding-bottom: 1em; }
+/* ---------- Session 04 blocks ---------- */
+.steps span { color: var(--navy); }
+.navy .cmp th { color: var(--muted); }
+.navy .cmp td { border-top-color: rgba(94,220,244,.3); }
+.cmp td.c { text-align: center; }
+/* horizontal stacked bars, widths in percent */
+.stack { display: grid; grid-template-columns: 13em 1fr; gap: 1em 1.2em; align-items: center; }
+.stack > b { font: 700 .72em var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.stack .bar { display: flex; height: 3em; border: .14em solid var(--navy); box-shadow: .3em .3em 0 var(--navy); }
+.stack .bar i { flex: 0 0 var(--w); display: flex; align-items: center; justify-content: center; text-align: center;
+  font: 700 .62em/1.2 var(--mono); letter-spacing: .06em; text-transform: uppercase; font-style: normal; color: var(--navy); }
+.stack .bar i + i { border-left: .2em solid var(--navy); }
+.stack .ag { background: var(--white); } .stack .co { background: var(--navy); color: var(--cyan) !important; }
+.stack .in { background: var(--lav); } .stack .er { background: var(--yellow); }
+/* exercise data table */
+.ex .cmp { font-size: .7em; }
+.ex .cmp td { padding: .45em .7em .45em 0; }
+.ex .cmp .num { font-size: 1.05em; text-align: center; padding-right: .3em; }
+.ex .rules { font: .66em/1.5 var(--mono); color: var(--cyan); border: 2px dashed var(--line); padding: .55em .9em; margin-top: 1em; }
+.ex .fix { margin-top: 1.2em; font-size: .8em; }
+.ex .fix li { padding-bottom: .55em; }
+@media screen and (max-width: 760px) {
+  .stack { grid-template-columns: 1fr; }
+  .ex .cmp { display: block; overflow-x: auto; }
+}
+/* ---------- Session 05 blocks ---------- */
+/* horizontal bars, --w is the share of the scale */
+.hbar { display: grid; grid-template-columns: max-content 1fr 4.2em; gap: .45em 1em; align-items: center; }
+.hbar > span { font: 700 .64em var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.hbar > .grp { grid-column: 1 / -1; color: var(--muted); margin-top: .7em; letter-spacing: .12em; }
+.hbar > .grp:first-child { margin-top: 0; }
+.hbar .t { height: 1.25em; border: .12em solid var(--line); background: var(--card); }
+.hbar .t i { display: block; height: 100%; width: var(--w); background: var(--h); }
+.hbar .t i.hot { background: var(--hs); }
+.hbar > b { font: 700 .82em var(--mono); text-align: right; white-space: nowrap; }
+.cap { font: 700 .62em var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 1em; }
+.quad .ax.top { align-self: end; padding-bottom: .2em; }
+.ex .file { font-size: .72em; margin: 0 0 .7em; }
+.ex .drafts { display: grid; gap: .8em; }
+.ex .drafts .card { font-size: .68em; padding: .7em .9em; box-shadow: .25em .25em 0 var(--shadow); }
+@media screen and (max-width: 760px) {
+  .hbar { grid-template-columns: 1fr 4em; }
+  .hbar > span { grid-column: 1 / -1; }
+}
+/* one stacked vote-share bar and a left-right line, Session 05 slide 9 */
+.vs { position: relative; display: flex; margin: 1.6em 0 2.4em; }
+.vs > div { flex: 0 0 var(--w); min-width: 0; }
+.vs i { display: block; height: 2.2em; background: var(--c); border: .12em solid var(--line); border-left: 0; }
+.vs > div:first-child i { border-left: .12em solid var(--line); }
+.vs i.oth { background: repeating-linear-gradient(45deg, var(--card) 0 .3em, transparent .3em .6em); }
+.vs span { display: block; margin-top: .45em; font: 700 .58em/1.35 var(--mono); text-align: center; white-space: nowrap; }
+.vs i { display: flex; align-items: center; justify-content: center; }
+.vs i b { font: 700 .62em var(--mono); color: var(--t, var(--navy)); }
+.vs::after { content: "50%"; position: absolute; left: 50%; top: -2.2em; height: 6.2em; border-left: .14em dashed var(--line);
+  padding-left: .3em; font: 700 .55em var(--mono); color: var(--fg); }
+.lr { position: relative; height: 3.6em; margin: 0 1em; }
+.lr::before { content: ""; position: absolute; left: 0; right: 0; top: .5em; height: .14em; background: var(--line); }
+.lr::after { content: ""; position: absolute; left: 50%; top: 0; height: 1.1em; border-left: .14em dotted var(--line); }
+.lr > span { position: absolute; left: var(--x); top: 0; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center;
+  gap: .4em; font: 700 .64em var(--mono); white-space: nowrap; }
+.lr > span::before { content: ""; width: 1.7em; height: 1.7em; background: var(--c); border: .18em solid var(--line); }
+.lr-ends { display: flex; justify-content: space-between; font: 700 .58em var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+/* ---------- Session 06 blocks ---------- */
+.formula { font: 700 1.2em var(--mono); color: var(--navy); background: var(--white); border: .12em solid var(--navy);
+  box-shadow: .25em .25em 0 var(--hs); padding: .55em 1em; text-align: center; margin: 0 auto 1.4em; max-width: 24em; }
+.seats { display: flex; align-items: center; gap: .3em; margin-top: .55em; }
+.seats > b { font: 700 .6em var(--mono); letter-spacing: .1em; text-transform: uppercase; min-width: 11em; }
+.seats i { width: 2.6em; height: 2.6em; display: grid; place-items: center; border: .12em solid var(--navy);
+  font: 700 .58em var(--mono); font-style: normal; background: var(--white); color: var(--navy); }
+.seats i.a { background: var(--navy); color: var(--cyan); }
+.seats i.b { background: var(--yellow); }
+.seats i.c { background: var(--pink-hot); color: var(--white); }
+.cmp tr.sum td { border-top: .14em solid var(--navy); font-weight: 700; }
+.hbar.wide { grid-template-columns: 17em 1fr 4.2em; }
+/* slide 16. Arithmetic card with the threshold bars, two cards stacked beside it */
+.why { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); }
+.why .col { display: grid; gap: 1.3em; grid-template-rows: 1fr 1fr; }
+.why-slide .head { margin-bottom: 1.3em; }
+.why-slide .note { margin-top: 1.2em; }
+.why .cap { margin: .2em 0 .5em; }
+@media screen and (max-width: 760px) { .seats > b { min-width: 0; flex-basis: 100%; } .seats { flex-wrap: wrap; } .hbar.wide { grid-template-columns: 1fr 4em; } .why { grid-template-columns: 1fr; } }
+/* ---------- Complement 01 blocks ---------- */
+/* exercise slides with no option cards get larger type */
+.ex.roomy .file { font-size: .86em; }
+.ex.roomy .cmp { font-size: .86em; }
+.ex.roomy .card { font-size: .84em; }
+.ex.roomy .rules { font-size: .76em; }
+.ex.roomy .fix { font-size: .95em; margin-top: 1.4em; }
+</style>
+</head>
+<body>
+
+<header class="hud">
+  <a class="back" href="../">Course module</a>
+  <div class="hud-right">
+    <button class="fs" type="button" aria-label="Toggle fullscreen" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M3 9V3h6M21 9V3h-6M3 15v6h6M21 15v6h-6"/></svg><span class="lbl">Fullscreen</span></button>
+    <a class="pdf" href="slides.pdf" download="comparative-politics-102226.pdf">⬇ Download PDF</a>
+  </div>
+</header>
+<nav class="dots" aria-label="Slides"></nav>
+<div class="counter" aria-live="polite"><span id="cur">01</span> / <span id="tot">01</span></div>
+<div class="keys" aria-hidden="true">Use keys ↑ ↓ · F fullscreen</div>
+
+<main>
+
+<!-- 01 · title -->
+<section class="slide navy">
+  <div class="inner center">
+    <p class="kicker">T407016 // Autumn 2026 // Université de Genève</p>
+    <h1>Comparative<br>Politics</h1>
+    <p class="lead">Session 06. Electoral systems.</p>
+    <div class="chips"><span>Thu 22 Oct 2026</span><span>Uni Mail M2160</span><span>Dr. Jihye Park</span></div>
+  </div>
+</section>
+
+<!-- 02 · recap -->
+<section class="slide lav">
+  <div class="inner" style="max-width:52em">
+    <div class="head">
+      <span class="tag">Previously</span>
+      <h2>Last week, this week</h2>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <span class="chip">Session 05</span>
+        <ul class="pix">
+          <li>Linz on why presidential democracies break down</li>
+          <li>Cheibub and Limongi on whether the evidence backs him</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="chip">Session 06</span>
+        <ul class="pix">
+          <li>Lijphart on how electoral systems turn votes into seats</li>
+          <li>Carey and Hix on whether one design can serve two ideals</li>
+          <li>One group exercise</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note">The number of parties kept coming back last week. <b>This week asks how the rules that turn votes into seats shape that number.</b></p>
+  </div>
+</section>
+
+<!-- 03 · opener -->
+<section class="slide pink">
+  <div class="inner center">
+    <span class="tag">Opener · any volunteers?</span>
+    <p class="sub" style="margin:0 0 1em">You are drafting the election law for a new parliament</p>
+    <p class="bigq">What should the rules maximize?</p>
+    <div class="grid" style="--cols:3;text-align:left">
+      <div class="card"><span class="chip">01</span><p>A parliament that looks like the electorate?</p></div>
+      <div class="card"><span class="chip">02</span><p>A government that voters can clearly reward or punish?</p></div>
+      <div class="card"><span class="chip">03</span><p>Can one set of rules deliver both?</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 · two families -->
+<section class="slide navy">
+  <div class="inner" style="max-width:54em">
+    <div class="head">
+      <span class="tag">Lijphart 2012 · Two families</span>
+      <h2>Winner takes all, or seats follow votes?</h2>
+    </div>
+    <div class="grid">
+      <div class="card"><span class="chip">Plurality and majority</span><h3>Winner takes all</h3><p>The candidate with the most votes wins the district, and everyone who voted for someone else goes unrepresented. The party that leads nationally tends to win more than its share of seats.</p></div>
+      <div class="card"><span class="chip">Proportional representation</span><h3>Seats follow votes</h3><p>Majorities and minorities both win seats, and each party's share of the seats should match its share of the votes.</p></div>
+    </div>
+    <p class="quote" style="font-size:1.15em;max-width:42em">PR is "very difficult to defend" and even "anti-democratic."</p>
+    <p class="note" style="margin-top:1em">Bill Clinton in 1993, on why he withdrew Lani Guinier's nomination. <b>Countries often change rules within a family and rarely switch between the two.</b></p>
+  </div>
+</section>
+
+<!-- 05 · formulas -->
+<section class="slide lav">
+  <div class="inner" style="max-width:60em">
+    <div class="head">
+      <span class="tag">Lijphart · Figure 8.1</span>
+      <h2>Three families of formulas</h2>
+    </div>
+    <div class="grid" style="--cols:3">
+      <div class="card"><span class="chip">Plurality and majority</span>
+        <ul class="pix">
+          <li>Plurality, or first past the post. United Kingdom, United States, Canada, India</li>
+          <li>Two ballots, with a plurality enough in the second. France</li>
+          <li>Alternative vote, where voters rank candidates. Australia</li>
+        </ul></div>
+      <div class="card"><span class="chip">Semiproportional</span>
+        <ul class="pix">
+          <li>Limited vote. Japan in 1946</li>
+          <li>Single nontransferable vote. Japan from 1947 to 1993</li>
+          <li>Parallel plurality and PR, with PR seats that do not compensate. Japan since 1996, Korea</li>
+        </ul></div>
+      <div class="card"><span class="chip">Proportional</span>
+        <ul class="pix">
+          <li>List PR, used in 18 of the 36 democracies. Netherlands, Spain, Switzerland</li>
+          <li>Mixed member proportional, where list seats compensate. Germany, New Zealand since 1996</li>
+          <li>Single transferable vote. Ireland, Malta</li>
+        </ul></div>
+    </div>
+    <p class="note">Eleven of the 36 democracies used plurality between 1945 and 2010. <b>The big changes all came in the 1990s, in New Zealand, Italy and Japan.</b></p>
+  </div>
+</section>
+
+<!-- 06 · district magnitude -->
+<section class="slide pink">
+  <div class="inner" style="max-width:56em">
+    <div class="head">
+      <span class="tag">Lijphart · District magnitude</span>
+      <h2>How many seats per district?</h2>
+    </div>
+    <div class="grid">
+      <div class="card"><span class="chip">Under plurality</span><h3>Bigger districts help the leader</h3>
+        <p>Party A runs slightly ahead of party B across an area that elects three members.</p>
+        <div class="seats"><b>Three districts</b><i class="a">A</i><i class="a">A</i><i class="b">B</i></div>
+        <div class="seats"><b>One district of three</b><i class="a">A</i><i class="a">A</i><i class="a">A</i></div>
+      </div>
+      <div class="card"><span class="chip">Under PR</span><h3>Bigger districts help small parties</h3>
+        <p>A party with 10 percent of the vote is unlikely to win a seat in a five-member district and will win one in a ten-member district.</p>
+        <div class="seats"><b>Five seats</b><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="seats"><b>Ten seats</b><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="c">10%</i></div>
+      </div>
+    </div>
+    <p class="note">Magnitude is the number of members a district elects, whatever its area or electorate. <b>Taagepera and Shugart called it "the decisive factor."</b></p>
+  </div>
+</section>
+
+<!-- 07 · thresholds -->
+<section class="slide lav">
+  <div class="inner" style="max-width:54em">
+    <div class="head">
+      <span class="tag">Lijphart · Thresholds</span>
+      <h2>Two sides of the same coin</h2>
+    </div>
+    <p class="formula">Implied threshold T ≈ 75% ÷ (M + 1)</p>
+    <div class="hbar">
+      <span>One seat per district, M = 1</span><div class="t"><i class="hot" style="--w:93.8%"></i></div><b>37.5%</b>
+      <span>Ireland's median district, M = 4</span><div class="t"><i style="--w:37.5%"></i></div><b>15%</b>
+      <span>Spain's average district, M = 6.7</span><div class="t"><i style="--w:24.3%"></i></div><b>9.7%</b>
+      <span>Germany's legal threshold, like M = 14</span><div class="t"><i style="--w:12.5%"></i></div><b>5%</b>
+      <span>Sweden's legal threshold, like M = 17.8</span><div class="t"><i style="--w:10%"></i></div><b>4%</b>
+    </div>
+    <p class="note">A legal threshold writes the barrier into law, and a small district builds it into the arithmetic. <b>Lijphart's legal thresholds run from 0.67 percent in the Netherlands to 5 percent in Germany and New Zealand.</b></p>
+  </div>
+</section>
+
+<!-- 08 · other attributes -->
+<section class="slide pink">
+  <div class="inner" style="max-width:56em">
+    <div class="head">
+      <span class="tag">Lijphart · Four more attributes</span>
+      <h2>What else shapes the result?</h2>
+    </div>
+    <div class="grid">
+      <div class="card"><span class="chip">Assembly size</span><p>Small chambers distort more. Assemblies tend to have about the cube root of the population in seats, so Barbados "should" have 63 members and has 30.</p></div>
+      <div class="card"><span class="chip">Presidential elections</span><p>Only large parties can win the presidency, and their edge carries into legislative races. Duverger counted a dozen parties in France's Third Republic and four in the Fifth.</p></div>
+      <div class="card"><span class="chip">Malapportionment</span><p>Districts with unequal populations, usually in favor of rural areas, as in the United States before the 1960s, Japan under SNTV and Spain.</p></div>
+      <div class="card"><span class="chip">Links between parties</span><p>Linked lists pool their votes in Switzerland, Israel and the Netherlands. Under the alternative vote and STV, parties trade lower preferences.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 · gallagher -->
+<section class="slide lav">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Lijphart · Measuring disproportionality</span>
+      <h2>How far do seats stray from votes?</h2>
+    </div>
+    <div class="grid" style="grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2.6em;align-items:center">
+      <div>
+        <p class="formula" style="margin-bottom:1.4em">G = √( ½ Σ (v<sub>i</sub> − s<sub>i</sub>)² )</p>
+        <ol class="fix">
+          <li>Subtract each party's seat share from its vote share.</li>
+          <li>Square the gaps, add them up and halve the total.</li>
+          <li>Take the square root. Squaring makes one large gap count for more than several small ones.</li>
+        </ol>
+      </div>
+      <div>
+        <p class="cap">A worked example · invented election</p>
+        <table class="cmp">
+          <tr><th>Party</th><th class="num">Votes %</th><th class="num">Seats %</th><th class="num">Gap</th><th class="num">Squared</th></tr>
+          <tr><td>A</td><td class="num">40</td><td class="num">55</td><td class="num">−15</td><td class="num">225</td></tr>
+          <tr><td>B</td><td class="num">35</td><td class="num">40</td><td class="num">−5</td><td class="num">25</td></tr>
+          <tr><td>C</td><td class="num">25</td><td class="num">5</td><td class="num">+20</td><td class="num">400</td></tr>
+          <tr class="sum"><td>Sum, halved</td><td></td><td></td><td></td><td class="num">325</td></tr>
+          <tr class="hot"><td>G</td><td></td><td></td><td></td><td class="num">18.0</td></tr>
+        </table>
+      </div>
+    </div>
+    <p class="note">Summing the raw gaps understates how proportional PR is, and averaging them overstates it. <b>Small parties lumped together as "others" are left out.</b></p>
+  </div>
+</section>
+
+<!-- 10 · presidential -->
+<section class="slide navy">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Lijphart · Table 8.1</span>
+      <h2>One seat, and the winner takes it</h2>
+    </div>
+    <div class="grid" style="grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:2.6em;align-items:center">
+      <div>
+        <p class="cap">Average disproportionality, percent</p>
+        <div class="hbar">
+          <span class="grp">United States</span>
+          <span>Congress</span><div class="t"><i style="--w:8.9%"></i></div><b>4.43</b>
+          <span>President</span><div class="t"><i class="hot" style="--w:92.1%"></i></div><b>46.03</b>
+          <span>Combined</span><div class="t"><i style="--w:28.6%"></i></div><b>14.28</b>
+          <span class="grp">Uruguay</span>
+          <span>Legislature</span><div class="t"><i style="--w:1.5%"></i></div><b>0.75</b>
+          <span>President</span><div class="t"><i class="hot" style="--w:97.6%"></i></div><b>48.81</b>
+          <span>Combined</span><div class="t"><i style="--w:12.1%"></i></div><b>6.05</b>
+        </div>
+      </div>
+      <ol class="fix">
+        <li>A presidential election fills a single seat, so every vote for the loser counts as a gap. In Uruguay's 2009 runoff Lacalle lost with 45.37 percent, and the index is 45.37.</li>
+        <li>Presidential elections averaged 43 to 49 percent in all seven presidential systems.</li>
+        <li>Lijphart combines the two with a geometric mean, so the presidential figure does not swamp the legislative one.</li>
+      </ol>
+    </div>
+    <p class="note">This is one more way presidential systems lean majoritarian. <b>They also tend to reduce the number of parties.</b></p>
+  </div>
+</section>
+
+<!-- 11 · table 8.2 -->
+<section class="slide lav">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Lijphart · Table 8.2</span>
+      <h2>A clear dividing line</h2>
+    </div>
+    <div class="grid" style="grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:2.6em;align-items:center">
+      <div>
+        <p class="cap">Average disproportionality, 1945 to 2010 · presidential systems in pink</p>
+        <div class="hbar">
+          <span>Netherlands · list PR</span><div class="t"><i style="--w:5.5%"></i></div><b>1.21</b>
+          <span>Germany · MMP</span><div class="t"><i style="--w:12.1%"></i></div><b>2.67</b>
+          <span>Ireland · STV</span><div class="t"><i style="--w:17.9%"></i></div><b>3.93</b>
+          <span>Spain · list PR</span><div class="t"><i style="--w:33.1%"></i></div><b>7.28</b>
+          <span>United Kingdom · plurality</span><div class="t"><i style="--w:53.2%"></i></div><b>11.70</b>
+          <span>United States · plurality</span><div class="t"><i class="hot" style="--w:64.9%"></i></div><b>14.28</b>
+          <span>Costa Rica · list PR</span><div class="t"><i class="hot" style="--w:65.4%"></i></div><b>14.38</b>
+          <span>Korea · parallel</span><div class="t"><i class="hot" style="--w:99.9%"></i></div><b>21.97</b>
+        </div>
+      </div>
+      <ol class="fix">
+        <li>Eighteen of the twenty least disproportional countries are parliamentary PR systems.</li>
+        <li>Spain and Greece "only barely" belong to the PR family. Spain's districts are small and its small provinces overrepresented.</li>
+        <li>Costa Rica and Argentina elect their legislatures by PR. Their presidential elections push them down the table.</li>
+      </ol>
+    </div>
+    <p class="note">The mean is 8.55 and the median 7.14. <b>Most PR countries sit between 1 and 5 percent, and most plurality countries between 10 and 20.</b></p>
+  </div>
+</section>
+
+<!-- 12 · within country -->
+<section class="slide pink">
+  <div class="inner" style="max-width:54em">
+    <div class="head">
+      <span class="tag">Lijphart · Same country, new rules</span>
+      <h2>What happens when a country switches?</h2>
+    </div>
+    <p class="cap">Average disproportionality before and after a reform, percent</p>
+    <div class="hbar">
+      <span class="grp">New Zealand, from plurality to MMP</span>
+      <span>Before</span><div class="t"><i style="--w:69.4%"></i></div><b>11.11</b>
+      <span>After</span><div class="t"><i class="hot" style="--w:18.3%"></i></div><b>2.92</b>
+      <span class="grp">Italy, from list PR to partly compensatory MMP</span>
+      <span>Before</span><div class="t"><i style="--w:15.4%"></i></div><b>2.47</b>
+      <span>After</span><div class="t"><i class="hot" style="--w:39.6%"></i></div><b>6.34</b>
+      <span class="grp">Japan, from SNTV to parallel plurality and PR</span>
+      <span>Before</span><div class="t"><i style="--w:31.4%"></i></div><b>5.03</b>
+      <span>After</span><div class="t"><i class="hot" style="--w:90.5%"></i></div><b>14.48</b>
+    </div>
+    <p class="note">Italy and Japan changed rules without changing family. <b>Disproportionality still more than doubled in both.</b></p>
+  </div>
+</section>
+
+<!-- 13 · duverger and rae -->
+<section class="slide navy">
+  <div class="inner" style="max-width:56em">
+    <div class="head">
+      <span class="tag">Lijphart · Duverger and Rae</span>
+      <h2>Why plurality shrinks the party system</h2>
+    </div>
+    <div class="grid">
+      <div class="card"><span class="chip">Mechanical effect</span><p>Every party except the two strongest loses in most districts and ends up underrepresented, as the British Liberals did for decades after the war.</p></div>
+      <div class="card"><span class="chip">Psychological effect</span><p>"The electors soon realize that their votes are wasted if they continue to give them to the third party." Politicians draw the same conclusion and join a large party.</p></div>
+    </div>
+    <p class="sub center" style="margin:1.8em 0 .8em">Rae · what every electoral system tends to do</p>
+    <div class="chips"><span>Distort the vote</span><span>Cut the number of parties</span><span>Manufacture majorities</span></div>
+    <p class="note">Canada's Conservatives won a clear majority of seats with 39.6 percent of the vote in 2011. <b>All three tendencies are much stronger under plurality and majority rules.</b></p>
+  </div>
+</section>
+
+<!-- 14 · figure 8.2 -->
+<section class="slide lav">
+  <div class="inner" style="max-width:58em">
+    <div class="head">
+      <span class="tag">Lijphart · Figure 8.2</span>
+      <h2>More distortion, fewer parties</h2>
+    </div>
+    <div class="grid" style="grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:2em;align-items:center">
+      <div class="card stat"><b>r = −0.57</b><p>Correlation between disproportionality and the effective number of parliamentary parties in 36 democracies.</p></div>
+      <div class="grid" style="--cols:1;gap:.8em">
+        <div class="card"><span class="chip">More parties than expected</span><p>India, a plural society, and seven countries including Switzerland, Israel and the Netherlands.</p></div>
+        <div class="card"><span class="chip">Fewer parties than expected</span><p>Austria and Malta, where voters long split into two camps, and Botswana.</p></div>
+        <div class="card"><span class="chip">Presidential outliers</span><p>Argentina, France and Korea have more parties than their disproportionality predicts.</p></div>
+      </div>
+    </div>
+    <p class="note">Electoral systems are "a crucial determinant, though by no means the sole determinant, of party systems." <b>How divided a society is matters too.</b></p>
+  </div>
+</section>
+
+<!-- 15 · carey and hix trade-off -->
+<section class="slide navy">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Carey and Hix 2011 · The trade-off</span>
+      <h2>Can you have both?</h2>
+    </div>
+    <div class="grid" style="grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2.6em;align-items:center">
+      <svg class="flow" viewBox="0 0 460 320" role="img" aria-label="Accountability on the vertical axis, representation on the horizontal axis. A straight dashed line runs from single-member districts at the top left to pure PR at the bottom right. A curve bows outward between them and passes through low-magnitude PR.">
+        <path d="M40 20 V280 H450" stroke="#E2D5F2" stroke-width="2" fill="none"/>
+        <path d="M70 50 L380 260" stroke="#E2D5F2" stroke-width="2" stroke-dasharray="6 5" fill="none"/>
+        <path d="M70 50 Q360 50 380 260" stroke="#5EDCF4" stroke-width="3" fill="none"/>
+        <g stroke="#0A0E27" stroke-width="2"><circle cx="70" cy="50" r="7" fill="#F4D03F"/><circle cx="292" cy="102" r="7" fill="#F0A6CA"/><circle cx="380" cy="260" r="7" fill="#F4D03F"/></g>
+        <text x="243" y="142" font-size="20" font-weight="700" fill="#F4D03F">?</text>
+        <g font-size="11" font-weight="700" fill="#F8F4FF">
+          <text x="84" y="30">SINGLE-MEMBER DISTRICTS</text>
+          <text x="306" y="82">LOW-MAGNITUDE PR</text>
+          <text x="392" y="236">PURE PR</text>
+        </g>
+        <text x="306" y="97" font-size="10" fill="#E2D5F2">Costa Rica, Mali, Spain</text>
+        <g font-size="10" font-weight="700" fill="#F4D03F" letter-spacing="1.5">
+          <text x="450" y="305" text-anchor="end">REPRESENTATION ▶</text>
+          <text x="28" y="20" transform="rotate(-90 28 20)" text-anchor="end">ACCOUNTABILITY ▶</text>
+        </g>
+      </svg>
+      <ol class="fix">
+        <li>Representation. PR mirrors the electorate. Lijphart once called proportionality "virtually synonymous with electoral justice."</li>
+        <li>Accountability. Coalitions blur who is responsible, find it harder to change policy and spend more. Voters reward and punish best when few parties govern.</li>
+        <li>The literature implies a straight line, where each gain on one ideal costs an equal loss on the other. Carey and Hix expect the frontier to bow outward.</li>
+      </ol>
+    </div>
+    <p class="note">"You cannot have both, so the mantra goes." <b>The question is how much of one ideal a little of the other costs.</b></p>
+  </div>
+</section>
+
+<!-- 16 · why the curve bends -->
+<section class="slide lav why-slide">
+  <div class="inner" style="max-width:58em">
+    <div class="head">
+      <span class="tag">Carey and Hix · Why the curve bends</span>
+      <h2>Three reasons for diminishing returns</h2>
+    </div>
+    <div class="grid why">
+      <div class="card"><span class="chip">Arithmetic</span><p>Going from one seat to about six per district lets parties with around 10 percent win. Most votes go to parties at least that big, so even larger districts add little.</p>
+        <p class="cap">Vote share needed for a seat under PR · T ≈ 75% ÷ (M + 1)</p>
+        <svg class="flow" viewBox="0 0 500 202" role="img" aria-label="Bars for one to twenty seats per district. The vote share needed for a seat falls from 37.5 percent at one seat to 10.7 percent at six, a drop of 27 points, and only to 3.6 percent at twenty, a further drop of 7 points. A dashed line marks 10 percent.">
+          <g stroke="#0F1B3D" stroke-opacity=".15"><path d="M40 96 H492 M40 59 H492"/></g>
+          <path d="M175.6 14 V170" stroke="#0F1B3D" stroke-opacity=".4" stroke-dasharray="3 4"/>
+          <g fill="#0F1B3D">
+            <rect x="43.0" y="31.2" width="16.6" height="138.8"><title>1 seat: 37.5%</title></rect>
+            <rect x="65.6" y="77.5" width="16.6" height="92.5"><title>2 seats: 25.0%</title></rect>
+            <rect x="88.2" y="100.6" width="16.6" height="69.4"><title>3 seats: 18.8%</title></rect>
+            <rect x="110.8" y="114.5" width="16.6" height="55.5"><title>4 seats: 15.0%</title></rect>
+            <rect x="133.4" y="123.8" width="16.6" height="46.2"><title>5 seats: 12.5%</title></rect>
+            <rect x="156.0" y="130.4" width="16.6" height="39.6"><title>6 seats: 10.7%</title></rect>
+            <rect x="178.6" y="135.3" width="16.6" height="34.7" fill-opacity=".35"><title>7 seats: 9.4%</title></rect>
+            <rect x="201.2" y="139.2" width="16.6" height="30.8" fill-opacity=".35"><title>8 seats: 8.3%</title></rect>
+            <rect x="223.8" y="142.2" width="16.6" height="27.8" fill-opacity=".35"><title>9 seats: 7.5%</title></rect>
+            <rect x="246.4" y="144.8" width="16.6" height="25.2" fill-opacity=".35"><title>10 seats: 6.8%</title></rect>
+            <rect x="269.0" y="146.9" width="16.6" height="23.1" fill-opacity=".35"><title>11 seats: 6.2%</title></rect>
+            <rect x="291.6" y="148.7" width="16.6" height="21.3" fill-opacity=".35"><title>12 seats: 5.8%</title></rect>
+            <rect x="314.2" y="150.2" width="16.6" height="19.8" fill-opacity=".35"><title>13 seats: 5.4%</title></rect>
+            <rect x="336.8" y="151.5" width="16.6" height="18.5" fill-opacity=".35"><title>14 seats: 5.0%</title></rect>
+            <rect x="359.4" y="152.7" width="16.6" height="17.3" fill-opacity=".35"><title>15 seats: 4.7%</title></rect>
+            <rect x="382.0" y="153.7" width="16.6" height="16.3" fill-opacity=".35"><title>16 seats: 4.4%</title></rect>
+            <rect x="404.6" y="154.6" width="16.6" height="15.4" fill-opacity=".35"><title>17 seats: 4.2%</title></rect>
+            <rect x="427.2" y="155.4" width="16.6" height="14.6" fill-opacity=".35"><title>18 seats: 3.9%</title></rect>
+            <rect x="449.8" y="156.1" width="16.6" height="13.9" fill-opacity=".35"><title>19 seats: 3.8%</title></rect>
+            <rect x="472.4" y="156.8" width="16.6" height="13.2" fill-opacity=".35"><title>20 seats: 3.6%</title></rect>
+          </g>
+          <path d="M40 133 H492" stroke="#E87CB2" stroke-width="2.5" stroke-dasharray="7 5"/>
+          <path d="M40 170 H492" stroke="#0F1B3D" stroke-width="2"/>
+          <g font-size="11" fill="#0F1B3D">
+            <g text-anchor="end"><text x="34" y="174">0</text><text x="34" y="137">10%</text><text x="34" y="100">20%</text><text x="34" y="63">30%</text></g>
+            <g text-anchor="middle"><text x="51.3" y="186">1</text><text x="164.3" y="186">6</text><text x="254.7" y="186">10</text><text x="367.7" y="186">15</text><text x="480.7" y="186">20</text></g>
+            <text x="266" y="201" text-anchor="middle" font-weight="700" letter-spacing="1.5">SEATS PER DISTRICT</text>
+            <text x="492" y="126" text-anchor="end" font-weight="700">A 10% PARTY</text>
+            <text x="68" y="20" font-weight="700">1 → 6 SEATS</text><text x="68" y="39" font-size="15" font-weight="700">−27 POINTS</text>
+            <text x="188" y="20" font-weight="700">6 → 20 SEATS</text><text x="188" y="39" font-size="15" font-weight="700">−7 POINTS</text>
+          </g>
+        </svg>
+      </div>
+      <div class="col">
+        <div class="card"><span class="chip">Strategy</span><p>Voters abandon hopeless parties when they can tell which ones are hopeless. Above about ten seats per district, almost nobody should vote strategically.</p></div>
+        <div class="card"><span class="chip">Cognition</span><p>People sort a handful of options along one dimension well, and their capacity drops sharply at seven or more (Miller 1956).</p></div>
+      </div>
+    </div>
+    <p class="note">In districts of two to six seats, voters face choices much like a single-member race. <b>Small districts should win most of PR's representation and keep most of the pressure to coordinate.</b></p>
+  </div>
+</section>
+
+<!-- 17 · measures -->
+<section class="slide pink">
+  <div class="inner" style="max-width:56em">
+    <div class="head">
+      <span class="tag">Carey and Hix · Data and measures</span>
+      <h2>Measuring two ideals</h2>
+    </div>
+    <div class="chips light-chips" style="margin-bottom:1.6em"><span>609 elections</span><span>81 countries</span><span>1945 to 2006</span><span>Polity score of +6 or more</span></div>
+    <table class="cmp">
+      <tr><th>Ideal</th><th>Measure</th><th>What it records</th></tr>
+      <tr><td>Representation</td><td>Disproportionality</td><td>Gallagher's index of the gaps between vote and seat shares</td></tr>
+      <tr><td>Representation</td><td>Voter-government distance</td><td>Left-right distance between the median voter and the government</td></tr>
+      <tr><td>Accountability</td><td>Effective number of parties</td><td>How fragmented parliament is, counted by seats</td></tr>
+      <tr><td>Accountability</td><td>Parties in government</td><td>Parties in the first cabinet after the election</td></tr>
+    </table>
+    <p class="note">The key variable is the median district magnitude. <b>A few very large districts can inflate the mean while most districts stay small.</b></p>
+  </div>
+</section>
+
+<!-- 18 · results -->
+<section class="slide lav">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Carey and Hix · Results</span>
+      <h2>Most of the gain comes early</h2>
+    </div>
+    <div class="grid" style="grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2.6em;align-items:center">
+      <div>
+        <p class="cap">Average disproportionality by median magnitude</p>
+        <div class="hbar">
+          <span>One seat</span><div class="t"><i class="hot" style="--w:99.2%"></i></div><b>11.9</b>
+          <span>4 to 6 seats</span><div class="t"><i style="--w:44.2%"></i></div><b>5.3</b>
+          <span>7 to 10 seats</span><div class="t"><i style="--w:38.3%"></i></div><b>4.6</b>
+          <span>11 to 20 seats</span><div class="t"><i style="--w:29.2%"></i></div><b>3.5</b>
+          <span>Over 20 seats</span><div class="t"><i style="--w:25%"></i></div><b>3.0</b>
+        </div>
+      </div>
+      <ol class="fix">
+        <li>Disproportionality falls fast from one seat to five or six and then flattens out.</li>
+        <li>Fragmentation and the number of parties in government rise more steadily as districts grow.</li>
+        <li>A term for diminishing returns lifts the R² for disproportionality from .43 to .56. For the two party counts it barely moves the fit.</li>
+      </ol>
+    </div>
+    <p class="note">The representation curves bend sharply and the accountability curves stay closer to straight. <b>That gap is the room for a sweet spot.</b></p>
+  </div>
+</section>
+
+<!-- 19 · four to six seats -->
+<section class="slide pink">
+  <div class="inner" style="max-width:58em">
+    <div class="head">
+      <span class="tag">Carey and Hix · Figure 7</span>
+      <h2>What four to six seats buy</h2>
+    </div>
+    <p class="cap center">Moving from single-member districts to a median magnitude of four to six, as a share of the largest possible change</p>
+    <div class="stats">
+      <div class="card stat"><b>¾</b><p>Of the possible fall in disproportionality, almost 8 points.</p></div>
+      <div class="card stat"><b>80%+</b><p>Of the possible fall in voter-government distance.</p></div>
+      <div class="card stat"><b>½</b><p>Of the rise in fragmentation that the largest districts bring.</p></div>
+      <div class="card stat"><b>&lt; ⅓</b><p>Of the largest rise in the number of parties in government.</p></div>
+    </div>
+    <p class="note">The baseline is 191 elections in single-member districts. <b>With country fixed effects, the last result is no longer significant.</b></p>
+  </div>
+</section>
+
+<!-- 20 · sweet spot -->
+<section class="slide navy">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Carey and Hix · Figure 6</span>
+      <h2>The sweet spot</h2>
+    </div>
+    <div class="grid" style="grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:2.6em;align-items:center">
+      <div>
+        <div class="stats" style="--cols:2">
+          <div class="card stat"><b>10%+</b><p>Peak chance of a good result on all four measures.</p></div>
+          <div class="card stat"><b>~40%</b><p>Chance of a good result on one measure of each ideal.</p></div>
+        </div>
+        <p class="sub" style="margin:1.4em 0 .7em">Countries in the sweet spot</p>
+        <div class="cty"><span>Costa Rica</span><span>Hungary</span><span>Ireland</span><span>Portugal</span><span>Spain</span></div>
+      </div>
+      <ol class="fix">
+        <li>A result counts as good when it beats the median of their data. That means disproportionality and distance under 5, fewer than 3 effective parties and no more than two parties in government.</li>
+        <li>Small-district systems tend to produce coalitions of two parties, three at most.</li>
+        <li>The range shifts across the article. It is three to eight seats in the introduction, four to eight in the discussion and six to eight at the peak of Figure 6.</li>
+      </ol>
+    </div>
+    <p class="note">Every one of the four cut-offs is a choice. <b>Would the sweet spot survive different ones?</b></p>
+  </div>
+</section>
+
+<!-- 21 · who chose the rules -->
+<section class="slide lav">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Carey and Hix · What the evidence shows</span>
+      <h2>Who chose the rules?</h2>
+    </div>
+    <div class="grid" style="grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2.6em;align-items:center">
+      <svg class="flow" viewBox="0 0 520 220" role="img" aria-label="A country's parties and history lead both to its electoral rules and to the parties in parliament. A dashed arrow with a question mark runs from the rules to the parties in parliament.">
+        <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0F1B3D"/></marker></defs>
+        <g stroke="#0F1B3D" stroke-width="2.5"><rect x="130" y="10" width="260" height="48" fill="#F4D03F"/><rect x="10" y="160" width="200" height="48" fill="#F8F4FF"/><rect x="310" y="160" width="200" height="48" fill="#F8F4FF"/></g>
+        <g stroke="#0F1B3D" stroke-width="2.5" fill="none" marker-end="url(#ah)"><path d="M225 60 L120 156"/><path d="M295 60 L400 156"/></g>
+        <path d="M212 184 H304" stroke="#0F1B3D" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#ah)"/>
+        <g font-weight="700" font-size="12" fill="#0F1B3D" text-anchor="middle">
+          <text x="260" y="39">PARTIES AND HISTORY</text>
+          <text x="110" y="189">ELECTORAL RULES</text>
+          <text x="410" y="189">PARTIES IN PARLIAMENT</text>
+          <text x="258" y="172" font-size="20">?</text>
+        </g>
+      </svg>
+      <ol class="fix">
+        <li>The scatter in Figure 2 is "just descriptive," pooled across countries with no controls.</li>
+        <li>Rules are institutional choices. Most of Latin America uses PR and most former British colonies use plurality, and the number of parties when the franchise widened is widely seen as shaping the choice.</li>
+        <li>Carey and Hix argue that technical details such as magnitude are harder to predict. Their fixed-effects models rely on reforms within countries, which are rare.</li>
+      </ol>
+    </div>
+    <p class="note">Session 05 asked the same question about constitutions. <b>When countries choose their institutions, comparing outcomes mixes the rule with the place.</b></p>
+  </div>
+</section>
+
+<!-- 22 · compare -->
+<section class="slide pink">
+  <div class="inner" style="max-width:58em">
+    <div class="head">
+      <span class="tag">Compare the readings</span>
+      <h2>Two readings, one index</h2>
+    </div>
+    <table class="cmp">
+      <tr><th></th><th>Lijphart 2012</th><th>Carey and Hix 2011</th></tr>
+      <tr><td>Question</td><td>How do electoral systems turn votes into seats, and what does that do to party systems?</td><td>Can one design serve representation and accountability at the same time?</td></tr>
+      <tr><td>Evidence</td><td>Averages for 36 democracies, 1945 to 2010</td><td>Regressions on 609 elections in 81 countries, 1945 to 2006</td></tr>
+      <tr><td>Yardstick</td><td>How closely seats match votes, and how many parties survive</td><td>Better than the median on four measures at once</td></tr>
+      <tr><td>Spain</td><td>Small districts leave it "only barely" in the PR family</td><td>One of the countries that found the sweet spot</td></tr>
+      <tr><td>Bottom line</td><td>PR is much less disproportional, except in presidential democracies</td><td>"Small multimember districts are best"</td></tr>
+    </table>
+    <p class="note">Both readings use Gallagher's index. <b>They disagree about what proportionality is worth trading for.</b></p>
+  </div>
+</section>
+
+<!-- 23 · group exercise -->
+<section class="slide navy">
+  <div class="inner ex" style="max-width:68em">
+    <div class="head" style="margin-bottom:1em">
+      <span class="tag" style="margin-bottom:1.6em">Group exercise · Rewrite the election law</span>
+      <p class="sub" style="margin:0 0 .7em">A reform commission asks your group for advice</p>
+      <p class="bigq" style="font-size:1em;max-width:none;margin-bottom:0">Which electoral system should the country use for its 150-seat parliament?</p>
+    </div>
+    <div class="grid" style="grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:1.6em;align-items:start">
+      <div>
+        <p class="file">Today the parliament is elected by plurality in 150 single-member districts. The Northern Party's voters all live in the North, a region with 15 of the 150 seats. Last month's election gave this result.</p>
+        <table class="cmp">
+          <tr><th>Party</th><th>Profile</th><th class="num">Votes</th><th class="num">Seats</th></tr>
+          <tr><td>Civic Union</td><td>Center-right, governs alone</td><td class="num">38%</td><td class="num">88</td></tr>
+          <tr><td>Labour Alliance</td><td>Center-left, main opposition</td><td class="num">30%</td><td class="num">52</td></tr>
+          <tr><td>Greens</td><td>Evenly spread across the country</td><td class="num">14%</td><td class="num">2</td></tr>
+          <tr><td>Liberals</td><td>Evenly spread across the country</td><td class="num">10%</td><td class="num">0</td></tr>
+          <tr><td>Northern Party</td><td>Regional, about half the northern vote</td><td class="num">5%</td><td class="num">8</td></tr>
+          <tr><td>Others</td><td>Several small parties</td><td class="num">3%</td><td class="num">0</td></tr>
+        </table>
+      </div>
+      <div class="drafts">
+        <div class="card"><span class="chip">Option A · Keep plurality</span><p>150 single-member districts, as today.</p></div>
+        <div class="card"><span class="chip">Option B · Nationwide PR</span><p>One district of 150 seats and a 3 percent legal threshold.</p></div>
+        <div class="card"><span class="chip">Option C · Small-district PR</span><p>30 districts of 5 seats each with no legal threshold. The North forms 3 of them.</p></div>
+      </div>
+    </div>
+    <p class="rules">T ≈ 75% ÷ (M + 1) · G = √(½ Σ (votes % − seats %)²), leaving out Others · Carey and Hix average G is 11.9 for one seat, 5.3 for four to six and 3.0 above 20</p>
+    <ol class="fix">
+      <li>Diagnose last month's result with Lijphart. Compute G, name the kind of majority Civic Union won, and say which of Duverger's effects hit the Liberals.</li>
+      <li>Predict Options B and C. Which parties win seats, roughly how disproportional is the result, and how many parties would a majority government need?</li>
+      <li>Choose an option as a group and name the biggest risk it leaves. Which parties in today's parliament would vote for it?</li>
+    </ol>
+    <p class="note" style="margin-top:0">The country, parties and results are invented.</p>
+  </div>
+</section>
+
+<!-- 24 · next week -->
+<section class="slide pink">
+  <div class="inner" style="max-width:52em">
+    <div class="head">
+      <span class="tag">Next up</span>
+      <h2>Before Thursday 29 October</h2>
+      <p class="sub">Week 07. Parties and representation.</p>
+    </div>
+    <div class="card"><span class="chip">Read</span><p>Katz, Richard S., and Peter Mair. 1995. "Changing Models of Party Organization and Party Democracy: The Emergence of the Cartel Party." <i>Party Politics</i> 1(1), 5-28.</p></div>
+    <ol class="tl" style="margin-top:2em">
+      <li><time>Tue 27 Oct</time><b>Complement on concepts, measurement and validity</b><span class="flag room">M2170</span></li>
+      <li class="q"><time>Thu 29 Oct</time><b>Quiz 3 opens the class. It covers Sessions 05 and 06.</b><span class="flag room">Uni Dufour U300</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 25 · end -->
+<section class="slide navy">
+  <div class="inner center grid" style="grid-template-columns:minmax(0,1.4fr) minmax(0,.6fr);gap:3em;align-items:center">
+    <div>
+      <p class="kicker">Progress saved</p>
+      <h1 style="font-size:4.4em">Questions?</h1>
+      <p class="lead">Office hours Thursdays 14:30 to 16:00 in M4328</p>
+      <div class="chips"><span>Jihye.Park@unige.ch</span><span>jihyepark.me/comparative-politics-maspo-fall2026</span></div>
+    </div>
+    <div>
+      <span class="tag">Before you leave</span>
+      <img src="peer-review-qr-final.png" alt="QR code for the group peer review form" style="display:block;width:100%;border:.2em solid var(--yellow);box-shadow:.35em .35em 0 var(--pink)">
+      <p class="note" style="margin-top:1.2em">Rate each group member's participation in today's exercise. <b>Required before you leave the room.</b></p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+
+
+
+<script>
+const slides = [...document.querySelectorAll('.slide')];
+const dots = document.querySelector('.dots');
+const cur = document.getElementById('cur');
+const pad = n => String(n).padStart(2, '0');
+document.getElementById('tot').textContent = pad(slides.length);
+
+slides.forEach((s, i) => {
+  s.id = 's' + (i + 1);
+  dots.insertAdjacentHTML('beforeend', `<a href="#s${i + 1}" aria-label="Slide ${i + 1}"></a>`);
+});
+
+let now = 0;
+const io = new IntersectionObserver(entries => entries.forEach(e => {
+  if (!e.isIntersecting) return;
+  now = slides.indexOf(e.target);
+  cur.textContent = pad(now + 1);
+  dots.querySelectorAll('a').forEach((d, i) => d.setAttribute('aria-current', i === now));
+}), { rootMargin: '-50% 0px -50% 0px' }); // the slide crossing the middle line is current
+slides.forEach(s => io.observe(s));
+
+// Native Fullscreen API. Hidden where unsupported (iPhone Safari). Scroll snap re-snaps after the resize.
+const fs = document.querySelector('.fs');
+const toggleFs = () => document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+if (document.fullscreenEnabled) {
+  fs.hidden = false;
+  fs.addEventListener('click', toggleFs);
+  document.addEventListener('fullscreenchange', () => {
+    fs.querySelector('.lbl').textContent = document.fullscreenElement ? 'Exit fullscreen' : 'Fullscreen';
+  });
+}
+
+const go = i => slides[Math.max(0, Math.min(slides.length - 1, i))].scrollIntoView({ behavior: 'smooth' });
+addEventListener('keydown', e => {
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  if ((e.key === 'f' || e.key === 'F') && document.fullscreenEnabled) return toggleFs();
+  const step = { ArrowDown: 1, ArrowRight: 1, PageDown: 1, ' ': e.shiftKey ? -1 : 1, ArrowUp: -1, ArrowLeft: -1, PageUp: -1 }[e.key];
+  if (step) { e.preventDefault(); go(now + step); }
+  else if (e.key === 'Home') { e.preventDefault(); go(0); }
+  else if (e.key === 'End') { e.preventDefault(); go(slides.length - 1); }
+});
+</script>
+</body>
+</html>

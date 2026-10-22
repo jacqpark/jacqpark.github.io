@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Complement 01 · Comparative Politics · Jihye Park</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tektur:wght@400;600;700;800&family=Chakra+Petch:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* 8-Bit Orbit deck. Same palette and fonts as assets/css/style.css. */
+:root {
+  --void: #0A0E27; --navy: #0F1B3D; --pink: #F0A6CA; --pink-hot: #E87CB2;
+  --cyan: #5EDCF4; --yellow: #F4D03F; --lav: #E2D5F2; --white: #F8F4FF;
+  --display: 'Tektur', 'Courier New', monospace;
+  --sans: 'Chakra Petch', 'Helvetica Neue', Arial, sans-serif;
+  --mono: 'Space Mono', 'Courier New', monospace;
+  /* 1% of the largest 16:9 box that fits the window. Everything scales from it. */
+  --u: min(1vw, 1.7778vh);
+  --base: max(15px, calc(var(--u) * 1.35));
+}
+* { box-sizing: border-box; }
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; background: var(--void); }
+body { margin: 0; font: 400 var(--base)/1.5 var(--sans); -webkit-font-smoothing: antialiased; }
+p { margin: 0 0 .6em; }
+a { color: inherit; }
+
+/* ---------- Slides and themes ---------- */
+.slide {
+  position: relative; min-height: 100vh; min-height: 100dvh;
+  display: grid; place-items: center; overflow: hidden;
+  padding: 4.2em 5em 3.6em; scroll-snap-align: start;
+  background-color: var(--bg); color: var(--fg);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: var(--cell) var(--cell);
+}
+.inner { position: relative; z-index: 1; width: 100%; max-width: 62em; }
+.navy { --bg: var(--void); --fg: var(--lav); --strong: var(--white); --muted: rgba(226,213,242,.66);
+  --h: var(--cyan); --hs: var(--yellow); --card: rgba(15,27,61,.78); --line: rgba(94,220,244,.5);
+  --shadow: var(--pink); --grid: rgba(94,220,244,.05); --cell: calc(var(--u) * 2); }
+.lav { --bg: var(--lav); --fg: var(--navy); --strong: var(--navy); --muted: rgba(15,27,61,.64);
+  --h: var(--navy); --hs: var(--pink-hot); --card: rgba(255,255,255,.55); --line: var(--navy);
+  --shadow: var(--pink-hot); --grid: rgba(15,27,61,.07); --cell: calc(var(--u) * 1.1); }
+.pink { --bg: var(--pink); --fg: var(--navy); --strong: var(--navy); --muted: rgba(15,27,61,.7);
+  --h: var(--navy); --hs: var(--cyan); --card: rgba(255,255,255,.45); --line: var(--navy);
+  --shadow: var(--cyan); --grid: rgba(15,27,61,.08); --cell: calc(var(--u) * 1.1); }
+
+/* pixel stars, scanlines and vignette on navy slides */
+.navy::before, .navy::after { content: ""; position: absolute; inset: 0; pointer-events: none; }
+.navy::before {
+  background:
+    linear-gradient(var(--cyan),var(--cyan)) 7% 12%/4px 4px,
+    linear-gradient(var(--yellow),var(--yellow)) 19% 30%/3px 3px,
+    linear-gradient(var(--pink),var(--pink)) 12% 78%/5px 5px,
+    linear-gradient(var(--cyan),var(--cyan)) 28% 88%/3px 3px,
+    linear-gradient(var(--yellow),var(--yellow)) 36% 9%/4px 4px,
+    linear-gradient(var(--pink),var(--pink)) 44% 64%/3px 3px,
+    linear-gradient(var(--cyan),var(--cyan)) 52% 94%/5px 5px,
+    linear-gradient(var(--yellow),var(--yellow)) 58% 17%/3px 3px,
+    linear-gradient(var(--pink),var(--pink)) 66% 41%/4px 4px,
+    linear-gradient(var(--cyan),var(--cyan)) 73% 7%/3px 3px,
+    linear-gradient(var(--yellow),var(--yellow)) 81% 71%/5px 5px,
+    linear-gradient(var(--pink),var(--pink)) 88% 24%/3px 3px,
+    linear-gradient(var(--cyan),var(--cyan)) 94% 56%/4px 4px,
+    linear-gradient(var(--yellow),var(--yellow)) 4% 50%/3px 3px,
+    linear-gradient(var(--cyan),var(--cyan)) 85% 92%/3px 3px,
+    linear-gradient(var(--pink),var(--pink)) 24% 55%/3px 3px;
+  background-repeat: no-repeat; opacity: .55;
+  animation: twinkle 3.2s steps(2) infinite;
+}
+.navy::after {
+  background:
+    repeating-linear-gradient(to bottom, transparent 0 2px, rgba(0,0,0,.14) 3px, transparent 4px),
+    radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.5) 100%);
+}
+@keyframes twinkle { 50% { opacity: .3; } }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ---------- Type ---------- */
+h1, h2, h3 { font-family: var(--display); margin: 0; line-height: 1.05; }
+h1 { font-size: 5.4em; font-weight: 800; text-transform: uppercase; letter-spacing: .02em;
+  color: var(--h); text-shadow: .045em .045em 0 var(--hs); }
+h2 { font-size: 2.6em; font-weight: 800; color: var(--h); text-shadow: .06em .06em 0 var(--hs); }
+h3 { font-size: 1.05em; font-weight: 700; color: var(--strong); margin-bottom: .45em; }
+.head { text-align: center; margin-bottom: 2em; }
+.center { text-align: center; }
+.tag { display: inline-block; font: 700 .68em var(--display); letter-spacing: .2em; text-transform: uppercase;
+  background: var(--navy); color: var(--yellow); padding: .5em 1.1em; margin-bottom: 1.3em; }
+.navy .tag { background: transparent; border: 2px solid var(--yellow); }
+.sub { font: .78em var(--mono); letter-spacing: .12em; color: var(--muted); margin-top: 1em; }
+.kicker { font: 700 .8em var(--mono); letter-spacing: .42em; text-transform: uppercase; color: var(--pink); margin-bottom: 1.6em; }
+.lead { font-size: 1.25em; color: var(--fg); margin: 1.4em auto 1.6em; }
+.mono { font-family: var(--mono); }
+.muted { color: var(--muted); }
+.small { font-size: .82em; }
+.chips { display: flex; flex-wrap: wrap; gap: .7em; justify-content: center; }
+.chips span { font: 700 .66em var(--mono); letter-spacing: .12em; text-transform: uppercase;
+  border: 2px solid var(--yellow); color: var(--yellow); padding: .7em 1.2em; }
+.light-chips span { border-color: var(--navy); color: var(--navy); background: rgba(255,255,255,.4); }
+.chip { display: inline-block; font: 700 .62em var(--mono); letter-spacing: .12em; text-transform: uppercase;
+  background: var(--navy); color: var(--cyan); padding: .25em .6em; margin-bottom: .7em; }
+.navy .chip { background: var(--cyan); color: var(--navy); }
+.flag { display: inline-block; font: 700 .58em var(--mono); letter-spacing: .1em; text-transform: uppercase;
+  background: var(--navy); color: var(--white); border: 2px solid var(--yellow); padding: .15em .55em; margin-left: .5em; vertical-align: middle; }
+.flag.room { border-color: var(--pink-hot); }
+
+/* ---------- Blocks ---------- */
+.grid { display: grid; gap: 1.3em; grid-template-columns: repeat(var(--cols, 2), minmax(0, 1fr)); }
+.card { background: var(--card); border: 2px solid var(--line); padding: 1.1em 1.25em;
+  box-shadow: .3em .3em 0 var(--shadow); font-size: .9em; }
+.card p:last-child { margin-bottom: 0; }
+.note { margin-top: 1.8em; font-size: .88em; text-align: center; color: var(--muted); }
+.note b { color: var(--strong); }
+ul.pix { list-style: none; padding: 0; margin: 0; }
+ul.pix li { position: relative; padding-left: 1.2em; margin-bottom: .35em; }
+ul.pix li::before { content: ""; position: absolute; left: 0; top: .55em; width: .45em; height: .45em; background: var(--shadow); }
+
+/* bio */
+.bio { font-size: 1.5em; line-height: 1.6; margin: 1em 0 0; }
+.bio mark { background: linear-gradient(transparent 55%, var(--yellow) 0); color: var(--strong); font-weight: 700; padding: 0 .1em; }
+
+/* weeks overview */
+.weeks { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: .6em; }
+.weeks div { border: 2px solid var(--line); background: var(--card); padding: .55em .6em .7em; font-size: .72em; line-height: 1.25; min-height: 5.6em; }
+.weeks b { display: block; font: 700 .9em var(--mono); color: var(--yellow); margin-bottom: .35em; }
+.weeks .now { border-color: var(--yellow); box-shadow: .3em .3em 0 var(--pink); }
+.weeks .end { border-color: var(--pink); }
+.weeks i { display: block; margin-top: .4em; font: 700 .85em var(--mono); color: var(--pink); font-style: normal; }
+
+/* label/value rows */
+.rows { display: grid; grid-template-columns: max-content 1fr; border-top: 2px dashed rgba(15,27,61,.3); }
+.rows > * { padding: .7em 0; border-bottom: 2px dashed rgba(15,27,61,.3); margin: 0; }
+.rows dt { font: 700 .66em var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); padding-right: 2.5em; align-self: center; }
+
+/* evaluation hp bar */
+.hp-top, .hp { display: grid; grid-template-columns: repeat(20, minmax(0, 1fr)); gap: .2em; }
+.hp { padding: .3em; border: .16em solid var(--navy); background: rgba(255,255,255,.35); box-shadow: .35em .35em 0 var(--navy); }
+.hp i { display: block; height: 2.4em; }
+.hp-top { margin-bottom: .6em; font: 700 .7em var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+.hp-top span { text-align: center; }
+.s8 { grid-column: span 8; } .s5 { grid-column: span 5; } .s2 { grid-column: span 2; }
+.c1 { background: var(--navy); } .c2 { background: var(--cyan); } .c3 { background: var(--white); } .c4 { background: var(--yellow); }
+table.tbl { width: 100%; border-collapse: collapse; margin-top: 2.2em; }
+.tbl th { font: 700 .62em var(--mono); letter-spacing: .14em; text-transform: uppercase; text-align: left; padding: 0 1em .6em 0; color: var(--muted); }
+.tbl td { padding: .6em 1em .6em 0; border-top: 2px dashed rgba(15,27,61,.3); }
+.tbl td:first-child { font-weight: 700; white-space: nowrap; }
+.tbl td:nth-child(2) { font: 700 1.1em var(--mono); }
+.sw { display: inline-block; width: .8em; height: .8em; margin-right: .6em; border: 2px solid var(--navy); vertical-align: -.05em; }
+
+/* timeline */
+.tl { list-style: none; position: relative; margin: 0; padding: 0 0 0 2em; }
+.tl::before { content: ""; position: absolute; left: .5em; top: .6em; bottom: .6em; border-left: .14em dashed var(--navy); }
+.tl li { position: relative; display: flex; align-items: center; flex-wrap: wrap; gap: .1em .7em; margin-bottom: .9em; }
+.tl li::before { content: ""; position: absolute; left: -1.9em; width: .7em; height: .7em; background: var(--cyan); border: .14em solid var(--navy); }
+.tl li.q::before { background: var(--yellow); }
+.tl li.x::before { background: var(--pink-hot); }
+.tl time { font: 700 .7em var(--mono); background: var(--navy); color: var(--cyan); padding: .3em .6em; min-width: 8.5em; letter-spacing: .08em; }
+.tl .flag { margin-left: 0; }
+
+/* complement list */
+.plist { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8em 2.2em; }
+.plist li { display: flex; gap: .9em; align-items: baseline; padding-bottom: .7em; border-bottom: 2px dashed rgba(15,27,61,.3); }
+.plist time { flex: none; font: 700 .68em var(--mono); background: var(--navy); color: var(--pink); padding: .25em .55em; min-width: 5.2em; text-align: center; }
+
+/* method meters */
+.meter { display: inline-flex; gap: .2em; }
+.meter i { width: .75em; height: .75em; border: .12em solid var(--navy); }
+.meter i.on { background: var(--navy); }
+.methods .card { display: grid; grid-template-columns: 9em 1fr 5.5em; gap: 1.2em; align-items: center; box-shadow: none; padding: .8em 1.2em; }
+.methods .card + .card { margin-top: .7em; }
+.methods .card.hot { box-shadow: .3em .3em 0 var(--pink-hot); border-width: .16em; }
+.methods h3 { margin: 0; }
+.methods .n { font: .72em var(--mono); color: var(--muted); text-align: right; }
+/* case study card opens to Lijphart's six types */
+.methods details.card { display: block; }
+.methods summary { display: grid; grid-template-columns: 9em 1fr 5.5em; gap: 1.2em; align-items: center; cursor: pointer; list-style: none; }
+.methods summary::-webkit-details-marker { display: none; }
+.methods summary .flag::after { content: " ▾"; }
+.methods details[open] .flag::after { content: " ▴"; }
+.methods .meter { grid-column: -2; }
+.methods:has(details[open]) > div p, .methods:has(details[open]) + .note { display: none; }
+.types { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto; grid-auto-flow: column; gap: .5em 1.4em; margin-top: .8em; padding-top: .9em; border-top: 2px dashed rgba(15,27,61,.3); line-height: 1.3; }
+.fix.types li { padding-bottom: 0; }
+.types b { display: block; }
+.types .hot b { display: table; background: linear-gradient(transparent 55%, var(--pink) 0); }
+.types-note { margin: .8em 0 0; font-size: .85em; color: var(--muted); }
+
+/* variables x cases matrix */
+.matrix-wrap { display: grid; grid-template-columns: auto 1fr; gap: .6em 1em; align-items: center; }
+.matrix { box-sizing: content-box; width: 28em; max-width: 100%; height: 8em; padding: 0 .35em .35em 0; background-origin: content-box;
+  border: .14em solid var(--navy); background-color: rgba(255,255,255,.35);
+  background-image: conic-gradient(from 90deg at .35em .35em, var(--navy) 90deg, transparent 0);
+  background-size: 2em 2em; }
+.axis { font: 700 .62em var(--mono); letter-spacing: .14em; text-transform: uppercase; }
+.fix { counter-reset: fix; list-style: none; padding: 0; margin: 0; }
+.fix li { counter-increment: fix; position: relative; padding: 0 0 .75em 2.4em; }
+.fix li::before { content: counter(fix, decimal-leading-zero); position: absolute; left: 0; top: .1em; font: 700 .7em var(--mono);
+  background: var(--navy); color: var(--yellow); padding: .15em .35em; }
+
+/* case pills */
+.pills { display: flex; flex-wrap: wrap; gap: .8em; justify-content: center; margin: 1.6em 0; }
+.pills span { border: 2px solid var(--cyan); padding: .55em 1em; font: 700 .72em var(--mono); color: var(--white); background: rgba(15,27,61,.8); box-shadow: .25em .25em 0 var(--pink); }
+
+/* Mill tables */
+.mill table { width: 100%; border-collapse: collapse; margin: .8em 0 .9em; font-size: .9em; }
+.mill th { font: 700 .66em var(--mono); letter-spacing: .1em; text-transform: uppercase; padding: .4em; }
+.mill td { border: 2px solid var(--navy); padding: .4em .6em; text-align: center; font: 700 .78em var(--mono); }
+.mill td:first-child { text-align: left; font-family: var(--sans); font-weight: 600; font-size: .85em; }
+.mill .y { background: var(--navy); color: var(--cyan); }
+.mill .s { background: rgba(255,255,255,.6); }
+.mill .d { background: var(--yellow); }
+
+/* depth vs breadth */
+.axisbar { display: flex; justify-content: space-between; align-items: center; gap: 1em; font: 700 .68em var(--mono);
+  letter-spacing: .16em; text-transform: uppercase; margin-bottom: 1.2em; }
+.axisbar i { flex: 1; border-top: .2em dashed var(--navy); }
+.gr { display: grid; grid-template-columns: auto 1fr; gap: .25em .7em; margin-top: .7em; font-size: .92em; }
+.gr dt { font: 700 .64em var(--mono); letter-spacing: .1em; text-transform: uppercase; align-self: center; padding: .15em .45em; background: var(--navy); color: var(--cyan); }
+.gr dt.r { color: var(--pink); }
+.gr dd { margin: 0; }
+
+/* big question */
+.bigq { font: 700 2em/1.25 var(--display); color: var(--navy); background: var(--white); border: .1em solid var(--navy);
+  box-shadow: .22em .22em 0 var(--navy); padding: .9em 1.1em; margin: 0 auto 1.4em; max-width: 24em; text-align: center; }
+
+/* ---------- Session 02 blocks ---------- */
+.quote { font: 700 1.45em/1.35 var(--display); color: var(--strong); border-left: .3em solid var(--hs); padding: .2em 0 .2em .9em; margin: 1.8em auto 0; max-width: 34em; }
+.steps { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: .6em; margin-bottom: 2em; }
+.steps span { font: 700 .72em var(--mono); background: var(--white); border: 2px solid var(--navy); padding: .55em .9em; box-shadow: .25em .25em 0 var(--pink-hot); }
+.steps i { font-style: normal; color: var(--pink-hot); font-size: .8em; }
+.flow { width: 100%; height: auto; font-family: var(--mono); }
+.calc { display: grid; grid-template-columns: 1fr auto; margin: .4em 0 .9em; }
+.calc dt, .calc dd { margin: 0; padding: .45em 0; border-bottom: 2px dashed rgba(15,27,61,.3); }
+.calc dd { font: 700 1.05em var(--mono); text-align: right; }
+.calc dt:nth-last-of-type(1), .calc dd:last-child { border-bottom: 0; }
+.calc.prof dd { font-size: .85em; padding-left: 1em; }
+.cmp { width: 100%; border-collapse: collapse; font-size: .9em; }
+.cmp th { font: 700 .66em var(--mono); letter-spacing: .12em; text-transform: uppercase; text-align: left; color: var(--muted); padding: 0 1em .6em 0; }
+.cmp td { padding: .6em 1em .6em 0; border-top: 2px dashed rgba(15,27,61,.3); vertical-align: top; }
+.cmp td:first-child { font-weight: 700; white-space: nowrap; }
+.stats { display: grid; gap: 1.1em; grid-template-columns: repeat(var(--cols, 4), minmax(0, 1fr)); }
+.stat b { display: block; font: 800 2.1em/1 var(--display); color: var(--strong); text-shadow: .06em .06em 0 var(--hs); margin-bottom: .4em; white-space: nowrap; }
+.stat p { margin: 0; font-size: .88em; }
+.quad { display: grid; grid-template-columns: 8.5em 1fr 1fr; gap: .9em; }
+.quad .ax { align-self: center; text-align: center; font: 700 .62em var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--yellow); }
+.quad .card p { margin: 0; }
+.latent { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .7em; text-align: center; }
+.latent span { font: 700 .7em var(--mono); background: var(--white); border: 2px solid var(--navy); padding: .8em .5em; }
+.latent i { font-style: normal; color: var(--navy); }
+.latent b { grid-column: 1 / -1; font: 800 1.8em var(--display); color: var(--yellow); background: var(--navy); padding: .45em; box-shadow: .2em .2em 0 var(--cyan); }
+.bars { display: grid; grid-template-columns: max-content 1fr 2.6em; gap: .5em .9em; align-items: center; font-size: .82em; }
+.bars .t { position: relative; height: 1.2em; background: linear-gradient(var(--navy), var(--navy)) 50% 0 / 2px 100% no-repeat; }
+/* bar spans from zero to the value on a -1 to +1 axis */
+.bars .t i { position: absolute; top: .15em; bottom: .15em; left: calc(50% + min(var(--v), 0) * 50%); width: calc(max(var(--v), -1 * var(--v)) * 50%); background: var(--navy); }
+.bars .t i.neg { background: var(--pink-hot); }
+.bars > b { font: 700 .95em var(--mono); text-align: right; }
+.bars .ticks { display: flex; justify-content: space-between; font: .8em var(--mono); color: var(--muted); }
+.cty { display: flex; flex-wrap: wrap; gap: .6em; }
+.cty span { font: 700 .85em var(--mono); background: var(--navy); color: var(--cyan); padding: .35em .7em; }
+
+@media screen and (max-width: 760px) {
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .quad { grid-template-columns: 1fr; }
+  .quad > span:first-child { display: none; }
+  .steps i { transform: rotate(90deg); }
+  .bars { font-size: .72em; }
+  .cmp td:first-child { white-space: normal; }
+}
+
+/* ---------- HUD ---------- */
+.hud { position: fixed; z-index: 10; top: 1.1em; left: 1.4em; right: 1.4em; display: flex; justify-content: space-between; align-items: center; gap: 1em; pointer-events: none; }
+.hud-right { display: flex; gap: .8em; }
+.hud svg { width: 1.1em; height: 1.1em; vertical-align: -.2em; margin-right: .55em; }
+.hud a, .hud button { pointer-events: auto; cursor: pointer; line-height: inherit; font: 700 .62em var(--mono); letter-spacing: .14em; text-transform: uppercase; text-decoration: none;
+  background: rgba(15,27,61,.9); color: var(--white); border: 2px solid var(--cyan); padding: .7em 1.1em;
+  transition: transform .15s steps(3), box-shadow .15s steps(3), background .15s steps(3); }
+.hud a:hover, .hud button:hover { transform: translate(-2px,-2px); box-shadow: 4px 4px 0 var(--pink); }
+.hud .back::before { content: "◆ "; color: var(--yellow); animation: blink 1.6s steps(1) infinite; }
+.hud .pdf { border-color: var(--yellow); color: var(--yellow); box-shadow: 4px 4px 0 var(--pink); }
+.hud .pdf:hover { background: var(--yellow); color: var(--navy); box-shadow: 7px 7px 0 var(--pink); }
+.dots { position: fixed; z-index: 10; right: 1.3em; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: .45em; }
+.dots a { width: .75em; height: .75em; border: 2px solid var(--cyan); background: rgba(15,27,61,.85); }
+.dots a[aria-current="true"] { background: var(--yellow); border-color: var(--navy); }
+.counter { position: fixed; z-index: 10; bottom: 1em; left: 50%; transform: translateX(-50%); font: 700 .72em var(--mono);
+  letter-spacing: .2em; background: rgba(15,27,61,.9); color: var(--cyan); padding: .6em 1.2em; }
+.keys { position: fixed; z-index: 10; bottom: 1.3em; right: 1.4em; font: .58em var(--mono); letter-spacing: .16em; text-transform: uppercase;
+  color: var(--cyan); background: rgba(15,27,61,.7); padding: .3em .6em; }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before { animation: none !important; } }
+
+@media screen and (max-width: 760px) {
+  html { scroll-snap-type: y proximity; }
+  .slide { padding: 5em 1.1em 4em; }
+  h1 { font-size: 2.9em; } h2 { font-size: 1.9em; }
+  .grid, .plist, .matrix-wrap { grid-template-columns: 1fr; }
+  .weeks { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bio { font-size: 1.2em; }
+  .methods .card { grid-template-columns: 1fr auto; }
+  .methods .card p { grid-column: 1 / -1; order: 3; }
+  .methods summary { grid-template-columns: 1fr auto; }
+  .types { grid-template-columns: 1fr; grid-auto-flow: row; }
+  .hp-top { font-size: .5em; }
+  .bigq { font-size: 1.4em; }
+  .dots, .keys { display: none; }
+  .hud a, .hud button { font-size: .56em; padding: .6em .8em; }
+  .hud .lbl { display: none; }
+  .hud .fs svg { margin: 0; }
+}
+
+/* ---------- PDF (scripts/deck-pdf.sh prints this page) ---------- */
+@page { size: 1280px 720px; margin: 0; }
+@media print {
+  :root { --u: 12.8px; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; animation: none !important; }
+  html { scroll-snap-type: none; }
+  .hud, .dots, .counter, .keys { display: none; }
+  .slide { width: 1280px; height: 720px; min-height: 0; break-after: page; }
+}
+/* ---------- Session 03 blocks ---------- */
+.cmp .num { font-family: var(--mono); text-align: right; white-space: nowrap; }
+.cmp tr.hot td { background: rgba(255,255,255,.55); font-weight: 700; }
+/* group exercise. Profiles in one row, tasks listed beneath them. */
+.ex .card { font-size: .74em; padding: .85em 1em; }
+.ex .fix { margin-top: 2.6em; font-size: .88em; }
+.ex .fix li { padding-bottom: 1em; }
+/* ---------- Session 04 blocks ---------- */
+.steps span { color: var(--navy); }
+.navy .cmp th { color: var(--muted); }
+.navy .cmp td { border-top-color: rgba(94,220,244,.3); }
+.cmp td.c { text-align: center; }
+/* horizontal stacked bars, widths in percent */
+.stack { display: grid; grid-template-columns: 13em 1fr; gap: 1em 1.2em; align-items: center; }
+.stack > b { font: 700 .72em var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.stack .bar { display: flex; height: 3em; border: .14em solid var(--navy); box-shadow: .3em .3em 0 var(--navy); }
+.stack .bar i { flex: 0 0 var(--w); display: flex; align-items: center; justify-content: center; text-align: center;
+  font: 700 .62em/1.2 var(--mono); letter-spacing: .06em; text-transform: uppercase; font-style: normal; color: var(--navy); }
+.stack .bar i + i { border-left: .2em solid var(--navy); }
+.stack .ag { background: var(--white); } .stack .co { background: var(--navy); color: var(--cyan) !important; }
+.stack .in { background: var(--lav); } .stack .er { background: var(--yellow); }
+/* exercise data table */
+.ex .cmp { font-size: .7em; }
+.ex .cmp td { padding: .45em .7em .45em 0; }
+.ex .cmp .num { font-size: 1.05em; text-align: center; padding-right: .3em; }
+.ex .rules { font: .66em/1.5 var(--mono); color: var(--cyan); border: 2px dashed var(--line); padding: .55em .9em; margin-top: 1em; }
+.ex .fix { margin-top: 1.2em; font-size: .8em; }
+.ex .fix li { padding-bottom: .55em; }
+@media screen and (max-width: 760px) {
+  .stack { grid-template-columns: 1fr; }
+  .ex .cmp { display: block; overflow-x: auto; }
+}
+/* ---------- Session 05 blocks ---------- */
+/* horizontal bars, --w is the share of the scale */
+.hbar { display: grid; grid-template-columns: max-content 1fr 4.2em; gap: .45em 1em; align-items: center; }
+.hbar > span { font: 700 .64em var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.hbar > .grp { grid-column: 1 / -1; color: var(--muted); margin-top: .7em; letter-spacing: .12em; }
+.hbar > .grp:first-child { margin-top: 0; }
+.hbar .t { height: 1.25em; border: .12em solid var(--line); background: var(--card); }
+.hbar .t i { display: block; height: 100%; width: var(--w); background: var(--h); }
+.hbar .t i.hot { background: var(--hs); }
+.hbar > b { font: 700 .82em var(--mono); text-align: right; white-space: nowrap; }
+.cap { font: 700 .62em var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 1em; }
+.quad .ax.top { align-self: end; padding-bottom: .2em; }
+.ex .file { font-size: .72em; margin: 0 0 .7em; }
+.ex .drafts { display: grid; gap: .8em; }
+.ex .drafts .card { font-size: .68em; padding: .7em .9em; box-shadow: .25em .25em 0 var(--shadow); }
+@media screen and (max-width: 760px) {
+  .hbar { grid-template-columns: 1fr 4em; }
+  .hbar > span { grid-column: 1 / -1; }
+}
+/* one stacked vote-share bar and a left-right line, Session 05 slide 9 */
+.vs { position: relative; display: flex; margin: 1.6em 0 2.4em; }
+.vs > div { flex: 0 0 var(--w); min-width: 0; }
+.vs i { display: block; height: 2.2em; background: var(--c); border: .12em solid var(--line); border-left: 0; }
+.vs > div:first-child i { border-left: .12em solid var(--line); }
+.vs i.oth { background: repeating-linear-gradient(45deg, var(--card) 0 .3em, transparent .3em .6em); }
+.vs span { display: block; margin-top: .45em; font: 700 .58em/1.35 var(--mono); text-align: center; white-space: nowrap; }
+.vs i { display: flex; align-items: center; justify-content: center; }
+.vs i b { font: 700 .62em var(--mono); color: var(--t, var(--navy)); }
+.vs::after { content: "50%"; position: absolute; left: 50%; top: -2.2em; height: 6.2em; border-left: .14em dashed var(--line);
+  padding-left: .3em; font: 700 .55em var(--mono); color: var(--fg); }
+.lr { position: relative; height: 3.6em; margin: 0 1em; }
+.lr::before { content: ""; position: absolute; left: 0; right: 0; top: .5em; height: .14em; background: var(--line); }
+.lr::after { content: ""; position: absolute; left: 50%; top: 0; height: 1.1em; border-left: .14em dotted var(--line); }
+.lr > span { position: absolute; left: var(--x); top: 0; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center;
+  gap: .4em; font: 700 .64em var(--mono); white-space: nowrap; }
+.lr > span::before { content: ""; width: 1.7em; height: 1.7em; background: var(--c); border: .18em solid var(--line); }
+.lr-ends { display: flex; justify-content: space-between; font: 700 .58em var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+/* ---------- Session 06 blocks ---------- */
+.formula { font: 700 1.2em var(--mono); color: var(--navy); background: var(--white); border: .12em solid var(--navy);
+  box-shadow: .25em .25em 0 var(--hs); padding: .55em 1em; text-align: center; margin: 0 auto 1.4em; max-width: 24em; }
+.seats { display: flex; align-items: center; gap: .3em; margin-top: .55em; }
+.seats > b { font: 700 .6em var(--mono); letter-spacing: .1em; text-transform: uppercase; min-width: 11em; }
+.seats i { width: 2.6em; height: 2.6em; display: grid; place-items: center; border: .12em solid var(--navy);
+  font: 700 .58em var(--mono); font-style: normal; background: var(--white); color: var(--navy); }
+.seats i.a { background: var(--navy); color: var(--cyan); }
+.seats i.b { background: var(--yellow); }
+.seats i.c { background: var(--pink-hot); color: var(--white); }
+.cmp tr.sum td { border-top: .14em solid var(--navy); font-weight: 700; }
+.hbar.wide { grid-template-columns: 17em 1fr 4.2em; }
+@media screen and (max-width: 760px) { .seats > b { min-width: 0; flex-basis: 100%; } .seats { flex-wrap: wrap; } .hbar.wide { grid-template-columns: 1fr 4em; } }
+/* ---------- Complement 01 blocks ---------- */
+/* exercise slides with no option cards get larger type */
+.ex.roomy .file { font-size: .86em; }
+.ex.roomy .cmp { font-size: .86em; }
+.ex.roomy .card { font-size: .84em; }
+.ex.roomy .rules { font-size: .76em; }
+.ex.roomy .fix { font-size: .95em; margin-top: 1.4em; }
+</style>
+</head>
+<body>
+
+<header class="hud">
+  <a class="back" href="../">Course module</a>
+  <div class="hud-right">
+    <button class="fs" type="button" aria-label="Toggle fullscreen" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M3 9V3h6M21 9V3h-6M3 15v6h6M21 15v6h-6"/></svg><span class="lbl">Fullscreen</span></button>
+    <a class="pdf" href="slides.pdf" download="comparative-politics-102726.pdf">⬇ Download PDF</a>
+  </div>
+</header>
+<nav class="dots" aria-label="Slides"></nav>
+<div class="counter" aria-live="polite"><span id="cur">01</span> / <span id="tot">01</span></div>
+<div class="keys" aria-hidden="true">Use keys ↑ ↓ · F fullscreen</div>
+
+<main>
+
+<!-- 01 · title -->
+<section class="slide navy">
+  <div class="inner center">
+    <p class="kicker">T407016 // Autumn 2026 // Université de Genève</p>
+    <h1>Comparative<br>Politics</h1>
+    <p class="lead">Complement 01. Concepts, measurement and validity.</p>
+    <div class="chips"><span>Tue 27 Oct 2026</span><span>Uni Mail M2170</span><span>Dr. Jihye Park</span></div>
+  </div>
+</section>
+
+<!-- 02 · measures met so far -->
+<section class="slide lav">
+  <div class="inner" style="max-width:56em">
+    <div class="head">
+      <span class="tag">No reading today</span>
+      <h2>Four measures you have already met</h2>
+    </div>
+    <div class="grid">
+      <div class="card"><span class="chip">Session 02 · Hanson and Sigman</span><p>Capacity, one latent score built from 21 indicators of extraction, coercion and administration.</p></div>
+      <div class="card"><span class="chip">Session 03 · Munck and Verkuilen</span><p>Nine democracy indices, judged on how they define, measure and combine.</p></div>
+      <div class="card"><span class="chip">Session 04 · Lührmann and Lindberg</span><p>An autocratization episode, coded as a fall of at least 0.10 on V-Dem's electoral democracy index.</p></div>
+      <div class="card"><span class="chip">Session 06 · Lijphart, Carey and Hix</span><p>Gallagher's index of disproportionality and the effective number of parties.</p></div>
+    </div>
+    <p class="note">Today turns those readings into a toolkit. <b>Use it on any number before it goes into a policy brief.</b></p>
+  </div>
+</section>
+
+<!-- 03 · opener -->
+<section class="slide pink">
+  <div class="inner center">
+    <span class="tag">Opener · any volunteers?</span>
+    <p class="sub" style="margin:0 0 1em">You advise a foreign ministry</p>
+    <p class="bigq" style="max-width:28em">A donor will cut aid to any country whose governance score falls two years in a row. Can the score be trusted?</p>
+    <div class="grid" style="--cols:3;text-align:left">
+      <div class="card"><span class="chip">01</span><p>What is the score supposed to capture?</p></div>
+      <div class="card"><span class="chip">02</span><p>Where do the numbers come from?</p></div>
+      <div class="card"><span class="chip">03</span><p>What else could make the score fall?</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 · concept to score -->
+<section class="slide navy">
+  <div class="inner" style="max-width:58em">
+    <div class="head" style="margin-bottom:1.4em">
+      <span class="tag">Munck and Verkuilen · Three challenges</span>
+      <h2>From concept to score</h2>
+    </div>
+    <div class="steps"><span>Concept</span><i>▶</i><span>Attributes</span><i>▶</i><span>Indicators</span><i>▶</i><span>Scores</span><i>▶</i><span>Index</span></div>
+    <table class="cmp">
+      <tr><th>Step</th><th>Democracy, Vanhanen</th><th>Disproportionality, Gallagher</th></tr>
+      <tr><td>Concept</td><td>Democracy</td><td>How faithfully seats follow votes</td></tr>
+      <tr><td>Attributes</td><td>Competition and participation</td><td>Each party's gap between votes and seats</td></tr>
+      <tr><td>Indicators</td><td>Vote share of the largest party, and turnout</td><td>Official vote and seat shares</td></tr>
+      <tr><td>Index</td><td>The two attributes multiplied</td><td>Square root of half the summed squared gaps</td></tr>
+    </table>
+    <p class="note">Conceptualization covers the first two steps, measurement the next two and aggregation the last. <b>A mistake early in the chain carries into every later step.</b></p>
+  </div>
+</section>
+
+<!-- 05 · validity and reliability -->
+<section class="slide lav">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Two standards</span>
+      <h2>Valid, reliable, both or neither?</h2>
+    </div>
+    <div class="grid" style="grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:2.6em;align-items:center">
+      <svg class="flow" viewBox="0 0 400 400" role="img" aria-label="Four targets. Top left, dots clustered tightly on the bullseye, reliable and valid. Top right, dots clustered tightly away from the bullseye, reliable and biased. Bottom left, dots scattered widely around the bullseye, unreliable and centered. Bottom right, dots scattered widely away from the bullseye, unreliable and biased.">
+        <defs>
+          <g id="tgt"><circle r="70" fill="#F8F4FF" stroke="#0F1B3D" stroke-width="2.5"/><circle r="46" fill="#E2D5F2" stroke="#0F1B3D" stroke-width="2"/><circle r="22" fill="#F8F4FF" stroke="#0F1B3D" stroke-width="2"/><circle r="5" fill="#0F1B3D"/></g>
+        </defs>
+        <use href="#tgt" x="100" y="90"/><use href="#tgt" x="300" y="90"/><use href="#tgt" x="100" y="290"/><use href="#tgt" x="300" y="290"/>
+        <g fill="#E87CB2" stroke="#0F1B3D" stroke-width="1.5">
+          <circle cx="96" cy="86" r="5"/><circle cx="105" cy="92" r="5"/><circle cx="99" cy="98" r="5"/><circle cx="92" cy="94" r="5"/><circle cx="106" cy="84" r="5"/>
+          <circle cx="326" cy="57" r="5"/><circle cx="335" cy="63" r="5"/><circle cx="329" cy="69" r="5"/><circle cx="321" cy="64" r="5"/><circle cx="336" cy="54" r="5"/>
+          <circle cx="70" cy="270" r="5"/><circle cx="130" cy="300" r="5"/><circle cx="95" cy="330" r="5"/><circle cx="120" cy="255" r="5"/><circle cx="75" cy="315" r="5"/>
+          <circle cx="310" cy="240" r="5"/><circle cx="355" cy="255" r="5"/><circle cx="335" cy="285" r="5"/><circle cx="318" cy="272" r="5"/><circle cx="345" cy="240" r="5"/>
+        </g>
+        <g font-size="12" font-weight="700" fill="#0F1B3D" text-anchor="middle">
+          <text x="100" y="180">RELIABLE, VALID</text><text x="300" y="180">RELIABLE, BIASED</text>
+          <text x="100" y="380">NOISY, CENTERED</text><text x="300" y="380">NOISY, BIASED</text>
+        </g>
+      </svg>
+      <ol class="fix">
+        <li>Validity is "the extent to which the proposed measures actually measure what they are supposed to measure."</li>
+        <li>Reliability is the prospect that the same data collection process would always produce the same data. Agreement among coders is the usual test.</li>
+        <li>"Reliable measures need not be valid ones." In fact, "one way to obtain very reliable measures is to adopt similar biases."</li>
+      </ol>
+    </div>
+    <p class="note">The bullseye is the concept. <b>Each dot is one attempt to score the same case.</b></p>
+  </div>
+</section>
+
+<!-- 06 · two kinds of error -->
+<section class="slide pink">
+  <div class="inner" style="max-width:56em">
+    <div class="head">
+      <span class="tag">Measurement error</span>
+      <h2>Noise or bias?</h2>
+    </div>
+    <div class="grid">
+      <div class="card"><span class="chip">Random error</span><h3>Scatter in both directions</h3><p>A coder misreads a source, or a survey draws an unlucky sample. The errors cancel out on average, and they make real relationships harder to see.</p></div>
+      <div class="card"><span class="chip">Systematic error</span><h3>A push in one direction</h3><p>The error follows some other feature of the case. Collecting more of the same data leaves it in place.</p></div>
+    </div>
+    <p class="sub center" style="margin:1.8em 0 .8em">Munck and Verkuilen's examples of systematic error</p>
+    <div class="grid" style="--cols:3">
+      <div class="card"><p>Reported rapes may track changes in culture more than the number of rapes.</p></div>
+      <div class="card"><p>More evidence of corruption may reflect a freer press.</p></div>
+      <div class="card"><p>Vanhanen's turnout and largest-party share build bias into his index.</p></div>
+    </div>
+    <p class="note">"The record left by history is inherently biased." <b>Choose indicators less exposed to bias and check them against several sources.</b></p>
+  </div>
+</section>
+
+<!-- 07 · drift -->
+<section class="slide navy">
+  <div class="inner" style="max-width:58em">
+    <div class="head">
+      <span class="tag">When indicators drift</span>
+      <h2>The number moves, the concept stays put</h2>
+    </div>
+    <div class="grid" style="--cols:3">
+      <div class="card"><span class="chip">Across places</span><p>An indicator can mean different things in different countries, so Munck and Verkuilen ask for cross-system equivalence. Police officers per person barely track Capacity (r = .03), perhaps because weak rulers hire more of them.</p></div>
+      <div class="card"><span class="chip">Over time</span><p>After 1989 Freedom House moved from a single coder to a team coding components. A shift in the series may come from the method.</p></div>
+      <div class="card"><span class="chip">Under pressure</span><p>Once money or reputation rides on a score, governments have reasons to move the indicator itself. Relabeling contracts is quicker than cleaning them up.</p></div>
+    </div>
+    <p class="note">Drift is hard to see in the scores themselves. <b>Ask what else could have moved the number.</b></p>
+  </div>
+</section>
+
+<!-- 08 · aggregation -->
+<section class="slide lav">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Aggregation</span>
+      <h2>Same gaps, different verdicts</h2>
+    </div>
+    <div class="grid" style="grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:2.6em;align-items:center">
+      <div>
+        <p class="cap">Two invented elections · gaps between vote and seat shares, in points</p>
+        <table class="cmp">
+          <tr><th>Election</th><th>Gaps</th><th class="num">Sum of gaps</th><th class="num">Gallagher</th></tr>
+          <tr><td>X</td><td>One party +10, two at −5</td><td class="num">20</td><td class="num">8.7</td></tr>
+          <tr><td>Y</td><td>Five parties +2, five at −2</td><td class="num">20</td><td class="num">4.5</td></tr>
+        </table>
+        <p class="cap" style="margin-top:1.8em">United States, Lijphart's Table 8.1</p>
+        <table class="cmp">
+          <tr><td>Congress and president</td><td class="num">4.43 and 46.03</td></tr>
+          <tr><td>Arithmetic mean</td><td class="num">25.2</td></tr>
+          <tr class="hot"><td>Geometric mean</td><td class="num">14.3</td></tr>
+        </table>
+      </div>
+      <ol class="fix">
+        <li>A plain sum cannot tell a few large distortions from many small ones. Lijphart says it understates how proportional PR is.</li>
+        <li>Squaring the gaps makes the large ones count more.</li>
+        <li>An arithmetic mean would let the presidential race swamp the legislature, so Lijphart uses the geometric mean.</li>
+      </ol>
+    </div>
+    <p class="note">Session 03 asked whether to add or multiply. <b>Every rule for combining numbers is a claim about the concept.</b></p>
+  </div>
+</section>
+
+<!-- 09 · exercise 01 -->
+<section class="slide navy">
+  <div class="inner ex roomy" style="max-width:62em">
+    <div class="head" style="margin-bottom:1em">
+      <span class="tag" style="margin-bottom:1.6em">Group exercise 01 · Diagnose the score</span>
+      <p class="sub" style="margin:0 0 .7em">A donor ministry asks your group for advice</p>
+      <p class="bigq" style="font-size:1em;max-width:none;margin-bottom:0">The ministry wants to reward partner countries that cut corruption. Would this score show which ones did?</p>
+    </div>
+    <p class="file">The draft score averages five indicators with equal weights. Each is rescaled from 0 to 100 so that a higher value means more corruption.</p>
+    <table class="cmp">
+      <tr><th class="num">#</th><th>Indicator</th><th>Source</th></tr>
+      <tr><td class="num">1</td><td>Corruption convictions per 100,000 people</td><td>Court records</td></tr>
+      <tr><td class="num">2</td><td>Newspaper stories about corruption per year</td><td>Media archive</td></tr>
+      <tr><td class="num">3</td><td>Expert rating of corruption, 0 to 10</td><td>A consultancy's country analysts</td></tr>
+      <tr><td class="num">4</td><td>Share of adults who paid a bribe in the past year</td><td>National survey</td></tr>
+      <tr><td class="num">5</td><td>Share of public contracts awarded without open tender</td><td>Procurement agency</td></tr>
+    </table>
+    <p class="rules">Across partner countries last year, indicators 2 and 3 correlated at .85.</p>
+    <ol class="fix">
+      <li>For each indicator, name one thing besides corruption that could move it. Is that error random or systematic, and which indicators could rise when corruption falls?</li>
+      <li>Indicators 2 and 3 agree closely. Does their agreement make the score valid?</li>
+      <li>Rebuild the score with at most three indicators. Say how you would combine them and name one check to run before the ministry uses it.</li>
+    </ol>
+    <p class="note" style="margin-top:0">The ministry, score and data are invented.</p>
+  </div>
+</section>
+
+<!-- 10 · four checks -->
+<section class="slide pink">
+  <div class="inner" style="max-width:60em">
+    <div class="head">
+      <span class="tag">Hanson and Sigman · Validity checks</span>
+      <h2>Four ways to check a measure</h2>
+    </div>
+    <table class="cmp">
+      <tr><th>Check</th><th>Question</th><th>Hanson and Sigman's Capacity</th></tr>
+      <tr><td>Face and content</td><td>Do the scores look right, and do they cover the whole concept?</td><td>Singapore ranks in the top 25, and Somalia, Yemen and the Central African Republic sit near the bottom</td></tr>
+      <tr><td>Convergent</td><td>Does it agree with other measures of the same concept?</td><td>r = .91 with the World Bank's government effectiveness index</td></tr>
+      <tr><td>Discriminant</td><td>Does it stay apart from different concepts?</td><td>Low correlations with conflict, population and oil output, and r = .79 with log GDP per capita</td></tr>
+      <tr><td>Construct</td><td>Does it predict what theory says it should?</td><td>One point more Capacity goes with about 21 points more undeliverable letters returned</td></tr>
+    </table>
+    <p class="note">They follow Adcock and Collier (2001). <b>Each check answers a different doubt, and none of them settles every doubt.</b></p>
+  </div>
+</section>
+
+<!-- 11 · agreement -->
+<section class="slide navy">
+  <div class="inner" style="max-width:56em">
+    <div class="head">
+      <span class="tag">Munck and Verkuilen · Correlation tests</span>
+      <h2>Why agreement proves little</h2>
+    </div>
+    <ol class="fix">
+      <li>Shared sources. Many democracy indices drew on the same precoded data, so a high correlation "may mean that all indices are reflecting the same bias."</li>
+      <li>Reliability at most. "One can get very consistent (i.e. reliable) measurements that are not valid," Bollen warned in 1986.</li>
+      <li>Aggregate scores. The two Freedom House series line up with the other indices on one dimension and load alone on a second.</li>
+    </ol>
+    <p class="quote" style="font-size:1.1em;max-width:42em">"The high degree of correlation among existing democracy indices does not put to rest concerns about their validity."</p>
+    <p class="note" style="margin-top:1em">Agreement counts for more when the other measure rests on a different kind of data. <b>Hanson and Sigman's census-based Myers index is one example.</b></p>
+  </div>
+</section>
+
+<!-- 12 · carey and hix measures -->
+<section class="slide lav">
+  <div class="inner">
+    <div class="head">
+      <span class="tag">Carey and Hix · Operationalization</span>
+      <h2>From ideal to cut-off</h2>
+    </div>
+    <div class="grid" style="grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:2.6em;align-items:center">
+      <table class="cmp">
+        <tr><th>Ideal</th><th>Indicator</th><th>Good outcome</th></tr>
+        <tr><td>Representation</td><td>Disproportionality</td><td>Below 5</td></tr>
+        <tr><td>Representation</td><td>Voter-government distance</td><td>Below 5</td></tr>
+        <tr><td>Accountability</td><td>Effective number of parties</td><td>Fewer than 3</td></tr>
+        <tr><td>Accountability</td><td>Parties in government</td><td>Two or fewer</td></tr>
+      </table>
+      <ol class="fix">
+        <li>A value counts as good when it beats the median of their data.</li>
+        <li>Their two measures of representation correlate at only .16.</li>
+        <li>Across Lijphart's 36 democracies, disproportionality and the effective number of parties correlate at −0.57.</li>
+      </ol>
+    </div>
+    <p class="note">Lührmann and Lindberg called their own 0.10 cut-off "naturally arbitrary." <b>Cut-offs are measurement choices too.</b></p>
+  </div>
+</section>
+
+<!-- 13 · exercise 02 -->
+<section class="slide navy">
+  <div class="inner ex roomy" style="max-width:62em">
+    <div class="head" style="margin-bottom:1em">
+      <span class="tag" style="margin-bottom:1.6em">Group exercise 02 · Test the accountability measure</span>
+      <p class="sub" style="margin:0 0 .7em">Thursday's reform commission wants a second opinion</p>
+      <p class="bigq" style="font-size:1em;max-width:none;margin-bottom:0">Do fewer parties really mean more accountable government?</p>
+    </div>
+    <p class="file">The commission plans to rank Options A, B and C on accountability with Carey and Hix's two measures, the effective number of parties and the number of parties in government. Carey and Hix justify the measures this way.</p>
+    <div class="grid">
+      <div class="card"><span class="chip">Carey and Hix, p. 388</span><p>The number of parties in the first cabinet "serves as an index of how difficult it is for voters to attribute responsibility for government performance and reward or punish governing parties at the next election accordingly."</p></div>
+      <div class="card"><span class="chip">Carey and Hix, p. 384</span><p>Empirical studies indicate "that both prospective and retrospective voting are more effective when coalitions include fewer parties."</p></div>
+    </div>
+    <ol class="fix">
+      <li>Content. What does accountability mean here, and what does a count of parties leave out? Describe a country that scores well on both measures where voters still cannot remove the government.</li>
+      <li>Convergent and discriminant. Name one other measure the party counts should agree with, and one different concept they should not simply track. What does Lijphart's −0.57 do to Carey and Hix's trade-off?</li>
+      <li>Construct. If fewer parties do mean more accountability, what should happen to governments after a bad term? Sketch a test and the result that would count against the measure.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- 14 · checklist -->
+<section class="slide lav">
+  <div class="inner" style="max-width:58em">
+    <div class="head">
+      <span class="tag">Take-away</span>
+      <h2>Six questions for any number</h2>
+    </div>
+    <div class="grid">
+      <ol class="fix">
+        <li>What is the concept, and is it defined too broadly or too narrowly?</li>
+        <li>Which indicators stand for it, and what else moves them?</li>
+        <li>Is the error random or systematic?</li>
+      </ol>
+      <ol class="fix" start="4" style="counter-reset:fix 3">
+        <li>Does the indicator mean the same thing across countries and years?</li>
+        <li>How are the parts combined, and where do the cut-offs sit?</li>
+        <li>What validity evidence exists beyond agreement with similar measures?</li>
+      </ol>
+    </div>
+    <p class="note">Complement 02 on 17 November turns to hypotheses. <b>Every test it covers depends on measures like today's.</b></p>
+  </div>
+</section>
+
+<!-- 15 · next up -->
+<section class="slide pink">
+  <div class="inner" style="max-width:52em">
+    <div class="head">
+      <span class="tag">Next up</span>
+      <h2>Before Thursday 29 October</h2>
+      <p class="sub">Week 07. Parties and representation.</p>
+    </div>
+    <div class="card"><span class="chip">Read</span><p>Katz, Richard S., and Peter Mair. 1995. "Changing Models of Party Organization and Party Democracy: The Emergence of the Cartel Party." <i>Party Politics</i> 1(1), 5-28.</p></div>
+    <ol class="tl" style="margin-top:2em">
+      <li class="q"><time>Thu 29 Oct</time><b>Quiz 3 opens the class. It covers Sessions 05 and 06.</b><span class="flag room">Uni Dufour U300</span></li>
+      <li><time>Tue 17 Nov</time><b>Complement on hypotheses and how they are evaluated</b><span class="flag room">M2170</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 16 · end -->
+<section class="slide navy">
+  <div class="inner center">
+    <p class="kicker">Progress saved</p>
+    <h1 style="font-size:4.4em">Questions?</h1>
+    <p class="lead">Office hours Thursdays 14:30 to 16:00 in M4328</p>
+    <div class="chips"><span>Jihye.Park@unige.ch</span><span>jihyepark.me/comparative-politics-maspo-fall2026</span></div>
+  </div>
+</section>
+
+</main>
+
+
+
+
+<script>
+const slides = [...document.querySelectorAll('.slide')];
+const dots = document.querySelector('.dots');
+const cur = document.getElementById('cur');
+const pad = n => String(n).padStart(2, '0');
+document.getElementById('tot').textContent = pad(slides.length);
+
+slides.forEach((s, i) => {
+  s.id = 's' + (i + 1);
+  dots.insertAdjacentHTML('beforeend', `<a href="#s${i + 1}" aria-label="Slide ${i + 1}"></a>`);
+});
+
+let now = 0;
+const io = new IntersectionObserver(entries => entries.forEach(e => {
+  if (!e.isIntersecting) return;
+  now = slides.indexOf(e.target);
+  cur.textContent = pad(now + 1);
+  dots.querySelectorAll('a').forEach((d, i) => d.setAttribute('aria-current', i === now));
+}), { rootMargin: '-50% 0px -50% 0px' }); // the slide crossing the middle line is current
+slides.forEach(s => io.observe(s));
+
+// Native Fullscreen API. Hidden where unsupported (iPhone Safari). Scroll snap re-snaps after the resize.
+const fs = document.querySelector('.fs');
+const toggleFs = () => document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+if (document.fullscreenEnabled) {
+  fs.hidden = false;
+  fs.addEventListener('click', toggleFs);
+  document.addEventListener('fullscreenchange', () => {
+    fs.querySelector('.lbl').textContent = document.fullscreenElement ? 'Exit fullscreen' : 'Fullscreen';
+  });
+}
+
+const go = i => slides[Math.max(0, Math.min(slides.length - 1, i))].scrollIntoView({ behavior: 'smooth' });
+addEventListener('keydown', e => {
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  if ((e.key === 'f' || e.key === 'F') && document.fullscreenEnabled) return toggleFs();
+  const step = { ArrowDown: 1, ArrowRight: 1, PageDown: 1, ' ': e.shiftKey ? -1 : 1, ArrowUp: -1, ArrowLeft: -1, PageUp: -1 }[e.key];
+  if (step) { e.preventDefault(); go(now + step); }
+  else if (e.key === 'Home') { e.preventDefault(); go(0); }
+  else if (e.key === 'End') { e.preventDefault(); go(slides.length - 1); }
+});
+</script>
+</body>
+</html>
