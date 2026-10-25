@@ -26,6 +26,24 @@
   venue: 'Taming Democracy with Liberalism: The Politics In and Out of Liberal Democracy, 2020'
   category: book-chapters
   year: 2020
+- title: 'Who Can Pay for Compliance: Donor Aid Governance and TRIPS-plus Commitments in North-South Trade Agreements'
+  authors: Jihye Park
+  venue: International Studies Quarterly
+  category: peer-reviewed
+  github_pdf: papers/peer-reviewed/01__who-can-pay-for-compliance__ISQ.pdf
+  pdf_url: /papers/peer-reviewed/01__who-can-pay-for-compliance__ISQ.pdf
+  year: forthcoming
+  status: ISQ
+  sort_order: 1
+  abstract: Developing countries that accept TRIPS-plus provisions in North-South trade agreements take on concentrated domestic costs, yet the donor aid they receive around signature varies sharply.
+    When does aid operate as compensation for the concession? Prevailing accounts of TRIPS-plus diffusion emphasize market-access leverage, leaving donor side payments outside the bargain. This study
+    argues that aid operates as TRIPS-plus compensation only when three conditions hold jointly. Two sit on the donor side. The donor's IP demands must be intrusive enough to generate politically salient
+    adjustment costs, and its aid governance must be centralized enough to tie disbursements to discrete concessions rather than long-running developmental programming. The third sits on the recipient
+    side, where domestic institutions must make the policy commitment credible to the donor. The United States satisfies the two donor-side conditions and the European Union satisfies neither, while
+    recipient regime type governs the third. Using a panel of developing economies in the WTO from 1995 to 2024 and a PanelMatch design, I find that democratic countries signing TRIPS-plus agreements
+    with the United States experience an immediate increase in US aid in the signature year on the order of 36%, concentrated among recipients with prior major-donor trade experience, while the observed
+    autocratic signatories show no comparable increase. TRIPS-plus agreements with the European Union produce no sustained aid response from either regime type. Donor institutional coherence and the
+    intrusiveness of IP demands sit at the center of TRIPS-plus diffusion.
 - title: Aid, Lending, and TRIPS
   authors: Jihye Park
   venue: Review of International Organizations
@@ -88,22 +106,6 @@
     to the initiation of IMF program negotiations and find that US financial firms shift their lobbying efforts when the Fund negotiates with countries where they have investments. Money-center banks and
     non-banking financial firms shift in opposite directions, which makes their lobbying portfolios converge: banks reduce their lobbying about banking and increase lobbying about finance, while non-bank
     financial firms decrease lobbying about finance and increase lobbying about banking.'
-- title: 'Who Can Pay for Compliance: Donor Aid Governance and TRIPS-plus Commitments in North-South Trade Agreements'
-  authors: Jihye Park
-  status: Revise & Resubmit, International Studies Quarterly
-  category: working-papers
-  github_pdf: papers/working-papers/02__who-can-pay-for-compliance__RR-ISQ.pdf
-  year: 2026
-  sort_order: 2
-  abstract: Developing countries that accept TRIPS-plus provisions in North-South trade agreements take on concentrated domestic costs, yet the donor aid they receive around signature varies sharply.
-    When does aid operate as compensation for the concession? Prevailing accounts of TRIPS-plus diffusion emphasize market-access leverage, leaving donor side payments outside the bargain. This study
-    argues that aid operates as TRIPS-plus compensation only when three conditions hold jointly. Two sit on the donor side. The donor's IP demands must be intrusive enough to generate politically salient
-    adjustment costs, and its aid governance must be centralized enough to tie disbursements to discrete concessions rather than long-running developmental programming. The third sits on the recipient
-    side, where domestic institutions must make the policy commitment credible to the donor. The United States satisfies the two donor-side conditions and the European Union satisfies neither, while
-    recipient regime type governs the third. Using a panel of developing economies in the WTO from 1995 to 2024 and a PanelMatch design, I find that democratic countries signing TRIPS-plus agreements
-    with the United States experience an immediate increase in US aid in the signature year on the order of 36%, concentrated among recipients with prior major-donor trade experience, while the observed
-    autocratic signatories show no comparable increase. TRIPS-plus agreements with the European Union produce no sustained aid response from either regime type. Donor institutional coherence and the
-    intrusiveness of IP demands sit at the center of TRIPS-plus diffusion.
 - title: The Political Economy of Defense in WTO Anti-Dumping Disputes
   authors: Jihye Park
   status: Revise & Resubmit, World Trade Review
