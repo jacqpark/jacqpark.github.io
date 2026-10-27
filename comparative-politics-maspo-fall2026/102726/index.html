@@ -407,6 +407,16 @@ table.tbl { width: 100%; border-collapse: collapse; margin-top: 2.2em; }
 .ex.roomy .card { font-size: .84em; }
 .ex.roomy .rules { font-size: .76em; }
 .ex.roomy .fix { font-size: .95em; margin-top: 1.4em; }
+/* slide 9. Tighter rows and gaps so the exercise clears the bottom margin */
+.ex.roomy.tight .head { margin-bottom: .7em !important; }
+.ex.roomy.tight .tag { margin-bottom: .9em !important; }
+.ex.roomy.tight .cmp td { padding-top: .3em; padding-bottom: .3em; }
+.ex.roomy.tight .rules { margin-top: .7em; }
+.ex.roomy.tight .bigq { padding: .6em 1.1em; }
+.ex.roomy.tight .fix li { padding-bottom: .4em; }
+.ex.roomy.tight .cmp { font-size: .82em; }
+.ex.roomy.tight .file { margin-bottom: .4em; }
+.ex.roomy.tight .fix { margin-top: .8em; }
 </style>
 </head>
 <body>
@@ -492,7 +502,7 @@ table.tbl { width: 100%; border-collapse: collapse; margin-top: 2.2em; }
       <h2>Valid, reliable, both or neither?</h2>
     </div>
     <div class="grid" style="grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:2.6em;align-items:center">
-      <svg class="flow" viewBox="0 0 400 400" role="img" aria-label="Four targets. Top left, dots clustered tightly on the bullseye, reliable and valid. Top right, dots clustered tightly away from the bullseye, reliable and biased. Bottom left, dots scattered widely around the bullseye, unreliable and centered. Bottom right, dots scattered widely away from the bullseye, unreliable and biased.">
+      <svg class="flow" viewBox="0 0 400 400" style="max-height:19em" role="img" aria-label="Four targets. Top left, dots clustered tightly on the bullseye, reliable and valid. Top right, dots clustered tightly away from the bullseye, reliable and biased. Bottom left, dots scattered widely around the bullseye, unreliable and centered. Bottom right, dots scattered widely away from the bullseye, unreliable and biased.">
         <defs>
           <g id="tgt"><circle r="70" fill="#F8F4FF" stroke="#0F1B3D" stroke-width="2.5"/><circle r="46" fill="#E2D5F2" stroke="#0F1B3D" stroke-width="2"/><circle r="22" fill="#F8F4FF" stroke="#0F1B3D" stroke-width="2"/><circle r="5" fill="#0F1B3D"/></g>
         </defs>
@@ -589,7 +599,7 @@ table.tbl { width: 100%; border-collapse: collapse; margin-top: 2.2em; }
 
 <!-- 09 · exercise 01 -->
 <section class="slide navy">
-  <div class="inner ex roomy" style="max-width:62em">
+  <div class="inner ex roomy tight" style="max-width:62em">
     <div class="head" style="margin-bottom:1em">
       <span class="tag" style="margin-bottom:1.6em">Group exercise 01 · Diagnose the score</span>
       <p class="sub" style="margin:0 0 .7em">A donor ministry asks your group for advice</p>
