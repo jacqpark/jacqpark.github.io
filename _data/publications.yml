@@ -26,6 +26,23 @@
   venue: 'Taming Democracy with Liberalism: The Politics In and Out of Liberal Democracy, 2020'
   category: book-chapters
   year: 2020
+- title: The Political Economy of Defense in WTO Anti-Dumping Disputes
+  authors: Jihye Park
+  venue: World Trade Review
+  category: peer-reviewed
+  github_pdf: papers/peer-reviewed/02__political-econ-defense-antidumping__WTR.pdf
+  pdf_url: /papers/peer-reviewed/02__political-econ-defense-antidumping__WTR.pdf
+  year: forthcoming
+  status: WTR
+  sort_order: 2
+  abstract: The WTO dispute settlement mechanism adjudicates trade conflicts through rule-based procedures ostensibly insulated from domestic politics, yet the pace at which disputes reach resolution varies
+    widely. This study argues that the WTO enforcement space is constricted through the reactive mobilization of defendant-side firms whose anti-dumping protections are at risk. Using US lobbying disclosure
+    data matched to firm-level dispute participation, the analysis exploits presidential party turnover as an exogenous shock to the political environment of defendant firms. A PanelMatch estimator with
+    covariate balancing propensity scores reveals a sharp asymmetry. Defendant firms in non-prioritized industries significantly increase lobbying expenditure following partisan transitions, whereas firms
+    in nationally prioritized sectors shielded by executive action under Section 232 or bipartisan legislation such as the CHIPS and Science Act show no response. A stratified Cox proportional hazards model
+    demonstrates that this mobilization delays dispute resolution. Under partisan transition, increased lobbying reduces the hazard of reaching a panel report, prolonging the period during which contested
+    duties remain in force. Without turnover, lobbying carries no meaningful effect on dispute duration. These findings reveal how domestic politics penetrates the procedural machinery of WTO dispute settlement,
+    exposing a vulnerability in which political uncertainty activates defensive firm mobilization.
 - title: 'Who Can Pay for Compliance: Donor Aid Governance and TRIPS-plus Commitments in North-South Trade Agreements'
   authors: Jihye Park
   venue: International Studies Quarterly
@@ -106,18 +123,3 @@
     to the initiation of IMF program negotiations and find that US financial firms shift their lobbying efforts when the Fund negotiates with countries where they have investments. Money-center banks and
     non-banking financial firms shift in opposite directions, which makes their lobbying portfolios converge: banks reduce their lobbying about banking and increase lobbying about finance, while non-bank
     financial firms decrease lobbying about finance and increase lobbying about banking.'
-- title: The Political Economy of Defense in WTO Anti-Dumping Disputes
-  authors: Jihye Park
-  status: Revise & Resubmit, World Trade Review
-  category: working-papers
-  github_pdf: papers/working-papers/00__political-econ-defense-antidumping__RR-WTR.pdf
-  year: 2026
-  sort_order: 0
-  abstract: The WTO dispute settlement mechanism adjudicates trade conflicts through rule-based procedures ostensibly insulated from domestic politics, yet the pace at which disputes reach resolution varies
-    widely. This study argues that the WTO enforcement space is constricted through the reactive mobilization of defendant-side firms whose anti-dumping protections are at risk. Using US lobbying disclosure
-    data matched to firm-level dispute participation, the analysis exploits presidential party turnover as an exogenous shock to the political environment of defendant firms. A PanelMatch estimator with
-    covariate balancing propensity scores reveals a sharp asymmetry. Defendant firms in non-prioritized industries significantly increase lobbying expenditure following partisan transitions, whereas firms
-    in nationally prioritized sectors shielded by executive action under Section 232 or bipartisan legislation such as the CHIPS and Science Act show no response. A stratified Cox proportional hazards model
-    demonstrates that this mobilization delays dispute resolution. Under partisan transition, increased lobbying reduces the hazard of reaching a panel report, prolonging the period during which contested
-    duties remain in force. Without turnover, lobbying carries no meaningful effect on dispute duration. These findings reveal how domestic politics penetrates the procedural machinery of WTO dispute settlement,
-    exposing a vulnerability in which political uncertainty activates defensive firm mobilization.
