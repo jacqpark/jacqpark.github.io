@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Complement 02 · Comparative Politics · Jihye Park</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tektur:wght@400;600;700;800&family=Chakra+Petch:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* 8-Bit Orbit deck. Same palette and fonts as assets/css/style.css. */
+:root {
+  --void: #0A0E27; --navy: #0F1B3D; --pink: #F0A6CA; --pink-hot: #E87CB2;
+  --cyan: #5EDCF4; --yellow: #F4D03F; --lav: #E2D5F2; --white: #F8F4FF;
+  --display: 'Tektur', 'Courier New', monospace;
+  --sans: 'Chakra Petch', 'Helvetica Neue', Arial, sans-serif;
+  --mono: 'Space Mono', 'Courier New', monospace;
+  /* 1% of the largest 16:9 box that fits the window. Everything scales from it. */
+  --u: min(1vw, 1.7778vh);
+  --base: max(15px, calc(var(--u) * 1.35));
+}
+* { box-sizing: border-box; }
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; background: var(--void); }
+body { margin: 0; font: 400 var(--base)/1.5 var(--sans); -webkit-font-smoothing: antialiased; }
+p { margin: 0 0 .6em; }
+a { color: inherit; }
+
+/* ---------- Slides and themes ---------- */
+.slide {
+  position: relative; min-height: 100vh; min-height: 100dvh;
+  display: grid; place-items: center; overflow: hidden;
+  padding: 4.2em 5em 3.6em; scroll-snap-align: start;
+  background-color: var(--bg); color: var(--fg);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: var(--cell) var(--cell);
+}
+.inner { position: relative; z-index: 1; width: 100%; max-width: 62em; }
+.navy { --bg: var(--void); --fg: var(--lav); --strong: var(--white); --muted: rgba(226,213,242,.66);
+  --h: var(--cyan); --hs: var(--yellow); --card: rgba(15,27,61,.78); --line: rgba(94,220,244,.5);
+  --shadow: var(--pink); --grid: rgba(94,220,244,.05); --cell: calc(var(--u) * 2); }
+.lav { --bg: var(--lav); --fg: var(--navy); --strong: var(--navy); --muted: rgba(15,27,61,.64);
+  --h: var(--navy); --hs: var(--pink-hot); --card: rgba(255,255,255,.55); --line: var(--navy);
+  --shadow: var(--pink-hot); --grid: rgba(15,27,61,.07); --cell: calc(var(--u) * 1.1); }
+.pink { --bg: var(--pink); --fg: var(--navy); --strong: var(--navy); --muted: rgba(15,27,61,.7);
+  --h: var(--navy); --hs: var(--cyan); --card: rgba(255,255,255,.45); --line: var(--navy);
+  --shadow: var(--cyan); --grid: rgba(15,27,61,.08); --cell: calc(var(--u) * 1.1); }
+
+/* pixel stars, scanlines and vignette on navy slides */
+.navy::before, .navy::after { content: ""; position: absolute; inset: 0; pointer-events: none; }
+.navy::before {
+  background:
+    linear-gradient(var(--cyan),var(--cyan)) 7% 12%/4px 4px,
+    linear-gradient(var(--yellow),var(--yellow)) 19% 30%/3px 3px,
+    linear-gradient(var(--pink),var(--pink)) 12% 78%/5px 5px,
+    linear-gradient(var(--cyan),var(--cyan)) 28% 88%/3px 3px,
+    linear-gradient(var(--yellow),var(--yellow)) 36% 9%/4px 4px,
+    linear-gradient(var(--pink),var(--pink)) 44% 64%/3px 3px,
+    linear-gradient(var(--cyan),var(--cyan)) 52% 94%/5px 5px,
+    linear-gradient(var(--yellow),var(--yellow)) 58% 17%/3px 3px,
+    linear-gradient(var(--pink),var(--pink)) 66% 41%/4px 4px,
+    linear-gradient(var(--cyan),var(--cyan)) 73% 7%/3px 3px,
+    linear-gradient(var(--yellow),var(--yellow)) 81% 71%/5px 5px,
+    linear-gradient(var(--pink),var(--pink)) 88% 24%/3px 3px,
+    linear-gradient(var(--cyan),var(--cyan)) 94% 56%/4px 4px,
+    linear-gradient(var(--yellow),var(--yellow)) 4% 50%/3px 3px,
+    linear-gradient(var(--cyan),var(--cyan)) 85% 92%/3px 3px,
+    linear-gradient(var(--pink),var(--pink)) 24% 55%/3px 3px;
+  background-repeat: no-repeat; opacity: .55;
+  animation: twinkle 3.2s steps(2) infinite;
+}
+.navy::after {
+  background:
+    repeating-linear-gradient(to bottom, transparent 0 2px, rgba(0,0,0,.14) 3px, transparent 4px),
+    radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.5) 100%);
+}
+@keyframes twinkle { 50% { opacity: .3; } }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ---------- Type ---------- */
+h1, h2, h3 { font-family: var(--display); margin: 0; line-height: 1.05; }
+h1 { font-size: 5.4em; font-weight: 800; text-transform: uppercase; letter-spacing: .02em;
+  color: var(--h); text-shadow: .045em .045em 0 var(--hs); }
+h2 { font-size: 2.6em; font-weight: 800; color: var(--h); text-shadow: .06em .06em 0 var(--hs); }
+h3 { font-size: 1.05em; font-weight: 700; color: var(--strong); margin-bottom: .45em; }
+.head { text-align: center; margin-bottom: 2em; }
+.center { text-align: center; }
+.tag { display: inline-block; font: 700 .68em var(--display); letter-spacing: .2em; text-transform: uppercase;
+  background: var(--navy); color: var(--yellow); padding: .5em 1.1em; margin-bottom: 1.3em; }
+.navy .tag { background: transparent; border: 2px solid var(--yellow); }
+.sub { font: .78em var(--mono); letter-spacing: .12em; color: var(--muted); margin-top: 1em; }
+.kicker { font: 700 .8em var(--mono); letter-spacing: .42em; text-transform: uppercase; color: var(--pink); margin-bottom: 1.6em; }
+.lead { font-size: 1.25em; color: var(--fg); margin: 1.4em auto 1.6em; }
+.mono { font-family: var(--mono); }
+.muted { color: var(--muted); }
+.small { font-size: .82em; }
+.chips { display: flex; flex-wrap: wrap; gap: .7em; justify-content: center; }
+.chips span { font: 700 .66em var(--mono); letter-spacing: .12em; text-transform: uppercase;
+  border: 2px solid var(--yellow); color: var(--yellow); padding: .7em 1.2em; }
+.light-chips span { border-color: var(--navy); color: var(--navy); background: rgba(255,255,255,.4); }
+.chip { display: inline-block; font: 700 .62em var(--mono); letter-spacing: .12em; text-transform: uppercase;
+  background: var(--navy); color: var(--cyan); padding: .25em .6em; margin-bottom: .7em; }
+.navy .chip { background: var(--cyan); color: var(--navy); }
+.flag { display: inline-block; font: 700 .58em var(--mono); letter-spacing: .1em; text-transform: uppercase;
+  background: var(--navy); color: var(--white); border: 2px solid var(--yellow); padding: .15em .55em; margin-left: .5em; vertical-align: middle; }
+.flag.room { border-color: var(--pink-hot); }
+
+/* ---------- Blocks ---------- */
+.grid { display: grid; gap: 1.3em; grid-template-columns: repeat(var(--cols, 2), minmax(0, 1fr)); }
+.card { background: var(--card); border: 2px solid var(--line); padding: 1.1em 1.25em;
+  box-shadow: .3em .3em 0 var(--shadow); font-size: .9em; }
+.card p:last-child { margin-bottom: 0; }
+.note { margin-top: 1.8em; font-size: .88em; text-align: center; color: var(--muted); }
+.note b { color: var(--strong); }
+ul.pix { list-style: none; padding: 0; margin: 0; }
+ul.pix li { position: relative; padding-left: 1.2em; margin-bottom: .35em; }
+ul.pix li::before { content: ""; position: absolute; left: 0; top: .55em; width: .45em; height: .45em; background: var(--shadow); }
+
+/* bio */
+.bio { font-size: 1.5em; line-height: 1.6; margin: 1em 0 0; }
+.bio mark { background: linear-gradient(transparent 55%, var(--yellow) 0); color: var(--strong); font-weight: 700; padding: 0 .1em; }
+
+/* weeks overview */
+.weeks { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: .6em; }
+.weeks div { border: 2px solid var(--line); background: var(--card); padding: .55em .6em .7em; font-size: .72em; line-height: 1.25; min-height: 5.6em; }
+.weeks b { display: block; font: 700 .9em var(--mono); color: var(--yellow); margin-bottom: .35em; }
+.weeks .now { border-color: var(--yellow); box-shadow: .3em .3em 0 var(--pink); }
+.weeks .end { border-color: var(--pink); }
+.weeks i { display: block; margin-top: .4em; font: 700 .85em var(--mono); color: var(--pink); font-style: normal; }
+
+/* label/value rows */
+.rows { display: grid; grid-template-columns: max-content 1fr; border-top: 2px dashed rgba(15,27,61,.3); }
+.rows > * { padding: .7em 0; border-bottom: 2px dashed rgba(15,27,61,.3); margin: 0; }
+.rows dt { font: 700 .66em var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); padding-right: 2.5em; align-self: center; }
+
+/* evaluation hp bar */
+.hp-top, .hp { display: grid; grid-template-columns: repeat(20, minmax(0, 1fr)); gap: .2em; }
+.hp { padding: .3em; border: .16em solid var(--navy); background: rgba(255,255,255,.35); box-shadow: .35em .35em 0 var(--navy); }
+.hp i { display: block; height: 2.4em; }
+.hp-top { margin-bottom: .6em; font: 700 .7em var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+.hp-top span { text-align: center; }
+.s8 { grid-column: span 8; } .s5 { grid-column: span 5; } .s2 { grid-column: span 2; }
+.c1 { background: var(--navy); } .c2 { background: var(--cyan); } .c3 { background: var(--white); } .c4 { background: var(--yellow); }
+table.tbl { width: 100%; border-collapse: collapse; margin-top: 2.2em; }
+.tbl th { font: 700 .62em var(--mono); letter-spacing: .14em; text-transform: uppercase; text-align: left; padding: 0 1em .6em 0; color: var(--muted); }
+.tbl td { padding: .6em 1em .6em 0; border-top: 2px dashed rgba(15,27,61,.3); }
+.tbl td:first-child { font-weight: 700; white-space: nowrap; }
+.tbl td:nth-child(2) { font: 700 1.1em var(--mono); }
+.sw { display: inline-block; width: .8em; height: .8em; margin-right: .6em; border: 2px solid var(--navy); vertical-align: -.05em; }
+
+/* timeline */
+.tl { list-style: none; position: relative; margin: 0; padding: 0 0 0 2em; }
+.tl::before { content: ""; position: absolute; left: .5em; top: .6em; bottom: .6em; border-left: .14em dashed var(--navy); }
+.tl li { position: relative; display: flex; align-items: center; flex-wrap: wrap; gap: .1em .7em; margin-bottom: .9em; }
+.tl li::before { content: ""; position: absolute; left: -1.9em; width: .7em; height: .7em; background: var(--cyan); border: .14em solid var(--navy); }
+.tl li.q::before { background: var(--yellow); }
+.tl li.x::before { background: var(--pink-hot); }
+.tl time { font: 700 .7em var(--mono); background: var(--navy); color: var(--cyan); padding: .3em .6em; min-width: 8.5em; letter-spacing: .08em; }
+.tl .flag { margin-left: 0; }
+
+/* complement list */
+.plist { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8em 2.2em; }
+.plist li { display: flex; gap: .9em; align-items: baseline; padding-bottom: .7em; border-bottom: 2px dashed rgba(15,27,61,.3); }
+.plist time { flex: none; font: 700 .68em var(--mono); background: var(--navy); color: var(--pink); padding: .25em .55em; min-width: 5.2em; text-align: center; }
+
+/* method meters */
+.meter { display: inline-flex; gap: .2em; }
+.meter i { width: .75em; height: .75em; border: .12em solid var(--navy); }
+.meter i.on { background: var(--navy); }
+.methods .card { display: grid; grid-template-columns: 9em 1fr 5.5em; gap: 1.2em; align-items: center; box-shadow: none; padding: .8em 1.2em; }
+.methods .card + .card { margin-top: .7em; }
+.methods .card.hot { box-shadow: .3em .3em 0 var(--pink-hot); border-width: .16em; }
+.methods h3 { margin: 0; }
+.methods .n { font: .72em var(--mono); color: var(--muted); text-align: right; }
+/* case study card opens to Lijphart's six types */
+.methods details.card { display: block; }
+.methods summary { display: grid; grid-template-columns: 9em 1fr 5.5em; gap: 1.2em; align-items: center; cursor: pointer; list-style: none; }
+.methods summary::-webkit-details-marker { display: none; }
+.methods summary .flag::after { content: " ▾"; }
+.methods details[open] .flag::after { content: " ▴"; }
+.methods .meter { grid-column: -2; }
+.methods:has(details[open]) > div p, .methods:has(details[open]) + .note { display: none; }
+.types { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto; grid-auto-flow: column; gap: .5em 1.4em; margin-top: .8em; padding-top: .9em; border-top: 2px dashed rgba(15,27,61,.3); line-height: 1.3; }
+.fix.types li { padding-bottom: 0; }
+.types b { display: block; }
+.types .hot b { display: table; background: linear-gradient(transparent 55%, var(--pink) 0); }
+.types-note { margin: .8em 0 0; font-size: .85em; color: var(--muted); }
+
+/* variables x cases matrix */
+.matrix-wrap { display: grid; grid-template-columns: auto 1fr; gap: .6em 1em; align-items: center; }
+.matrix { box-sizing: content-box; width: 28em; max-width: 100%; height: 8em; padding: 0 .35em .35em 0; background-origin: content-box;
+  border: .14em solid var(--navy); background-color: rgba(255,255,255,.35);
+  background-image: conic-gradient(from 90deg at .35em .35em, var(--navy) 90deg, transparent 0);
+  background-size: 2em 2em; }
+.axis { font: 700 .62em var(--mono); letter-spacing: .14em; text-transform: uppercase; }
+.fix { counter-reset: fix; list-style: none; padding: 0; margin: 0; }
+.fix li { counter-increment: fix; position: relative; padding: 0 0 .75em 2.4em; }
+.fix li::before { content: counter(fix, decimal-leading-zero); position: absolute; left: 0; top: .1em; font: 700 .7em var(--mono);
+  background: var(--navy); color: var(--yellow); padding: .15em .35em; }
+
+/* case pills */
+.pills { display: flex; flex-wrap: wrap; gap: .8em; justify-content: center; margin: 1.6em 0; }
+.pills span { border: 2px solid var(--cyan); padding: .55em 1em; font: 700 .72em var(--mono); color: var(--white); background: rgba(15,27,61,.8); box-shadow: .25em .25em 0 var(--pink); }
+
+/* Mill tables */
+.mill table { width: 100%; border-collapse: collapse; margin: .8em 0 .9em; font-size: .9em; }
+.mill th { font: 700 .66em var(--mono); letter-spacing: .1em; text-transform: uppercase; padding: .4em; }
+.mill td { border: 2px solid var(--navy); padding: .4em .6em; text-align: center; font: 700 .78em var(--mono); }
+.mill td:first-child { text-align: left; font-family: var(--sans); font-weight: 600; font-size: .85em; }
+.mill .y { background: var(--navy); color: var(--cyan); }
+.mill .s { background: rgba(255,255,255,.6); }
+.mill .d { background: var(--yellow); }
+
+/* depth vs breadth */
+.axisbar { display: flex; justify-content: space-between; align-items: center; gap: 1em; font: 700 .68em var(--mono);
+  letter-spacing: .16em; text-transform: uppercase; margin-bottom: 1.2em; }
+.axisbar i { flex: 1; border-top: .2em dashed var(--navy); }
+.gr { display: grid; grid-template-columns: auto 1fr; gap: .25em .7em; margin-top: .7em; font-size: .92em; }
+.gr dt { font: 700 .64em var(--mono); letter-spacing: .1em; text-transform: uppercase; align-self: center; padding: .15em .45em; background: var(--navy); color: var(--cyan); }
+.gr dt.r { color: var(--pink); }
+.gr dd { margin: 0; }
+
+/* big question */
+.bigq { font: 700 2em/1.25 var(--display); color: var(--navy); background: var(--white); border: .1em solid var(--navy);
+  box-shadow: .22em .22em 0 var(--navy); padding: .9em 1.1em; margin: 0 auto 1.4em; max-width: 24em; text-align: center; }
+
+/* ---------- Session 02 blocks ---------- */
+.quote { font: 700 1.45em/1.35 var(--display); color: var(--strong); border-left: .3em solid var(--hs); padding: .2em 0 .2em .9em; margin: 1.8em auto 0; max-width: 34em; }
+.steps { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: .6em; margin-bottom: 2em; }
+.steps span { font: 700 .72em var(--mono); background: var(--white); border: 2px solid var(--navy); padding: .55em .9em; box-shadow: .25em .25em 0 var(--pink-hot); }
+.steps i { font-style: normal; color: var(--pink-hot); font-size: .8em; }
+.flow { width: 100%; height: auto; font-family: var(--mono); }
+.calc { display: grid; grid-template-columns: 1fr auto; margin: .4em 0 .9em; }
+.calc dt, .calc dd { margin: 0; padding: .45em 0; border-bottom: 2px dashed rgba(15,27,61,.3); }
+.calc dd { font: 700 1.05em var(--mono); text-align: right; }
+.calc dt:nth-last-of-type(1), .calc dd:last-child { border-bottom: 0; }
+.calc.prof dd { font-size: .85em; padding-left: 1em; }
+.cmp { width: 100%; border-collapse: collapse; font-size: .9em; }
+.cmp th { font: 700 .66em var(--mono); letter-spacing: .12em; text-transform: uppercase; text-align: left; color: var(--muted); padding: 0 1em .6em 0; }
+.cmp td { padding: .6em 1em .6em 0; border-top: 2px dashed rgba(15,27,61,.3); vertical-align: top; }
+.cmp td:first-child { font-weight: 700; white-space: nowrap; }
+.stats { display: grid; gap: 1.1em; grid-template-columns: repeat(var(--cols, 4), minmax(0, 1fr)); }
+.stat b { display: block; font: 800 2.1em/1 var(--display); color: var(--strong); text-shadow: .06em .06em 0 var(--hs); margin-bottom: .4em; white-space: nowrap; }
+.stat p { margin: 0; font-size: .88em; }
+.quad { display: grid; grid-template-columns: 8.5em 1fr 1fr; gap: .9em; }
+.quad .ax { align-self: center; text-align: center; font: 700 .62em var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--yellow); }
+.quad .card p { margin: 0; }
+.latent { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .7em; text-align: center; }
+.latent span { font: 700 .7em var(--mono); background: var(--white); border: 2px solid var(--navy); padding: .8em .5em; }
+.latent i { font-style: normal; color: var(--navy); }
+.latent b { grid-column: 1 / -1; font: 800 1.8em var(--display); color: var(--yellow); background: var(--navy); padding: .45em; box-shadow: .2em .2em 0 var(--cyan); }
+.bars { display: grid; grid-template-columns: max-content 1fr 2.6em; gap: .5em .9em; align-items: center; font-size: .82em; }
+.bars .t { position: relative; height: 1.2em; background: linear-gradient(var(--navy), var(--navy)) 50% 0 / 2px 100% no-repeat; }
+/* bar spans from zero to the value on a -1 to +1 axis */
+.bars .t i { position: absolute; top: .15em; bottom: .15em; left: calc(50% + min(var(--v), 0) * 50%); width: calc(max(var(--v), -1 * var(--v)) * 50%); background: var(--navy); }
+.bars .t i.neg { background: var(--pink-hot); }
+.bars > b { font: 700 .95em var(--mono); text-align: right; }
+.bars .ticks { display: flex; justify-content: space-between; font: .8em var(--mono); color: var(--muted); }
+.cty { display: flex; flex-wrap: wrap; gap: .6em; }
+.cty span { font: 700 .85em var(--mono); background: var(--navy); color: var(--cyan); padding: .35em .7em; }
+
+@media screen and (max-width: 760px) {
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .quad { grid-template-columns: 1fr; }
+  .quad > span:first-child { display: none; }
+  .steps i { transform: rotate(90deg); }
+  .bars { font-size: .72em; }
+  .cmp td:first-child { white-space: normal; }
+}
+
+/* ---------- HUD ---------- */
+.hud { position: fixed; z-index: 10; top: 1.1em; left: 1.4em; right: 1.4em; display: flex; justify-content: space-between; align-items: center; gap: 1em; pointer-events: none; }
+.hud-right { display: flex; gap: .8em; }
+.hud svg { width: 1.1em; height: 1.1em; vertical-align: -.2em; margin-right: .55em; }
+.hud a, .hud button { pointer-events: auto; cursor: pointer; line-height: inherit; font: 700 .62em var(--mono); letter-spacing: .14em; text-transform: uppercase; text-decoration: none;
+  background: rgba(15,27,61,.9); color: var(--white); border: 2px solid var(--cyan); padding: .7em 1.1em;
+  transition: transform .15s steps(3), box-shadow .15s steps(3), background .15s steps(3); }
+.hud a:hover, .hud button:hover { transform: translate(-2px,-2px); box-shadow: 4px 4px 0 var(--pink); }
+.hud .back::before { content: "◆ "; color: var(--yellow); animation: blink 1.6s steps(1) infinite; }
+.hud .pdf { border-color: var(--yellow); color: var(--yellow); box-shadow: 4px 4px 0 var(--pink); }
+.hud .pdf:hover { background: var(--yellow); color: var(--navy); box-shadow: 7px 7px 0 var(--pink); }
+.dots { position: fixed; z-index: 10; right: 1.3em; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: .45em; }
+.dots a { width: .75em; height: .75em; border: 2px solid var(--cyan); background: rgba(15,27,61,.85); }
+.dots a[aria-current="true"] { background: var(--yellow); border-color: var(--navy); }
+.counter { position: fixed; z-index: 10; bottom: 1em; left: 50%; transform: translateX(-50%); font: 700 .72em var(--mono);
+  letter-spacing: .2em; background: rgba(15,27,61,.9); color: var(--cyan); padding: .6em 1.2em; }
+.keys { position: fixed; z-index: 10; bottom: 1.3em; right: 1.4em; font: .58em var(--mono); letter-spacing: .16em; text-transform: uppercase;
+  color: var(--cyan); background: rgba(15,27,61,.7); padding: .3em .6em; }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before { animation: none !important; } }
+
+@media screen and (max-width: 760px) {
+  html { scroll-snap-type: y proximity; }
+  .slide { padding: 5em 1.1em 4em; }
+  h1 { font-size: 2.9em; } h2 { font-size: 1.9em; }
+  .grid, .plist, .matrix-wrap { grid-template-columns: 1fr; }
+  .weeks { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bio { font-size: 1.2em; }
+  .methods .card { grid-template-columns: 1fr auto; }
+  .methods .card p { grid-column: 1 / -1; order: 3; }
+  .methods summary { grid-template-columns: 1fr auto; }
+  .types { grid-template-columns: 1fr; grid-auto-flow: row; }
+  .hp-top { font-size: .5em; }
+  .bigq { font-size: 1.4em; }
+  .dots, .keys { display: none; }
+  .hud a, .hud button { font-size: .56em; padding: .6em .8em; }
+  .hud .lbl { display: none; }
+  .hud .fs svg { margin: 0; }
+}
+
+/* ---------- PDF (scripts/deck-pdf.sh prints this page) ---------- */
+@page { size: 1280px 720px; margin: 0; }
+@media print {
+  :root { --u: 12.8px; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; animation: none !important; }
+  html { scroll-snap-type: none; }
+  .hud, .dots, .counter, .keys { display: none; }
+  .slide { width: 1280px; height: 720px; min-height: 0; break-after: page; }
+}
+/* ---------- Session 03 blocks ---------- */
+.cmp .num { font-family: var(--mono); text-align: right; white-space: nowrap; }
+.cmp tr.hot td { background: rgba(255,255,255,.55); font-weight: 700; }
+/* group exercise. Profiles in one row, tasks listed beneath them. */
+.ex .card { font-size: .74em; padding: .85em 1em; }
+.ex .fix { margin-top: 2.6em; font-size: .88em; }
+.ex .fix li { padding-bottom: 1em; }
+/* ---------- Session 04 blocks ---------- */
+.steps span { color: var(--navy); }
+.navy .cmp th { color: var(--muted); }
+.navy .cmp td { border-top-color: rgba(94,220,244,.3); }
+.cmp td.c { text-align: center; }
+/* horizontal stacked bars, widths in percent */
+.stack { display: grid; grid-template-columns: 13em 1fr; gap: 1em 1.2em; align-items: center; }
+.stack > b { font: 700 .72em var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.stack .bar { display: flex; height: 3em; border: .14em solid var(--navy); box-shadow: .3em .3em 0 var(--navy); }
+.stack .bar i { flex: 0 0 var(--w); display: flex; align-items: center; justify-content: center; text-align: center;
+  font: 700 .62em/1.2 var(--mono); letter-spacing: .06em; text-transform: uppercase; font-style: normal; color: var(--navy); }
+.stack .bar i + i { border-left: .2em solid var(--navy); }
+.stack .ag { background: var(--white); } .stack .co { background: var(--navy); color: var(--cyan) !important; }
+.stack .in { background: var(--lav); } .stack .er { background: var(--yellow); }
+/* exercise data table */
+.ex .cmp { font-size: .7em; }
+.ex .cmp td { padding: .45em .7em .45em 0; }
+.ex .cmp .num { font-size: 1.05em; text-align: center; padding-right: .3em; }
+.ex .rules { font: .66em/1.5 var(--mono); color: var(--cyan); border: 2px dashed var(--line); padding: .55em .9em; margin-top: 1em; }
+.ex .fix { margin-top: 1.2em; font-size: .8em; }
+.ex .fix li { padding-bottom: .55em; }
+@media screen and (max-width: 760px) {
+  .stack { grid-template-columns: 1fr; }
+  .ex .cmp { display: block; overflow-x: auto; }
+}
+/* ---------- Session 05 blocks ---------- */
+/* horizontal bars, --w is the share of the scale */
+.hbar { display: grid; grid-template-columns: max-content 1fr 4.2em; gap: .45em 1em; align-items: center; }
+.hbar > span { font: 700 .64em var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.hbar > .grp { grid-column: 1 / -1; color: var(--muted); margin-top: .7em; letter-spacing: .12em; }
+.hbar > .grp:first-child { margin-top: 0; }
+.hbar .t { height: 1.25em; border: .12em solid var(--line); background: var(--card); }
+.hbar .t i { display: block; height: 100%; width: var(--w); background: var(--h); }
+.hbar .t i.hot { background: var(--hs); }
+.hbar > b { font: 700 .82em var(--mono); text-align: right; white-space: nowrap; }
+.cap { font: 700 .62em var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 1em; }
+.quad .ax.top { align-self: end; padding-bottom: .2em; }
+.ex .file { font-size: .72em; margin: 0 0 .7em; }
+.ex .drafts { display: grid; gap: .8em; }
+.ex .drafts .card { font-size: .68em; padding: .7em .9em; box-shadow: .25em .25em 0 var(--shadow); }
+@media screen and (max-width: 760px) {
+  .hbar { grid-template-columns: 1fr 4em; }
+  .hbar > span { grid-column: 1 / -1; }
+}
+/* one stacked vote-share bar and a left-right line, Session 05 slide 9 */
+.vs { position: relative; display: flex; margin: 1.6em 0 2.4em; }
+.vs > div { flex: 0 0 var(--w); min-width: 0; }
+.vs i { display: block; height: 2.2em; background: var(--c); border: .12em solid var(--line); border-left: 0; }
+.vs > div:first-child i { border-left: .12em solid var(--line); }
+.vs i.oth { background: repeating-linear-gradient(45deg, var(--card) 0 .3em, transparent .3em .6em); }
+.vs span { display: block; margin-top: .45em; font: 700 .58em/1.35 var(--mono); text-align: center; white-space: nowrap; }
+.vs i { display: flex; align-items: center; justify-content: center; }
+.vs i b { font: 700 .62em var(--mono); color: var(--t, var(--navy)); }
+.vs::after { content: "50%"; position: absolute; left: 50%; top: -2.2em; height: 6.2em; border-left: .14em dashed var(--line);
+  padding-left: .3em; font: 700 .55em var(--mono); color: var(--fg); }
+.lr { position: relative; height: 3.6em; margin: 0 1em; }
+.lr::before { content: ""; position: absolute; left: 0; right: 0; top: .5em; height: .14em; background: var(--line); }
+.lr::after { content: ""; position: absolute; left: 50%; top: 0; height: 1.1em; border-left: .14em dotted var(--line); }
+.lr > span { position: absolute; left: var(--x); top: 0; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center;
+  gap: .4em; font: 700 .64em var(--mono); white-space: nowrap; }
+.lr > span::before { content: ""; width: 1.7em; height: 1.7em; background: var(--c); border: .18em solid var(--line); }
+.lr-ends { display: flex; justify-content: space-between; font: 700 .58em var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+/* ---------- Session 06 blocks ---------- */
+.formula { font: 700 1.2em var(--mono); color: var(--navy); background: var(--white); border: .12em solid var(--navy);
+  box-shadow: .25em .25em 0 var(--hs); padding: .55em 1em; text-align: center; margin: 0 auto 1.4em; max-width: 24em; }
+.seats { display: flex; align-items: center; gap: .3em; margin-top: .55em; }
+.seats > b { font: 700 .6em var(--mono); letter-spacing: .1em; text-transform: uppercase; min-width: 11em; }
+.seats i { width: 2.6em; height: 2.6em; display: grid; place-items: center; border: .12em solid var(--navy);
+  font: 700 .58em var(--mono); font-style: normal; background: var(--white); color: var(--navy); }
+.seats i.a { background: var(--navy); color: var(--cyan); }
+.seats i.b { background: var(--yellow); }
+.seats i.c { background: var(--pink-hot); color: var(--white); }
+.cmp tr.sum td { border-top: .14em solid var(--navy); font-weight: 700; }
+.hbar.wide { grid-template-columns: 17em 1fr 4.2em; }
+@media screen and (max-width: 760px) { .seats > b { min-width: 0; flex-basis: 100%; } .seats { flex-wrap: wrap; } .hbar.wide { grid-template-columns: 1fr 4em; } }
+/* ---------- Complement 01 blocks ---------- */
+/* exercise slides with no option cards get larger type */
+.ex.roomy .file { font-size: .86em; }
+.ex.roomy .cmp { font-size: .86em; }
+.ex.roomy .card { font-size: .84em; }
+.ex.roomy .rules { font-size: .76em; }
+.ex.roomy .fix { font-size: .95em; margin-top: 1.4em; }
+/* slide 9. Tighter rows and gaps so the exercise clears the bottom margin */
+.ex.roomy.tight .head { margin-bottom: .7em !important; }
+.ex.roomy.tight .tag { margin-bottom: .9em !important; }
+.ex.roomy.tight .cmp td { padding-top: .3em; padding-bottom: .3em; }
+.ex.roomy.tight .rules { margin-top: .7em; }
+.ex.roomy.tight .bigq { padding: .6em 1.1em; }
+.ex.roomy.tight .fix li { padding-bottom: .4em; }
+.ex.roomy.tight .cmp { font-size: .82em; }
+.ex.roomy.tight .file { margin-bottom: .4em; }
+.ex.roomy.tight .fix { margin-top: .8em; }
+/* ---------- Complement 02 blocks ---------- */
+/* regression table. Coefficient and standard error share a cell, pins match the list beside it */
+.reg { width: 100%; border-collapse: collapse; font-size: .92em; }
+.reg th { font: 700 .66em var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); text-align: right; padding: 0 0 .6em 1em; }
+.reg th:first-child { text-align: left; padding-left: 0; }
+.reg td { padding: .42em 0 .42em 1em; border-top: 2px dashed rgba(15,27,61,.3); text-align: right; font: 700 .95em var(--mono); white-space: nowrap; color: var(--strong); }
+.navy .reg td { border-top-color: rgba(94,220,244,.3); }
+.reg td:first-child { text-align: left; padding-left: 0; font: 400 1em var(--sans); color: var(--fg); white-space: normal; }
+.reg tr.hot td { background: rgba(94,220,244,.12); }
+.reg .key { font: .68em var(--mono); color: var(--muted); margin: .8em 0 0; }
+.pin { display: inline-block; font: 700 .62em/1.3 var(--mono); font-style: normal; background: var(--yellow); color: var(--navy); padding: .1em .35em; margin-right: .45em; vertical-align: .15em; letter-spacing: 0; }
+small.se { font-size: .82em; font-weight: 400; color: var(--muted); margin-left: .35em; }
+/* exercise tables with coefficient and standard error in one cell */
+.ex .cmp td.num { white-space: nowrap; }
+.ex .cmp tr.fe td { color: var(--muted); }
+/* four narrow cards in one row */
+.four .card { font-size: .76em; padding: .9em 1em; }
+.four .card .chip { margin-bottom: .55em; }
+/* interaction table and its regression line */
+.ix .formula { font-size: .9em; max-width: none; margin: 1.4em 0 0; }
+.ix .formula small { display: block; margin-top: .45em; font-size: .7em; font-weight: 400; letter-spacing: .04em; }
+/* Type I and II error table */
+.err { width: 100%; border-collapse: collapse; font-size: .9em; margin-bottom: 1.5em; }
+.err th { font: 700 .66em var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding: 0 .8em .6em; text-align: center; }
+.err td { border: 2px solid var(--navy); padding: .65em .9em; text-align: center; background: rgba(255,255,255,.5); }
+.err td:first-child { border: 0; background: none; text-align: right; font: 700 .68em var(--mono); letter-spacing: .08em; text-transform: uppercase; padding-right: 1.2em; width: 13em; }
+.err td.bad { background: var(--navy); color: var(--yellow); font-weight: 700; }
+@media screen and (max-width: 760px) { .reg td { white-space: normal; } .ex .cmp { display: block; overflow-x: auto; } }
+</style>
+</head>
+<body>
+
+<header class="hud">
+  <a class="back" href="../">Course module</a>
+  <div class="hud-right">
+    <button class="fs" type="button" aria-label="Toggle fullscreen" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M3 9V3h6M21 9V3h-6M3 15v6h6M21 15v6h-6"/></svg><span class="lbl">Fullscreen</span></button>
+    <a class="pdf" href="slides.pdf" download="comparative-politics-111726.pdf">⬇ Download PDF</a>
+  </div>
+</header>
+<nav class="dots" aria-label="Slides"></nav>
+<div class="counter" aria-live="polite"><span id="cur">01</span> / <span id="tot">01</span></div>
+<div class="keys" aria-hidden="true">Use keys ↑ ↓ · F fullscreen</div>
+
+<main>
+
+<!-- 01 · title -->
+<section class="slide navy">
+  <div class="inner center">
+    <p class="kicker">T407016 // Autumn 2026 // Université de Genève</p>
+    <h1>Comparative<br>Politics</h1>
+    <p class="lead">Complement 02. Reading regression tables.</p>
+    <div class="chips"><span>Tue 17 Nov 2026</span><span>Uni Mail M2170</span><span>Dr. Jihye Park</span></div>
+  </div>
+</section>
+
+<!-- 02 · tables met so far -->
+<section class="slide lav">
+  <div class="inner" style="max-width:56em">
+    <div class="head">
+      <span class="tag">No reading today</span>
+      <h2>Four tables you have already met</h2>
+    </div>
+    <div class="grid">
+      <div class="card"><span class="chip">Session 02 · Hanson and Sigman</span><p>Tables 4 and 5 test whether Capacity predicts development outcomes once wealth is held constant.</p></div>
+      <div class="card"><span class="chip">Session 05 · Cheibub and Limongi</span><p>Table 3 gives the yearly chance that a democracy breaks down, by regime, party system and coalition.</p></div>
+      <div class="card"><span class="chip">Session 06 · Carey and Hix</span><p>Tables 1 and 2 relate district magnitude to four outcomes, with and without country fixed effects.</p></div>
+      <div class="card"><span class="chip">Session 08 · Gilens and Page</span><p>Table 3 sets average citizens, economic elites and interest groups against each other.</p></div>
+    </div>
+    <p class="note">Session 08 kept the coefficients rough. <b>Today we read every line.</b></p>
+  </div>
+</section>
+
+<!-- 03 · ols -->
+<section class="slide pink">
+  <div class="inner">
+    <div class="head" style="margin-bottom:1.6em">
+      <span class="tag">Ordinary least squares</span>
+      <h2>What a regression does</h2>
+    </div>
+    <div class="grid" style="grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2.6em;align-items:center">
+      <div>
+        <p class="formula" style="margin:0 0 .8em;font-size:1em">Y = a + bX + error<small style="display:block;margin-top:.4em;font-size:.7em;font-weight:400">The points are invented</small></p>
+        <svg class="flow" viewBox="0 0 500 270" role="img" aria-label="Eight invented points with a fitted line. Dashed vertical segments show the residuals between each point and the line. The intercept is 1.93, and two more units of X go with 1.03 more units of Y.">
+          <path d="M60 230 H420 M60 230 V20" stroke="#0F1B3D" stroke-width="2"/>
+          <path d="M60.0 181.9 L420.0 65.6" stroke="#0F1B3D" stroke-width="3.5"/>
+          <path d="M100.0 157.5 V169.0" stroke="#0F1B3D" stroke-width="1.5" stroke-dasharray="3 3"/>
+          <path d="M140.0 170.0 V156.0" stroke="#0F1B3D" stroke-width="1.5" stroke-dasharray="3 3"/>
+          <path d="M180.0 132.5 V143.1" stroke="#0F1B3D" stroke-width="1.5" stroke-dasharray="3 3"/>
+          <path d="M220.0 145.0 V130.2" stroke="#0F1B3D" stroke-width="1.5" stroke-dasharray="3 3"/>
+          <path d="M260.0 105.0 V117.3" stroke="#0F1B3D" stroke-width="1.5" stroke-dasharray="3 3"/>
+          <path d="M300.0 122.5 V104.4" stroke="#0F1B3D" stroke-width="1.5" stroke-dasharray="3 3"/>
+          <path d="M340.0 82.5 V91.5" stroke="#0F1B3D" stroke-width="1.5" stroke-dasharray="3 3"/>
+          <path d="M380.0 75.0 V78.5" stroke="#0F1B3D" stroke-width="1.5" stroke-dasharray="3 3"/>
+          <rect x="94.0" y="151.5" width="12" height="12" fill="#F8F4FF" stroke="#0F1B3D" stroke-width="2"/>
+          <rect x="134.0" y="164.0" width="12" height="12" fill="#F8F4FF" stroke="#0F1B3D" stroke-width="2"/>
+          <rect x="174.0" y="126.5" width="12" height="12" fill="#F8F4FF" stroke="#0F1B3D" stroke-width="2"/>
+          <rect x="214.0" y="139.0" width="12" height="12" fill="#F8F4FF" stroke="#0F1B3D" stroke-width="2"/>
+          <rect x="254.0" y="99.0" width="12" height="12" fill="#F8F4FF" stroke="#0F1B3D" stroke-width="2"/>
+          <rect x="294.0" y="116.5" width="12" height="12" fill="#F8F4FF" stroke="#0F1B3D" stroke-width="2"/>
+          <rect x="334.0" y="76.5" width="12" height="12" fill="#F8F4FF" stroke="#0F1B3D" stroke-width="2"/>
+          <rect x="374.0" y="69.0" width="12" height="12" fill="#F8F4FF" stroke="#0F1B3D" stroke-width="2"/>
+          <path d="M300.0 104.4 H380.0 V78.5" stroke="#E87CB2" stroke-width="2.5" fill="none"/>
+          <text x="340.0" y="122.4" font-size="11" font-weight="700" fill="#0F1B3D" text-anchor="middle">+2 IN X</text>
+          <text x="388.0" y="95.5" font-size="11" font-weight="700" fill="#0F1B3D">+1.03 IN Y</text>
+          <circle cx="60.0" cy="181.9" r="5" fill="#E87CB2" stroke="#0F1B3D" stroke-width="2"/>
+          <text x="70" y="201.9" font-size="11" font-weight="700" fill="#0F1B3D">INTERCEPT 1.93</text>
+          <text x="110.0" y="186.0" font-size="10" fill="#0F1B3D">RESIDUAL</text>
+          <text x="240" y="258" font-size="10" font-weight="700" letter-spacing="1.5" fill="#0F1B3D" text-anchor="middle">X</text>
+          <text x="44" y="125" font-size="10" font-weight="700" letter-spacing="1.5" fill="#0F1B3D" text-anchor="middle">Y</text>
+        </svg>
+      </div>
+      <ol class="fix">
+        <li>OLS draws the straight line that makes the squared vertical gaps between points and line, the residuals, as small as possible.</li>
+        <li>The slope is the coefficient. Here one more unit of X goes with about .52 more units of Y. The intercept is the constant, the predicted Y where X is zero.</li>
+        <li>With several predictors, OLS fits all the slopes at once. Each coefficient is then the slope of its own X with the other predictors held constant.</li>
+      </ol>
+    </div>
+    <p class="note">Hanson and Sigman's and Carey and Hix's tables come from OLS. <b>Every coefficient in them is a slope of this kind.</b></p>
+  </div>
+</section>
+
+<!-- 04 · anatomy -->
+<section class="slide navy">
+  <div class="inner">
+    <div class="head" style="margin-bottom:1.6em">
+      <span class="tag">Hanson and Sigman · Table 5, column 1</span>
+      <h2>Anatomy of a table</h2>
+    </div>
+    <div class="grid" style="grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:2.6em;align-items:center">
+      <div>
+        <table class="reg">
+          <tr><th></th><th><i class="pin">01</i>Infant mortality, 2010</th></tr>
+          <tr class="hot"><td>Capacity, 1960</td><td><i class="pin">02</i>−12.15**<small class="se"><i class="pin">03</i>(3.13)</small></td></tr>
+          <tr><td>ln GDP per capita, 1960</td><td>−7.27**<small class="se">(1.69)</small></td></tr>
+          <tr><td>Democracy, 1960 to 2010</td><td>−9.40<small class="se">(7.39)</small></td></tr>
+          <tr><td>Tax revenue, 1960 to 2010</td><td>−.26<small class="se">(.28)</small></td></tr>
+          <tr><td>Constant</td><td>95.29**<small class="se">(14.32)</small></td></tr>
+          <tr><td><i class="pin">05</i>N</td><td>148</td></tr>
+          <tr><td>R²</td><td>.53</td></tr>
+        </table>
+        <p class="key"><i class="pin">04</i>^ p &lt; .10 · * p &lt; .05 · ** p &lt; .01</p>
+      </div>
+      <ol class="fix">
+        <li>The column names the outcome, here infant deaths per 1,000 births.</li>
+        <li>The coefficient. How much the outcome moves with one more unit of the predictor, the other rows held constant.</li>
+        <li>The standard error. How far the estimate would typically wander in another sample.</li>
+        <li>Stars mark p-value cut-offs. Only the note says which ones.</li>
+        <li>N counts the countries. R² is the share of the outcome's variation the model accounts for.</li>
+      </ol>
+    </div>
+    <p class="note">Star keys differ by journal. Two stars mean p ≤ .05 in Carey and Hix and p &lt; .01 here. <b>Read the note before the numbers.</b></p>
+  </div>
+</section>
+
+<!-- 05 · say it as a sentence -->
+<section class="slide lav">
+  <div class="inner" style="max-width:58em">
+    <div class="head" style="margin-bottom:1.4em">
+      <span class="tag">Coefficients</span>
+      <h2>Say it as a sentence</h2>
+    </div>
+    <p class="formula" style="max-width:30em">One more unit of X goes with β more units of Y, the other predictors held constant</p>
+    <div class="grid" style="--cols:3">
+      <div class="card"><span class="chip">Hanson and Sigman · −12.15</span><p>One more point of Capacity in 1960, about one standard deviation, goes with about 12 fewer infant deaths per 1,000 births in 2010.</p></div>
+      <div class="card"><span class="chip">Carey and Hix · .01</span><p>"A jump from a median magnitude of 1 to 10 is expected to boost the fragmentation index by one-tenth of a unit."</p></div>
+      <div class="card"><span class="chip">Gilens and Page · .76</span><p>The predictors are transformed and squeezed into a 0 to 1 range. The authors call the magnitudes "difficult to interpret" and report predicted probabilities instead.</p></div>
+    </div>
+    <p class="note">Check the units on both sides before you translate. <b>When the units are opaque, look for predicted values.</b></p>
+  </div>
+</section>
+
+<!-- 06 · standard errors -->
+<section class="slide navy">
+  <div class="inner">
+    <div class="head" style="margin-bottom:1.6em">
+      <span class="tag">Standard errors</span>
+      <h2>One sample, one estimate</h2>
+    </div>
+    <div class="grid" style="grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:2.4em;align-items:center">
+      <div>
+        <p class="cap">Invented sampling distributions of one coefficient</p>
+        <svg class="flow" viewBox="0 0 560 222" role="img" aria-label="Two bell curves centered on the true coefficient. The curve for samples of 100 cases is wide and low. The curve for samples of 400 cases is half as wide and twice as tall.">
+          <path d="M40 190 H520" stroke="#E2D5F2" stroke-width="2"/>
+          <path d="M280 20 V190" stroke="#5EDCF4" stroke-width="2" stroke-dasharray="5 4"/>
+          <path d="M52.0 189.9 L55.0 189.9 L58.0 189.9 L61.0 189.9 L64.0 189.9 L67.0 189.9 L70.0 189.8 L73.0 189.8 L76.0 189.8 L79.0 189.7 L82.0 189.7 L85.0 189.6 L88.0 189.5 L91.0 189.4 L94.0 189.3 L97.0 189.2 L100.0 189.1 L103.0 189.0 L106.0 188.8 L109.0 188.6 L112.0 188.4 L115.0 188.2 L118.0 187.9 L121.0 187.6 L124.0 187.3 L127.0 186.9 L130.0 186.5 L133.0 186.0 L136.0 185.5 L139.0 184.9 L142.0 184.3 L145.0 183.6 L148.0 182.9 L151.0 182.1 L154.0 181.2 L157.0 180.2 L160.0 179.2 L163.0 178.0 L166.0 176.8 L169.0 175.5 L172.0 174.2 L175.0 172.7 L178.0 171.1 L181.0 169.5 L184.0 167.8 L187.0 165.9 L190.0 164.0 L193.0 162.0 L196.0 160.0 L199.0 157.8 L202.0 155.6 L205.0 153.4 L208.0 151.1 L211.0 148.7 L214.0 146.3 L217.0 143.9 L220.0 141.5 L223.0 139.1 L226.0 136.6 L229.0 134.3 L232.0 131.9 L235.0 129.6 L238.0 127.4 L241.0 125.2 L244.0 123.2 L247.0 121.2 L250.0 119.4 L253.0 117.7 L256.0 116.2 L259.0 114.8 L262.0 113.5 L265.0 112.5 L268.0 111.6 L271.0 110.9 L274.0 110.4 L277.0 110.1 L280.0 110.0 L283.0 110.1 L286.0 110.4 L289.0 110.9 L292.0 111.6 L295.0 112.5 L298.0 113.5 L301.0 114.8 L304.0 116.2 L307.0 117.7 L310.0 119.4 L313.0 121.2 L316.0 123.2 L319.0 125.2 L322.0 127.4 L325.0 129.6 L328.0 131.9 L331.0 134.3 L334.0 136.6 L337.0 139.1 L340.0 141.5 L343.0 143.9 L346.0 146.3 L349.0 148.7 L352.0 151.1 L355.0 153.4 L358.0 155.6 L361.0 157.8 L364.0 160.0 L367.0 162.0 L370.0 164.0 L373.0 165.9 L376.0 167.8 L379.0 169.5 L382.0 171.1 L385.0 172.7 L388.0 174.2 L391.0 175.5 L394.0 176.8 L397.0 178.0 L400.0 179.2 L403.0 180.2 L406.0 181.2 L409.0 182.1 L412.0 182.9 L415.0 183.6 L418.0 184.3 L421.0 184.9 L424.0 185.5 L427.0 186.0 L430.0 186.5 L433.0 186.9 L436.0 187.3 L439.0 187.6 L442.0 187.9 L445.0 188.2 L448.0 188.4 L451.0 188.6 L454.0 188.8 L457.0 189.0 L460.0 189.1 L463.0 189.2 L466.0 189.3 L469.0 189.4 L472.0 189.5 L475.0 189.6 L478.0 189.7 L481.0 189.7 L484.0 189.8 L487.0 189.8 L490.0 189.8 L493.0 189.9 L496.0 189.9 L499.0 189.9 L502.0 189.9 L505.0 189.9 L508.0 189.9" fill="none" stroke="#F0A6CA" stroke-width="3.5"/>
+          <path d="M52.0 190.0 L55.0 190.0 L58.0 190.0 L61.0 190.0 L64.0 190.0 L67.0 190.0 L70.0 190.0 L73.0 190.0 L76.0 190.0 L79.0 190.0 L82.0 190.0 L85.0 190.0 L88.0 190.0 L91.0 190.0 L94.0 190.0 L97.0 190.0 L100.0 190.0 L103.0 190.0 L106.0 190.0 L109.0 190.0 L112.0 190.0 L115.0 190.0 L118.0 190.0 L121.0 190.0 L124.0 190.0 L127.0 190.0 L130.0 190.0 L133.0 190.0 L136.0 190.0 L139.0 190.0 L142.0 190.0 L145.0 190.0 L148.0 190.0 L151.0 190.0 L154.0 190.0 L157.0 190.0 L160.0 189.9 L163.0 189.9 L166.0 189.9 L169.0 189.8 L172.0 189.8 L175.0 189.7 L178.0 189.5 L181.0 189.3 L184.0 189.0 L187.0 188.7 L190.0 188.2 L193.0 187.6 L196.0 186.8 L199.0 185.8 L202.0 184.6 L205.0 183.0 L208.0 181.0 L211.0 178.6 L214.0 175.8 L217.0 172.4 L220.0 168.3 L223.0 163.7 L226.0 158.3 L229.0 152.3 L232.0 145.5 L235.0 138.1 L238.0 130.0 L241.0 121.3 L244.0 112.1 L247.0 102.6 L250.0 93.0 L253.0 83.3 L256.0 73.8 L259.0 64.8 L262.0 56.4 L265.0 48.8 L268.0 42.3 L271.0 37.0 L274.0 33.2 L277.0 30.8 L280.0 30.0 L283.0 30.8 L286.0 33.2 L289.0 37.0 L292.0 42.3 L295.0 48.8 L298.0 56.4 L301.0 64.8 L304.0 73.8 L307.0 83.3 L310.0 93.0 L313.0 102.6 L316.0 112.1 L319.0 121.3 L322.0 130.0 L325.0 138.1 L328.0 145.5 L331.0 152.3 L334.0 158.3 L337.0 163.7 L340.0 168.3 L343.0 172.4 L346.0 175.8 L349.0 178.6 L352.0 181.0 L355.0 183.0 L358.0 184.6 L361.0 185.8 L364.0 186.8 L367.0 187.6 L370.0 188.2 L373.0 188.7 L376.0 189.0 L379.0 189.3 L382.0 189.5 L385.0 189.7 L388.0 189.8 L391.0 189.8 L394.0 189.9 L397.0 189.9 L400.0 189.9 L403.0 190.0 L406.0 190.0 L409.0 190.0 L412.0 190.0 L415.0 190.0 L418.0 190.0 L421.0 190.0 L424.0 190.0 L427.0 190.0 L430.0 190.0 L433.0 190.0 L436.0 190.0 L439.0 190.0 L442.0 190.0 L445.0 190.0 L448.0 190.0 L451.0 190.0 L454.0 190.0 L457.0 190.0 L460.0 190.0 L463.0 190.0 L466.0 190.0 L469.0 190.0 L472.0 190.0 L475.0 190.0 L478.0 190.0 L481.0 190.0 L484.0 190.0 L487.0 190.0 L490.0 190.0 L493.0 190.0 L496.0 190.0 L499.0 190.0 L502.0 190.0 L505.0 190.0 L508.0 190.0" fill="none" stroke="#F4D03F" stroke-width="3.5"/>
+          <path d="M220 132 H280" stroke="#F0A6CA" stroke-width="2"/><text x="216" y="128" font-size="11" font-weight="700" fill="#F0A6CA" text-anchor="end">1 SE · 100 CASES</text>
+          <path d="M280 70 H310" stroke="#F4D03F" stroke-width="2"/><text x="316" y="66" font-size="11" font-weight="700" fill="#F4D03F">1 SE · 400 CASES</text>
+          <text x="280" y="14" font-size="10" font-weight="700" letter-spacing="1.5" fill="#5EDCF4" text-anchor="middle">TRUE COEFFICIENT</text>
+          <text x="280" y="214" font-size="10" font-weight="700" letter-spacing="1.5" fill="#E2D5F2" fill-opacity=".75" text-anchor="middle">ESTIMATES FROM REPEATED SAMPLES</text>
+        </svg>
+      </div>
+      <ol class="fix">
+        <li>A table reports the slope from one sample. Another sample of countries or years would give a somewhat different slope.</li>
+        <li>Repeat the draw many times and the estimates form a curve around the true value. The standard error is the typical distance from its center.</li>
+        <li>More cases and less scatter around the line narrow the curve. Four times the cases halves the standard error.</li>
+      </ol>
+    </div>
+    <p class="note">Carey and Hix's magnitude coefficient has a standard error of .004 across countries and .03 within them. <b>Fewer useful comparisons make a wider curve.</b></p>
+  </div>
+</section>
+
+<!-- 07 · hypothesis test -->
+<section class="slide pink">
+  <div class="inner">
+    <div class="head" style="margin-bottom:1.6em">
+      <span class="tag">Hypothesis tests</span>
+      <h2>Is the coefficient far from zero?</h2>
+    </div>
+    <div class="grid" style="grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:2.4em;align-items:center">
+      <div>
+        <p class="cap">Hanson and Sigman, Table 5, column 1</p>
+        <svg class="flow" viewBox="0 0 560 234" role="img" aria-label="Bell curve of t values if the true coefficient were zero, with the outer 2.5 percent shaded on each side beyond 1.96. Capacity's t of minus 3.88 falls in the shaded tail. Democracy's t of minus 1.27 falls inside the unshaded middle.">
+          <path d="M32.5 190 L32.5 190.0 L35.2 190.0 L38.0 190.0 L40.7 190.0 L43.5 190.0 L46.2 190.0 L49.0 190.0 L51.7 190.0 L54.5 190.0 L57.2 190.0 L60.0 189.9 L62.7 189.9 L65.5 189.9 L68.2 189.9 L71.0 189.9 L73.7 189.9 L76.5 189.8 L79.2 189.8 L82.0 189.8 L84.7 189.7 L87.5 189.7 L90.2 189.6 L93.0 189.5 L95.7 189.5 L98.5 189.4 L101.2 189.2 L104.0 189.1 L106.7 188.9 L109.5 188.8 L112.2 188.6 L115.0 188.3 L117.7 188.1 L120.5 187.8 L123.2 187.4 L126.0 187.0 L128.7 186.6 L131.5 186.1 L134.2 185.5 L137.0 184.9 L139.7 184.2 L142.5 183.4 L145.2 182.5 L148.0 181.6 L150.7 180.5 L153.5 179.3 L156.2 178.1 L159.0 176.7 L161.7 175.1 L164.5 173.5 L167.2 171.7 L170.0 169.7 L170.0 190 Z" fill="#0F1B3D" fill-opacity=".85"/>
+          <path d="M387.8 190 L387.8 168.0 L390.5 170.1 L393.3 172.0 L396.0 173.8 L398.8 175.4 L401.5 177.0 L404.3 178.3 L407.0 179.6 L409.8 180.7 L412.5 181.8 L415.3 182.7 L418.0 183.6 L420.8 184.3 L423.5 185.0 L426.3 185.6 L429.0 186.2 L431.8 186.7 L434.5 187.1 L437.3 187.5 L440.0 187.8 L442.8 188.1 L445.5 188.4 L448.3 188.6 L451.0 188.8 L453.8 189.0 L456.5 189.1 L459.3 189.3 L462.0 189.4 L464.8 189.5 L467.5 189.6 L470.3 189.6 L473.0 189.7 L475.8 189.7 L478.5 189.8 L481.3 189.8 L484.0 189.8 L486.8 189.9 L489.5 189.9 L492.3 189.9 L495.0 189.9 L497.8 189.9 L500.5 190.0 L503.3 190.0 L506.0 190.0 L508.8 190.0 L511.5 190.0 L514.3 190.0 L517.0 190.0 L519.8 190.0 L522.5 190.0 L525.3 190.0 L525.3 190 Z" fill="#0F1B3D" fill-opacity=".85"/>
+          <path d="M32.5 190.0 L35.2 190.0 L38.0 190.0 L40.7 190.0 L43.5 190.0 L46.2 190.0 L49.0 190.0 L51.7 190.0 L54.5 190.0 L57.2 190.0 L60.0 189.9 L62.7 189.9 L65.5 189.9 L68.2 189.9 L71.0 189.9 L73.7 189.9 L76.5 189.8 L79.2 189.8 L82.0 189.8 L84.7 189.7 L87.5 189.7 L90.2 189.6 L93.0 189.5 L95.7 189.5 L98.5 189.4 L101.2 189.2 L104.0 189.1 L106.7 188.9 L109.5 188.8 L112.2 188.6 L115.0 188.3 L117.7 188.1 L120.5 187.8 L123.2 187.4 L126.0 187.0 L128.7 186.6 L131.5 186.1 L134.2 185.5 L137.0 184.9 L139.7 184.2 L142.5 183.4 L145.2 182.5 L148.0 181.6 L150.7 180.5 L153.5 179.3 L156.2 178.1 L159.0 176.7 L161.7 175.1 L164.5 173.5 L167.2 171.7 L170.0 169.7 L172.7 167.6 L175.5 165.3 L178.2 162.9 L181.0 160.3 L183.7 157.6 L186.5 154.6 L189.2 151.5 L192.0 148.3 L194.7 144.9 L197.5 141.3 L200.2 137.6 L203.0 133.7 L205.7 129.7 L208.5 125.6 L211.2 121.3 L214.0 117.0 L216.7 112.6 L219.5 108.1 L222.2 103.6 L225.0 99.0 L227.7 94.5 L230.5 90.0 L233.2 85.5 L236.0 81.1 L238.7 76.8 L241.5 72.6 L244.2 68.6 L247.0 64.7 L249.7 61.1 L252.5 57.6 L255.2 54.4 L258.0 51.5 L260.7 48.9 L263.5 46.6 L266.2 44.6 L269.0 43.0 L271.7 41.7 L274.5 40.7 L277.2 40.2 L280.0 40.0 L282.7 40.2 L285.5 40.7 L288.2 41.7 L291.0 43.0 L293.7 44.6 L296.5 46.6 L299.2 48.9 L302.0 51.5 L304.7 54.4 L307.5 57.6 L310.2 61.1 L313.0 64.7 L315.7 68.6 L318.5 72.6 L321.2 76.8 L324.0 81.1 L326.7 85.5 L329.5 90.0 L332.2 94.5 L335.0 99.0 L337.7 103.6 L340.5 108.1 L343.2 112.6 L346.0 117.0 L348.7 121.3 L351.5 125.6 L354.2 129.7 L357.0 133.7 L359.7 137.6 L362.5 141.3 L365.2 144.9 L368.0 148.3 L370.7 151.5 L373.5 154.6 L376.2 157.6 L379.0 160.3 L381.7 162.9 L384.5 165.3 L387.2 167.6 L390.0 169.7 L392.7 171.7 L395.5 173.5 L398.2 175.1 L401.0 176.7 L403.7 178.1 L406.5 179.3 L409.2 180.5 L412.0 181.6 L414.7 182.5 L417.5 183.4 L420.2 184.2 L423.0 184.9 L425.7 185.5 L428.5 186.1 L431.2 186.6 L434.0 187.0 L436.7 187.4 L439.5 187.8 L442.2 188.1 L445.0 188.3 L447.7 188.6 L450.5 188.8 L453.2 188.9 L456.0 189.1 L458.7 189.2 L461.5 189.4 L464.2 189.5 L467.0 189.5 L469.7 189.6 L472.5 189.7 L475.2 189.7 L478.0 189.8 L480.7 189.8 L483.5 189.8 L486.2 189.9 L489.0 189.9 L491.7 189.9 L494.5 189.9 L497.2 189.9 L500.0 189.9 L502.7 190.0 L505.5 190.0 L508.2 190.0 L511.0 190.0 L513.7 190.0 L516.5 190.0 L519.2 190.0 L522.0 190.0 L524.7 190.0 L527.5 190.0" fill="none" stroke="#0F1B3D" stroke-width="3"/>
+          <path d="M20 190 H540" stroke="#0F1B3D" stroke-width="2"/>
+          <text x="172.2" y="206" font-size="11" fill="#0F1B3D" text-anchor="middle">−1.96</text>
+          <text x="280.0" y="206" font-size="11" fill="#0F1B3D" text-anchor="middle">0</text>
+          <text x="387.8" y="206" font-size="11" fill="#0F1B3D" text-anchor="middle">1.96</text>
+          <text x="104.0" y="166" font-size="9.5" font-weight="700" fill="#0F1B3D" text-anchor="middle">2.5%</text>
+          <text x="456.0" y="166" font-size="9.5" font-weight="700" fill="#0F1B3D" text-anchor="middle">2.5%</text>
+          <path d="M66.6 64 V190" stroke="#0F1B3D" stroke-width="2.5"/>
+          <rect x="60.6" y="184" width="12" height="12" fill="#F8F4FF" stroke="#0F1B3D" stroke-width="2"/>
+          <text x="66.6" y="58" font-size="11" font-weight="700" fill="#0F1B3D" text-anchor="middle">CAPACITY −3.88</text>
+          <path d="M210.2 94 V190" stroke="#0F1B3D" stroke-width="2.5"/>
+          <rect x="204.2" y="184" width="12" height="12" fill="#F8F4FF" stroke="#0F1B3D" stroke-width="2"/>
+          <text x="202.2" y="88" font-size="11" font-weight="700" fill="#0F1B3D" text-anchor="end">DEMOCRACY −1.27</text>
+          <text x="280" y="226" font-size="10" font-weight="700" letter-spacing="1.5" fill="#0F1B3D" text-anchor="middle">t IF THE TRUE COEFFICIENT WERE ZERO</text>
+        </svg>
+      </div>
+      <ol class="fix">
+        <li>Start from the null hypothesis that the true coefficient is zero.</li>
+        <li>Divide the coefficient by its standard error. The result, t, counts how many standard errors the estimate sits from zero.</li>
+        <li>The p-value is the chance of a t at least this far out if the null were true. Below .05, the null is rejected and the table adds a star.</li>
+      </ol>
+    </div>
+    <p class="note">Capacity sits 3.88 standard errors from zero, Democracy only 1.27 (p ≈ .2). <b>The p-value says how surprising the estimate would be under the null.</b></p>
+  </div>
+</section>
+
+<!-- 08 · type I and II errors -->
+<section class="slide lav">
+  <div class="inner" style="max-width:60em">
+    <div class="head" style="margin-bottom:1.4em">
+      <span class="tag">Two ways to be wrong</span>
+      <h2>Type I and Type II errors</h2>
+    </div>
+    <table class="err">
+      <tr><th></th><th>No real effect</th><th>A real effect</th></tr>
+      <tr><td>Star, null rejected</td><td class="bad">Type I error · false positive</td><td>Correct</td></tr>
+      <tr><td>No star</td><td>Correct</td><td class="bad">Type II error · false negative</td></tr>
+    </table>
+    <div class="grid" style="--cols:3">
+      <div class="card"><span class="chip">Type I</span><p>The cut-off, called α, sets its rate. At .05, one test in twenty of a true null earns a star by chance. Hanson and Sigman's Table 5 runs 24 tests.</p></div>
+      <div class="card"><span class="chip">Type II</span><p>Its rate, called β, rises with smaller effects, noisier data and fewer cases. Power, 1 − β, is the chance of catching an effect that is there.</p></div>
+      <div class="card"><span class="chip">The trade-off</span><p>A stricter cut-off such as .01 buys fewer false positives with more false negatives. With 1,779 cases, Gilens and Page have the power to star a correlation of .12.</p></div>
+    </div>
+    <p class="note">Democracy's −9.40 across 148 countries could be a real effect the test was too weak to detect. <b>A missing star is weak evidence when power is low.</b></p>
+  </div>
+</section>
+
+<!-- 09 · confidence intervals -->
+<section class="slide pink">
+  <div class="inner">
+    <div class="head" style="margin-bottom:1.6em">
+      <span class="tag">Confidence intervals</span>
+      <h2>What 95 percent means</h2>
+    </div>
+    <div class="grid" style="grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:2.4em;align-items:center">
+      <div>
+        <p class="cap">20 invented samples, one interval each</p>
+        <svg class="flow" viewBox="0 0 560 240" role="img" aria-label="Twenty horizontal intervals of equal width stacked on top of each other. Nineteen cross the dashed line marking the true coefficient. One, drawn in white, misses it.">
+          <path d="M280 6 V214" stroke="#0F1B3D" stroke-width="2.5" stroke-dasharray="5 4"/>
+          <path d="M232 16 H352" stroke="#0F1B3D" stroke-width="2.5"/>
+          <rect x="289" y="13" width="6" height="6" fill="#0F1B3D" stroke="#0F1B3D" stroke-width="1"/>
+          <path d="M195 26 H315" stroke="#0F1B3D" stroke-width="2.5"/>
+          <rect x="252" y="23" width="6" height="6" fill="#0F1B3D" stroke="#0F1B3D" stroke-width="1"/>
+          <path d="M260 36 H380" stroke="#0F1B3D" stroke-width="2.5"/>
+          <rect x="317" y="33" width="6" height="6" fill="#0F1B3D" stroke="#0F1B3D" stroke-width="1"/>
+          <path d="M212 46 H332" stroke="#0F1B3D" stroke-width="2.5"/>
+          <rect x="269" y="43" width="6" height="6" fill="#0F1B3D" stroke="#0F1B3D" stroke-width="1"/>
+          <path d="M275 56 H395" stroke="#0F1B3D" stroke-width="2.5"/>
+          <rect x="332" y="53" width="6" height="6" fill="#0F1B3D" stroke="#0F1B3D" stroke-width="1"/>
+          <path d="M180 66 H300" stroke="#0F1B3D" stroke-width="2.5"/>
+          <rect x="237" y="63" width="6" height="6" fill="#0F1B3D" stroke="#0F1B3D" stroke-width="1"/>
+          <path d="M238 76 H358" stroke="#0F1B3D" stroke-width="2.5"/>
+          <rect x="295" y="73" width="6" height="6" fill="#0F1B3D" stroke="#0F1B3D" stroke-width="1"/>
+          <path d="M168 86 H288" stroke="#0F1B3D" stroke-width="2.5"/>
+          <rect x="225" y="83" width="6" height="6" fill="#0F1B3D" stroke="#0F1B3D" stroke-width="1"/>
+          <path d="M225 96 H345" stroke="#0F1B3D" stroke-width="2.5"/>
+          <rect x="282" y="93" width="6" height="6" fill="#0F1B3D" stroke="#0F1B3D" stroke-width="1"/>
+          <path d="M250 106 H370" stroke="#0F1B3D" stroke-width="2.5"/>
+          <rect x="307" y="103" width="6" height="6" fill="#0F1B3D" stroke="#0F1B3D" stroke-width="1"/>
+          <path d="M205 116 H325" stroke="#0F1B3D" stroke-width="2.5"/>
+          <rect x="262" y="113" width="6" height="6" fill="#0F1B3D" stroke="#0F1B3D" stroke-width="1"/>
+          <path d="M268 126 H388" stroke="#0F1B3D" stroke-width="2.5"/>
+          <rect x="325" y="123" width="6" height="6" fill="#0F1B3D" stroke="#0F1B3D" stroke-width="1"/>
+          <path d="M187 136 H307" stroke="#0F1B3D" stroke-width="2.5"/>
+          <rect x="244" y="133" width="6" height="6" fill="#0F1B3D" stroke="#0F1B3D" stroke-width="1"/>
+          <path d="M242 146 H362" stroke="#0F1B3D" stroke-width="2.5"/>
+          <rect x="299" y="143" width="6" height="6" fill="#0F1B3D" stroke="#0F1B3D" stroke-width="1"/>
+          <path d="M215 156 H335" stroke="#0F1B3D" stroke-width="2.5"/>
+          <rect x="272" y="153" width="6" height="6" fill="#0F1B3D" stroke="#0F1B3D" stroke-width="1"/>
+          <path d="M295 166 H415" stroke="#F8F4FF" stroke-width="4"/>
+          <rect x="352" y="163" width="6" height="6" fill="#F8F4FF" stroke="#0F1B3D" stroke-width="1"/>
+          <text x="423" y="170" font-size="11" font-weight="700" fill="#0F1B3D">MISSES</text>
+          <path d="M200 176 H320" stroke="#0F1B3D" stroke-width="2.5"/>
+          <rect x="257" y="173" width="6" height="6" fill="#0F1B3D" stroke="#0F1B3D" stroke-width="1"/>
+          <path d="M230 186 H350" stroke="#0F1B3D" stroke-width="2.5"/>
+          <rect x="287" y="183" width="6" height="6" fill="#0F1B3D" stroke="#0F1B3D" stroke-width="1"/>
+          <path d="M175 196 H295" stroke="#0F1B3D" stroke-width="2.5"/>
+          <rect x="232" y="193" width="6" height="6" fill="#0F1B3D" stroke="#0F1B3D" stroke-width="1"/>
+          <path d="M248 206 H368" stroke="#0F1B3D" stroke-width="2.5"/>
+          <rect x="305" y="203" width="6" height="6" fill="#0F1B3D" stroke="#0F1B3D" stroke-width="1"/>
+          <text x="280" y="232" font-size="10" font-weight="700" letter-spacing="1.5" fill="#0F1B3D" text-anchor="middle">TRUE COEFFICIENT</text>
+        </svg>
+      </div>
+      <ol class="fix">
+        <li>Go 1.96 standard errors either side of the coefficient. Two is close enough for reading in your head.</li>
+        <li>The 95 percent describes the method. Across repeated samples, 19 of every 20 intervals built this way contain the true coefficient.</li>
+        <li>Interval and test agree. A 95 percent interval that excludes zero means p &lt; .05 for that coefficient.</li>
+      </ol>
+    </div>
+    <p class="note">Hanson and Sigman's Capacity runs from about −18 to −6 deaths per 1,000. <b>An interval shows the size and the precision of an effect at once.</b></p>
+  </div>
+</section>
+
+<!-- 10 · intervals in gilens and page -->
+<section class="slide navy">
+  <div class="inner">
+    <div class="head" style="margin-bottom:1.6em">
+      <span class="tag">Gilens and Page · Table 3</span>
+      <h2>Reading intervals side by side</h2>
+    </div>
+    <div class="grid" style="grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:2.4em;align-items:center">
+      <div>
+        <p class="cap">Gilens and Page, Table 3, Model 4 · coefficient ± 2 standard errors</p>
+        <svg class="flow" viewBox="0 0 560 235" role="img" aria-label="Coefficients with intervals of two standard errors on each side. Average citizens, .03, interval from minus .13 to .19, crossing zero. Economic elites, .76, interval from .60 to .92. Interest groups, .56, interval from .38 to .74.">
+          <g stroke="#E2D5F2" stroke-opacity=".15"><path d="M276.7 25 V190 M340 25 V190 M403.3 25 V190 M466.7 25 V190 M530 25 V190"/></g>
+          <path d="M213.3 22 V190" stroke="#5EDCF4" stroke-width="2" stroke-dasharray="5 4"/>
+          <path d="M150 190 H530" stroke="#E2D5F2" stroke-width="2"/>
+          <g stroke-width="4" stroke-linecap="square">
+            <path d="M172.2 50 H273.5" stroke="#E2D5F2"/>
+            <path d="M403.3 105 H504.7" stroke="#F4D03F"/>
+            <path d="M333.7 160 H447.7" stroke="#F0A6CA"/>
+          </g>
+          <g stroke="#0A0E27" stroke-width="2">
+            <rect x="216.8" y="44" width="12" height="12" fill="#E2D5F2"/>
+            <rect x="448" y="99" width="12" height="12" fill="#F4D03F"/>
+            <rect x="384.7" y="154" width="12" height="12" fill="#F0A6CA"/>
+          </g>
+          <g font-size="11" font-weight="700" letter-spacing="1" text-anchor="end">
+            <text x="138" y="54" fill="#E2D5F2">CITIZENS</text>
+            <text x="138" y="109" fill="#F4D03F">ELITES</text>
+            <text x="138" y="164" fill="#F0A6CA">GROUPS</text>
+          </g>
+          <g font-size="13" font-weight="700" text-anchor="middle">
+            <text x="236" y="40" fill="#E2D5F2" text-anchor="start">.03</text>
+            <text x="454" y="91" fill="#F4D03F">.76</text>
+            <text x="390.7" y="146" fill="#F0A6CA">.56</text>
+          </g>
+          <g font-size="10" text-anchor="middle" fill="#E2D5F2" fill-opacity=".8">
+            <text x="283" y="54" text-anchor="start">−.13 to .19</text>
+            <text x="454" y="129">.60 to .92</text>
+            <text x="390.7" y="184">.38 to .74</text>
+          </g>
+          <g font-size="11" fill="#E2D5F2" text-anchor="middle">
+            <text x="150" y="207">−.2</text><text x="213.3" y="207">0</text><text x="276.7" y="207">.2</text><text x="340" y="207">.4</text>
+            <text x="403.3" y="207">.6</text><text x="466.7" y="207">.8</text><text x="530" y="207">1</text>
+          </g>
+          <text x="340" y="229" font-size="9.5" font-weight="700" letter-spacing="1.5" fill="#E2D5F2" fill-opacity=".7" text-anchor="middle">EFFECT ON POLICY ADOPTION</text>
+        </svg>
+      </div>
+      <ol class="fix">
+        <li>Elites' interval sits far from zero. Their influence is large and precisely estimated.</li>
+        <li>Citizens' interval includes zero, so no star. It also stops at .19, well short of the elites' .60.</li>
+        <li>The intervals for groups and elites overlap. Ranking the two would need a direct test of their difference, which the table does not report.</li>
+      </ol>
+    </div>
+    <p class="note">Gilens and Page call the citizens' estimate "non-significant, near-zero." <b>The interval shows how near.</b></p>
+  </div>
+</section>
+
+<!-- 11 · controls -->
+<section class="slide lav">
+  <div class="inner">
+    <div class="head" style="margin-bottom:1.6em">
+      <span class="tag">Control variables</span>
+      <h2>What holding constant does</h2>
+    </div>
+    <div class="grid" style="grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:2.6em;align-items:center">
+      <div>
+        <p class="cap">Gilens and Page, Tables 2 and 3</p>
+        <svg class="flow" viewBox="0 0 440 270" role="img" aria-label="Average citizens and economic elites both point to policy adoption, and they are linked to each other with a correlation of .78. Alone, citizens' preferences have a coefficient of .64. With elites in the model, citizens fall to .03 and elites keep .76.">
+          <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#0F1B3D"/></marker></defs>
+          <g stroke="#0F1B3D" stroke-width="2.5">
+            <rect x="10" y="20" width="160" height="54" fill="#F8F4FF"/>
+            <rect x="10" y="196" width="160" height="54" fill="#F8F4FF"/>
+            <rect x="290" y="108" width="140" height="54" fill="#0F1B3D"/>
+          </g>
+          <g font-size="12" font-weight="700" letter-spacing="1.2" text-anchor="middle">
+            <text x="90" y="52" fill="#0F1B3D">AVERAGE CITIZENS</text>
+            <text x="90" y="228" fill="#0F1B3D">ECONOMIC ELITES</text>
+            <text x="360" y="140" fill="#5EDCF4">POLICY ADOPTED</text>
+          </g>
+          <g stroke="#0F1B3D" stroke-width="3" fill="none">
+            <path d="M172 50 L286 125" stroke-dasharray="7 6" marker-end="url(#ah)"/>
+            <path d="M172 220 L286 145" marker-end="url(#ah)"/>
+            <path d="M90 80 V190" stroke-width="2.5" marker-start="url(#ah)" marker-end="url(#ah)"/>
+          </g>
+          <g font-size="11" font-weight="700" fill="#0F1B3D">
+            <text x="205" y="30">ALONE .64</text>
+            <text x="205" y="47" fill="#E87CB2">WITH ELITES .03</text>
+            <text x="205" y="242">WITH CITIZENS .76</text>
+            <text x="100" y="139">r = .78</text>
+          </g>
+        </svg>
+      </div>
+      <ol class="fix">
+        <li>Model 1 asks whether policies citizens favor pass more often. Model 4 asks whether citizens' views still matter among policies that the affluent and the groups rate the same.</li>
+        <li>Leaving out a variable that shapes both the predictor and the outcome biases the coefficient. Model 1 credits citizens with the pull of the affluent, who agree with them and drive adoption.</li>
+        <li>A control that is itself a result of the predictor soaks up part of its effect. Ask when each control was measured.</li>
+      </ol>
+    </div>
+    <p class="note">Hanson and Sigman call their controls for wealth, democracy and taxes "a very challenging test." <b>Ask what each control takes away.</b></p>
+  </div>
+</section>
+
+<!-- 12 · exercise 01 -->
+<section class="slide navy">
+  <div class="inner ex roomy tight" style="max-width:62em">
+    <div class="head" style="margin-bottom:1em">
+      <span class="tag" style="margin-bottom:1.4em">Group exercise 01 · Brief the minister</span>
+      <p class="sub" style="margin:0 0 .7em">A development minister asks your group to read one table</p>
+      <p class="bigq" style="font-size:1em;max-width:none;margin-bottom:0">Does state capacity pay off in health and infrastructure decades later?</p>
+    </div>
+    <p class="file">Hanson and Sigman regress 2010 outcomes on Capacity in 1960 and three controls, one country per case (Table 5).</p>
+    <table class="cmp">
+      <tr><th></th><th class="num">(1) Infant mortality</th><th class="num">(3) Roads</th><th class="num">(5) Hospital beds</th></tr>
+      <tr><td>Capacity, 1960</td><td class="num">−12.15**<small class="se">(3.13)</small></td><td class="num">.41*<small class="se">(.18)</small></td><td class="num">1.52**<small class="se">(.41)</small></td></tr>
+      <tr><td>ln GDP per capita, 1960</td><td class="num">−7.27**<small class="se">(1.69)</small></td><td class="num">.18^<small class="se">(.10)</small></td><td class="num">.26<small class="se">(.21)</small></td></tr>
+      <tr><td>Democracy, 1960 to 2010</td><td class="num">−9.40<small class="se">(7.39)</small></td><td class="num">−.02<small class="se">(.40)</small></td><td class="num">−1.90*<small class="se">(.95)</small></td></tr>
+      <tr><td>Tax revenue, 1960 to 2010</td><td class="num">−.26<small class="se">(.28)</small></td><td class="num">−.01<small class="se">(.02)</small></td><td class="num">.12**<small class="se">(.04)</small></td></tr>
+      <tr class="fe"><td>N · R²</td><td class="num">148 · .53</td><td class="num">106 · .22</td><td class="num">112 · .39</td></tr>
+    </table>
+    <p class="rules">Deaths per 1,000 infants · km of road per 100 km² · hospital beds per 1,000 people. Democracy runs from 0 to 1 and tax revenue is a percent of GDP. ^ p &lt; .10 · * p &lt; .05 · ** p &lt; .01</p>
+    <ol class="fix">
+      <li>Turn Capacity in column 1 into one sentence for the minister, with the units of both variables.</li>
+      <li>Build a rough 95 percent interval for Capacity in columns 1 and 3 and for Democracy in column 1. Which include zero? Could Democracy's missing star in column 1 be a Type II error?</li>
+      <li>Democracy and tax revenue are averaged over 1960 to 2010, after Capacity was measured. Should they be held constant if the question is what capacity in 1960 did?</li>
+    </ol>
+  </div>
+</section>
+
+<!-- 13 · interaction concept -->
+<section class="slide pink">
+  <div class="inner">
+    <div class="head" style="margin-bottom:1.6em">
+      <span class="tag">Interaction terms</span>
+      <h2>When slopes differ by group</h2>
+    </div>
+    <div class="grid" style="grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:2.4em;align-items:center">
+      <div>
+        <p class="formula" style="margin:0 0 .8em;font-size:1em">Y = a + b₁X + b₂D + b₃X×D<small style="display:block;margin-top:.4em;font-size:.7em;font-weight:400">Invented example · Y = 3 + .3X − 2D + .6X×D</small></p>
+        <svg class="flow" viewBox="0 0 480 254" role="img" aria-label="Two lines. For D equal to 0 the line starts at 3 and rises with slope .3. For D equal to 1 it starts at 1, two units lower, and rises with slope .9, crossing the first line and ending higher.">
+          <path d="M70 220 H440 M70 220 V14" stroke="#0F1B3D" stroke-width="2"/>
+          <path d="M70.0 160.0 L430.0 100.0" stroke="#0F1B3D" stroke-width="3.5"/>
+          <path d="M70.0 200.0 L430.0 20.0" stroke="#F8F4FF" stroke-width="4"/>
+          <path d="M430.0 200.0 L430.0 20.0" stroke="none"/>
+          <text x="438.0" y="104.0" font-size="11" font-weight="700" fill="#0F1B3D">D = 0</text>
+          <text x="438.0" y="24.0" font-size="11" font-weight="700" fill="#0F1B3D">D = 1</text>
+          <text x="293.2" y="142.8" font-size="10.5" font-weight="700" fill="#0F1B3D">SLOPE b₁ = .3</text>
+          <text x="221.2" y="102.4" font-size="10.5" font-weight="700" fill="#0F1B3D" text-anchor="end">SLOPE b₁ + b₃ = .3 + .6</text>
+          <path d="M78.0 160.0 H86.0 V200.0 H78.0" stroke="#0F1B3D" stroke-width="2" fill="none"/>
+          <text x="92.0" y="213" font-size="10.5" font-weight="700" fill="#0F1B3D">b₂ = −2 AT X = 0</text>
+          <text x="255" y="246" font-size="10" font-weight="700" letter-spacing="1.5" fill="#0F1B3D" text-anchor="middle">X</text>
+          <text x="52" y="120" font-size="10" font-weight="700" letter-spacing="1.5" fill="#0F1B3D" text-anchor="middle">Y</text>
+        </svg>
+      </div>
+      <ol class="fix">
+        <li>Without the product term, OLS gives both groups the same slope and the lines run parallel.</li>
+        <li>With it, b₁ is the slope of X where D = 0, and b₁ + b₃ is the slope where D = 1.</li>
+        <li>b₂ is the gap between the groups at X = 0. Here D = 1 starts 2 lower and ends higher, so b₂ alone misleads.</li>
+      </ol>
+    </div>
+    <p class="note">D could be a regime type and X a level of party fragmentation. <b>Read b₁ and b₃ together.</b></p>
+  </div>
+</section>
+
+<!-- 14 · interaction in cheibub and limongi -->
+<section class="slide lav">
+  <div class="inner ix">
+    <div class="head" style="margin-bottom:1.6em">
+      <span class="tag">Cheibub and Limongi · Interaction terms</span>
+      <h2>When does a coalition help?</h2>
+    </div>
+    <div class="grid" style="grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:2.6em;align-items:center">
+      <div>
+        <p class="cap">Presidential democracies · yearly chance of breakdown, percent</p>
+        <table class="cmp">
+          <tr><th>Effective parties</th><th class="num">No coalition</th><th class="num">Coalition</th><th class="num">Difference</th></tr>
+          <tr><td>3.5 to 4.5</td><td class="num">3.85</td><td class="num">11.32</td><td class="num">+7.47</td></tr>
+          <tr><td>Above 4.5</td><td class="num">5.55</td><td class="num">3.39</td><td class="num">−2.16</td></tr>
+        </table>
+        <p class="formula">Breakdown = 3.85 + 7.47 C + 1.70 H − 9.63 C×H<small>C = coalition government · H = more than 4.5 effective parties</small></p>
+      </div>
+      <ol class="fix">
+        <li>"It seems to be the level of party fractionalization that determines the effect of coalition formation on the survival of presidential democracies."</li>
+        <li>The interaction term, −9.63, is the gap between the two differences, the b₃ of the last slide.</li>
+        <li>With an interaction in the model, +7.47 is the effect of a coalition only where H is zero. Where H is one, the effect is 7.47 − 9.63 = −2.16.</li>
+      </ol>
+    </div>
+    <p class="note">The regression line is our arithmetic on Table 3. <b>With an interaction, read the main effects together with it.</b></p>
+  </div>
+</section>
+
+<!-- 15 · fixed effects concept -->
+<section class="slide navy">
+  <div class="inner">
+    <div class="head" style="margin-bottom:1.6em">
+      <span class="tag">Fixed effects</span>
+      <h2>Between countries or within them</h2>
+    </div>
+    <div class="grid" style="grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:2.4em;align-items:center">
+      <div>
+        <p class="cap">Invented data · three countries, four elections each</p>
+        <svg class="flow" viewBox="0 0 480 254" role="img" aria-label="Three clusters of four points for countries A, B and C, placed along a rising diagonal. Within each country the points fall from left to right with slope minus .80. A dashed line through all twelve points rises with slope plus .70.">
+          <path d="M60 220 H440 M60 220 V14" stroke="#E2D5F2" stroke-width="2"/>
+          <path d="M60.0 189.5 L440.0 50.5" stroke="#F8F4FF" stroke-width="2.5" stroke-dasharray="7 6"/>
+          <text x="318.8" y="119.8" font-size="11" font-weight="700" fill="#F8F4FF">POOLED SLOPE +.70</text>
+          <path d="M82.8 147.6 L189.2 192.4" stroke="#5EDCF4" stroke-width="3"/>
+          <rect x="93.0" y="149.0" width="10" height="10" fill="#5EDCF4" stroke="#0A0E27" stroke-width="1.5"/>
+          <rect x="118.5" y="159.6" width="10" height="10" fill="#5EDCF4" stroke="#0A0E27" stroke-width="1.5"/>
+          <rect x="143.5" y="170.4" width="10" height="10" fill="#5EDCF4" stroke="#0A0E27" stroke-width="1.5"/>
+          <rect x="169.0" y="181.0" width="10" height="10" fill="#5EDCF4" stroke="#0A0E27" stroke-width="1.5"/>
+          <text x="76.8" y="151.6" font-size="11" font-weight="700" fill="#5EDCF4" text-anchor="end">A</text>
+          <path d="M196.8 97.6 L303.2 142.4" stroke="#F4D03F" stroke-width="3"/>
+          <rect x="207.0" y="99.0" width="10" height="10" fill="#F4D03F" stroke="#0A0E27" stroke-width="1.5"/>
+          <rect x="232.5" y="109.6" width="10" height="10" fill="#F4D03F" stroke="#0A0E27" stroke-width="1.5"/>
+          <rect x="257.5" y="120.4" width="10" height="10" fill="#F4D03F" stroke="#0A0E27" stroke-width="1.5"/>
+          <rect x="283.0" y="131.0" width="10" height="10" fill="#F4D03F" stroke="#0A0E27" stroke-width="1.5"/>
+          <text x="190.8" y="101.6" font-size="11" font-weight="700" fill="#F4D03F" text-anchor="end">B</text>
+          <path d="M310.8 47.6 L417.2 92.4" stroke="#F0A6CA" stroke-width="3"/>
+          <rect x="321.0" y="49.0" width="10" height="10" fill="#F0A6CA" stroke="#0A0E27" stroke-width="1.5"/>
+          <rect x="346.5" y="59.6" width="10" height="10" fill="#F0A6CA" stroke="#0A0E27" stroke-width="1.5"/>
+          <rect x="371.5" y="70.4" width="10" height="10" fill="#F0A6CA" stroke="#0A0E27" stroke-width="1.5"/>
+          <rect x="397.0" y="81.0" width="10" height="10" fill="#F0A6CA" stroke="#0A0E27" stroke-width="1.5"/>
+          <text x="304.8" y="51.6" font-size="11" font-weight="700" fill="#F0A6CA" text-anchor="end">C</text>
+          <text x="136.0" y="212.0" font-size="11" font-weight="700" fill="#E2D5F2" text-anchor="middle">WITHIN SLOPE −.80</text>
+          <text x="250" y="246" font-size="10" font-weight="700" letter-spacing="1.5" fill="#E2D5F2" fill-opacity=".75" text-anchor="middle">X</text>
+        </svg>
+      </div>
+      <ol class="fix">
+        <li>A pooled regression compares every case with every other, so differences between countries drive the slope.</li>
+        <li>Country fixed effects give each country its own intercept. The slope then comes only from changes inside each country.</li>
+        <li>Every stable trait of a country, measured or not, drops out. The price is that only countries that change contribute.</li>
+      </ol>
+    </div>
+    <p class="note">Here the two slopes point in opposite directions. <b>Fixed effects keep only the solid lines.</b></p>
+  </div>
+</section>
+
+<!-- 16 · fixed effects in carey and hix -->
+<section class="slide lav">
+  <div class="inner">
+    <div class="head" style="margin-bottom:1.6em">
+      <span class="tag">Carey and Hix · Table 2</span>
+      <h2>Fixed effects in Carey and Hix</h2>
+    </div>
+    <div class="grid" style="grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:2.6em;align-items:center">
+      <div>
+        <p class="cap">Outcome · effective number of parties by seats</p>
+        <table class="cmp">
+          <tr><th></th><th class="num">(9) Pooled</th><th class="num">(11) Country fixed effects</th></tr>
+          <tr><td>Median district magnitude</td><td class="num">.01***<small class="se">(.002)</small></td><td class="num">.003<small class="se">(.006)</small></td></tr>
+          <tr><td>Legal threshold, percent</td><td class="num">−.02<small class="se">(.03)</small></td><td class="num">−.34***<small class="se">(.09)</small></td></tr>
+          <tr><td>Mixed-member compensatory</td><td class="num">.44***<small class="se">(.14)</small></td><td class="num">1.62***<small class="se">(.34)</small></td></tr>
+          <tr><td>Latitude, colonial past, region</td><td class="num">Controlled</td><td class="num">Absorbed</td></tr>
+          <tr><td>R²</td><td class="num">.31</td><td class="num">.18 within</td></tr>
+        </table>
+      </div>
+      <ol class="fix">
+        <li>Model 9 compares countries with each other. Model 11 compares each country with itself, so only electoral reforms count.</li>
+        <li>Latitude, colonial past and region never change inside a country, so they drop out of Model 11.</li>
+        <li>Reforms are rare, so standard errors grow. Magnitude shrinks and loses its stars, and legal thresholds gain theirs.</li>
+      </ol>
+    </div>
+    <p class="note">Legal thresholds show no link across countries and a clear one within them. <b>Ask which comparison answers your policy question.</b></p>
+  </div>
+</section>
+
+<!-- 17 · exercise 02 -->
+<section class="slide navy">
+  <div class="inner ex roomy" style="max-width:62em">
+    <div class="head" style="margin-bottom:1em">
+      <span class="tag" style="margin-bottom:1.4em">Group exercise 02 · Price the reform</span>
+      <p class="sub" style="margin:0 0 .7em">A reform commission plans to replace single-member districts with five-seat districts</p>
+      <p class="bigq" style="font-size:1em;max-width:none;margin-bottom:0">By how much would disproportionality fall?</p>
+    </div>
+    <p class="file">Carey and Hix, Table 1. The outcome is Gallagher's index of disproportionality, in points, for 609 elections in 81 countries.</p>
+    <table class="cmp">
+      <tr><th></th><th class="num">(1)</th><th class="num">(2)</th><th class="num">(3)</th><th class="num">(4)</th></tr>
+      <tr><td>Median district magnitude</td><td class="num">−.05***<small class="se">(.004)</small></td><td class="num">−.01**<small class="se">(.003)</small></td><td class="num">−.10***<small class="se">(.03)</small></td><td class="num">−.02<small class="se">(.03)</small></td></tr>
+      <tr><td>1 / median district magnitude</td><td class="num"></td><td class="num">10.05***<small class="se">(.96)</small></td><td class="num"></td><td class="num">8.38***<small class="se">(1.72)</small></td></tr>
+      <tr><td>Mixed-member parallel</td><td class="num">3.63**<small class="se">(1.36)</small></td><td class="num">−2.68**<small class="se">(1.30)</small></td><td class="num">4.25**<small class="se">(1.68)</small></td><td class="num">−.86<small class="se">(1.96)</small></td></tr>
+      <tr class="fe"><td>Country fixed effects · R²</td><td class="num">No · .43</td><td class="num">No · .56</td><td class="num">Yes · .12</td><td class="num">Yes · .16</td></tr>
+    </table>
+    <p class="rules">Every model also carries controls and two more electoral rows. R² is within countries in Models 3 and 4. * p ≤ .1 · ** p ≤ .05 · *** p ≤ .01</p>
+    <ol class="fix">
+      <li>Predict the fall from Model 1, then from Model 2, where 1/1 = 1 and 1/5 = .2. Why do the two answers differ so much?</li>
+      <li>Mixed-member parallel is +3.63 in Model 1 and −2.68 in Model 2. What changed between the models, and what does that say about reading one row alone?</li>
+      <li>Redo the prediction with Model 4. Which countries does it learn from, and what number and range would you give the commission?</li>
+    </ol>
+  </div>
+</section>
+
+<!-- 18 · checklist -->
+<section class="slide lav">
+  <div class="inner" style="max-width:58em">
+    <div class="head">
+      <span class="tag">Take-away</span>
+      <h2>Six questions for any table</h2>
+    </div>
+    <div class="grid">
+      <ol class="fix">
+        <li>What is the outcome, and in what units?</li>
+        <li>What does one unit of each predictor mean?</li>
+        <li>How wide is the interval, and does it include zero?</li>
+      </ol>
+      <ol class="fix" start="4" style="counter-reset:fix 3">
+        <li>Could a star be a false positive, or a missing star a false negative?</li>
+        <li>What is held constant, and was any control measured after the predictor?</li>
+        <li>Does the comparison run across cases, within them, or only under some condition?</li>
+      </ol>
+    </div>
+    <p class="note">Complement 01 asked whether a number measures what it claims. <b>Today's questions assume it does.</b></p>
+  </div>
+</section>
+
+<!-- 19 · next up -->
+<section class="slide pink">
+  <div class="inner" style="max-width:52em">
+    <div class="head">
+      <span class="tag">Next up</span>
+      <h2>Before Thursday 19 November</h2>
+      <p class="sub">Week 10. Welfare states and redistribution.</p>
+    </div>
+    <div class="grid">
+      <div class="card"><span class="chip">Read</span><p>Iversen, Torben, and David Soskice. 2006. "Electoral Institutions and the Politics of Coalitions: Why Some Democracies Redistribute More Than Others." <i>American Political Science Review</i> 100(2), 165-181.</p></div>
+      <div class="card"><span class="chip">Read · new</span><p>Lupu, Noam, and Jonas Pontusson. 2011. "The Structure of Inequality and the Politics of Redistribution." <i>American Political Science Review</i> 105(2), 316-336.</p></div>
+    </div>
+    <ol class="tl" style="margin-top:2em">
+      <li class="q"><time>Thu 19 Nov</time><b>Quiz 4 opens the class. It covers Weeks 07 and 09.</b></li>
+      <li><time>Tue 1 Dec</time><b>Complement on exam review</b><span class="flag room">M2170</span></li>
+      <li><time>Tue 15 Dec</time><b>Complement on hypotheses and how they are evaluated</b><span class="flag room">M2170</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 20 · end -->
+<section class="slide navy">
+  <div class="inner center">
+    <p class="kicker">Progress saved</p>
+    <h1 style="font-size:4.4em">Questions?</h1>
+    <p class="lead">Office hours Thursdays 14:30 to 16:00 in M4328</p>
+    <div class="chips"><span>Jihye.Park@unige.ch</span><span>jihyepark.me/comparative-politics-maspo-fall2026</span></div>
+  </div>
+</section>
+
+</main>
+
+
+
+
+<script>
+const slides = [...document.querySelectorAll('.slide')];
+const dots = document.querySelector('.dots');
+const cur = document.getElementById('cur');
+const pad = n => String(n).padStart(2, '0');
+document.getElementById('tot').textContent = pad(slides.length);
+
+slides.forEach((s, i) => {
+  s.id = 's' + (i + 1);
+  dots.insertAdjacentHTML('beforeend', `<a href="#s${i + 1}" aria-label="Slide ${i + 1}"></a>`);
+});
+
+let now = 0;
+const io = new IntersectionObserver(entries => entries.forEach(e => {
+  if (!e.isIntersecting) return;
+  now = slides.indexOf(e.target);
+  cur.textContent = pad(now + 1);
+  dots.querySelectorAll('a').forEach((d, i) => d.setAttribute('aria-current', i === now));
+}), { rootMargin: '-50% 0px -50% 0px' }); // the slide crossing the middle line is current
+slides.forEach(s => io.observe(s));
+
+// Native Fullscreen API. Hidden where unsupported (iPhone Safari). Scroll snap re-snaps after the resize.
+const fs = document.querySelector('.fs');
+const toggleFs = () => document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+if (document.fullscreenEnabled) {
+  fs.hidden = false;
+  fs.addEventListener('click', toggleFs);
+  document.addEventListener('fullscreenchange', () => {
+    fs.querySelector('.lbl').textContent = document.fullscreenElement ? 'Exit fullscreen' : 'Fullscreen';
+  });
+}
+
+const go = i => slides[Math.max(0, Math.min(slides.length - 1, i))].scrollIntoView({ behavior: 'smooth' });
+addEventListener('keydown', e => {
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  if ((e.key === 'f' || e.key === 'F') && document.fullscreenEnabled) return toggleFs();
+  const step = { ArrowDown: 1, ArrowRight: 1, PageDown: 1, ' ': e.shiftKey ? -1 : 1, ArrowUp: -1, ArrowLeft: -1, PageUp: -1 }[e.key];
+  if (step) { e.preventDefault(); go(now + step); }
+  else if (e.key === 'Home') { e.preventDefault(); go(0); }
+  else if (e.key === 'End') { e.preventDefault(); go(slides.length - 1); }
+});
+</script>
+</body>
+</html>
